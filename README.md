@@ -1,8 +1,16 @@
 # sass-util
 sass abstracts, mixins, globals and utilities
 
-Check the sourcecode on [github](https://github.com/squirrel-forge/sass-util) for extensive comments.
+## Installation
 
-~
-https://www.npmjs.com/package/node-sass-package-importer
-https://github.com/twbs/bootstrap/blob/main/package.json
+```
+npm i @squirrel-forge/sass-util
+```
+
+## Usage
+
+```
+@import "~@squirrel-forge/sass-util";
+```
+
+Check the sourcecode on [github](https://github.com/squirrel-forge/sass-util) for extensive comments.

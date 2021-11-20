@@ -1,6 +1,6 @@
 {
   "name": "@squirrel-forge/sass-util",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "sass abstracts, mixins, globals and utilities",
   "scripts": {
     "sass:render": "npx build-scss src dev -m",
