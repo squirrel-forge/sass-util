@@ -1,0 +1,116 @@
+/**
+ * List helpers
+ */
+@if $with-util and $util-list {
+
+  /**
+   * List defaults
+   */
+  :root {
+
+    // List margin
+    --list-margin: #{$list-margin};
+
+    // List padding, must be 3 values
+    --list-padding: #{$list-padding};
+
+    // List indent padding, is also the width available for the counter
+    --list-indent-width: #{$list-indent-width};
+
+    // Default item margin
+    --list-item-margin: #{$list-item-margin};
+
+    // Item margin after another item
+    --list-item-after-margin: #{$list-item-after-margin};
+  }
+
+  /**
+   * Normalize list margins and padding if no class is set
+   */
+  @if $util-list-normalize == true {
+    ol, ul {
+
+      // Only for lists that do not have a class
+      @include mx-attr-none() {
+        margin: var(--list-margin);
+        padding: var(--list-padding) var(--list-indent-width);
+
+        li {
+          margin: var(--list-item-margin);
+
+          & + li {
+            margin: var(--list-item-after-margin);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Stylable counters
+   */
+  @if $util-list-stylable == true {
+    ol {
+
+      // Decimal arabic default numbers
+      // Here there is no limit since we can use the native counter
+      &[data-counter] {
+        list-style: none;
+        margin: var(--list-margin);
+        padding: var(--list-padding) var(--list-indent-width);
+        counter-reset: ol-counter;
+
+        & > li {
+          position: relative;
+          margin: var(--list-item-margin);
+          counter-increment: ol-counter;
+
+          // Stylable pseudo element
+          &::before {
+            position: absolute;
+            margin: 0 0 0 calc(var(--list-indent-width) * -1);
+            width: var(--list-indent-width);
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: inherit;
+            text-align: right;
+            content: counter(ol-counter, #{$list-counter-style}) '#{$list-counter-suffix}#{$list-inline-space}';
+          }
+
+          & + li {
+            margin: var(--list-item-after-margin);
+          }
+        }
+      }
+
+      // Defined list styles
+      @each $name in $list-styles {
+
+        // Create the type name
+        &[data-counter="#{$name}"] > li::before {
+          content: counter(ol-counter, #{$name}) '#{$list-counter-suffix}#{$list-inline-space}';
+        }
+      }
+
+      // Defined list custom styles
+      // These only support the number of elements defined in the list
+      @each $name, $style in $list-custom-styles {
+
+        // Create the type name
+        &[data-counter="#{$name}"] > li {
+          $index: 1;
+          @each $value in $style {
+
+            // Define the element by position
+            &:nth-child(#{$index})::before {
+              content: '#{$value}#{$list-inline-space}';
+            }
+            $index: $index + 1;
+          }
+        }
+      }
+    }
+  }
+}

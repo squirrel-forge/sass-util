@@ -1,0 +1,8 @@
+/**
+ * Strip unit from value
+ * @param {*} $value - Unit value
+ * @return {*} - Unitless value
+ */
+@function fn-strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}

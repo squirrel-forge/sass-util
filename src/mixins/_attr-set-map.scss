@@ -1,0 +1,27 @@
+/**
+ * Attributes from map setter
+ * @param {string} $name - Name of attribute group
+ * @param {Map} $source - Map of attribute groups to use
+ * @output Adds the given attributes in current scope
+ */
+@mixin mx-attr-set-map($name, $source) {
+
+  // Source must be a map
+  @if type-of($source) == map {
+
+    // Name is defined
+    @if map-has-key($source, $name) {
+
+      // Name must be a map
+      @if type-of(map-get($source, $name)) == map {
+        @include mx-attr-set(map-get($source, $name));
+      } @else {
+        @error 'mx-attributes::$name[#{$name}] must be a map of attributes';
+      }
+    } @else {
+      @error 'mx-attributes::$name[#{$name}] is not defined';
+    }
+  } @else {
+    @error 'mx-attributes::$source must be a map';
+  }
+}

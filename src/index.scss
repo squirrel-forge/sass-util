@@ -1,0 +1,27 @@
+/**
+ * Defaults
+ * logical information used for utilities, mixins and functions
+ * all variables can be overridden, but must sustain their format
+ */
+@import "defaults/index";
+
+/**
+ * Mixins
+ * Collection of functions and mixins
+ */
+@import "functions/index";
+@import "mixins/index";
+
+/**
+ * Some global styles
+ * reset, basic font and image settings, scroll styles etc.
+ * Only imported if previously set to true
+ */
+@import "global/index";
+
+/**
+ * Import utility classes
+ * makes a set of global utility classes available using available settings
+ * Only imported if previously set to true
+ */
+@import "util/index";

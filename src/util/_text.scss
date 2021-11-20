@@ -1,0 +1,55 @@
+/**
+ * Text helpers
+ */
+@if $with-util and $util-text {
+
+  /**
+   * Text helper definitions
+   */
+  .#{$util-prefix}#{$util-text-class} {
+
+    // Block wrapper
+    &-block {
+      display: block;
+      width: 100%;
+    }
+
+    // Center
+    &--center {
+      text-align: center;
+
+      // Query based centering
+      @each $query in $text-center-media-queries {
+        @include mx-media($query) {
+          &-#{str-initials($query)} {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    // Align right
+    &--right {
+      text-align: right;
+    }
+
+    // No text select
+    &#{$util-text-no-select} { @include mx-no-select }
+
+    // Word break class
+    &#{$util-text-wbreak} {
+      word-break: break-word;
+      hyphens: auto;
+
+      // Query based word wrapping
+      @each $query in $text-wbreak-media-queries {
+        @include mx-media($query) {
+          &-#{str-initials($query)} {
+            word-break: break-word;
+            hyphens: auto;
+          }
+        }
+      }
+    }
+  }
+}

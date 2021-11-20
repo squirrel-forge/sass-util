@@ -1,0 +1,23 @@
+/**
+ * Clear both before
+ * @output Defines an ::before pseudo element inside current scope
+ */
+@mixin mx-clear-before {
+  &::before {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+/**
+ * Clear both after
+ * @output Defines an ::after pseudo element inside current scope
+ */
+@mixin mx-clear-after {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}

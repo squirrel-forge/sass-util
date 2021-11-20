@@ -1,0 +1,21 @@
+/**
+ * Insert a line break before content
+ * @output Inserts a pseudo before with break
+ */
+@mixin mx-break-before {
+  &::before {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+/**
+ * Insert a line break after content
+ * @output Inserts a pseudo after with break
+ */
+@mixin mx-break-after {
+  &::after {
+    content: "\A";
+    white-space: pre;
+  }
+}

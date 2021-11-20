@@ -1,0 +1,10 @@
+/**
+ * Font style setter
+ * Adds the given font style attributes in current scope
+ * @param {string} $style - Name of font style
+ * @param {Map} $styles - Map of font styles to use
+ * @output Adds the given font attributes in current scope
+ */
+@mixin mx-font($style, $styles: $font-styles) {
+  @include mx-attr-set-map($style, $styles);
+}

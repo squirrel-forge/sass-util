@@ -1,0 +1,68 @@
+/**
+ * Simple BEM creator
+ * @param {map} $nested - BEM map
+ * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
+ * @output Creates BEM style structures from a map definition
+ * @example
+ *  Structure:
+ *   $foo: (
+ *     font-size: 20px,
+ *     __bla: (
+ *       font-size: 10px,
+ *       --state : (
+ *         font-size: 15px,
+ *       )
+ *     ),
+ *     --state: (
+ *       color: red,
+ *     ),
+ *     at_query: (
+ *       color: blur,
+ *     )
+ *   );
+ *
+ *  Usage:
+ *   .foo {
+ *     @include mx-bem($foo);
+ *   }
+ *
+ *  Result:
+ *   .foo { font-size: 20px; }
+ *   .foo__bla { font-size: 10px; }
+ *   .foo__bla--state { font-size: 15px; }
+ *   .foo--state { color: red; }
+ */
+@mixin mx-bem($nested, $query-prefix: 'at_') {
+
+  // Must be a map
+  @if type-of($nested) == map {
+    @each $name, $data in $nested {
+
+      // If the value is a map we iterate down
+      @if type-of($data) == map {
+
+        // Use a nested media query
+        @if str-slice($name, 0, str-length($query-prefix)) == $query-prefix {
+
+          // Get query from name
+          $query: str-slice($name, str-length($query-prefix) + 1);
+          @include mx-media($query) {
+            @include mx-bem($data);
+          }
+
+          // Default nesting
+        } @else {
+          &#{$name} {
+            @include mx-bem($data);
+          }
+        }
+
+      // If not, assume an attribute value
+      } @else {
+        #{$name}: $data;
+      }
+    }
+  } @else {
+    @error 'mx-bem::$nested[#{type-of($nested)}] must be a map';
+  }
+}

@@ -1,0 +1,31 @@
+/**
+ * Media
+ * @param {string} query - Media name reference
+ * @param {Map} queries - Media query map to use
+ * @output Wraps given content styles in a media query
+ */
+@mixin mx-media($query, $queries: $media-queries) {
+
+  // Queries must be a map
+  @if type-of($queries) == map {
+
+    // Query is defined
+    @if map-has-key($queries, $query) {
+
+      // Query must be a string
+      @if type-of(map-get($queries, $query)) == string {
+
+        // Wrap content with media query
+        @media #{map_get($queries, $query)} {
+          @content;
+        }
+      } @else {
+        @error 'mx-media::$query[#{$query}] must be a string';
+      }
+    } @else {
+      @error 'mx-media::$query[#{$query}] is not defined';
+    }
+  } @else {
+    @error 'mx-media::$queries must be a map';
+  }
+}

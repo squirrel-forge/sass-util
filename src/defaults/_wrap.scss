@@ -1,0 +1,9 @@
+/**
+ * Wrap settings
+ */
+
+// Default wrap styles
+$default-wrap-styles: null;
+
+// Set defaults if not set yet
+$wrap-styles: $default-wrap-styles !default;

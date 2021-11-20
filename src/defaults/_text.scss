@@ -1,0 +1,35 @@
+/**
+ * Text settings
+ */
+
+// Default text center media queries
+$default-text-center-media-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  medium,
+  desktop
+];
+
+// Set defaults if not set yet
+$text-center-media-queries: $default-text-center-media-queries !default;
+
+// Default word break media queries
+$default-text-wbreak-media-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  medium,
+  desktop
+];
+
+// Set defaults if not set yet
+$text-wbreak-media-queries: $default-text-wbreak-media-queries !default;

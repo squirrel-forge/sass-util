@@ -1,0 +1,41 @@
+/**
+ * Font helpers
+ */
+@if $with-util and $util-font and $font-styles {
+
+  /**
+   * Font class definitions
+   */
+  .#{$util-prefix}#{$util-font-class} {
+
+    // Must be a map
+    @if type-of($font-styles) == map {
+      @each $style, $data in $font-styles {
+
+        // Style contains a media query and a fluid property is present
+        @if str-index($style, '-') > 0 and map-has-key(map-get($font-styles, $style), $util-font-fluid-attribute) {
+
+          // Get only the font style without the media query
+          $stripped-style: str-slice($style, 0, str-index($style, '-') - 1);
+
+          // Define style
+          //  default-mobile > default
+          //  default-tablet-desktop > default
+          &#{$util-font-prefix}#{$stripped-style} {
+            @include mx-font-fluid($style);
+          }
+
+          // Just include the regular font property style
+        } @else {
+
+          // Define style
+          &#{$util-font-prefix}#{$style} {
+            @include mx-font($style);
+          }
+        }
+      }
+    } @else {
+      @error 'util::$font-styles[#{type-of($font-styles)}] must be a map';
+    }
+  }
+}

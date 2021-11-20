@@ -1,0 +1,69 @@
+/**
+ * Utility settings
+ */
+
+// Include the utility classes
+$with-util: true !default;
+
+  // Utility classes prefix
+  $util-prefix: '';
+
+  // Include basic helpers
+  $util-basic: true !default;
+
+  // Include font styles
+  $util-font: true !default;
+
+    // Default font class
+    $util-font-class: 'font' !default;
+
+    // Default fluid font attribute
+    $util-font-fluid-attribute: 'fluid' !default;
+
+    // Default font style prefix
+    $util-font-prefix: '--' !default;
+
+  // Include wrapper
+  $util-wrap: true !default;
+
+    // Default wrapper class
+    $util-wrap-class: 'wrap' !default;
+
+    // Default no flex state
+    $util-wrap-noflex: '--no-flex' !default;
+
+  // Include responsive break
+  $util-break: true !default;
+
+    // Default resonsive break wrap class, false|null to use unwrapped global version
+    $util-break-wrap: 'break-rsp' !default;
+
+    // Default respnsive break class prefix
+    $util-break-class: 'break-' !default;
+
+    // Default prevent responsive break in nested class
+    $util-break-keep-class: 'break-keep' !default;
+
+    // Default no break for nested class
+    $util-break-none-class: 'no-break' !default;
+
+  // Include text
+  $util-text: true !default;
+
+    // Default text class
+    $util-text-class: 'text' !default;
+
+    // Default word break class state
+    $util-text-wbreak: '--wbreak' !default;
+
+    // Default no select class state
+    $util-text-no-select: '--no-select' !default;
+
+  // Include list
+  $util-list: true !default;
+
+    // Include no class normalized lists
+    $util-list-normalize: true !default;
+
+    // Include stylable lists
+    $util-list-stylable: true !default;

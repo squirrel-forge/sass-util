@@ -1,0 +1,18 @@
+/**
+ * Select current scope only if no class is set
+ * @param {string} $attribute - Attribute name
+ * @param {boolean} $empty - Include empty attribute
+ * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ */
+@mixin mx-attr-none($attribute: 'class', $empty: true) {
+  @if $empty {
+    &[#{$attribute}=""],
+    &:not([#{$attribute}]) {
+      @content;
+    }
+  } @else {
+    &:not([#{$attribute}]) {
+      @content;
+    }
+  }
+}

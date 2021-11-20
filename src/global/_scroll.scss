@@ -1,0 +1,8 @@
+/**
+ * Only use on condition, default: true
+ */
+@if $with-global and $global-scroll and $global-scroll-smooth {
+  body {
+    scroll-behavior: smooth;
+  }
+}

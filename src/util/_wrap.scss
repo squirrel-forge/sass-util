@@ -1,0 +1,24 @@
+/**
+ * Warp helpers
+ */
+@if $with-util and $util-wrap {
+
+  /**
+   * Wrap definition
+   */
+  .#{$util-prefix}#{$util-wrap-class} {
+    margin: auto;
+    width: 100%;
+
+    // Every wrapper by default is a flex unless when using .wrap--no-flex
+    &:not(.#{$util-prefix}#{$util-wrap-class}#{$util-wrap-noflex}) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // Include BEM style states
+    @if $wrap-styles {
+      @include mx-bem($wrap-styles);
+    }
+  }
+}

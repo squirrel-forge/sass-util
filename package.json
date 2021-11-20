@@ -1,0 +1,35 @@
+{
+  "name": "@squirrel-forge/sass-util",
+  "version": "0.5.0",
+  "description": "sass abstracts, mixins, globals and utilities",
+  "scripts": {
+    "build": "sass src/index.scss dist/util.min.css -s compressed --source-map",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "style": "dist/sass-util.min.css",
+  "sass": "src/index.scss",
+  "directories": {
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/squirrel-forge/sass-util.git"
+  },
+  "keywords": [
+    "sass",
+    "utilities",
+    "mixins",
+    "ui",
+    "abstract"
+  ],
+  "author": "Daniel Hartwell <me@siux.info> (http://siux.info)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/squirrel-forge/sass-util/issues"
+  },
+  "homepage": "https://github.com/squirrel-forge/sass-util#readme",
+  "devDependencies": {
+    "sass": "^1.43.4"
+  }
+}

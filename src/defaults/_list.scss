@@ -1,0 +1,33 @@
+/**
+ * List settings
+ */
+
+// Used for normalize and stylable
+$list-margin: 1rem 0 !default;
+$list-padding: 0 0 0 !default;
+$list-indent-width: 2rem !default;
+$list-item-margin: 0 !default;
+$list-item-after-margin: 1rem 0 0 !default;
+
+// Used for stylable
+$list-counter-style: decimal !default;
+$list-counter-suffix: '.' !default;
+$list-inline-space: '\00a0' !default;
+
+// Default list styles
+$default-list-styles: [
+  decimal,
+  decimal-leading-zero,
+  lower-roman,
+  lower-alpha,
+  lower-latin,
+];
+
+// Set defaults if not set yet
+$list-styles: $default-list-styles !default;
+
+// Default list custom styles
+$default-list-custom-styles: ();
+
+// Set defaults if not set yet
+$list-custom-styles: $default-list-custom-styles !default;

@@ -1,0 +1,21 @@
+/**
+ * Returns joined initials of a separated string
+ * @param {string} $name - String to parse
+ * @param {string} $separator - Separator string
+ * @return {string} - First char of each element separated as a joined string
+ */
+@function str-initials($name, $separator: '-') {
+  $result: '';
+  $next: str-index($name, $separator);
+  @if $next != null {
+    @while $next != null {
+      $result: $result + str-slice($name, 1, 1);
+      $name: str-slice($name, $next + 1);
+      $next: str-index($name, $separator);
+    }
+    $result: $result + str-slice($name, 1, 1);
+  } @else {
+    $result: str-slice($name, 1, 1);
+  }
+  @return $result;
+}

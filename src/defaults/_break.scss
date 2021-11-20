@@ -1,0 +1,19 @@
+/**
+ * Break settings
+ */
+
+// Default break media queries
+$default-break-media-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  medium,
+  desktop
+];
+
+// Set defaults if not set yet
+$break-media-queries: $default-break-media-queries !default;

@@ -1,0 +1,39 @@
+/**
+ * Global settings
+ */
+
+// Include the global css
+$with-global: true !default;
+
+  // Include basic reset
+  $global-reset: true !default;
+
+  // Include slightly better font settings
+  $global-font: true !default;
+
+    // Include font optimizations
+    $global-font-optimize: true !default;
+
+    // Include font smoothing
+    $global-font-smooth: true !default;
+
+    // Include font normalizing
+    $global-font-normalize: true !default;
+
+    // Normalize h1-h6 and p element margins
+    // Defined as: var(--font-headline-margin)
+    $global-font-normalize-h-margin: 1rem 0 !default;
+    // Defined as: var(--font-paragraph-margin)
+    $global-font-normalize-p-margin: 1rem 0 !default;
+
+  // Include slightly better scrolling settings
+  $global-scroll: true !default;
+
+    // Include smooth scrolling
+    $global-scroll-smooth: true !default;
+
+  // Include slightly better images settings
+  $global-images: true !default;
+
+    // Include smoother interpolation
+    $global-images-interpolation: true !default;

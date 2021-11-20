@@ -1,0 +1,17 @@
+/**
+ * Hide an element
+ * but leave it accessible to screen readers
+ * Reliable across most browsers
+ * @output Sets properties to hide the current scope visually only
+ */
+@mixin mx-hide-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

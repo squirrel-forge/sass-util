@@ -1,0 +1,56 @@
+/**
+ * Only use on condition, default: true
+ */
+@if $with-global and $global-reset {
+  body {
+    margin: 0;
+    padding: 0;
+
+    // This makes sure that any background is visible across the full viewport
+    min-height: 100vh;
+  }
+
+  // Force global box-sizing
+  * {
+    box-sizing: border-box;
+  }
+
+  // Remove focus rect for all elements
+  *:hover,
+  *:active,
+  *:focus {
+    outline: none;
+  }
+
+  // Default block types, remove margin and padding
+  main, header, footer, section, article, figure, figcaption, fieldset {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Explicit Font Family elements
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Cleanup links
+  a {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}

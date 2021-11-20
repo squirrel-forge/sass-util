@@ -1,0 +1,13 @@
+/**
+ * Always load all variables
+ * No need for conditions, collisions should be handled on the implementation side
+ * Order matters
+ */
+@import "global";
+@import "util";
+@import "media";
+@import "break";
+@import "font";
+@import "list";
+@import "text";
+@import "wrap";

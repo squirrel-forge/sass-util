@@ -1,0 +1,39 @@
+/**
+ * Fluid style basic setter
+ * Creates a fluid font style between a min and max
+ * @param {size[unit]} $min-vw - Min query width value
+ * @param {size[unit]} $max-vw - Max query width value
+ * @param {size[unit]} $min-font-size - Min font size
+ * @param {size[unit]} $max-font-size - Max font size
+ * @param {false|string} $base-query - Optional name for an @mixin mx-media(name)
+ * @output Adds the given font media queries in current scope, with an optional base query
+ */
+@mixin mx-font-fluid-base($min-vw, $max-vw, $min-font-size, $max-font-size, $base-query : false) {
+
+  // Get initial units
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  // If we have a valid unit setup
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      @if $base-query {
+        @include mx-media($base-query) {
+          font-size: $min-font-size;
+        }
+      } @else {
+        font-size: $min-font-size;
+      }
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{fn-strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{fn-strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  } @else {
+    @error 'mx-font-fluid-base::$min and $max unit types must match correctly';
+  }
+}

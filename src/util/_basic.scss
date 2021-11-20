@@ -1,0 +1,23 @@
+/**
+ * Basic helpers
+ */
+@if $with-util and $util-basic {
+
+  // Inline break pseudo
+  .#{$util-prefix}break {
+    &-before { @include mx-break-before }
+    &-after { @include mx-break-after }
+  }
+
+  // Float clear pseudo
+  .#{$util-prefix}clear {
+    &-before { @include mx-clear-before }
+    &-after { @include mx-clear-after }
+  }
+
+  // Hide visually
+  .#{$util-prefix}hide-a11y { @include mx-hide-accessible }
+
+  // Not selectable
+  .#{$util-prefix}no-select { @include mx-no-select }
+}
