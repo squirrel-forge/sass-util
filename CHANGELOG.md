@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.1
+ - Added a readme overview of contents.
+
 ## 0.6.0
  - Switched builder to [@squirrel-forge/build-scss](https://www.npmjs.com/package/@squirrel-forge/build-scss).
  - Updated package data.
