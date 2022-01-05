@@ -11,7 +11,7 @@
   }
 
   // Force global box-sizing
-  * {
+  *,::before,::after {
     box-sizing: border-box;
   }
 
