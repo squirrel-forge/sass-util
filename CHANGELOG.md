@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.2
+ - Added box-sizing for pseudo before and after elements.
+ - Fixed some typos.
+
 ## 0.6.1
  - Added a readme overview of contents.
 
