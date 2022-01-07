@@ -1,0 +1,16 @@
+/**
+ * Get name and query from string
+ * @param {string} $name - String to parse
+ * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @return {list} - Empty if no query was found
+ */
+@function fn-has-query($name, $query-marker: '_at_') {
+  $parts: str-split($name, $query-marker);
+  @if length($parts) <= 1 {
+    @return ();
+  }
+  @if length($parts) > 2 {
+    @error('fn-has-query::$name[#{$name}] can contain only one query marker');
+  }
+  @return $parts;
+}
