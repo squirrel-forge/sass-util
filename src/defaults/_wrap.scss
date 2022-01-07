@@ -3,7 +3,41 @@
  */
 
 // Default wrap styles
-$default-wrap-styles: null;
+$default-wrap-styles: (
+
+  // Section wrapper
+  --section: (
+    position: relative,
+    flex-direction: column,
+    padding: 0 1rem,
+    at_tablet-desktop: (
+        max-width: calc(100% - 2rem),
+    ),
+  ),
+
+  // Content wrapper, including variants
+  --content: (
+    position: relative,
+    max-width: 380px,
+    at_tablet-portrait: (
+      max-width: 720px,
+    ),
+    at_tablet-landscape-desktop: (
+      max-width: 1000px,
+    ),
+    -before: (
+      position: relative,
+      margin: 0 auto 2rem,
+    ),
+    -main: (
+      position: relative,
+    ),
+    -after: (
+      position: relative,
+      margin: 2rem auto 0,
+    ),
+  ),
+);
 
 // Set defaults if not set yet
 $wrap-styles: $default-wrap-styles !default;
