@@ -1,5 +1,8 @@
 /**
  * Always load everything
  */
-@import "strip-unit";
+@import "has-query";
+@import "is-query";
 @import "str-initials";
+@import "str-split";
+@import "strip-unit";
