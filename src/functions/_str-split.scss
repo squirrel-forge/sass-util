@@ -1,0 +1,31 @@
+/**
+ * Split string
+ * Thanks to dayenite and Tofandel, please refer to:
+ * https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass#42295154
+ * @param {string} $string - String to split
+ * @param {string} $separator - Separator to split by
+ * @param {boolean} $no-empty - Set false to return empty parts, default: true
+ * @return {list} - Separated list of strings
+ */
+@function str-split($string, $separator, $no-empty: true) {
+  $split-arr: ();
+  @if $string == $separator {
+    @if $no-empty {
+      @return ();
+    }
+    @return ('','');
+  }
+  $index : str-index($string, $separator);
+  @while $index != null {
+    $item: str-slice($string, 1, $index - 1);
+    @if $no-empty == false or str-length($item) > 0 {
+      $split-arr: append($split-arr, $item);
+    }
+    $string: str-slice($string, $index + str-length($separator));
+    $index : str-index($string, $separator);
+  }
+  @if $no-empty == false or str-length($string) > 0 {
+    $split-arr: append($split-arr, $string);
+  }
+  @return $split-arr;
+}
