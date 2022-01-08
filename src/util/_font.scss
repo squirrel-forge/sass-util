@@ -12,17 +12,28 @@
     @if type-of($font-styles) == map {
       @each $style, $data in $font-styles {
 
-        // Style contains a media query and a fluid property is present
-        @if str-index($style, '-') > 0 and map-has-key(map-get($font-styles, $style), $util-font-fluid-attribute) {
+        // Style contains a media query
+        $query: fn-has-query($style);
+        @if length($query) > 1 {
 
           // Get only the font style without the media query
-          $stripped-style: str-slice($style, 0, str-index($style, '-') - 1);
+          $stripped-style: nth($query, 1);
 
           // Define style
           //  default-mobile > default
           //  default-tablet-desktop > default
           &#{$util-font-prefix}#{$stripped-style} {
-            @include mx-font-fluid($style);
+
+            // Style also contains a fluid property
+            @if map-has-key(map-get($font-styles, $style), $util-font-fluid-attribute) {
+              @include mx-font-fluid($style);
+            } @else {
+
+              // We only have a media query
+              @include mx-media(nth($query, 2)) {
+                @include mx-font($style);
+              }
+            }
           }
 
           // Just include the regular font property style

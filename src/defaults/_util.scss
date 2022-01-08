@@ -17,8 +17,9 @@ $with-util: true !default;
     // Default font class
     $util-font-class: 'font' !default;
 
-    // Default fluid font attribute
+    // Default fluid font attributes
     $util-font-fluid-attribute: 'fluid' !default;
+    $util-font-no-max-attribute: 'no-max' !default;
 
     // Default font style prefix
     $util-font-prefix: '--' !default;
