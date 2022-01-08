@@ -4,7 +4,7 @@
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
  * @return {list} - Empty if no query was found
  */
-@function fn-has-query($name, $query-marker: '_at_') {
+@function fn-has-query($name, $query-marker: $media-query-marker) {
   $parts: str-split($name, $query-marker);
   @if length($parts) <= 1 {
     @return ();
