@@ -5,10 +5,11 @@
  * @param {size[unit]} $max-vw - Max query width value
  * @param {size[unit]} $min-font-size - Min font size
  * @param {size[unit]} $max-font-size - Max font size
- * @param {false|string} $base-query - Optional name for an @mixin mx-media(name)
+ * @param {null|string} $base-query - Optional name for an @mixin mx-media(name), default: null
+ * @param {boolean} $no-max - Do not define max query, default: null
  * @output Adds the given font media queries in current scope, with an optional base query
  */
-@mixin mx-font-fluid-base($min-vw, $max-vw, $min-font-size, $max-font-size, $base-query : false) {
+@mixin mx-font-fluid-base($min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false) {
 
   // Get initial units
   $u1: unit($min-vw);
@@ -29,8 +30,10 @@
       @media screen and (min-width: $min-vw) {
         font-size: calc(#{$min-font-size} + #{fn-strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{fn-strip-unit($max-vw - $min-vw)}));
       }
-      @media screen and (min-width: $max-vw) {
-        font-size: $max-font-size;
+      @if $no-max == false {
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
       }
     }
   } @else {

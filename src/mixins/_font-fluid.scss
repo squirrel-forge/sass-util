@@ -2,71 +2,21 @@
  * Fluid font style setter
  * Adds the given font style attributes and fluid style in current scope
  * @param {string} $style - Name of font style
+ * @param {string} $base-query - Optional name for an @mixin mx-media(name), default: null
  * @param {Map} $styles - Map of font styles to use, default: $font-styles
  * @param {string} $fluid-attribute - Name of attribute to read fluid properties from, default: 'fluid' = $util-font-fluid-attribute
+ * @param {string} $no-max-attribute - Name of attribute to for no-max argument, default: 'no-max' = $util-font-no-max-attribute
  * @output Adds the given font attributes and media queries in current scope
- * @example
- *  Structure:
- *   $fonts: (
- *     default-mobile: (
- *       font-family: sans-serif,
- *       font-weight: 300,
- *       line-height: 1.33,
- *       fluid: (
- *         min-vw: 320px,
- *         max-vw: 414px,
- *         min-size: 20px,
- *         max-size: 26px,
- *       ),
- *     ),
- *     default-tablet-desktop: (
- *       fluid: (
- *         min-vw: 768px,
- *         max-vw: 1920px,
- *         min-size: 18px,
- *         max-size: 26px,
- *       ),
- *     )
- *   );
- *
- *  Usage:
- *   body {
- *     @include mx-font-fluid('default-mobile');
- *     @include mx-font-fluid('default-tablet-desktop');
- *   }
- *
- *  Result:
- *   body {
- *     font-family: sans-serif;
- *     font-weight: 300;
- *     line-height: 1.33;
- *   }
- *   @media screen and (max-width: 767px) {
- *     body { font-size: 20px }
- *   }
- *   @media screen and (min-width: 320px) {
- *     body { font-size: calc(20px + 6 * ((100vw - 320px) / 94)) }
- *   }
- *   @media screen and (min-width: 414px) {
- *     body { font-size: 26px }
- *   }
- *   @media screen and (min-width: 768px) {
- *     body { font-size: 18px }
- *   }
- *   @media screen and (min-width: 768px) {
- *     body { font-size: calc(18px + 8 * ((100vw - 768px) / 1152)) }
- *   }
- *   @media screen and (min-width: 1920px) {
- *     body { font-size: 26px}
- *   }
  */
-@mixin mx-font-fluid($style, $styles: $font-styles, $fluid-attribute: $util-font-fluid-attribute) {
+@mixin mx-font-fluid($style, $base-query: null, $styles: $font-styles, $fluid-attribute: $util-font-fluid-attribute, $no-max-attribute: $util-font-no-max-attribute) {
 
-  // The first part after - is the font style index
-  $index: str-index($style, '-');
-
-  // Everything after that is the base query
-  $base-query: str-slice($style, $index + 1);
+  // Get base query if not set
+  @if $base-query == null {
+    $has-query: fn-has-query($style);
+    @if length($has-query) > 1 {
+      $base-query: nth($has-query, 2);
+    }
+  }
 
   // Styles must be a map
   @if type-of($styles) == map {
@@ -75,10 +25,15 @@
     @if map-has-key($styles, $style) {
 
       // Style must be a map
-      @if type-of(map-get($styles, $style)) == map {
+      $map: map-get($styles, $style);
+      @if type-of($map) == map {
+        $no-max: false;
+        @if map-has-key($map, $no-max-attribute) {
+          $no-max: map-get($map, $no-max-attribute);
+        }
 
         // Cycle style attributes
-        @each $attribute, $value in map-get($styles, $style) {
+        @each $attribute, $value in $map {
 
           // The limits attribute defines the fluid style
           @if $attribute == $fluid-attribute {
@@ -87,11 +42,12 @@
               map-get($value, 'max-vw'),
               map-get($value, 'min-size'),
               map-get($value, 'max-size'),
-              $base-query
+              $base-query,
+              $no-max
             )
 
           // Set base attributes
-          } @else {
+          } @else if $attribute != $no-max-attribute {
             #{$attribute}: $value;
           }
         }
