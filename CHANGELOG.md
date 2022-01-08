@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.7.0
+ - Added *fn-has-query* to check strings for query parts.
+ - Added *fn-is-query* to check if string is a query.
+ - Added *str-split* completed version with no-empty option.
+ - Improved and extended nesting options for *mx-bem* mixin.
+ - Added customizable query prefix and marker strings.
+ - Added *no-max* option to *mx-font-fluid* and *mx-font-fluid-base* to prevent the upper min query from being rendered.
+ - Improved font util declaration handling.
+ - Added some work in progress default wrap styles.
+ - Added some work in progress default font styles.
+
 ## 0.6.2
  - Added box-sizing for pseudo before and after elements.
  - Fixed some typos.
