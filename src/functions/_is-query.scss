@@ -4,7 +4,7 @@
  * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
  * @return {string|null} - Query reference or null if not a query
  */
-@function fn-is-query($name, $query-prefix: 'at_') {
+@function fn-is-query($name, $query-prefix: $media-query-prefix) {
   @if str-slice($name, 0, str-length($query-prefix)) == $query-prefix {
     @return str-slice($name, str-length($query-prefix) + 1);
   }
