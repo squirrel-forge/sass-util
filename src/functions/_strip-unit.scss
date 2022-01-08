@@ -1,8 +1,16 @@
 /**
+ * Requires
+ */
+@use "sass:math";
+
+/**
  * Strip unit from value
  * @param {*} $value - Unit value
  * @return {*} - Unitless value
  */
 @function fn-strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @if type-of($value) == 'number' and not unitless($value) {
+    @return math.div($value, $value * 0 + 1);
+  }
+  @return $value;
 }
