@@ -3,7 +3,60 @@
  */
 
 // Default font styles
-$default-font-styles: null;
+$default-font-styles: (
+
+  // Base declaration
+  default: (
+    font-family: (Oxygen, sans-serif),
+    font-size: 14px,
+    font-weight: normal,
+    line-height: 1.33,
+  ),
+
+  // Regular default and responsive declarations
+  headline: (
+    font-size: 20px,
+    font-weight: bold,
+  ),
+  headline_at_tablet: (
+    font-size: 40px,
+  ),
+  headline_at_medium: (
+    font-size: 40px,
+  ),
+  headline_at_desktop: (
+    font-size: 50px,
+  ),
+
+  // Fluid font defaults and responsive declarations
+  headline-fluid_at_mobile: (
+    font-weight: bold,
+    fluid: (
+      min-vw : 320px,
+      max-vw : 767px,
+      min-size : 20px,
+      max-size : 30px,
+    ),
+    no-max: true,
+  ),
+  headline-fluid_at_tablet: (
+    fluid: (
+      min-vw : 768px,
+      max-vw : 1024px,
+      min-size : 30px,
+      max-size : 35px,
+    ),
+    no-max: true,
+  ),
+  headline-fluid_at_medium: (
+    fluid: (
+      min-vw : 1025px,
+      max-vw : 1366px,
+      min-size : 35px,
+      max-size : 50px,
+    ),
+  )
+);
 
 // Set defaults if not set yet
 $font-styles: $default-font-styles !default;
