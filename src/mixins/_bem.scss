@@ -38,7 +38,7 @@
  *   .foo--state { color: red; }
  *   @media (query) { .foo--state { color: deeppink; } }
  */
-@mixin mx-bem($nested, $query-prefix: 'at_', $query-marker: '_at_') {
+@mixin mx-bem($nested, $query-prefix: $media-query-prefix, $query-marker: $media-query-marker) {
 
   // Must be a map
   @if type-of($nested) == map {
