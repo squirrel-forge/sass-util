@@ -1,0 +1,779 @@
+@charset "UTF-8";
+/**
+ * Defaults
+ * logical information used for utilities, mixins and functions
+ * all variables can be overridden, but must sustain their format
+ */
+/**
+ * Always load all variables
+ * No need for conditions, collisions should be handled on the implementation side
+ * Order matters
+ */
+/**
+ * Global settings
+ */
+/**
+ * Utility settings
+ */
+/**
+ * Media query settings
+ */
+/**
+ * Break settings
+ */
+/**
+ * Font settings
+ */
+/**
+ * List settings
+ */
+/**
+ * Text settings
+ */
+/**
+ * Wrap settings
+ */
+/**
+ * Mixins
+ * Collection of functions and mixins
+ */
+/**
+ * Always load everything
+ */
+/**
+ * Get name and query from string
+ * @param {string} $name - String to parse
+ * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @return {list} - Empty if no query was found
+ */
+/**
+ * Checks if given string is a query reference
+ * @param {string} $name - String to parse
+ * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
+ * @return {string|null} - Query reference or null if not a query
+ */
+/**
+ * Returns joined initials of a separated string
+ * @param {string} $name - String to parse
+ * @param {string} $separator - Separator string
+ * @return {string} - First char of each element separated as a joined string
+ */
+/**
+ * Split string
+ * Thanks to dayenite and Tofandel, please refer to:
+ * https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass#42295154
+ * @param {string} $string - String to split
+ * @param {string} $separator - Separator to split by
+ * @param {boolean} $no-empty - Set false to return empty parts, default: true
+ * @return {list} - Separated list of strings
+ */
+/**
+ * Requires
+ */
+/**
+ * Strip unit from value
+ * @param {*} $value - Unit value
+ * @return {*} - Unitless value
+ */
+/**
+ * Always load everything
+ */
+/**
+ * Select current scope only if a given attribute is set
+ * @param {string} $attribute - Attribute name, default: 'class'
+ * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ */
+/**
+ * Select current scope only if no class is set
+ * @param {string} $attribute - Attribute name
+ * @param {boolean} $empty - Include empty attribute
+ * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ */
+/**
+ * Attributes setter
+ * @param {Map} $source - Map of attributes
+ * @output Adds the given attributes in current scope
+ */
+/**
+ * Attributes from map setter
+ * @param {string} $name - Name of attribute group
+ * @param {Map} $source - Map of attribute groups to use
+ * @output Adds the given attributes in current scope
+ */
+/**
+ * Simple BEM creator
+ * @param {map} $nested - BEM map
+ * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
+ * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @output Creates BEM style structures from a map definition
+ * @example
+ *  Structure:
+ *   $foo: (
+ *     font-size: 20px,,
+ *     at_query: (
+ *       font-size: 30px,
+ *     )
+ *     __bla: (
+ *       font-size: 10px,
+ *       --state : (
+ *         font-size: 15px,
+ *       )
+ *     ),
+ *     --state: (
+ *       color: red,
+ *     ),
+ *     --state_at_query: (
+ *       color: deeppink,
+ *     )
+ *   );
+ *
+ *  Usage:
+ *   .foo {
+ *     @include mx-bem($foo);
+ *   }
+ *
+ *  Result:
+ *   .foo { font-size: 20px; }
+ *   @media (query) { .foo { font-size: 30px; } }
+ *   .foo__bla { font-size: 10px; }
+ *   .foo__bla--state { font-size: 15px; }
+ *   .foo--state { color: red; }
+ *   @media (query) { .foo--state { color: deeppink; } }
+ */
+/**
+ * Insert a line break before content
+ * @output Inserts a pseudo before with break
+ */
+/**
+ * Insert a line break after content
+ * @output Inserts a pseudo after with break
+ */
+/**
+ * Clear both before
+ * @output Defines an ::before pseudo element inside current scope
+ */
+/**
+ * Clear both after
+ * @output Defines an ::after pseudo element inside current scope
+ */
+/**
+ * Font style setter
+ * Adds the given font style attributes in current scope
+ * @param {string} $style - Name of font style
+ * @param {Map} $styles - Map of font styles to use
+ * @output Adds the given font attributes in current scope
+ */
+/**
+ * Fluid style basic setter
+ * Creates a fluid font style between a min and max
+ * @param {size[unit]} $min-vw - Min query width value
+ * @param {size[unit]} $max-vw - Max query width value
+ * @param {size[unit]} $min-font-size - Min font size
+ * @param {size[unit]} $max-font-size - Max font size
+ * @param {null|string} $base-query - Optional name for an @mixin mx-media(name), default: null
+ * @param {boolean} $no-max - Do not define max query, default: null
+ * @output Adds the given font media queries in current scope, with an optional base query
+ */
+/**
+ * Fluid font style setter
+ * Adds the given font style attributes and fluid style in current scope
+ * @param {string} $style - Name of font style
+ * @param {string} $base-query - Optional name for an @mixin mx-media(name), default: null
+ * @param {Map} $styles - Map of font styles to use, default: $font-styles
+ * @param {string} $fluid-attribute - Name of attribute to read fluid properties from, default: 'fluid' = $util-font-fluid-attribute
+ * @param {string} $no-max-attribute - Name of attribute to for no-max argument, default: 'no-max' = $util-font-no-max-attribute
+ * @output Adds the given font attributes and media queries in current scope
+ */
+/**
+ * Hide an element
+ * but leave it accessible to screen readers
+ * Reliable across most browsers
+ * @output Sets properties to hide the current scope visually only
+ */
+/**
+ * Media
+ * @param {string} query - Media name reference
+ * @param {Map} queries - Media query map to use
+ * @output Wraps given content styles in a media query
+ */
+/**
+ * Prevent text selection
+ * Works across most browsers
+ * @output Inserts attributes to prevent text selection
+ */
+/**
+ * Some global styles
+ * reset, basic font and image settings, scroll styles etc.
+ * Only imported if previously set to true
+ */
+/**
+ * Always load everything
+ */
+/**
+ * Only use on condition, default: true
+ */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+*, ::before, ::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:hover,
+*:active,
+*:focus {
+  outline: none;
+}
+
+main, header, footer, section, article, figure, figcaption, fieldset {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+a:active, a:focus, a:hover, a:visited {
+  text-decoration: none;
+  outline: none;
+}
+
+/**
+ * Only use on condition, default: true
+ */
+body {
+  scroll-behavior: smooth;
+}
+
+/**
+ * Only use on condition, default: true
+ */
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/**
+ * Only use on condition, default: true
+ */
+html {
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  text-rendering: optimizeSpeed;
+}
+
+/**
+ * Only use on condition, default: true
+ */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * Only use on condition, default: true
+ */
+:root {
+  --font-headline-margin: 1rem 0;
+  --font-paragraph-margin: 1rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: var(--font-headline-margin);
+}
+
+p {
+  margin: var(--font-paragraph-margin);
+}
+
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, p:first-child {
+  margin-top: 0;
+}
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * Import utility classes
+ * makes a set of global utility classes available using available settings
+ * Only imported if previously set to true
+ */
+/**
+ * Always load everything
+ */
+/**
+ * Basic helpers
+ */
+.break-before::before {
+  content: "\a";
+  white-space: pre;
+}
+.break-after::after {
+  content: "\a";
+  white-space: pre;
+}
+
+.clear-before::before {
+  display: block;
+  content: "";
+  clear: both;
+}
+.clear-after::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.hide-a11y {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+/**
+ * Break helpers
+ */
+/**
+ * Output the wrapped version, explicitly allow responsive breaks
+ * or set them global without a wrapper class
+ */
+.break-rsp br {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .break-rsp br.break-m {
+    display: inline;
+  }
+}
+@media screen and (max-width: 991px) {
+  .break-rsp br.break-mtp {
+    display: inline;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .break-rsp br.break-tp {
+    display: inline;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .break-rsp br.break-tl {
+    display: inline;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .break-rsp br.break-t {
+    display: inline;
+  }
+}
+@media screen and (min-width: 768px) {
+  .break-rsp br.break-td {
+    display: inline;
+  }
+}
+@media screen and (min-width: 992px) {
+  .break-rsp br.break-tld {
+    display: inline;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .break-rsp br.break-m {
+    display: inline;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .break-rsp br.break-d {
+    display: inline;
+  }
+}
+
+.break-keep br {
+  display: inline;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+/**
+ * Font helpers
+ */
+/**
+ * Font class definitions
+ */
+.font--default {
+  font-family: Oxygen, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.33;
+}
+.font--headline {
+  font-size: 20px;
+  font-weight: bold;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .font--headline {
+    font-size: 40px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .font--headline {
+    font-size: 40px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .font--headline {
+    font-size: 50px;
+  }
+}
+.font--headline-fluid {
+  font-weight: bold;
+}
+@media screen and (max-width: 767px) {
+  .font--headline-fluid {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 320px) {
+  .font--headline-fluid {
+    font-size: calc(20px + 10 * ((100vw - 320px) / 447));
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .font--headline-fluid {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .font--headline-fluid {
+    font-size: calc(30px + 5 * ((100vw - 768px) / 256));
+  }
+}
+@media screen and (min-width: 1025px) {
+  .font--headline-fluid {
+    font-size: 35px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .font--headline-fluid {
+    font-size: calc(35px + 15 * ((100vw - 1025px) / 341));
+  }
+}
+@media screen and (min-width: 1366px) {
+  .font--headline-fluid {
+    font-size: 50px;
+  }
+}
+
+/**
+ * List helpers
+ */
+/**
+ * List defaults
+ */
+:root {
+  --list-margin: 1rem 0;
+  --list-padding: 0 0 0;
+  --list-indent-width: 2rem;
+  --list-item-margin: 0;
+  --list-item-after-margin: 1rem 0 0;
+}
+
+/**
+ * Normalize list margins and padding if no class is set
+ */
+ol[class=""], ol:not([class]), ul[class=""], ul:not([class]) {
+  margin: var(--list-margin);
+  padding: var(--list-padding) var(--list-indent-width);
+}
+ol[class=""] li, ol:not([class]) li, ul[class=""] li, ul:not([class]) li {
+  margin: var(--list-item-margin);
+}
+ol[class=""] li + li, ol:not([class]) li + li, ul[class=""] li + li, ul:not([class]) li + li {
+  margin: var(--list-item-after-margin);
+}
+
+/**
+ * Stylable counters
+ */
+ol[data-counter] {
+  list-style: none;
+  margin: var(--list-margin);
+  padding: var(--list-padding) var(--list-indent-width);
+  counter-reset: ol-counter;
+}
+ol[data-counter] > li {
+  position: relative;
+  margin: var(--list-item-margin);
+  counter-increment: ol-counter;
+}
+ol[data-counter] > li::before {
+  position: absolute;
+  margin: 0 0 0 calc(var(--list-indent-width) * -1);
+  width: var(--list-indent-width);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: right;
+  content: counter(ol-counter, decimal) ". ";
+}
+ol[data-counter] > li + li {
+  margin: var(--list-item-after-margin);
+}
+ol[data-counter=decimal] > li::before {
+  content: counter(ol-counter, decimal) ". ";
+}
+ol[data-counter=decimal-leading-zero] > li::before {
+  content: counter(ol-counter, decimal-leading-zero) ". ";
+}
+ol[data-counter=lower-roman] > li::before {
+  content: counter(ol-counter, lower-roman) ". ";
+}
+ol[data-counter=lower-alpha] > li::before {
+  content: counter(ol-counter, lower-alpha) ". ";
+}
+ol[data-counter=lower-latin] > li::before {
+  content: counter(ol-counter, lower-latin) ". ";
+}
+
+/**
+ * Text helpers
+ */
+/**
+ * Text helper definitions
+ */
+.text-block {
+  display: block;
+  width: 100%;
+}
+.text--center {
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .text--center-m {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 991px) {
+  .text--center-mtp {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text--center-tp {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .text--center-tl {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .text--center-t {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text--center-td {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 992px) {
+  .text--center-tld {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .text--center-m {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .text--center-d {
+    text-align: center;
+  }
+}
+.text--right {
+  text-align: right;
+}
+.text--no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+.text--wbreak {
+  word-break: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+@media screen and (max-width: 767px) {
+  .text--wbreak-m {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (max-width: 991px) {
+  .text--wbreak-mtp {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text--wbreak-tp {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .text--wbreak-tl {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .text--wbreak-t {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text--wbreak-td {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .text--wbreak-tld {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .text--wbreak-m {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .text--wbreak-d {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+
+/**
+ * Wrap helpers
+ */
+/**
+ * Wrap definition
+ */
+.wrap {
+  margin: auto;
+  width: 100%;
+}
+.wrap:not(.wrap--no-flex) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.wrap--section {
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 1rem;
+}
+.wrap--sectionat_tablet-desktop {
+  max-width: calc(100% - 2rem);
+}
+.wrap--content {
+  position: relative;
+  max-width: 380px;
+}
+.wrap--contentat_tablet-portrait {
+  max-width: 720px;
+}
+.wrap--contentat_tablet-landscape-desktop {
+  max-width: 1000px;
+}
+.wrap--content-before {
+  position: relative;
+  margin: 0 auto 2rem;
+}
+.wrap--content-main {
+  position: relative;
+}
+.wrap--content-after {
+  position: relative;
+  margin: 2rem auto 0;
+}
+/*# sourceMappingURL=util.css.map */
