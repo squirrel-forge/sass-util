@@ -1,5 +1,5 @@
 # @squirrel-forge/sass-util
-sass abstracts, mixins, globals and utilities
+Collection of sass abstracts, mixins, globals and utilities.
 
 ## Installation
 
@@ -43,5 +43,32 @@ An overview of mixins available:
  - **mx-hide-accessible** Element will be visually hidden, but accessible for screenreaders etc.
  - **mx-media** @content will be wrapped in a media query of the given name.
  - **mx-no-select** Element text will not be selectable by user.
+
+### Notes
+
+Following some notes on mixin, function and sass behaviours directly relevant to using the utilities.
+
+#### Sass maps
+
+Inside map declarations to use comma separated values wrap them in (value, value) to make them a list value,
+for example for font-family declarations:
+
+```scss
+$map: (
+  key: (
+    font-family: ("Oxygen", sans-serif),
+  ),
+);
+```
+
+Or you can escape the value as following:
+
+```scss
+$map: (
+  key: (
+    font-family: #{"Oxygen", sans-serif},
+  ),
+);
+```
 
 Check the sourcecode on [github](https://github.com/squirrel-forge/sass-util) for extensive comments.
