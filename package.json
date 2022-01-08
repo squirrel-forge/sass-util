@@ -1,14 +1,14 @@
 {
   "name": "@squirrel-forge/sass-util",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "sass abstracts, mixins, globals and utilities",
   "scripts": {
-    "sass:render": "npx build-scss src dev -m",
-    "sass:publish": "npx build-scss src dist -c -m",
+    "sass:render": "build-scss src dist -m -s -i",
+    "sass:publish": "build-scss src dist -c -m",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
-  "style": "dist/util.min.css",
+  "style": "dist/util.css",
   "sass": "src/util.scss",
   "scss": "src/util.scss",
   "directories": {
@@ -33,6 +33,6 @@
   },
   "homepage": "https://github.com/squirrel-forge/sass-util#readme",
   "devDependencies": {
-    "@squirrel-forge/build-scss": "^0.5.0"
+    "@squirrel-forge/build-scss": "^0.7.0"
   }
 }
