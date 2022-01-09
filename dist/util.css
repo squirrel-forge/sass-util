@@ -5,6 +5,7 @@
  * all variables can be overridden, but must sustain their format
  */
 /**
+ * @file : defaults/_index
  * Always load all variables
  * No need for conditions, collisions should be handled on the implementation side
  * Order matters
@@ -38,7 +39,8 @@
  * Collection of functions and mixins
  */
 /**
- * Always load everything
+ * @file : functions/_index
+ * Always load all functions
  */
 /**
  * Get name and query from string
@@ -49,7 +51,7 @@
 /**
  * Checks if given string is a query reference
  * @param {string} $name - String to parse
- * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
+ * @param {string} $query-marker - String marking the beginning of a query, default: '_at_'
  * @return {string|null} - Query reference or null if not a query
  */
 /**
@@ -76,7 +78,8 @@
  * @return {*} - Unitless value
  */
 /**
- * Always load everything
+ * @file : mixins/_index
+ * Always load all mixins
  */
 /**
  * Select current scope only if a given attribute is set
@@ -103,42 +106,8 @@
 /**
  * Simple BEM creator
  * @param {map} $nested - BEM map
- * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
  * @output Creates BEM style structures from a map definition
- * @example
- *  Structure:
- *   $foo: (
- *     font-size: 20px,,
- *     at_query: (
- *       font-size: 30px,
- *     )
- *     __bla: (
- *       font-size: 10px,
- *       --state : (
- *         font-size: 15px,
- *       )
- *     ),
- *     --state: (
- *       color: red,
- *     ),
- *     --state_at_query: (
- *       color: deeppink,
- *     )
- *   );
- *
- *  Usage:
- *   .foo {
- *     @include mx-bem($foo);
- *   }
- *
- *  Result:
- *   .foo { font-size: 20px; }
- *   @media (query) { .foo { font-size: 30px; } }
- *   .foo__bla { font-size: 10px; }
- *   .foo__bla--state { font-size: 15px; }
- *   .foo--state { color: red; }
- *   @media (query) { .foo--state { color: deeppink; } }
  */
 /**
  * Insert a line break before content
@@ -207,7 +176,8 @@
  * Only imported if previously set to true
  */
 /**
- * Always load everything
+ * @file : global/_index
+ * Always load all globals
  */
 /**
  * Only use on condition, default: true
@@ -316,7 +286,8 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
  * Only imported if previously set to true
  */
 /**
- * Always load everything
+ * @file : util/_index
+ * Always load all utils
  */
 /**
  * Basic helpers
@@ -444,8 +415,13 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   line-height: 1.33;
 }
 .font--headline {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
+}
+@media screen and (max-width: 374px) {
+  .font--headline {
+    font-size: 20px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .font--headline {
@@ -752,18 +728,29 @@ ol[data-counter=lower-latin] > li::before {
           flex-direction: column;
   padding: 0 1rem;
 }
-.wrap--sectionat_tablet-desktop {
-  max-width: calc(100% - 2rem);
+@media screen and (min-width: 768px) {
+  .wrap--section {
+    max-width: calc(100% - 2rem);
+  }
 }
 .wrap--content {
   position: relative;
   max-width: 380px;
 }
-.wrap--contentat_tablet-portrait {
-  max-width: 720px;
+@media screen and (max-width: 374px) {
+  .wrap--content {
+    max-width: 300px;
+  }
 }
-.wrap--contentat_tablet-landscape-desktop {
-  max-width: 1000px;
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .wrap--content {
+    max-width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .wrap--content {
+    max-width: 1000px;
+  }
 }
 .wrap--content-before {
   position: relative;
