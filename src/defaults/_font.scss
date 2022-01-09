@@ -15,8 +15,11 @@ $default-font-styles: (
 
   // Regular default and responsive declarations
   headline: (
-    font-size: 20px,
+    font-size: 30px,
     font-weight: bold,
+  ),
+  headline_at_small: (
+    font-size: 20px,
   ),
   headline_at_tablet: (
     font-size: 40px,

@@ -1,44 +1,10 @@
 /**
  * Simple BEM creator
  * @param {map} $nested - BEM map
- * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
  * @output Creates BEM style structures from a map definition
- * @example
- *  Structure:
- *   $foo: (
- *     font-size: 20px,,
- *     at_query: (
- *       font-size: 30px,
- *     )
- *     __bla: (
- *       font-size: 10px,
- *       --state : (
- *         font-size: 15px,
- *       )
- *     ),
- *     --state: (
- *       color: red,
- *     ),
- *     --state_at_query: (
- *       color: deeppink,
- *     )
- *   );
- *
- *  Usage:
- *   .foo {
- *     @include mx-bem($foo);
- *   }
- *
- *  Result:
- *   .foo { font-size: 20px; }
- *   @media (query) { .foo { font-size: 30px; } }
- *   .foo__bla { font-size: 10px; }
- *   .foo__bla--state { font-size: 15px; }
- *   .foo--state { color: red; }
- *   @media (query) { .foo--state { color: deeppink; } }
  */
-@mixin mx-bem($nested, $query-prefix: $media-query-prefix, $query-marker: $media-query-marker) {
+@mixin mx-bem($nested, $query-marker: $media-query-marker) {
 
   // Must be a map
   @if type-of($nested) == map {
@@ -48,7 +14,7 @@
       @if type-of($data) == map {
 
         // Name is a media query
-        $query: fn-is-query($name, $query-prefix);
+        $query: fn-is-query($name, $query-marker);
         @if $query {
           @include mx-media($query) {
             @include mx-bem($data);

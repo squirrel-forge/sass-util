@@ -1,12 +1,12 @@
 /**
  * Checks if given string is a query reference
  * @param {string} $name - String to parse
- * @param {string} $query-prefix - String prefixing properties to use as media queries, default: 'at_'
+ * @param {string} $query-marker - String marking the beginning of a query, default: '_at_'
  * @return {string|null} - Query reference or null if not a query
  */
-@function fn-is-query($name, $query-prefix: $media-query-prefix) {
-  @if str-slice($name, 0, str-length($query-prefix)) == $query-prefix {
-    @return str-slice($name, str-length($query-prefix) + 1);
+@function fn-is-query($name, $query-marker: $media-query-marker) {
+  @if str-slice($name, 0, str-length($query-marker)) == $query-marker {
+    @return str-slice($name, str-length($query-marker) + 1);
   }
   @return null;
 }

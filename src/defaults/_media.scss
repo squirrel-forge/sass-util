@@ -20,10 +20,6 @@ $default-media-queries : (
 // Set defaults if not set yet
 $media-queries: $default-media-queries !default;
 
-// Query prefix
-$default-media-query-prefix: '_at_';
-$media-query-prefix: $default-media-query-prefix !default;
-
 // Query marker
 $default-media-query-marker: '_at_';
 $media-query-marker: $default-media-query-marker !default;

@@ -10,7 +10,7 @@ $default-wrap-styles: (
     position: relative,
     flex-direction: column,
     padding: 0 1rem,
-    at_tablet-desktop: (
+    _at_tablet-desktop: (
         max-width: calc(100% - 2rem),
     ),
   ),
@@ -19,10 +19,13 @@ $default-wrap-styles: (
   --content: (
     position: relative,
     max-width: 380px,
-    at_tablet-portrait: (
+    _at_small: (
+      max-width: 300px,
+    ),
+    _at_tablet-portrait: (
       max-width: 720px,
     ),
-    at_tablet-landscape-desktop: (
+    _at_tablet-landscape-desktop: (
       max-width: 1000px,
     ),
     -before: (
