@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.1
+ - Fixed *mx-bem* query issues and reduced to one query marker.
+
 ## 0.7.0
  - Added *fn-has-query* to check strings for query parts.
  - Added *fn-is-query* to check if string is a query.
