@@ -2,6 +2,8 @@
 
 ## 0.7.1
  - Fixed *mx-bem* query issues and reduced to one query marker.
+ - Migrated to new sass module functions.
+ - Improved readme docs.
 
 ## 0.7.0
  - Added *fn-has-query* to check strings for query parts.
