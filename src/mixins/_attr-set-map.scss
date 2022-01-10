@@ -1,4 +1,10 @@
 /**
+ * Requires
+ */
+@use "sass:meta";
+@use "sass:map";
+
+/**
  * Attributes from map setter
  * @param {string} $name - Name of attribute group
  * @param {Map} $source - Map of attribute groups to use
@@ -7,14 +13,14 @@
 @mixin mx-attr-set-map($name, $source) {
 
   // Source must be a map
-  @if type-of($source) == map {
+  @if meta.type-of($source) == map {
 
     // Name is defined
-    @if map-has-key($source, $name) {
+    @if map.has-key($source, $name) {
 
       // Name must be a map
-      @if type-of(map-get($source, $name)) == map {
-        @include mx-attr-set(map-get($source, $name));
+      @if meta.type-of(map.get($source, $name)) == map {
+        @include mx-attr-set(map.get($source, $name));
       } @else {
         @error 'mx-attributes::$name[#{$name}] must be a map of attributes';
       }

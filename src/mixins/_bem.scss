@@ -1,4 +1,10 @@
 /**
+ * Requires
+ */
+@use "sass:meta";
+@use "sass:list";
+
+/**
  * Simple BEM creator
  * @param {map} $nested - BEM map
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
@@ -7,11 +13,11 @@
 @mixin mx-bem($nested, $query-marker: $media-query-marker) {
 
   // Must be a map
-  @if type-of($nested) == map {
+  @if meta.type-of($nested) == map {
     @each $name, $data in $nested {
 
       // If the value is a map we iterate down
-      @if type-of($data) == map {
+      @if meta.type-of($data) == map {
 
         // Name is a media query
         $query: fn-is-query($name, $query-marker);
@@ -23,11 +29,11 @@
 
           // Name is combined with media query
           $combined: fn-has-query($name, $query-marker);
-          @if length($combined) > 1 {
+          @if list.length($combined) > 1 {
 
             // Set name and query
-            &#{nth($combined, 1)} {
-              @include mx-media(nth($combined, 2)) {
+            &#{list.nth($combined, 1)} {
+              @include mx-media(list.nth($combined, 2)) {
                 @include mx-bem($data);
               }
             }
@@ -53,13 +59,13 @@
         } @else if $name == 'use-attr' {
 
           // Check for valid data
-          @if type-of($data) == list and length($data) == 2 {
+          @if meta.type-of($data) == list and list.length($data) == 2 {
 
             // Attribute reference must be a string
-            @if type-of(nth($data, 1)) == string {
+            @if meta.type-of(list.nth($data, 1)) == string {
 
               // Any further errors are handled by the mixin
-              @include mx-attr-set-map(nth($data, 1), nth($data, 2));
+              @include mx-attr-set-map(list.nth($data, 1), list.nth($data, 2));
             } @else {
               @error('mx-bem::$name[use-attr] first value must be a string');
             }
@@ -74,6 +80,6 @@
       }
     }
   } @else {
-    @error 'mx-bem::$nested[#{type-of($nested)}] must be a map';
+    @error 'mx-bem::$nested[#{meta.type-of($nested)}] must be a map';
   }
 }

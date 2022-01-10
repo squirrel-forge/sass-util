@@ -1,4 +1,9 @@
 /**
+ * Requires
+ */
+@use "sass:list";
+
+/**
  * Get name and query from string
  * @param {string} $name - String to parse
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
@@ -6,10 +11,10 @@
  */
 @function fn-has-query($name, $query-marker: $media-query-marker) {
   $parts: str-split($name, $query-marker);
-  @if length($parts) <= 1 {
+  @if list.length($parts) <= 1 {
     @return ();
   }
-  @if length($parts) > 2 {
+  @if list.length($parts) > 2 {
     @error('fn-has-query::$name[#{$name}] can contain only one query marker');
   }
   @return $parts;

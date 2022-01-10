@@ -1,4 +1,11 @@
 /**
+ * Requires
+ */
+@use "sass:meta";
+@use "sass:map";
+@use "sass:list";
+
+/**
  * Font helpers
  */
 @if $with-util and $util-font and $font-styles {
@@ -9,15 +16,15 @@
   .#{$util-prefix}#{$util-font-class} {
 
     // Must be a map
-    @if type-of($font-styles) == map {
+    @if meta.type-of($font-styles) == map {
       @each $style, $data in $font-styles {
 
         // Style contains a media query
         $query: fn-has-query($style);
-        @if length($query) > 1 {
+        @if list.length($query) > 1 {
 
           // Get only the font style without the media query
-          $stripped-style: nth($query, 1);
+          $stripped-style: list.nth($query, 1);
 
           // Define style
           //  default-mobile > default
@@ -25,12 +32,12 @@
           &#{$util-font-prefix}#{$stripped-style} {
 
             // Style also contains a fluid property
-            @if map-has-key(map-get($font-styles, $style), $util-font-fluid-attribute) {
+            @if map.has-key(map.get($font-styles, $style), $util-font-fluid-attribute) {
               @include mx-font-fluid($style);
             } @else {
 
               // We only have a media query
-              @include mx-media(nth($query, 2)) {
+              @include mx-media(list.nth($query, 2)) {
                 @include mx-font($style);
               }
             }
@@ -46,7 +53,7 @@
         }
       }
     } @else {
-      @error 'util::$font-styles[#{type-of($font-styles)}] must be a map';
+      @error 'util::$font-styles[#{meta.type-of($font-styles)}] must be a map';
     }
   }
 }

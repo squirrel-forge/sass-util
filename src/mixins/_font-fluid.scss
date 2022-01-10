@@ -1,4 +1,11 @@
 /**
+ * Requires
+ */
+@use "sass:meta";
+@use "sass:list";
+@use "sass:map";
+
+/**
  * Fluid font style setter
  * Adds the given font style attributes and fluid style in current scope
  * @param {string} $style - Name of font style
@@ -13,23 +20,23 @@
   // Get base query if not set
   @if $base-query == null {
     $has-query: fn-has-query($style);
-    @if length($has-query) > 1 {
-      $base-query: nth($has-query, 2);
+    @if list.length($has-query) > 1 {
+      $base-query: list.nth($has-query, 2);
     }
   }
 
   // Styles must be a map
-  @if type-of($styles) == map {
+  @if meta.type-of($styles) == map {
 
     // Style is defined
-    @if map-has-key($styles, $style) {
+    @if map.has-key($styles, $style) {
 
       // Style must be a map
-      $map: map-get($styles, $style);
-      @if type-of($map) == map {
+      $map: map.get($styles, $style);
+      @if meta.type-of($map) == map {
         $no-max: false;
-        @if map-has-key($map, $no-max-attribute) {
-          $no-max: map-get($map, $no-max-attribute);
+        @if map.has-key($map, $no-max-attribute) {
+          $no-max: map.get($map, $no-max-attribute);
         }
 
         // Cycle style attributes
@@ -38,10 +45,10 @@
           // The limits attribute defines the fluid style
           @if $attribute == $fluid-attribute {
             @include mx-font-fluid-base(
-              map-get($value, 'min-vw'),
-              map-get($value, 'max-vw'),
-              map-get($value, 'min-size'),
-              map-get($value, 'max-size'),
+              map.get($value, 'min-vw'),
+              map.get($value, 'max-vw'),
+              map.get($value, 'min-size'),
+              map.get($value, 'max-size'),
               $base-query,
               $no-max
             )

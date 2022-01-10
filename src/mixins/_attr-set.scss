@@ -1,4 +1,9 @@
 /**
+ * Requires
+ */
+@use "sass:meta";
+
+/**
  * Attributes setter
  * @param {Map} $source - Map of attributes
  * @output Adds the given attributes in current scope
@@ -6,13 +11,13 @@
 @mixin mx-attr-set($attributes) {
 
   // Name must be a map
-  @if type-of($attributes) == map {
+  @if meta.type-of($attributes) == map {
 
     // Cycle and set attributes
     @each $attribute, $value in $attributes {
       #{$attribute}: $value;
     }
   } @else {
-    @error 'mx-attributes::$attributes[#{type-of($attributes)}] must be a map of attributes';
+    @error 'mx-attributes::$attributes[#{meta.type-of($attributes)}] must be a map of attributes';
   }
 }

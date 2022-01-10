@@ -1,4 +1,10 @@
 /**
+ * Requires
+ */
+@use "sass:string";
+@use "sass:list";
+
+/**
  * Split string
  * Thanks to dayenite and Tofandel, please refer to:
  * https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass#42295154
@@ -15,17 +21,17 @@
     }
     @return ('','');
   }
-  $index : str-index($string, $separator);
+  $index : string.index($string, $separator);
   @while $index != null {
-    $item: str-slice($string, 1, $index - 1);
-    @if $no-empty == false or str-length($item) > 0 {
-      $split-arr: append($split-arr, $item);
+    $item: string.slice($string, 1, $index - 1);
+    @if $no-empty == false or string.length($item) > 0 {
+      $split-arr: list.append($split-arr, $item);
     }
-    $string: str-slice($string, $index + str-length($separator));
-    $index : str-index($string, $separator);
+    $string: string.slice($string, $index + string.length($separator));
+    $index : string.index($string, $separator);
   }
-  @if $no-empty == false or str-length($string) > 0 {
-    $split-arr: append($split-arr, $string);
+  @if $no-empty == false or string.length($string) > 0 {
+    $split-arr: list.append($split-arr, $string);
   }
   @return $split-arr;
 }

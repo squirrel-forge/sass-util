@@ -1,10 +1,19 @@
 /**
+ * Requires
+ */
+@use "sass:meta";
+
+/**
  * Select current scope only if a given attribute is set
  * @param {string} $attribute - Attribute name, default: 'class'
  * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
  */
 @mixin mx-attr-isset($attribute: 'class') {
-  &[#{$attribute}]:not([#{$attribute}='']) {
-    @content;
+  @if meta.content-exists() {
+    &[#{$attribute}]:not([#{$attribute}='']) {
+      @content;
+    }
+  } @else {
+    @error('mx-attr-isset::@content is required');
   }
 }

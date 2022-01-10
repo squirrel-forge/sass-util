@@ -1,4 +1,9 @@
 /**
+ * Requires
+ */
+@use "sass:math";
+
+/**
  * Fluid style basic setter
  * Creates a fluid font style between a min and max
  * @param {size[unit]} $min-vw - Min query width value
@@ -12,10 +17,10 @@
 @mixin mx-font-fluid-base($min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false) {
 
   // Get initial units
-  $u1: unit($min-vw);
-  $u2: unit($max-vw);
-  $u3: unit($min-font-size);
-  $u4: unit($max-font-size);
+  $u1: math.unit($min-vw);
+  $u2: math.unit($max-vw);
+  $u3: math.unit($min-font-size);
+  $u4: math.unit($max-font-size);
 
   // If we have a valid unit setup
   @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
