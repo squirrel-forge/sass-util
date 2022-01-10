@@ -1,0 +1,111 @@
+/**
+ * Requires
+ */
+@use "sass:list";
+
+/**
+ * Color helpers
+ */
+@function fn-color-data($data) {
+  $color: $data;
+  $variants: ();
+  $attr: null;
+  @if type-of($color) == list {
+    $variants: nth($color, 2);
+    $color: nth($color, 1);
+  }
+  @return ($color, $variants, $attr);
+}
+
+/**
+ * Color helpers
+ */
+@if $with-util and $util-color {
+
+  /**
+   * Color css variables including variants
+   */
+  :root {
+    @each $name, $data in $colors {
+
+      // Get color and variants
+      $data: fn-color-data($data);
+      $color: list.nth($data, 1);
+      $variants: list.nth($data, 2);
+
+      // Default color
+      --color-#{$name}: #{$color};
+
+      // Complement
+      @if index($variants, complement) {
+        --color-#{$name}-complement: #{complement($color)};
+      }
+
+      // Grayscale
+      @if index($variants, grayscale) {
+        --color-#{$name}-grayscale: #{grayscale($color)};
+      }
+
+      // Alpha variants
+      @if index($variants, alpha) {
+        $vals: map-get($color-styles, alpha);
+        @each $val in $vals {
+          --color-#{$name}-alpha-#{$val * 100}: #{rgba($color, $val)};
+        }
+      }
+
+      // Inversion variants
+      @if index($variants, invert) {
+        $vals: map-get($color-styles, invert);
+        @each $val in $vals {
+          --color-#{$name}-invert-#{fn-strip-unit($val)}: #{invert($color, $val)};
+        }
+      }
+
+      // Hue variants
+      @if index($variants, adjust-hue) {
+        $vals: map-get($color-styles, adjust-hue);
+        @each $val in $vals {
+          --color-#{$name}-hue-#{fn-strip-unit($val)}: #{adjust-hue($color, $val)};
+        }
+      }
+
+      // Darken variants
+      @if index($variants, darken) {
+        $vals: map-get($color-styles, darken);
+        @each $val in $vals {
+          --color-#{$name}-dk-#{fn-strip-unit($val)}: #{darken($color, $val)};
+        }
+      }
+
+      // Lighten variants
+      @if index($variants, lighten) {
+        $vals: map-get($color-styles, lighten);
+        @each $val in $vals {
+          --color-#{$name}-lt-#{fn-strip-unit($val)}: #{lighten($color, $val)};
+        }
+      }
+
+      // Saturate variants
+      @if index($variants, saturate) {
+        $vals: map-get($color-styles, saturate);
+        @each $val in $vals {
+          --color-#{$name}-sat-#{fn-strip-unit($val)}: #{saturate($color, $val)};
+        }
+      }
+
+      // Desaturate variants
+      @if index($variants, desaturate) {
+        $vals: map-get($color-styles, desaturate);
+        @each $val in $vals {
+          --color-#{$name}-desat-#{fn-strip-unit($val)}: #{desaturate($color, $val)};
+        }
+      }
+    }
+  }
+
+  /**
+   * Color definitions
+   */
+  .#{$util-prefix}#{$util-color-class} {}
+}

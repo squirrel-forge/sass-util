@@ -24,6 +24,12 @@ $with-util: true !default;
     // Default font style prefix
     $util-font-prefix: '--' !default;
 
+  // Include color styles
+  $util-color: true !default;
+
+    // Default color class
+    $util-color-class: 'color' !default;
+
   // Include wrapper
   $util-wrap: true !default;
 
