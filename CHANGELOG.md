@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.0
+ - Added colors generator, generates css vars and supplies a list of names generated.
+ - Added color utilities, defaults include color, border-color and background-color.
+ - Added *fn-dynamic-default-args* to handle dynamic default arguments.
+
 ## 0.7.1
  - Fixed *mx-bem* query issues and reduced to one query marker.
  - Migrated to new sass module functions.
