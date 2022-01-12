@@ -23,6 +23,9 @@
  * Break settings
  */
 /**
+ * Color settings
+ */
+/**
  * Font settings
  */
 /**
@@ -43,10 +46,25 @@
  * Always load all functions
  */
 /**
+ * Requires
+ */
+/**
+ * Get missing default arguments
+ * @param {*} $data - Arguments, value or list
+ * @param {*} $optional - Any number of optional argument defaults
+ * @return {list} - A list with arguments and defaults
+ */
+/**
+ * Requires
+ */
+/**
  * Get name and query from string
  * @param {string} $name - String to parse
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
  * @return {list} - Empty if no query was found
+ */
+/**
+ * Requires
  */
 /**
  * Checks if given string is a query reference
@@ -55,10 +73,16 @@
  * @return {string|null} - Query reference or null if not a query
  */
 /**
+ * Requires
+ */
+/**
  * Returns joined initials of a separated string
  * @param {string} $name - String to parse
  * @param {string} $separator - Separator string
  * @return {string} - First char of each element separated as a joined string
+ */
+/**
+ * Requires
  */
 /**
  * Split string
@@ -82,9 +106,15 @@
  * Always load all mixins
  */
 /**
+ * Requires
+ */
+/**
  * Select current scope only if a given attribute is set
  * @param {string} $attribute - Attribute name, default: 'class'
  * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ */
+/**
+ * Requires
  */
 /**
  * Select current scope only if no class is set
@@ -93,15 +123,24 @@
  * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
  */
 /**
+ * Requires
+ */
+/**
  * Attributes setter
  * @param {Map} $source - Map of attributes
  * @output Adds the given attributes in current scope
+ */
+/**
+ * Requires
  */
 /**
  * Attributes from map setter
  * @param {string} $name - Name of attribute group
  * @param {Map} $source - Map of attribute groups to use
  * @output Adds the given attributes in current scope
+ */
+/**
+ * Requires
  */
 /**
  * Simple BEM creator
@@ -133,6 +172,9 @@
  * @output Adds the given font attributes in current scope
  */
 /**
+ * Requires
+ */
+/**
  * Fluid style basic setter
  * Creates a fluid font style between a min and max
  * @param {size[unit]} $min-vw - Min query width value
@@ -142,6 +184,9 @@
  * @param {null|string} $base-query - Optional name for an @mixin mx-media(name), default: null
  * @param {boolean} $no-max - Do not define max query, default: null
  * @output Adds the given font media queries in current scope, with an optional base query
+ */
+/**
+ * Requires
  */
 /**
  * Fluid font style setter
@@ -158,6 +203,9 @@
  * but leave it accessible to screen readers
  * Reliable across most browsers
  * @output Sets properties to hide the current scope visually only
+ */
+/**
+ * Requires
  */
 /**
  * Media
@@ -402,6 +450,282 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   white-space: nowrap;
 }
 
+/**
+ * Requires
+ */
+/**
+ * Color helpers
+ */
+/**
+ * Color css variables including variants
+ */
+:root {
+  --color-off-white: #fffbf0;
+  --color-grey-2: #c2d1d9;
+  --color-cerulean: #0081c8;
+  --color-pumpkin-orange: #f28503;
+  --color-butterscotch: #ffb93e;
+  --color-butterscotch-comp: #3e84ff;
+  --color-butterscotch-gray: #9f9f9f;
+  --color-butterscotch-op-10: rgba(255, 185, 62, 0.1);
+  --color-butterscotch-op-20: rgba(255, 185, 62, 0.2);
+  --color-butterscotch-op-30: rgba(255, 185, 62, 0.3);
+  --color-butterscotch-op-40: rgba(255, 185, 62, 0.4);
+  --color-butterscotch-op-50: rgba(255, 185, 62, 0.5);
+  --color-butterscotch-op-60: rgba(255, 185, 62, 0.6);
+  --color-butterscotch-op-70: rgba(255, 185, 62, 0.7);
+  --color-butterscotch-op-80: rgba(255, 185, 62, 0.8);
+  --color-butterscotch-op-90: rgba(255, 185, 62, 0.9);
+  --color-butterscotch-inv-10: #e6ae4b;
+  --color-butterscotch-inv-20: #cca258;
+  --color-butterscotch-inv-30: #b39765;
+  --color-butterscotch-inv-40: #998b72;
+  --color-butterscotch-inv-50: gray;
+  --color-butterscotch-inv-60: #66748d;
+  --color-butterscotch-inv-70: #4d699a;
+  --color-butterscotch-inv-80: #335da7;
+  --color-butterscotch-inv-90: #1a52b4;
+  --color-butterscotch-inv-100: #0046c1;
+  --color-butterscotch-hue-30: #e5ff3e;
+  --color-butterscotch-hue-60: #84ff3e;
+  --color-butterscotch-hue-90: #3eff59;
+  --color-butterscotch-hue-120: #3effb9;
+  --color-butterscotch-hue-150: #3ee5ff;
+  --color-butterscotch-hue-180: #3e84ff;
+  --color-butterscotch-hue-210: #593eff;
+  --color-butterscotch-hue-240: #b93eff;
+  --color-butterscotch-hue-270: #ff3ee5;
+  --color-butterscotch-hue-300: #ff3e84;
+  --color-butterscotch-hue-330: #ff593e;
+  --color-butterscotch-dk-10: #ffa70b;
+  --color-butterscotch-dk-20: #d78900;
+  --color-butterscotch-dk-30: #a46900;
+  --color-butterscotch-dk-40: #714800;
+  --color-butterscotch-dk-50: #3e2800;
+  --color-butterscotch-lt-10: #ffcb71;
+  --color-butterscotch-lt-20: #ffdea4;
+  --color-butterscotch-lt-30: #fff0d7;
+  --color-butterscotch-lt-40: white;
+  --color-butterscotch-lt-50: white;
+  --color-butterscotch-dsat-10: #f5b648;
+  --color-butterscotch-dsat-20: #ecb451;
+  --color-butterscotch-dsat-30: #e2b15b;
+  --color-butterscotch-dsat-40: #d8ae65;
+  --color-butterscotch-dsat-50: #cfac6e;
+  --color-butterscotch-dsat-60: #c5a978;
+  --color-butterscotch-dsat-70: #bba682;
+  --color-butterscotch-dsat-80: #b2a48b;
+  --color-butterscotch-dsat-90: #a8a195;
+}
+
+/**
+ * Color utilities
+ */
+/**
+ * Color definitions
+ */
+.color--text-off-white {
+  color: var(--color-off-white);
+}
+.color--text-grey-2 {
+  color: var(--color-grey-2);
+}
+.color--text-cerulean {
+  color: var(--color-cerulean);
+}
+.color--text-pumpkin-orange {
+  color: var(--color-pumpkin-orange);
+}
+.color--text-butterscotch {
+  color: var(--color-butterscotch);
+}
+.color--bg-off-white {
+  background-color: var(--color-off-white);
+}
+.color--bg-grey-2 {
+  background-color: var(--color-grey-2);
+}
+.color--bg-cerulean {
+  background-color: var(--color-cerulean);
+}
+.color--bg-pumpkin-orange {
+  background-color: var(--color-pumpkin-orange);
+}
+.color--bg-butterscotch {
+  background-color: var(--color-butterscotch);
+}
+.color--bg-butterscotch-comp {
+  background-color: var(--color-butterscotch-comp);
+}
+.color--bg-butterscotch-gray {
+  background-color: var(--color-butterscotch-gray);
+}
+.color--bg-butterscotch-op-10 {
+  background-color: var(--color-butterscotch-op-10);
+}
+.color--bg-butterscotch-op-20 {
+  background-color: var(--color-butterscotch-op-20);
+}
+.color--bg-butterscotch-op-30 {
+  background-color: var(--color-butterscotch-op-30);
+}
+.color--bg-butterscotch-op-40 {
+  background-color: var(--color-butterscotch-op-40);
+}
+.color--bg-butterscotch-op-50 {
+  background-color: var(--color-butterscotch-op-50);
+}
+.color--bg-butterscotch-op-60 {
+  background-color: var(--color-butterscotch-op-60);
+}
+.color--bg-butterscotch-op-70 {
+  background-color: var(--color-butterscotch-op-70);
+}
+.color--bg-butterscotch-op-80 {
+  background-color: var(--color-butterscotch-op-80);
+}
+.color--bg-butterscotch-op-90 {
+  background-color: var(--color-butterscotch-op-90);
+}
+.color--bg-butterscotch-inv-10 {
+  background-color: var(--color-butterscotch-inv-10);
+}
+.color--bg-butterscotch-inv-20 {
+  background-color: var(--color-butterscotch-inv-20);
+}
+.color--bg-butterscotch-inv-30 {
+  background-color: var(--color-butterscotch-inv-30);
+}
+.color--bg-butterscotch-inv-40 {
+  background-color: var(--color-butterscotch-inv-40);
+}
+.color--bg-butterscotch-inv-50 {
+  background-color: var(--color-butterscotch-inv-50);
+}
+.color--bg-butterscotch-inv-60 {
+  background-color: var(--color-butterscotch-inv-60);
+}
+.color--bg-butterscotch-inv-70 {
+  background-color: var(--color-butterscotch-inv-70);
+}
+.color--bg-butterscotch-inv-80 {
+  background-color: var(--color-butterscotch-inv-80);
+}
+.color--bg-butterscotch-inv-90 {
+  background-color: var(--color-butterscotch-inv-90);
+}
+.color--bg-butterscotch-inv-100 {
+  background-color: var(--color-butterscotch-inv-100);
+}
+.color--bg-butterscotch-hue-30 {
+  background-color: var(--color-butterscotch-hue-30);
+}
+.color--bg-butterscotch-hue-60 {
+  background-color: var(--color-butterscotch-hue-60);
+}
+.color--bg-butterscotch-hue-90 {
+  background-color: var(--color-butterscotch-hue-90);
+}
+.color--bg-butterscotch-hue-120 {
+  background-color: var(--color-butterscotch-hue-120);
+}
+.color--bg-butterscotch-hue-150 {
+  background-color: var(--color-butterscotch-hue-150);
+}
+.color--bg-butterscotch-hue-180 {
+  background-color: var(--color-butterscotch-hue-180);
+}
+.color--bg-butterscotch-hue-210 {
+  background-color: var(--color-butterscotch-hue-210);
+}
+.color--bg-butterscotch-hue-240 {
+  background-color: var(--color-butterscotch-hue-240);
+}
+.color--bg-butterscotch-hue-270 {
+  background-color: var(--color-butterscotch-hue-270);
+}
+.color--bg-butterscotch-hue-300 {
+  background-color: var(--color-butterscotch-hue-300);
+}
+.color--bg-butterscotch-hue-330 {
+  background-color: var(--color-butterscotch-hue-330);
+}
+.color--bg-butterscotch-dk-10 {
+  background-color: var(--color-butterscotch-dk-10);
+}
+.color--bg-butterscotch-dk-20 {
+  background-color: var(--color-butterscotch-dk-20);
+}
+.color--bg-butterscotch-dk-30 {
+  background-color: var(--color-butterscotch-dk-30);
+}
+.color--bg-butterscotch-dk-40 {
+  background-color: var(--color-butterscotch-dk-40);
+}
+.color--bg-butterscotch-dk-50 {
+  background-color: var(--color-butterscotch-dk-50);
+}
+.color--bg-butterscotch-lt-10 {
+  background-color: var(--color-butterscotch-lt-10);
+}
+.color--bg-butterscotch-lt-20 {
+  background-color: var(--color-butterscotch-lt-20);
+}
+.color--bg-butterscotch-lt-30 {
+  background-color: var(--color-butterscotch-lt-30);
+}
+.color--bg-butterscotch-lt-40 {
+  background-color: var(--color-butterscotch-lt-40);
+}
+.color--bg-butterscotch-lt-50 {
+  background-color: var(--color-butterscotch-lt-50);
+}
+.color--bg-butterscotch-dsat-10 {
+  background-color: var(--color-butterscotch-dsat-10);
+}
+.color--bg-butterscotch-dsat-20 {
+  background-color: var(--color-butterscotch-dsat-20);
+}
+.color--bg-butterscotch-dsat-30 {
+  background-color: var(--color-butterscotch-dsat-30);
+}
+.color--bg-butterscotch-dsat-40 {
+  background-color: var(--color-butterscotch-dsat-40);
+}
+.color--bg-butterscotch-dsat-50 {
+  background-color: var(--color-butterscotch-dsat-50);
+}
+.color--bg-butterscotch-dsat-60 {
+  background-color: var(--color-butterscotch-dsat-60);
+}
+.color--bg-butterscotch-dsat-70 {
+  background-color: var(--color-butterscotch-dsat-70);
+}
+.color--bg-butterscotch-dsat-80 {
+  background-color: var(--color-butterscotch-dsat-80);
+}
+.color--bg-butterscotch-dsat-90 {
+  background-color: var(--color-butterscotch-dsat-90);
+}
+.color--bdr-grey-2 {
+  border-color: var(--color-grey-2);
+}
+.color--bdr-cerulean {
+  border-color: var(--color-cerulean);
+}
+.color--bdr-pumpkin-orange {
+  border-color: var(--color-pumpkin-orange);
+}
+.color--bdr-butterscotch {
+  border-color: var(--color-butterscotch);
+}
+.color--bdr-butterscotch-comp {
+  border-color: var(--color-butterscotch-comp);
+}
+
+/**
+ * Requires
+ */
 /**
  * Font helpers
  */
