@@ -30,6 +30,20 @@ $with-util: true !default;
     // Default color class
     $util-color-class: 'color' !default;
 
+    // Only color vars, no utility classes
+    $util-color-only: false !default;
+
+    // Color variant names
+    $util-color-variant-complement: 'comp' !default;
+    $util-color-variant-grayscale: 'gray' !default;
+    $util-color-variant-alpha: 'op' !default;
+    $util-color-variant-invert: 'inv' !default;
+    $util-color-variant-adjust-hue: 'hue' !default;
+    $util-color-variant-darken: 'dk' !default;
+    $util-color-variant-lighten: 'lt' !default;
+    $util-color-variant-saturate: 'sat' !default;
+    $util-color-variant-desaturate: 'dsat' !default;
+
   // Include wrapper
   $util-wrap: true !default;
 

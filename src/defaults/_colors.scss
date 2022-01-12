@@ -16,6 +16,11 @@ $colors: $default-colors !default;
 
 // Default color styles
 $default-color-styles: (
+  attr: (
+    text: (color, (base-only)),
+    bg: background-color,
+    bdr: (border-color, (grey-2,cerulean,pumpkin-orange,butterscotch,butterscotch-comp)),
+  ),
   alpha: (.1,.2,.3,.4,.5,.6,.7,.8,.9),
   invert: (10%,20%,30%,40%,50%,60%,70%,80%,90%,100%),
   adjust-hue: (30deg,60deg,90deg,120deg,150deg,180deg,210deg,240deg,270deg,300deg,330deg),
