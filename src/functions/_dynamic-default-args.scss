@@ -1,0 +1,43 @@
+/**
+ * Requires
+ */
+@use "sass:list";
+@use "sass:meta";
+
+/**
+ * Get missing default arguments
+ * @param {*} $data - Arguments, value or list
+ * @param {*} $optional - Any number of optional argument defaults
+ * @return {list} - A list with arguments and defaults
+ */
+@function fn-dynamic-default-args($data, $optional...) {
+  @if $data {
+    $result: ();
+    @if meta.type-of($data) == list {
+      $value: list.nth($data, 1);
+      @if $value {
+        $result: list.append($result, $value);
+        $index: 2;
+        @each $default in $optional {
+          $current: list.nth($data, $index);
+          @if $current {
+            $result: list.append($result, $current);
+          } @else {
+            $result: list.append($result, $default);
+          }
+          $index: $index + 1;
+        }
+      } @else {
+        @error('fn-dynamic-default-args::$data first item is required');
+      }
+    } @else {
+      $result: list.append($result, $data);
+      @each $default in $optional {
+        $result: list.append($result, $default);
+      }
+    }
+    @return $result;
+  } @else {
+    @error('fn-dynamic-default-args::$data is required');
+  }
+}
