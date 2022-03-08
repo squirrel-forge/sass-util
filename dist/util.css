@@ -1,5 +1,12 @@
 @charset "UTF-8";
 /**
+ * @squirrel-forge/build-scss@0.8.1
+ * Root render template
+ *  Set $env: null
+ *  Set $production: false
+ *  Import: ./util.scss;
+ */
+/**
  * Defaults
  * logical information used for utilities, mixins and functions
  * all variables can be overridden, but must sustain their format
@@ -247,7 +254,7 @@ body {
   outline: none;
 }
 
-main, header, footer, section, article, figure, figcaption, fieldset {
+main, header, footer, section, article, figure, figcaption, fieldset, details, summary {
   display: block;
   margin: 0;
   padding: 0;
@@ -397,47 +404,47 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   display: none;
 }
 @media screen and (max-width: 767px) {
-  .break-rsp br.break-m {
+  .break-rsp br.breakm {
     display: inline;
   }
 }
 @media screen and (max-width: 991px) {
-  .break-rsp br.break-mtp {
+  .break-rsp br.breakmtp {
     display: inline;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .break-rsp br.break-tp {
+  .break-rsp br.breaktp {
     display: inline;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1024px) {
-  .break-rsp br.break-tl {
+  .break-rsp br.breaktl {
     display: inline;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .break-rsp br.break-t {
+  .break-rsp br.breakt {
     display: inline;
   }
 }
 @media screen and (min-width: 768px) {
-  .break-rsp br.break-td {
+  .break-rsp br.breaktd {
     display: inline;
   }
 }
 @media screen and (min-width: 992px) {
-  .break-rsp br.break-tld {
+  .break-rsp br.breaktld {
     display: inline;
   }
 }
 @media screen and (min-width: 1025px) {
-  .break-rsp br.break-m {
+  .break-rsp br.breakm {
     display: inline;
   }
 }
 @media screen and (min-width: 1366px) {
-  .break-rsp br.break-d {
+  .break-rsp br.breakd {
     display: inline;
   }
 }
@@ -1087,4 +1094,3 @@ ol[data-counter=lower-latin] > li::before {
   position: relative;
   margin: 2rem auto 0;
 }
-/*# sourceMappingURL=util.css.map */
