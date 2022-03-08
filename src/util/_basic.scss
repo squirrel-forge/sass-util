@@ -4,20 +4,20 @@
 @if $with-util and $util-basic {
 
   // Inline break pseudo
-  .#{$util-prefix}break {
+  .#{$util-prefix}#{$util-break-class} {
     &-before { @include mx-break-before }
     &-after { @include mx-break-after }
   }
 
   // Float clear pseudo
-  .#{$util-prefix}clear {
+  .#{$util-prefix}#{$util-clear-class} {
     &-before { @include mx-clear-before }
     &-after { @include mx-clear-after }
   }
 
   // Hide visually
-  .#{$util-prefix}hide-a11y { @include mx-hide-accessible }
+  .#{$util-prefix}#{$util-hide-a11y-class} { @include mx-hide-accessible }
 
   // Not selectable
-  .#{$util-prefix}no-select { @include mx-no-select }
+  .#{$util-prefix}#{$util-no-select-class} { @include mx-no-select }
 }

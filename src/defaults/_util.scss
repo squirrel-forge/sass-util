@@ -6,10 +6,22 @@
 $with-util: true !default;
 
   // Utility classes prefix
-  $util-prefix: '';
+  $util-prefix: '' !default;
 
   // Include basic helpers
   $util-basic: true !default;
+
+    // Default break class
+    $util-break-class: 'break' !default;
+
+    // Default clear class
+    $util-clear-class: 'clear' !default;
+
+    // Default hide-a11y class
+    $util-hide-a11y-class: 'hide-a11y' !default;
+
+    // Default no-select class
+    $util-no-select-class: 'no-select' !default;
 
   // Include font styles
   $util-font: true !default;
