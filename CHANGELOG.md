@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1
+ - Updated style export to use the minified build.
+ - Updated dev dependencies.
+
 ## 0.8.0
  - Added colors generator, generates css vars and supplies a list of names generated.
  - Added color utilities, defaults include color, border-color and background-color.
