@@ -1,9 +1,12 @@
 # Changelog
 
+## 0.8.3
+ - Fixed *util-break* class names missing dash separator. 
+
 ## 0.8.2
-- Fixed *util-prefix* default value.
-- Added basic util class customizations.
-- Added *details* and *summary* to reset styles.
+ - Fixed *util-prefix* default value.
+ - Added basic util class customizations.
+ - Added *details* and *summary* to reset styles.
 
 ## 0.8.1
  - Updated style export to use the minified build.

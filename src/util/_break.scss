@@ -16,7 +16,7 @@
       // Define query based breaks
       @each $query in $break-media-queries {
         @include mx-media($query) {
-          &.#{$util-prefix}#{$util-break-class}#{str-initials($query)} {
+          &.#{$util-prefix}#{$util-break-class}-#{str-initials($query)} {
             display: inline;
           }
         }
@@ -31,7 +31,7 @@
       // Define query based breaks
       @each $query in $break-media-queries {
         @include mx-media($query) {
-          &.#{$util-prefix}#{$util-break-class}#{str-initials($query)} {
+          &.#{$util-prefix}#{$util-break-class}-#{str-initials($query)} {
             display: inline;
           }
         }
