@@ -11,8 +11,9 @@ $default-text-center-media-queries: [
   tablet,
   tablet-desktop,
   tablet-landscape-desktop,
-  medium,
-  desktop
+  desktop,
+  desktop-small,
+  desktop-medium
 ];
 
 // Set defaults if not set yet
@@ -27,8 +28,9 @@ $default-text-wbreak-media-queries: [
   tablet,
   tablet-desktop,
   tablet-landscape-desktop,
-  medium,
-  desktop
+  desktop,
+  desktop-small,
+  desktop-medium
 ];
 
 // Set defaults if not set yet

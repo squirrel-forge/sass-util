@@ -24,10 +24,10 @@ $default-font-styles: (
   headline_at_tablet: (
     font-size: 40px,
   ),
-  headline_at_medium: (
+  headline_at_desktop: (
     font-size: 40px,
   ),
-  headline_at_desktop: (
+  headline_at_desktop-small: (
     font-size: 50px,
   ),
 
@@ -51,7 +51,7 @@ $default-font-styles: (
     ),
     no-max: true,
   ),
-  headline-fluid_at_medium: (
+  headline-fluid_at_desktop: (
     fluid: (
       min-vw : 1025px,
       max-vw : 1366px,

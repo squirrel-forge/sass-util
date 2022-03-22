@@ -11,8 +11,9 @@ $default-break-media-queries: [
   tablet,
   tablet-desktop,
   tablet-landscape-desktop,
-  medium,
-  desktop
+  desktop,
+  desktop-small,
+  desktop-medium
 ];
 
 // Set defaults if not set yet
