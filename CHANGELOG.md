@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.4
+ - Fixed *media* defaults to ensure unique initials.
+ - Updated all corresponding default vars with *media* changes.
+
 ## 0.8.3
  - Fixed *util-break* class names missing dash separator. 
 
