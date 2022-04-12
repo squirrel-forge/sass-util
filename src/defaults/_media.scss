@@ -13,6 +13,7 @@ $default-media-queries : (
   tablet-desktop : 'screen and (min-width: 768px)',
   tablet-landscape-desktop : 'screen and (min-width: 992px)',
   desktop : 'screen and (min-width: 1025px)',
+  desktop-nano : 'screen and (min-width: 1152px)',
   desktop-small : 'screen and (min-width: 1366px)',
   desktop-medium : 'screen and (min-width: 1440px)',
   desktop-large : 'screen and (min-width: 1920px)',
