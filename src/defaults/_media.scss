@@ -7,6 +7,7 @@ $default-media-queries : (
   mobile-small : 'screen and (max-width: 374px)',
   mobile : 'screen and (max-width: 767px)',
   mobile-tablet-portrait : 'screen and (max-width: 991px)',
+  mobile-tablet : 'screen and (max-width: 1024px)',
   tablet : 'screen and (min-width: 768px) and (max-width: 1024px)',
   tablet-portrait : 'screen and (min-width: 768px) and (max-width: 991px)',
   tablet-landscape : 'screen and (min-width: 992px) and (max-width: 1024px)',

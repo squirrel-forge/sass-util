@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.8.6
+ - Added *mobile-tablet* default media query.
+
 ## 0.8.5
  - Added media *desktop-nano* as 1152px break point.
  - Fixed example data query references for *small* to *mobile-small*.
