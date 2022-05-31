@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.7
+ - Added *mobile-mini*, *mobile-medium*, *mobile-large*, *desktop-mini* and *desktop-classic* default media queries.
+ - Added prototype *fn-spacing* dynamic padding/margin/inset list value generator.
+ - Added *margin* and *padding* "0" to button/inputs reset.
+
 ## 0.8.6
  - Added *mobile-tablet* default media query.
 
