@@ -6,6 +6,7 @@
 $default-media-queries : (
   mobile-mini : 'screen and (max-width: 320px)',
   mobile-small : 'screen and (max-width: 374px)',
+  mobile-classic : 'screen and (max-width: 480px)',
   mobile-medium : 'screen and (max-width: 560px)',
   mobile-large : 'screen and (max-width: 640px)',
   mobile : 'screen and (max-width: 767px)',
