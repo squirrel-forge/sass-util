@@ -28,6 +28,9 @@
     margin: 0;
     padding: 0;
   }
+  fieldset {
+    border: 0;
+  }
 
   // Explicit Font Family elements
   button, input, select, textarea {
@@ -39,6 +42,9 @@
     color: inherit;
     background-color: transparent;
     border: 0;
+  }
+  button {
+    cursor: pointer;
   }
 
   // Cleanup links
