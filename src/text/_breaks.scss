@@ -1,0 +1,189 @@
+/**
+ * ui-text breaks
+ *  Styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use '../abstract/str-initials' as *;
+@use '../mixins/break-pseudo' as *;
+@use '../mixins/clear-pseudo' as *;
+@use '../media';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-text' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$break: '--break' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$clear: '--clear' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$always: '--break-always' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$none: '--no-wrap' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$word: '--wbreak' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$word-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+/**
+ * Component responsive break mode
+ * @protected
+ * @type {boolean}
+ */
+$global: false !default;
+
+/**
+ * Component break css class
+ * @protected
+ * @type {string} css class
+ */
+$element-class: 'ui-break--' !default;
+
+/**
+ * Component break wrap css class
+ * @protected
+ * @type {string} css class
+ */
+$element-wrap-class: 'ui-break-wrap' !default;
+
+/**
+ * Component break wrap css class
+ * @protected
+ * @type {string} css class
+ */
+$queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Global responsive breaks
+  @if $global {
+    br {
+      display: none;
+
+      // Define query based breaks
+      @each $query in $queries {
+        @include media.query($query) {
+          &.#{$element-class}#{str-initials($query)} {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+
+  // Local, wrapper controlled responsive breaks
+  @else {
+
+    // Define wrap class
+    .#{$element-wrap-class} br {
+      display: none;
+
+      // Define query based breaks
+      @each $query in $queries {
+        @include media.query($query) {
+          &.#{$element-class}#{str-initials($query)} {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+
+  // Text class states
+  .#{$class} {
+
+    // Inline break pseudo
+    &#{$break} {
+      &-before { @include break-before }
+      &-after { @include break-after }
+    }
+
+    // Float clear pseudo
+    &#{$clear} {
+      &-before { @include clear-before }
+      &-after { @include clear-after }
+    }
+
+    // Keep breaks
+    &#{$always} br { display: inline }
+
+    // Whitespace no wrap
+    &#{$none} { white-space: nowrap }
+
+    // Word break class
+    &#{$word} {
+      word-break: break-word;
+      hyphens: auto;
+
+      // Query based word wrapping
+      @each $query in $word-queries {
+        @include media.query($query) {
+          &-#{str-initials($query)} {
+            word-break: break-word;
+            hyphens: auto;
+          }
+        }
+      }
+    }
+  }
+}

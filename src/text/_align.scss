@@ -1,0 +1,148 @@
+/**
+ * ui-text align
+ *  Styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:meta';
+@use '../abstract/str-initials' as *;
+@use '../media';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-text' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$center: '--center' !default;
+
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+$center-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$right: '--right' !default;
+
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+$right-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$left: '--left' !default;
+
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+$left-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+  .#{$class} {
+
+    // Center
+    &#{$center} {
+      text-align: center;
+
+      // Query based centering
+      @if meta.type-of($center-queries) == list {
+        @each $query in $center-queries {
+          @include media.query($query) {
+            &-#{str-initials($query)} {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    // Right
+    &#{$right} {
+      text-align: right;
+
+      // Query based centering
+      @if meta.type-of($right-queries) == list {
+        @each $query in $right-queries {
+          @include media.query($query) {
+            &-#{str-initials($query)} {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+
+    // Left
+    &#{$left} {
+      text-align: left;
+
+      // Query based centering
+      @if meta.type-of($left-queries) == list {
+        @each $query in $left-queries {
+          @include media.query($query) {
+            &-#{str-initials($query)} {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}

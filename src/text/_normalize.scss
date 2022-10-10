@@ -1,0 +1,102 @@
+/**
+ * Text normalize
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use '../abstract/config' as abstract;
+@use '../mixins/properties' as mixins;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-text-normalize-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+
+  // Headline margin
+  // @type {margin} full margin value
+  headline-margin: 1rem 0,
+
+  // Paragraph margin
+  // @type {margin} full margin value
+  paragraph-margin: 1rem 0,
+
+  // Mobile text size adjust
+  // @type {number} percent number
+  size-adjust: 100%,
+
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'text-normalize.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'text-normalize.properties::');
+}
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Global normalize and optimize
+  html {
+
+    // Prevents iOS and other mobile devices text size adjust after orientation change
+    text-size-adjust: var(--#{$props}size-adjust);
+
+    // Optimize text rendering speed
+    text-rendering: optimizeSpeed;
+  }
+
+  // enable font smoothing for prettier custom fonts
+  // http://szafranek.net/works/articles/font-smoothing-explained/
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  // Normalize headline margin
+  h1, h2, h3, h4, h5, h6 {
+    margin: var(--#{$props}headline-margin);
+  }
+
+  // Normalize paragraph margin
+  p {
+    margin: var(--#{$props}paragraph-margin);
+  }
+
+  // Normalize headline and paragraph first and last child
+  h1, h2, h3, h4, h5, h6, p {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

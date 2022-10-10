@@ -1,0 +1,116 @@
+/**
+ * Text
+ *  Submodule forwarding index
+ */
+
+// A11y module config
+$a11y-class: 'ui-text' !default;
+$a11y-hide-a11y: '--hide-a11y' !default;
+$a11y-no-select: '--no-select' !default;
+
+// Align module config
+$align-class: 'ui-text' !default;
+$align-center: '--center' !default;
+$align-center-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+$align-right: '--right' !default;
+$align-right-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+$align-left: '--left' !default;
+$align-left-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+// Breaks module config
+$breaks-class: 'ui-text' !default;
+$breaks-break: '--break' !default;
+$breaks-clear: '--clear' !default;
+$breaks-always: '--break-always' !default;
+$breaks-none: '--no-wrap' !default;
+$breaks-word: '--wbreak' !default;
+$breaks-word-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+$breaks-global: false !default;
+$breaks-element-class: 'ui-break--' !default;
+$breaks-element-wrap-class: 'ui-break-wrap' !default;
+$breaks-queries: [
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+] !default;
+
+// Normalize module config
+$normalize-props: 'ui-text-normalize-' !default;
+
+// Forward configurable modules
+@forward 'a11y' as a11y-* with (
+  $class: $a11y-class,
+  $hide-a11y: $a11y-hide-a11y,
+  $no-select: $a11y-no-select,
+);
+@forward 'align' as align-* with (
+  $class: $align-class,
+  $center: $align-center,
+  $center-queries: $align-center-queries,
+  $right: $align-right,
+  $right-queries: $align-right-queries,
+  $left: $align-left,
+  $left-queries: $align-left-queries,
+);
+@forward 'breaks' as breaks-* with (
+  $class: $breaks-class,
+  $break: $breaks-break,
+  $clear: $breaks-clear,
+  $always: $breaks-always,
+  $none: $breaks-none,
+  $word: $breaks-word,
+  $word-queries: $breaks-word-queries,
+  $global: $breaks-global,
+  $element-class: $breaks-element-class,
+  $element-wrap-class: $breaks-element-wrap-class,
+  $queries: $breaks-queries,
+);
+@forward 'normalize' as normalize-* with (
+  $props: $normalize-props,
+);

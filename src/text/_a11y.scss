@@ -1,0 +1,45 @@
+/**
+ * ui-text accessibility helpers
+ *  Helper class definitions.
+ */
+
+/**
+ * Requires
+ */
+@use '../mixins/hide-accessible' as *;
+@use '../mixins/no-select' as *;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-text' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$hide-a11y: '--hide-a11y' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$no-select: '--no-select' !default;
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Hide visually
+  .#{$class}#{$hide-a11y} { @include hide-accessible }
+
+  // Not selectable
+  .#{$class}#{$no-select} { @include no-select }
+}
