@@ -3,8 +3,7 @@
 Collection of sass abstracts, mixins, globals and utilities.
 Built for the dart-sass *@use module syntax*, allowing for full and individual feature usage.
 
-*Please Note* that from version **0.9.0** the package is fully based on the *@use module syntax*,
-if you are looking for the old version using the @import syntax install version **0.8.x**. 
+*Please Note* that from version **0.9.0** the package is fully based on the *@use module syntax*, if you are looking for the old version using the @import syntax install version **0.8.x**, but consider migrating to the **0.9.x** standard to avoid missing out on updates. 
 
 ## Installation
 
