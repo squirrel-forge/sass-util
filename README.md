@@ -262,6 +262,58 @@ Supplies asset helpers and decal styles and helper classes and properties for us
 
 Supplies list normalization and customizable styles with corresponding helper classes for usage.
 
+##### + util / list / customize
+
+ - *$prop*: ```'data-counter'```
+ - *$counter*: ```'ui-ol-counter'```
+ - *$style*: ```decimal```
+ - *$suffix*: ```'.'```
+ - *$space*: ```'\00a0'```
+ - *$styles*: ```(decimal, decimal-leading-zero, lower-roman, lower-alpha, upper-alpha, lower-latin)```
+ - *$custom*: ```()```
+ - styles() - Outputs configured component styles.
+
+##### + util / list / normalize
+
+ - *$class*: ```'ui-list'```
+ - *$props*: ```'ui-list-'```
+ - config(```$options```) - Only sets config options
+   ```scss
+   $options: (
+     /**
+      * List wrapper margin
+      * @type {margin} 1-4 margin values
+      */
+     margin: 1rem 0,
+   
+     /**
+      * List wrapper padding
+      * @type {padding} 1-3 padding values
+      */
+     padding: 0 0 0,
+   
+     /**
+      * List wrapper left indent/padding
+      * @type {number} number with unit
+      */
+     indent-width: 2rem,
+   
+     /**
+      * List item margin
+      * @type {margin} 1-4 margin values
+      */
+     item-margin: 0,
+
+     /**
+      * List item after item margin
+      * @type {margin} 1-4 margin values
+      */
+     item-after-margin: 1rem 0 0,
+   );
+   ```
+ - properties() - Adds components custom properties in current scope
+ - styles() - Outputs configured component styles
+
 #### + util / media
 
 Supplies a media query helper mixin and configuration.
