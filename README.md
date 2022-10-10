@@ -15,7 +15,7 @@ npm i @squirrel-forge/sass-util
 ## Usage
 
 Make use of your IDE's autocompletion, for reference you can find a full list of [namespaces](#available-namespaces) below,
-or checkout the example implementation and the generated output.
+or checkout the [example implementation](src/util.scss) and the [generated output](dist/util.css).
 
 ```scss
 /**
@@ -48,7 +48,7 @@ When using the full package, make use of the namespacing to select from the indi
 ### Using individual submodules
 
 When using submodules directly namespacing is shorter without the prefixes of levels above, this way you have granular control over which modules to use.
-Not that the *@use* syntax words differently than the classic *@import*, check the [use syntax notes](#use-syntax) for relevant details.
+Not that the *@use* syntax works differently than the classic *@import*, check the [use syntax notes](#use-syntax) for relevant details.
 
 ```scss
 @use '~@squirrel-forge/sass-util/src/media';
@@ -65,69 +65,175 @@ then you need to modify the namespaces variables directly, but keep in mind that
 
 ## Available namespaces
 
-An overview of available **namespaces**, *variables*, functions and mixins, those marked with a "**+**" can be loaded individually.  
-Note when loading individual modules directly you must include the *src* path folder in your use url and initial loading order matters when using the *with* keyword for configuration.  
+An alphabetical overview of available **namespaces**, *variables*, functions and mixins, those marked with a "**+**" can be loaded individually.  
+Note when loading individual modules, functions or mixins directly, you must include the *src* path folder in your use url, also note initial loading order matters when using the *with* keyword for configuration, see the [notes](#use-syntax) for more details.  
 Any namespace can be loaded individually, if it contains multiple submodules there is a corresponding index available.
 
- - +**util**  
-   Complete library, the namespace defined when loading the full package with *@use*.
-   - +**abstract**
-     - +config($options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::') - Map with defaults with merged options.
-     - +default-args($data, $optional...) - A list with arguments and defaults.
-     - +has-query($name, $query-marker: '_at_', $error: 'has-query::') - Empty if no query was found.
-     - +is-query($name, $query-marker: '_at_') - Query reference or null if not a query
-     - +spacing($params...) - Spacing values list.
-     - +str-initials($name, $separator: '-') - First char of each element separated as a joined string.
-     - +str-split($string, $separator, $no-empty: true) - Separated list of strings
-     - +strip-unit($value) - Unitless value
-   - +**colors**  
-     Generates colors as custom properties including variants, with corresponding helper classes for usage.
-     - *$class*: 'ui-color'
-     - *$props*: 'ui-color-'
-     - *$variant-complement*: 'comp'
-     - *$variant-grayscale*: 'gray'
-     - *$variant-alpha*: 'op'
-     - *$variant-invert*: 'inv'
-     - *$variant-adjust-hue*: 'hue'
-     - *$variant-darken*: 'dk'
-     - *$variant-lighten*: 'lt'
-     - *$variant-saturate*: 'sat'
-     - *$variant-desaturate*: 'dsat'
-     - config($colors, $variants, $attributes) - Sets color config references.
-       ```scss
-       /* Any number of colors using a named map with corresponding css/sass compatible color values */
-       $colors: (
-         red: #f00,
-         green: rgb(0, 255, 0),
-         blue: blue,
-       );
-       /* Variants to generate for colors */
-       $variants: (
-         alpha: (.5,.9),
-         invert: (50%,100%),
-         adjust-hue: (30deg,60deg,90deg,120deg,150deg,180deg,210deg,240deg,270deg,300deg,330deg),
-         darken: (20%,50%),
-         lighten: (20%,50%),
-         saturate: (20%,50%),
-         desaturate: (20%,50%,90%),
-       );
-       /* Class names and corresponding attributes to create */
-       $attributes: (
-         text: (color, (base-only)),
-         bg: background-color,
-         bdr: (border-color, (red,blue)),
-       )
-       ```
-     - properties() - Outputs all custom properties in given context.
-     - styles() - Outputs all attribute color classes in given context. 
-   - font
-   - images
-   - list
-   - media
-   - mixins
-   - reset
-   - text
-   - wrap
+### + util
+
+Complete library, the namespace defined when loading the full package with *@use*.
+
+```scss
+@use '~@squirrel-forge/sass-util' as util with (
+  $config-value: 'string',
+);
+```
+
+#### + util / abstract
+
+Only abstract functions and helpers, none of these contain configuration.
+
+ - +config($options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::') - Map with defaults with merged options.
+ - +default-args($data, $optional...) - A list with arguments and defaults.
+ - +has-query($name, $query-marker: '_at_', $error: 'has-query::') - Empty if no query was found.
+ - +is-query($name, $query-marker: '_at_') - Query reference or null if not a query
+ - +spacing($params...) - Spacing values list.
+ - +str-initials($name, $separator: '-') - First char of each element separated as a joined string.
+ - +str-split($string, $separator, $no-empty: true) - Separated list of strings
+ - +strip-unit($value) - Unitless value
+
+#### + util / colors  
+
+Generates colors as custom properties including variants, with corresponding helper classes for usage.
+
+ - *$class*: 'ui-color'
+ - *$props*: 'ui-color-'
+ - *$variant-complement*: 'comp'
+ - *$variant-grayscale*: 'gray'
+ - *$variant-alpha*: 'op'
+ - *$variant-invert*: 'inv'
+ - *$variant-adjust-hue*: 'hue'
+ - *$variant-darken*: 'dk'
+ - *$variant-lighten*: 'lt'
+ - *$variant-saturate*: 'sat'
+ - *$variant-desaturate*: 'dsat'
+ - config($colors, $variants, $attributes) - Sets available color references.
+   ```scss
+   /* Any number of colors using a named map with corresponding css/sass compatible color values */
+   $colors: (
+     red: #f00,
+     green: rgb(0, 255, 0),
+     blue: blue,
+   );
+   /* Variants to generate for colors */
+   $variants: (
+     alpha: (.5,.9),
+     invert: (50%,100%),
+     adjust-hue: (30deg,60deg,90deg,120deg,150deg,180deg,210deg,240deg,270deg,300deg,330deg),
+     darken: (20%,50%),
+     lighten: (20%,50%),
+     saturate: (20%,50%),
+     desaturate: (20%,50%,90%),
+   );
+   /* Class names and corresponding attributes to create */
+   $attributes: (
+     text: (color, (base-only)),
+     bg: background-color,
+     bdr: (border-color, (red,blue)),
+   )
+   ```
+ - properties() - Outputs all custom properties in given context.
+ - styles() - Outputs all attribute color classes in given context.
+
+#### + util / font
+
+Supplies font styles for injection and styles with corresponding helper classes for usage.
+
+ - *$class*: 'ui-font'
+ - *$style-prefix*: '--'
+ - *$fluid-attribute*: 'fluid'
+ - *$no-max-attribute*: 'no-max'
+ - config($styles) - Sets available style declarations.
+   ```scss
+   $styles: (
+     
+     /**
+      * Simple font declaration
+      *  Generated helper:
+      *  .ui-font--default {
+      *    font-family: Oxygen, sans-serif;
+      *    font-size: 14px;
+      *    line-height: 1.33;
+      *  }
+      */
+     default: (
+       font-family: (Oxygen, sans-serif),
+       font-size: 14px,
+       line-height: 1.33,
+     ),
+      
+     /**
+      * Simple media query based declaration
+      *  Generated helper:
+      *  @media screen and (min-width: 768px) and (max-width: 1024px) {
+      *    .ui-font--default { font-size: 16px; }
+      *  }
+      */
+     default_at_tablet: (
+       font-size: 16px,
+     ),
+      
+     /**
+      * Fluid font size declaration without a max
+      *  Generated helper:
+      *  .font--headline-fluid { font-weight: bold; }
+      *  @media screen and (max-width: 767px) {
+      *    .font--headline-fluid { font-size: 20px; }
+      *  }
+      *  @media screen and (min-width: 320px) {
+      *    .font--headline-fluid { font-size: calc(20px + 10 * ((100vw - 320px) / 447)); }
+      *  }
+      */
+     headline-fluid_at_mobile: (
+       font-weight: bold,
+       fluid: (
+         min-vw : 320px,
+         max-vw : 767px,
+         min-size : 20px,
+         max-size : 30px,
+       ),
+       no-max: true,
+     ),
+     
+     /**
+      * Fluid font size declaration with a max
+      *  Generated helper:
+      *  @media screen and (min-width: 1025px) {
+      *    .font--headline-fluid { font-size: 35px; }
+      *  }
+      *  @media screen and (min-width: 1025px) {
+      *    .font--headline-fluid { font-size: calc(35px + 15 * ((100vw - 1025px) / 341)); }
+      *  }
+      *  @media screen and (min-width: 1366px) {
+      *    .font--headline-fluid { font-size: 50px; }
+      *  }
+      */
+     headline-fluid_at_desktop: (
+       fluid: (
+         min-vw : 1025px,
+         max-vw : 1366px,
+         min-size : 30px,
+         max-size : 50px,
+       ),
+     ),
+   );
+   ```
+ - get($style) - Outputs selected font style in given context.
+ - styles() - Outputs configured font styles as helper classes.
+
+#### + util / images
+
+#### + util / list
+
+#### + util / media
+
+#### + util / mixins
+
+#### + util / reset
+
+#### + util / text
+
+#### + util / wrap
 
 ## Notes
 
