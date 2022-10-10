@@ -1,0 +1,28 @@
+/**
+ * ui-assets
+ *  Function with configuration.
+ */
+
+/**
+ * Asset base path
+ * @protected
+ * @type {string} url path
+ */
+$base: '../img/' !default;
+
+/**
+ * Asset cache breaker
+ * @protected
+ * @type {string} url suffix
+ */
+$cache: '' !default;
+
+/**
+ * Get asset url
+ * @param {string} $asset - Relative asset path
+ * @param {string} $base - Optional asset base url
+ * @return {url} - Asset url
+ */
+@function get($asset) {
+  @return url($base + $asset + $cache);
+}

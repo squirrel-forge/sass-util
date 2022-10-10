@@ -1,0 +1,186 @@
+/**
+ * ui-decals
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:meta';
+@use '../abstract';
+@use '../mixins';
+@use 'assets';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-decals' !default;
+
+/**
+ * Component static css suffix
+ * @protected
+ * @type {string} css class suffix
+ */
+$static: '--static' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-decals-' !default;
+
+/**
+ * Decals default width
+ * @protected
+ * @type {number} width value
+ */
+$width: 0 !default;
+
+/**
+ * Use sizing via width and height property
+ * @protected
+ * @type {boolean} size via custom properties
+ */
+$sizing-as-props: false !default;
+
+/**
+ * @typedef {map} Decal - Defines a decal, one before or after key must be set true
+ * @key {undefined|boolean} before - Render before pseudo
+ * @key {undefined|boolean} after - Render after pseudo
+ * @key {number} width - Number unitless
+ * @key {number} height - Number unitless
+ * @key {string} url - Asset name
+ */
+
+/**
+ * Decals definitions
+ * @private
+ * @type {map<string, Decal>}
+ */
+$-decals: ();
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $decals - Map of decal definitions
+ * @output {void} - Only sets config options
+ */
+@mixin config($decals) {
+  $-decals: abstract.config($decals, $-decals, true, false, 'ui-decals.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+
+  // Must have at least one defined decal
+  @if meta.type-of($-decals) != map {
+    @error 'You must define at least one decal using the config mixin';
+  }
+
+  @each $name, $decal in $-decals {
+    --#{$props}#{$name}-width: #{map.get($decal, 'width')};
+    --#{$props}#{$name}-height: #{map.get($decal, 'height')};
+    --#{$props}#{$name}-url: #{assets.get(map.get($decal, 'url'))};
+
+    // Before pseudo
+    @if map.get($decal, 'before') == true {
+      --#{$props}#{$name}-before-width: #{$width};
+    }
+
+    // After pseudo
+    @if map.get($decal, 'after') == true {
+      --#{$props}#{$name}-after-width: #{$width};
+    }
+  }
+}
+
+/**
+ * Generate base styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Must have at least one defined decal
+  @if meta.type-of($-decals) != map {
+    @error 'You must define at least one decal using the config mixin';
+  }
+
+  .#{$class} {
+    position: static;
+
+    // Unless explicit static always position relative
+    &:not(.#{$class}#{$static}) {
+      position: relative;
+    }
+
+    // Default pseudo styles
+    &::before,
+    &::after {
+      position: absolute;
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      content: '';
+    }
+
+    // Build decal base styles
+    @each $name, $decal in $-decals {
+
+      // Before pseudo
+      @if map.get($decal, 'before') == true {
+        &--#{$name}-before::before {
+          width: var(--#{$props}#{$name}-before-width);
+          background-image: var(--#{$props}#{$name}-url);
+
+          // Size by props
+          @if $sizing-as-props {
+            padding-bottom: calc(var(--#{$props}#{$name}-height) / var(--#{$props}#{$name}-width) * var(--#{$props}#{$name}-before-width));
+          }
+
+          // Size by precalculated ratio
+          @else {
+            $ratio: map.get($decal, 'height') / map.get($decal, 'width');
+            @if $ratio > 0 and $ratio < 1000000 {
+              padding-bottom: calc(#{$ratio} * var(--#{$props}#{$name}-before-width));
+            } @else {
+              @error 'Decal "#{$name}" requires a valid width and height value';
+            }
+          }
+        }
+      }
+
+      // After pseudo
+      @if map.get($decal, 'after') == true {
+        &--#{$name}-after::after {
+          width: var(--#{$props}#{$name}-after-width);
+          background-image: var(--#{$props}#{$name}-url);
+
+          // Size by props
+          @if $sizing-as-props {
+            padding-bottom: calc(var(--#{$props}#{$name}-height) / var(--#{$props}#{$name}-width) * var(--#{$props}#{$name}-after-width));
+          }
+
+          // Size by precalculated ratio
+          @else {
+            $ratio: map.get($decal, 'height') / map.get($decal, 'width');
+            @if $ratio > 0 and $ratio < 1000000 {
+              padding-bottom: calc(#{$ratio} * var(--#{$props}#{$name}-after-width));
+            } @else {
+              @error 'Decal "#{$name}" requires a valid width and height value';
+            }
+          }
+        }
+      }
+    }
+  }
+}
