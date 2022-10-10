@@ -1,0 +1,69 @@
+/**
+ * ui-wrap
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:meta';
+@use 'abstract/config' as abstract;
+@use 'mixins/bem-style' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-wrap' !default;
+
+/**
+ * Component no flex suffix
+ * @protected
+ * @type {string} class variant
+ */
+$no-flex: '--no-flex' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: ();
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, true, false, 'ui-wrap.config::') !global;
+}
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Must have at least one defined style
+  @if meta.type-of($-config) != map {
+    @error 'You must define at least one wrap style using the config mixin';
+  }
+
+  .#{$class} {
+    margin: auto;
+    width: 100%;
+
+    // Every wrapper by default is a flex unless when using .ui-wrap--no-flex
+    &:not(.#{$class}#{$no-flex}) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // Include BEM style states
+    @include mixins.bem-style($-config);
+  }
+}
