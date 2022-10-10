@@ -110,7 +110,7 @@ $-generated: ();
  * @param {map} $colors - Map of colors
  * @param {map} $variants - Map of variants
  * @param {map} $attributes - Map of attributes
- * @output {void} - Only sets config options
+ * @output {void} - Sets available color references
  */
 @mixin config($colors, $variants, $attributes) {
   $-colors: abstract.config($colors, $-colors, true, false, 'ui-colors.config::$colors::') !global;
@@ -121,7 +121,7 @@ $-generated: ();
 /**
  * Generate required custom properties
  * @public
- * @output Adds components custom properties in current scope
+ * @output Outputs all custom properties in given context
  */
 @mixin properties() {
 
