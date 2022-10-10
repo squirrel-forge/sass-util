@@ -1,0 +1,40 @@
+/**
+ * List
+ *  Submodule forwarding index
+ */
+
+// Normalize module config
+$normalize-class: 'ui-list' !default;
+$normalize-props: 'ui-list-' !default;
+
+// Customize module config
+$customize-prop: 'data-counter' !default;
+$customize-counter: 'ui-ol-counter' !default;
+$customize-style: decimal !default;
+$customize-suffix: '.' !default;
+$customize-space: '\00a0' !default;
+$customize-styles: (
+  decimal,
+  decimal-leading-zero,
+  lower-roman,
+  lower-alpha,
+  upper-alpha,
+  lower-latin,
+) !default;
+$customize-custom: () !default;
+
+// Forward configurable modules
+//  Note: normalize must be loaded before customize
+@forward 'normalize' as normalize-* with (
+  $class: $normalize-class,
+  $props: $normalize-props,
+);
+@forward 'customize' as customize-* with (
+  $prop: $customize-prop,
+  $counter: $customize-counter,
+  $style: $customize-style,
+  $suffix: $customize-suffix,
+  $space: $customize-space,
+  $styles: $customize-styles,
+  $custom: $customize-custom,
+);

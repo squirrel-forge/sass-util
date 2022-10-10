@@ -1,0 +1,147 @@
+/**
+ * ui-list customize
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:meta';
+@use '../abstract';
+@use '../mixins';
+@use 'normalize';
+
+/**
+ * Component data property
+ * @protected
+ * @type {string} property name
+ */
+$prop: 'data-counter' !default;
+
+/**
+ * Component data property
+ * @protected
+ * @type {string} property name
+ */
+$counter: 'ui-ol-counter' !default;
+
+/**
+ * Default counter style
+ * @protected
+ * @type {string} counter style name
+ */
+$style: decimal !default;
+
+/**
+ * Counter suffix
+ * @protected
+ * @type {string} display suffix
+ */
+$suffix: '.' !default;
+
+/**
+ * Counter space
+ * @protected
+ * @type {string} spacing after
+ */
+$space: '\00a0' !default;
+
+/**
+ * List styles
+ * @protected
+ * @type {list} list-style
+ */
+$styles: (
+  decimal,
+  decimal-leading-zero,
+  lower-roman,
+  lower-alpha,
+  upper-alpha,
+  lower-latin,
+) !default;
+
+/**
+ * List custom styles
+ * @protected
+ * @type {map<string, list>} custom style
+ */
+$custom: () !default;
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+  ol {
+
+    // Decimal arabic default numbers
+    //  Here there is no limit since we can use the native counter
+    &[#{$prop}] {
+      list-style: none;
+      margin: var(--#{normalize.$props}margin);
+      padding: var(--#{normalize.$props}padding) var(--#{normalize.$props}indent-width);
+      counter-reset: #{$counter};
+
+      & > li {
+        position: relative;
+        margin: var(--#{normalize.$props}item-margin);
+        counter-increment: #{$counter};
+
+        // Stylable pseudo element
+        &::before {
+          position: absolute;
+          margin: 0 0 0 calc(var(--#{normalize.$props}indent-width) * -1);
+          width: var(--#{normalize.$props}indent-width);
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+          color: inherit;
+          text-align: right;
+          content: counter(#{$counter}, #{$style}) '#{$suffix}#{$space}';
+        }
+
+        & + li {
+          margin: var(--#{normalize.$props}item-after-margin);
+        }
+      }
+    }
+
+    // Defined list styles
+    @if meta.type-of($styles) == list {
+      @each $name in $styles {
+
+        // Create the type name
+        &[#{$prop}="#{$name}"] > li::before {
+          content: counter(#{$counter}, #{$name}) '#{$suffix}#{$space}';
+        }
+      }
+    }
+
+    // Defined map custom styles
+    //  These only support the number of elements defined in the list
+    @if meta.type-of($custom) == map {
+      @each $name, $style in $custom {
+
+        // Custom style must be a list
+        @if meta.type-of($style) != list {
+          @error 'list-customize-styles::$custom[#{$name}] must be a list';
+        }
+
+        // Create the type name
+        &[#{$prop}="#{$name}"] > li {
+          $index: 1;
+          @each $value in $style {
+
+            // Define the element by position
+            &:nth-child(#{$index})::before {
+              content: '#{$value}#{$space}';
+            }
+            $index: $index + 1;
+          }
+        }
+      }
+    }
+  }
+}

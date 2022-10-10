@@ -1,0 +1,95 @@
+/**
+ * ui-list normalize
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use '../abstract';
+@use '../mixins';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-list' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-list-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+
+  // List wrapper margin
+  // @type {margin} 1-4 margin values
+  margin: 1rem 0,
+
+  // List wrapper padding
+  // @type {padding} 1-3 padding values
+  padding: 0 0 0,
+
+  // List wrapper left indent/padding
+  // @type {number} number with unit
+  indent-width: 2rem,
+
+  // List item margin
+  // @type {margin} 1-4 margin values
+  item-margin: 0,
+
+  // List item after item margin
+  // @type {margin} 1-4 margin values
+  item-after-margin: 1rem 0 0,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'list-normalize.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'list-normalize.properties::');
+}
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Only for lists that do not have a class
+  ol, ul {
+    @include mixins.attr-none() {
+      margin: var(--#{$props}margin);
+      padding: var(--#{$props}padding) var(--#{$props}indent-width);
+
+      li {
+        margin: var(--#{$props}item-margin);
+
+        & + li {
+          margin: var(--#{$props}item-after-margin);
+        }
+      }
+    }
+  }
+}
