@@ -1,0 +1,17 @@
+/**
+ * Requires
+ */
+@use "sass:string";
+
+/**
+ * Checks if given string is a query reference
+ * @param {string} $name - String to parse
+ * @param {string} $query-marker - String marking the beginning of a query, default: '_at_'
+ * @return {string|null} - Query reference or null if not a query
+ */
+@function is-query($name, $query-marker: '_at_') {
+  @if string.slice($name, 0, string.length($query-marker)) == $query-marker {
+    @return string.slice($name, string.length($query-marker) + 1);
+  }
+  @return null;
+}

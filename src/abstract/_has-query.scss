@@ -1,0 +1,23 @@
+/**
+ * Requires
+ */
+@use 'sass:list';
+@use 'str-split' as *;
+
+/**
+ * Get name and query from string
+ * @param {string} $name - String to parse
+ * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @param {string} $error - Error message prefix
+ * @return {list} - Empty if no query was found
+ */
+@function has-query($name, $query-marker: '_at_', $error: 'has-query::') {
+  $parts: str-split($name, $query-marker);
+  @if list.length($parts) <= 1 {
+    @return ();
+  }
+  @if list.length($parts) > 2 {
+    @error '#{$error}$name[#{$name}] can contain only one query marker';
+  }
+  @return $parts;
+}

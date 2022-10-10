@@ -1,0 +1,45 @@
+/**
+ * Requires
+ */
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+/**
+ * Generate spacing values with a base
+ * @param {string|number} $base - Base size including unit or variable
+ * @param {number} $spaces - 1-4 values, unitless used for multiplication
+ * @return {list} - Spacing values list
+ */
+@function spacing($params...) {
+  @if list.length($params) == 0 {
+    @error 'spacing::$args must supply at least one unitless number';
+  }
+  $base: 'var(--spacing-base)';
+  $values: ();
+  $i: 0;
+  @each $param in $params {
+    @if $i == 0 {
+      @if meta.type-of($param) == string {
+        $base: $param;
+      } @else if meta.type-of($param) == number {
+        @if math.is-unitless($param) {
+          $values: list.append($values, string.unquote('calc(#{$base} * #{$param})'));
+        } @else {
+          $base: $param;
+        }
+      } @else {
+        @error 'spacing::$arg[#{$i}] must be a string or number, number can be unitless';
+      }
+    } @else {
+      @if meta.type-of($param) == number and math.is-unitless($param) {
+        $values: list.append($values, string.unquote('calc(#{$base} * #{$param})'));
+      } @else {
+        @error 'spacing::$arg[#{$i}] must be unitless number';
+      }
+    }
+    $i: $i + 1;
+  }
+  @return $values;
+}
