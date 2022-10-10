@@ -319,8 +319,7 @@ If you wish to change configuration variables in specific situations, not that a
 
 ### Sass maps
 
-Inside map declarations to use comma separated values wrap them in (value, value) to make them a list value,
-for example for font-family declarations:
+Inside map declarations to use comma or space separated, list values, wrap them in braces to make them an explicit list value, for example for font-family declarations:
 
 ```scss
 $map: (
