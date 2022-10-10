@@ -279,21 +279,29 @@ Supplies a media query helper mixin and configuration.
 
 Only mixins and helpers that produce output, none of these contain configuration.
 
- - +attr-isset()
- - +attr-none()
- - +attr-set()
- - +attr-set-map()
- - +bem-style()
- - +break-pseudo()
- - +clear-pseudo()
- - +font()
- - +font-fluid()
- - +font-fluid-base()
- - +hide-accessible()
- - +no-select()
- - +properties()
+ - +attr-isset(```$attribute: 'class', $error: 'attr-isset::'```) - Wraps given content styles to apply only if the current scope element has no class attribute or its empty.
+ - +attr-none(```$attribute: 'class', $empty: true, $error: 'attr-none::'```) - Wraps given content styles to apply only if the current scope element has no class attribute or its empty.
+ - +attr-set(```$attributes, $error: 'attr-set::'```) - Adds the given attributes in current scope.
+ - +attr-set-map(```$name, $source, $error: 'attr-set-map::'```) - Adds the given attributes in current scope.
+ - +bem-style(```$nested, $font-styles: null, $query-marker: '_at_', $error: 'bem-style::'```) - Creates BEM style structures from a map definition.
+ - +break-pseudo
+   - break-before() - Inserts a pseudo before with a break.
+   - break-after() - Inserts a pseudo after with a break.
+ - +clear-pseudo() - Inserts a pseudo after with break.
+   - clear-before() - Inserts a pseudo before with a clear both.
+   - clear-after() - Inserts a pseudo after with a clear both.
+ - +font(```$style, $styles```) - Adds the given font attributes in current scope.
+ - +font-fluid(```$style, $styles: null, $base-query: null, $fluid-attribute: 'fluid', $no-max-attribute: 'no-max', $error: 'font-fluid::'```) - Adds the given font attributes and media queries in current scope.
+ - +font-fluid-base(```$min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false, $error: 'font-fluid-base::'```) - Adds the given font media queries in current scope, with an optional base query.
+ - +hide-accessible() - Inserts attributes to hide the current scope visually only.
+ - +no-select() - Inserts attributes to prevent text selection.
+ - +properties(```$props, $prefix: '', $error: 'properties::'```) - Adds given custom properties in current scope.
 
 #### + util / reset
+
+Supplies a basic reset stylesheet, has no configuration options.
+
+ - styles() - Outputs reset styles.
 
 #### + util / text
 
