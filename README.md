@@ -1,5 +1,10 @@
 # @squirrel-forge/sass-util
+
 Collection of sass abstracts, mixins, globals and utilities.
+Built for the dart-sass *@use module syntax*, allowing for full and individual feature usage.
+
+*Please Note* that from version **0.9.0** the package is fully based on the *@use module syntax*,
+if you are looking for the old version using the @import syntax install version **0.8.x**. 
 
 ## Installation
 
@@ -9,56 +14,132 @@ npm i @squirrel-forge/sass-util
 
 ## Usage
 
-```scss
-/* Set variables before importing, by default all are enabled */
-$with-global: true;
-$with-util: false;
-@import "~@squirrel-forge/sass-util";
+Make use of your IDE's autocompletion, for reference you can find a full list of [namespaces](#available-namespaces) below,
+or checkout the example implementation and the generated output.
 
-/* You may import only the sections or files you require */
-// @import "~@squirrel-forge/sass-util/src/functions/index";
-// @import "~@squirrel-forge/sass-util/src/mixins/index";
+```scss
+/**
+ * Using the full library
+ */
+@use '~@squirrel-forge/sass-util' as util;
+
+/**
+ * You may use only the modules or submodules you require,
+ * note that you need to add the 'src' folder to the use path
+ */
+@use '~@squirrel-forge/sass-util/src/media';
 // etc.
 ```
 
-Variable declarations can be found [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults).
+### Using the full library
 
-### Contents
+When using the full package, make use of the namespacing to select from the individual submodules.
 
-An overview of the package contents:
+```scss
+@use '~@squirrel-forge/sass-util' as util;
+@include util.media-config((
+  custom-breakpoint: 'screen and (max-width: 10rem)',
+));
+@include util.media-query('custom-breakpoint') {
+  // @content
+}
+```
 
- - **Global** A set of global reset css, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_global.scss) for details.
- - **Util** A set of utility classes, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_util.scss) for details.
- - **Media** A media query abstraction, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_media.scss) for details.
- - **Break** Media definitions for the break utility, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_break.scss) for details.
- - **Font** Font definitions for the font utility and helpers, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_font.scss) for details.
- - **List** List normalization and style utilities, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_list.scss) for details.
- - **Text** Text helpers and media definitions, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_text.scss) for details.
- - **Wrap** Flex wrapper definitions, see variables [here](https://github.com/squirrel-forge/sass-util/blob/main/src/defaults/_wrap.scss) for details.
+### Using individual submodules
 
-#### Mixins
+When using submodules directly namespacing is shorter without the prefixes of levels above, this way you have granular control over which modules to use.
+Not that the *@use* syntax words differently than the classic *@import*, check the [use syntax notes](#use-syntax) for relevant details.
 
-An overview of mixins available:
+```scss
+@use '~@squirrel-forge/sass-util/src/media';
+@include media.config((
+  custom-breakpoint: 'screen and (max-width: 10rem)',
+));
+@include media.query('custom-breakpoint') {
+  // @content
+}
+```
 
- - **mx-attr-isset** @content is applied only if a given attribute is set.
- - **mx-attr-none** @content is applied only if a given attribute is not set.
- - **mx-attr-set** Sets a map of attributes.
- - **mx-attr-set-map** Sets a map of attributes from a map of attribute maps.
- - **mx-bem** Generates BEM style classes from a nested map.
- - **mx-break-before**, **mx-break-after** Pseudo inline break.
- - **mx-clear-before**, **mx-clear-after** Pseudo clear float.
- - **mx-font** Output font style by name from map.
- - **mx-font-fluid** Output fluid font style by name from map.
- - **mx-font-fluid-base** Fluid font style base mixin.
- - **mx-hide-accessible** Element will be visually hidden, but accessible for screenreaders etc.
- - **mx-media** @content will be wrapped in a media query of the given name.
- - **mx-no-select** Element text will not be selectable by user.
+Not recommended, but possible: If you wish to use modules more than once and require configuration changes,
+then you need to modify the namespaces variables directly, but keep in mind that the values change permanently even for other contexts and need to be reset manually, since modules are only loaded once.
 
-### Notes
+## Available namespaces
 
-Following some notes on mixin, function and sass behaviours directly relevant to using the utilities.
+An overview of available **namespaces**, *variables*, functions and mixins, those marked with a "**+**" can be loaded individually.  
+Note when loading individual modules directly you must include the *src* path folder in your use url and initial loading order matters when using the *with* keyword for configuration.  
+Any namespace can be loaded individually, if it contains multiple submodules there is a corresponding index available.
 
-#### Sass maps
+ - +**util**  
+   Complete library, the namespace defined when loading the full package with *@use*.
+   - +**abstract**
+     - +config($options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::') - Map with defaults with merged options.
+     - +default-args($data, $optional...) - A list with arguments and defaults.
+     - +has-query($name, $query-marker: '_at_', $error: 'has-query::') - Empty if no query was found.
+     - +is-query($name, $query-marker: '_at_') - Query reference or null if not a query
+     - +spacing($params...) - Spacing values list.
+     - +str-initials($name, $separator: '-') - First char of each element separated as a joined string.
+     - +str-split($string, $separator, $no-empty: true) - Separated list of strings
+     - +strip-unit($value) - Unitless value
+   - +**colors**  
+     Generates colors as custom properties including variants, with corresponding helper classes for usage.
+     - *$class*: 'ui-color'
+     - *$props*: 'ui-color-'
+     - *$variant-complement*: 'comp'
+     - *$variant-grayscale*: 'gray'
+     - *$variant-alpha*: 'op'
+     - *$variant-invert*: 'inv'
+     - *$variant-adjust-hue*: 'hue'
+     - *$variant-darken*: 'dk'
+     - *$variant-lighten*: 'lt'
+     - *$variant-saturate*: 'sat'
+     - *$variant-desaturate*: 'dsat'
+     - config($colors, $variants, $attributes) - Sets color config references.
+       ```scss
+       /* Any number of colors using a named map with corresponding css/sass compatible color values */
+       $colors: (
+         red: #f00,
+         green: rgb(0, 255, 0),
+         blue: blue,
+       );
+       /* Variants to generate for colors */
+       $variants: (
+         alpha: (.5,.9),
+         invert: (50%,100%),
+         adjust-hue: (30deg,60deg,90deg,120deg,150deg,180deg,210deg,240deg,270deg,300deg,330deg),
+         darken: (20%,50%),
+         lighten: (20%,50%),
+         saturate: (20%,50%),
+         desaturate: (20%,50%,90%),
+       );
+       /* Class names and corresponding attributes to create */
+       $attributes: (
+         text: (color, (base-only)),
+         bg: background-color,
+         bdr: (border-color, (red,blue)),
+       )
+       ```
+     - properties() - Outputs all custom properties in given context.
+     - styles() - Outputs all attribute color classes in given context. 
+   - font
+   - images
+   - list
+   - media
+   - mixins
+   - reset
+   - text
+   - wrap
+
+## Notes
+
+Following some notes on sass behaviours directly relevant to using the library and modules.
+
+### Use syntax
+
+When loading via the *@use* syntax versus the classic *@import* ,there are a few things to keep in mind.
+Using the *with* keyword to set any configuration variables can only be done the first time a module is loaded with *@use*, any attempt to do it differently will produce an error.
+If you wish to change configuration variables in specific situations, not that anything that module will do afterwards will use the new value even when loaded in a different context within the same compile tree.
+
+### Sass maps
 
 Inside map declarations to use comma separated values wrap them in (value, value) to make them a list value,
 for example for font-family declarations:
@@ -79,222 +160,6 @@ $map: (
     font-family: #{"Oxygen", sans-serif},
   ),
 );
-```
-
-### Examples
-
-#### Font styles
-
-Source:
-```scss
-$font-styles: (
-
-  // Base declaration
-  default: (
-    font-family: (Oxygen, sans-serif),
-    font-size: 14px,
-    font-weight: normal,
-    line-height: 1.33,
-  ),
-
-  // Regular default and responsive declarations
-  headline: (
-    font-size: 30px,
-    font-weight: bold,
-  ),
-  headline_at_small: (
-    font-size: 20px,
-  ),
-  headline_at_tablet: (
-    font-size: 40px,
-  ),
-  headline_at_medium: (
-    font-size: 40px,
-  ),
-  headline_at_desktop: (
-    font-size: 50px,
-  ),
-
-  // Fluid font responsive declarations
-  headline-fluid_at_mobile: (
-    font-weight: bold,
-    fluid: (
-      min-vw : 320px,
-      max-vw : 767px,
-      min-size : 20px,
-      max-size : 30px,
-    ),
-    no-max: true,
-  ),
-  headline-fluid_at_tablet: (
-    fluid: (
-      min-vw : 768px,
-      max-vw : 1024px,
-      min-size : 30px,
-      max-size : 35px,
-    ),
-    no-max: true,
-  ),
-  headline-fluid_at_medium: (
-    fluid: (
-      min-vw : 1025px,
-      max-vw : 1366px,
-      min-size : 35px,
-      max-size : 50px,
-    ),
-  )
-);
-```
-
-Rendered:
-```css
-/* Base declaration */
-.font--default {
-  font-family: Oxygen, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.33;
-}
-
-/* Regular default and responsive declarations */
-.font--headline {
-  font-size: 30px;
-  font-weight: bold;
-}
-@media screen and (max-width: 374px) {
-  .font--headline { font-size: 20px; }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .font--headline { font-size: 40px; }
-}
-@media screen and (min-width: 1025px) {
-  .font--headline { font-size: 40px; }
-}
-@media screen and (min-width: 1366px) {
-  .font--headline { font-size: 50px; }
-}
-
-/* Fluid font responsive declarations */
-.font--headline-fluid {
-  font-weight: bold;
-}
-@media screen and (max-width: 767px) {
-  .font--headline-fluid { font-size: 20px; }
-}
-@media screen and (min-width: 320px) {
-  .font--headline-fluid { font-size: calc(20px + 10 * ((100vw - 320px) / 447)); }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .font--headline-fluid { font-size: 30px; }
-}
-@media screen and (min-width: 768px) {
-  .font--headline-fluid { font-size: calc(30px + 5 * ((100vw - 768px) / 256)); }
-}
-@media screen and (min-width: 1025px) {
-  .font--headline-fluid { font-size: 35px; }
-}
-@media screen and (min-width: 1025px) {
-  .font--headline-fluid { font-size: calc(35px + 15 * ((100vw - 1025px) / 341)); }
-}
-@media screen and (min-width: 1366px) {
-  .font--headline-fluid { font-size: 50px; }
-}
-```
-
-#### Wrap with BEM styles
-
-Source:
-```scss
-$wrap-styles: (
-
-  // Section wrapper
-  --section: (
-    position: relative,
-    flex-direction: column,
-    padding: 0 1rem,
-    _at_tablet-desktop: (
-      max-width: calc(100% - 2rem),
-    ),
-  ),
-
-  // Content wrapper, including variants
-  --content: (
-    position: relative,
-    max-width: 380px,
-    _at_small: (
-      max-width: 300px,
-    ),
-    _at_tablet-portrait: (
-      max-width: 720px,
-    ),
-    _at_tablet-landscape-desktop: (
-      max-width: 1000px,
-    ),
-    -before: (
-      position: relative,
-      margin: 0 auto 2rem,
-    ),
-    -main: (
-      position: relative,
-    ),
-    -after: (
-      position: relative,
-      margin: 2rem auto 0,
-    ),
-  ),
-);
-```
-
-Rendered:
-```css
-.wrap {
-  margin: auto;
-  width: 100%;
-}
-.wrap:not(.wrap--no-flex) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-/* Section wrapper */
-.wrap--section {
-  position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding: 0 1rem;
-}
-@media screen and (min-width: 768px) {
-  .wrap--section { max-width: calc(100% - 2rem); }
-}
-
-/* Content wrapper, including variants */
-.wrap--content {
-  position: relative;
-  max-width: 380px;
-}
-@media screen and (max-width: 374px) {
-  .wrap--content { max-width: 300px; }
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .wrap--content { max-width: 720px; }
-}
-@media screen and (min-width: 992px) {
-  .wrap--content { max-width: 1000px; }
-}
-.wrap--content-before {
-  position: relative;
-  margin: 0 auto 2rem;
-}
-.wrap--content-main { position: relative; }
-.wrap--content-after {
-  position: relative;
-  margin: 2rem auto 0;
-}
 ```
 
 Check the sourcecode on [github](https://github.com/squirrel-forge/sass-util) for extensive comments.
