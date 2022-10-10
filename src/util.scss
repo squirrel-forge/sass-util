@@ -1,27 +1,221 @@
 /**
- * Defaults
- * logical information used for utilities, mixins and functions
- * all variables can be overridden, but must sustain their format
+ * Classic utilities setup
+ *  Using this stylesheet will reset all the class and property names to match version 0.8.x
+ *  Note that this does not match the version 0.8.x output, some changes are introduced by the new structure
  */
-@import "defaults/index";
+@use 'index' as util with (
+  $colors-class: 'color',
+  $colors-props: 'color-',
+  $images-decals-class: 'decals',
+  $images-decals-static: '--static',
+  $images-decals-width: 0,
+  $images-decals-props: 'decal-',
+  $images-assets-base: '../img/',
+  $images-assets-cache: '?1',
+  $font-class: 'font',
+  $list-normalize-class: 'list',
+  $list-normalize-props: 'list-',
+  $list-customize-custom: (
+    example : (a1,a2,a3,a4,b1,b2,b3,b4,c1,c2,c3,c4),
+  ),
+  $text-a11y-class: 'text',
+  $text-a11y-hide-a11y: '--hide-a11y',
+  $text-a11y-no-select: '--no-select',
+  $text-align-class: 'text',
+  $text-breaks-class: 'text',
+  $text-breaks-break: '--break',
+  $text-breaks-clear: '--clear',
+  $text-breaks-always: '--break-keep',
+  $text-breaks-none: '--no-break',
+  $text-breaks-word: '--wbreak',
+  $text-breaks-element-class: 'break-',
+  $text-breaks-element-wrap-class: 'break-rsp',
+  $text-normalize-props: 'text-normalize-',
+  $wrap-class: 'wrap',
+  $wrap-no-flex: '--no-flex',
+);
 
 /**
- * Mixins
- * Collection of functions and mixins
+ * Configure colors
  */
-@import "functions/index";
-@import "mixins/index";
+@include util.colors-config((
+  off-white: #fffbf0,
+  grey-2: #c2d1d9,
+  cerulean: #0081c8,
+  pumpkin-orange: #f28503,
+  butterscotch: (#ffb93e,(grayscale,complement,alpha,invert,adjust-hue,darken,lighten,saturate,desaturate)),
+),
+(
+  alpha: (.1,.2,.3,.4,.5,.6,.7,.8,.9),
+  invert: (10%,20%,30%,40%,50%,60%,70%,80%,90%,100%),
+  adjust-hue: (30deg,60deg,90deg,120deg,150deg,180deg,210deg,240deg,270deg,300deg,330deg),
+  darken: (10%,20%,30%,40%,50%),
+  lighten: (10%,20%,30%,40%,50%),
+  saturate: (),
+  desaturate: (10%,20%,30%,40%,50%,60%,70%,80%,90%),
+),
+(
+  text: (color, (base-only)),
+  bg: background-color,
+  bdr: (border-color, (grey-2,cerulean,pumpkin-orange,butterscotch,butterscotch-comp)),
+));
 
 /**
- * Some global styles
- * reset, basic font and image settings, scroll styles etc.
- * Only imported if previously set to true
+ * Configure decals
  */
-@import "global/index";
+@include util.images-decals-config((
+  example: (
+    before: true,
+    after: true,
+    width: 1,
+    height: 1,
+    url: 'example.jpg'
+  ),
+));
 
 /**
- * Import utility classes
- * makes a set of global utility classes available using available settings
- * Only imported if previously set to true
+ * Define root variables
  */
-@import "util/index";
+:root {
+  @include util.text-normalize-properties;
+  @include util.colors-properties;
+  @include util.images-decals-properties;
+  @include util.list-normalize-properties;
+}
+
+/**
+ * Render reset
+ */
+@include util.reset-styles;
+
+/**
+ * Render text normalize and helpers
+ */
+@include util.text-normalize-styles;
+@include util.text-a11y-styles;
+@include util.text-align-styles;
+@include util.text-breaks-styles;
+
+/**
+ * Render color styles
+ */
+@include util.colors-styles;
+
+/**
+ * Render decal styles
+ */
+@include util.images-decals-styles;
+
+/**
+ * Render list styles
+ */
+@include util.list-normalize-styles;
+@include util.list-customize-styles;
+
+/**
+ * Render font styles
+ */
+@include util.font-config((
+
+  // Base declaration
+  default: (
+    font-family: (Oxygen, sans-serif),
+    font-size: 14px,
+    font-weight: normal,
+    line-height: 1.33,
+  ),
+
+  // Regular default and responsive declarations
+  headline: (
+    font-size: 30px,
+    font-weight: bold,
+  ),
+  headline_at_mobile-small: (
+    font-size: 20px,
+  ),
+  headline_at_tablet: (
+    font-size: 40px,
+  ),
+  headline_at_desktop: (
+    font-size: 40px,
+  ),
+  headline_at_desktop-small: (
+    font-size: 50px,
+  ),
+
+  // Fluid font defaults and responsive declarations
+  headline-fluid_at_mobile: (
+    font-weight: bold,
+    fluid: (
+      min-vw : 320px,
+      max-vw : 767px,
+      min-size : 20px,
+      max-size : 30px,
+    ),
+    no-max: true,
+  ),
+  headline-fluid_at_tablet: (
+    fluid: (
+      min-vw : 768px,
+      max-vw : 1024px,
+      min-size : 30px,
+      max-size : 35px,
+    ),
+    no-max: true,
+  ),
+  headline-fluid_at_desktop: (
+    fluid: (
+      min-vw : 1025px,
+      max-vw : 1366px,
+      min-size : 35px,
+      max-size : 50px,
+    ),
+  ),
+));
+@include util.font-styles;
+
+/**
+ * Render wrap styles
+ */
+@include util.wrap-config((
+
+  // Section wrapper
+  --section: (
+    position: relative,
+    flex-direction: column,
+    padding: 0 1rem,
+    _at_tablet-desktop: (
+      max-width: calc(100% - 2rem),
+    ),
+  ),
+
+  // Content wrapper, including variants
+  --content: (
+    position: relative,
+    max-width: 380px,
+    _at_mobile-small: (
+      max-width: 300px,
+    ),
+    _at_tablet-portrait: (
+      max-width: 720px,
+    ),
+    _at_tablet-landscape-desktop: (
+      max-width: 1000px,
+    ),
+    _at_desktop-small: (
+      max-width: 1200px,
+    ),
+    -before: (
+      position: relative,
+      margin: 0 auto 2rem,
+    ),
+    -main: (
+      position: relative,
+    ),
+    -after: (
+      position: relative,
+      margin: 2rem auto 0,
+    ),
+  ),
+));
+@include util.wrap-styles;
