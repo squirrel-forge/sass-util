@@ -1,17 +1,17 @@
 /**
- * @file : mixins/_index
- * Always load all mixins
+ * Mixins
+ *  mixins forwarding index
  */
-@import "attr-isset";
-@import "attr-none";
-@import "attr-set";
-@import "attr-set-map";
-@import "bem";
-@import "break-pseudo";
-@import "clear-pseudo";
-@import "font";
-@import "font-fluid-base";
-@import "font-fluid";
-@import "hide-accessible";
-@import "media";
-@import "no-select";
+@forward 'attr-none';
+@forward 'attr-isset';
+@forward 'attr-set';
+@forward 'attr-set-map';
+@forward 'bem-style';
+@forward 'break-pseudo';
+@forward 'clear-pseudo';
+@forward 'font';
+@forward 'font-fluid';
+@forward 'font-fluid-base';
+@forward 'hide-accessible';
+@forward 'no-select';
+@forward 'properties';
