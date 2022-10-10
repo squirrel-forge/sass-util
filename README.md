@@ -14,7 +14,8 @@ npm i @squirrel-forge/sass-util
 ## Usage
 
 Make use of your IDE's autocompletion, for reference you can find a full list of [namespaces](#available-namespaces) below,
-or checkout the [example implementation](src/util.scss) and the [generated output](dist/util.css).
+or checkout the [example implementation](src/util.scss) and the [generated output](dist/util.css).  
+Note that the *@use* syntax works differently than the classic *@import*, check the [use syntax notes](#use-syntax) for relevant details and or refer to the [official sass docs](https://sass-lang.com/documentation/at-rules/use).
 
 ```scss
 /**
@@ -46,8 +47,7 @@ When using the full package, make use of the namespacing to select from the indi
 
 ### Using individual submodules
 
-When using submodules directly namespacing is shorter without the prefixes of levels above, this way you have granular control over which modules to use.
-Not that the *@use* syntax works differently than the classic *@import*, check the [use syntax notes](#use-syntax) for relevant details.
+When using submodules directly, namespacing is shorter, without the parent prefixes, this way you have granular control over which modules to use, but you need to add the *src* folder path to your @use url.
 
 ```scss
 @use '~@squirrel-forge/sass-util/src/media';
