@@ -1,0 +1,236 @@
+/**
+ * Utilities
+ *  Modules and submodules forwarding and config
+ */
+
+// Reset module config
+//  Does not contain any configuration variables.
+
+// Media module config
+//  Does not contain any configuration variables,
+//  use: @include media-config(queries-map);
+//  to add or replace existing media query references
+
+// Colors module config
+  // Styles module config
+  $colors-class: 'ui-color' !default;
+  $colors-props: 'ui-color-' !default;
+
+  // Variants module config
+  $colors-variant-complement: 'comp' !default;
+  $colors-variant-grayscale: 'gray' !default;
+  $colors-variant-alpha: 'op' !default;
+  $colors-variant-invert: 'inv' !default;
+  $colors-variant-adjust-hue: 'hue' !default;
+  $colors-variant-darken: 'dk' !default;
+  $colors-variant-lighten: 'lt' !default;
+  $colors-variant-saturate: 'sat' !default;
+  $colors-variant-desaturate: 'dsat' !default;
+
+// Decals module config
+  // Assets submodule config
+  $images-assets-base: '../img/' !default;
+  $images-assets-cache: '' !default;
+
+  // Decals submodule config
+  $images-decals-class: 'ui-decals' !default;
+  $images-decals-static: '--static' !default;
+  $images-decals-props: 'ui-decals-' !default;
+  $images-decals-width: 0 !default;
+  $images-decals-sizing-as-props: false !default;
+
+// Font module config
+  // Styles module config
+  $font-class: 'ui-font' !default;
+  $font-style-prefix: '--' !default;
+
+  // Mapping data attributes
+  $font-fluid-attribute: 'fluid' !default;
+  $font-no-max-attribute: 'no-max' !default;
+
+// List module config
+  // Normalize module config
+  $list-normalize-class: 'ui-list' !default;
+  $list-normalize-props: 'ui-list-' !default;
+
+  // Customize module config
+  $list-customize-prop: 'data-counter' !default;
+  $list-customize-counter: 'ui-ol-counter' !default;
+  $list-customize-style: decimal !default;
+  $list-customize-suffix: '.' !default;
+  $list-customize-space: '\00a0' !default;
+  $list-customize-styles: (
+    decimal,
+    decimal-leading-zero,
+    lower-roman,
+    lower-alpha,
+    upper-alpha,
+    lower-latin,
+  ) !default;
+  $list-customize-custom: () !default;
+
+// Text module config
+  // A11y submodule config
+  $text-a11y-class: 'ui-text' !default;
+  $text-a11y-hide-a11y: '--hide-a11y' !default;
+  $text-a11y-no-select: '--no-select' !default;
+
+  // Align submodule config
+  $text-align-class: 'ui-text' !default;
+  $text-align-center: '--center' !default;
+  $text-align-center-queries: [
+      mobile,
+      mobile-tablet-portrait,
+      tablet-portrait,
+      tablet-landscape,
+      tablet,
+      tablet-desktop,
+      tablet-landscape-desktop,
+      desktop,
+      desktop-medium
+    ] !default;
+  $text-align-right: '--right' !default;
+  $text-align-right-queries: [
+      mobile,
+      mobile-tablet-portrait,
+      tablet-portrait,
+      tablet-landscape,
+      tablet,
+      tablet-desktop,
+      tablet-landscape-desktop,
+      desktop,
+      desktop-medium
+    ] !default;
+  $text-align-left: '--left' !default;
+  $text-align-left-queries: [
+      mobile,
+      mobile-tablet-portrait,
+      tablet-portrait,
+      tablet-landscape,
+      tablet,
+      tablet-desktop,
+      tablet-landscape-desktop,
+      desktop,
+      desktop-medium
+    ] !default;
+
+  // Breaks submodule config
+  $text-breaks-class: 'ui-text' !default;
+  $text-breaks-break: '--break' !default;
+  $text-breaks-clear: '--clear' !default;
+  $text-breaks-always: '--break-always' !default;
+  $text-breaks-none: '--no-wrap' !default;
+  $text-breaks-word: '--wbreak' !default;
+  $text-breaks-word-queries: [
+      mobile,
+      mobile-tablet-portrait,
+      tablet-portrait,
+      tablet-landscape,
+      tablet,
+      tablet-desktop,
+      tablet-landscape-desktop,
+      desktop,
+      desktop-medium
+    ] !default;
+  $text-breaks-global: false !default;
+  $text-breaks-element-class: 'ui-break--' !default;
+  $text-breaks-element-wrap-class: 'ui-break-wrap' !default;
+  $text-breaks-queries: [
+      mobile,
+      mobile-tablet-portrait,
+      tablet-portrait,
+      tablet-landscape,
+      tablet,
+      tablet-desktop,
+      tablet-landscape-desktop,
+      desktop,
+      desktop-medium
+    ] !default;
+
+  // Normalize module config
+  $text-normalize-props: 'ui-text-normalize-' !default;
+
+// Wrap module config
+  // Styles module config
+  $wrap-class: 'ui-wrap' !default;
+  $wrap-no-flex: '--no-flex' !default;
+
+// Forward non configurables
+@forward 'reset' as reset-*;
+@forward 'media' as media-*;
+
+// Forward abstracts and mixins
+@forward 'abstract' as abstract-*;
+@forward 'mixins' as mixins-*;
+
+// Forward configurable modules
+@forward 'colors' as colors-* with (
+  $class: $colors-class,
+  $props: $colors-props,
+  $variant-complement: $colors-variant-complement,
+  $variant-grayscale: $colors-variant-grayscale,
+  $variant-alpha: $colors-variant-alpha,
+  $variant-invert: $colors-variant-invert,
+  $variant-adjust-hue: $colors-variant-adjust-hue,
+  $variant-darken: $colors-variant-darken,
+  $variant-lighten: $colors-variant-lighten,
+  $variant-saturate: $colors-variant-saturate,
+  $variant-desaturate: $colors-variant-desaturate,
+);
+@forward 'images' as images-* with (
+  $assets-base: $images-assets-base,
+  $assets-cache: $images-assets-cache,
+  $decals-class: $images-decals-class,
+  $decals-static: $images-decals-static,
+  $decals-props: $images-decals-props,
+  $decals-width: $images-decals-width,
+  $decals-sizing-as-props: $images-decals-sizing-as-props,
+);
+@forward 'font' as font-* with (
+  $class: $font-class,
+  $style-prefix: $font-style-prefix,
+  $fluid-attribute: $font-fluid-attribute,
+  $no-max-attribute: $font-no-max-attribute,
+);
+@forward 'list' as list-* with (
+  $normalize-class: $list-normalize-class,
+  $normalize-props: $list-normalize-props,
+  $customize-prop: $list-customize-prop,
+  $customize-counter: $list-customize-counter,
+  $customize-style: $list-customize-style,
+  $customize-suffix: $list-customize-suffix,
+  $customize-space: $list-customize-space,
+  $customize-styles: $list-customize-styles,
+  $customize-custom: $list-customize-custom,
+);
+@forward 'text' as text-* with (
+  $a11y-class: $text-a11y-class,
+  $a11y-hide-a11y: $text-a11y-hide-a11y,
+  $a11y-no-select: $text-a11y-no-select,
+
+  $align-class: $text-align-class,
+  $align-center: $text-align-center,
+  $align-center-queries: $text-align-center-queries,
+  $align-right: $text-align-right,
+  $align-right-queries :$text-align-right-queries,
+  $align-left: $text-align-left,
+  $align-left-queries: $text-align-left-queries,
+
+  $breaks-class: $text-breaks-class,
+  $breaks-break: $text-breaks-break,
+  $breaks-clear: $text-breaks-clear,
+  $breaks-always: $text-breaks-always,
+  $breaks-none: $text-breaks-none,
+  $breaks-word: $text-breaks-word,
+  $breaks-word-queries: $text-breaks-word-queries,
+  $breaks-global: $text-breaks-global,
+  $breaks-element-class: $text-breaks-element-class,
+  $breaks-element-wrap-class: $text-breaks-element-wrap-class,
+  $breaks-queries: $text-breaks-queries,
+
+  $normalize-props: $text-normalize-props,
+);
+@forward 'wrap' as wrap-* with (
+  $class: $wrap-class,
+  $no-flex: $wrap-no-flex,
+);
