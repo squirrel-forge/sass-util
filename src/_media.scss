@@ -45,7 +45,7 @@ $-queries: (
  * @output {void} - Only sets or updates media query references
  */
 @mixin config($queries) {
-  $-queries: abstract.config($queries, $-queries, true, true, 'media.config::') !global;
+  $-queries: abstract.config($queries, $-queries, true, false, 'media.config::') !global;
 }
 
 /**
