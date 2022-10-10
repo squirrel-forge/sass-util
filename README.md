@@ -287,7 +287,7 @@ Only mixins and helpers that produce output, none of these contain configuration
  - +break-pseudo
    - break-before() - Inserts a pseudo before with a break.
    - break-after() - Inserts a pseudo after with a break.
- - +clear-pseudo() - Inserts a pseudo after with break.
+ - +clear-pseudo
    - clear-before() - Inserts a pseudo before with a clear both.
    - clear-after() - Inserts a pseudo after with a clear both.
  - +font(```$style, $styles```) - Adds the given font attributes in current scope.
