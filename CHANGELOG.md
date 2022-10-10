@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.8
+ - Added *mobile.classic* default media query.
+ - Added *button cursor* and *fieldset border* to reset styles.
+
 ## 0.8.7
  - Added *mobile-mini*, *mobile-medium*, *mobile-large*, *desktop-mini* and *desktop-classic* default media queries.
  - Added prototype *fn-spacing* dynamic padding/margin/inset list value generator.
