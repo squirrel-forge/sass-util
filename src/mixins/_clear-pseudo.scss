@@ -1,6 +1,6 @@
 /**
  * Clear both before
- * @output Defines an ::before pseudo element inside current scope
+ * @output Inserts a pseudo before with a clear both
  */
 @mixin clear-before {
   &::before {
@@ -12,7 +12,7 @@
 
 /**
  * Clear both after
- * @output Defines an ::after pseudo element inside current scope
+ * @output Inserts a pseudo after with a clear both
  */
 @mixin clear-after {
   &::after {

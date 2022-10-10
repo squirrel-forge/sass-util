@@ -2,7 +2,7 @@
  * Hide an element
  * but leave it accessible to screen readers
  * Reliable across most browsers
- * @output Sets properties to hide the current scope visually only
+ * @output Inserts attributes to hide the current scope visually only
  */
 @mixin hide-accessible {
   position: absolute;

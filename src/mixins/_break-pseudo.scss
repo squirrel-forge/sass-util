@@ -1,6 +1,6 @@
 /**
  * Insert a line break before content
- * @output Inserts a pseudo before with break
+ * @output Inserts a pseudo before with a break
  */
 @mixin break-before {
   &::before {
@@ -11,7 +11,7 @@
 
 /**
  * Insert a line break after content
- * @output Inserts a pseudo after with break
+ * @output Inserts a pseudo after with a break
  */
 @mixin break-after {
   &::after {
