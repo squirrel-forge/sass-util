@@ -1,0 +1,25 @@
+/**
+ * Requires
+ */
+@use 'sass:meta';
+
+/**
+ * Generate custom properties
+ * @public
+ * @param {map} $props - Map of properties
+ * @param {string} $prefix - Property prefix
+ * @param {string} $error - Error message prefix
+ * @output Adds given custom properties in current scope
+ */
+@mixin properties($props, $prefix: '', $error: 'properties::') {
+
+  // Require a map of properties
+  @if meta.type-of($props) != map {
+    @error '#{$error}props[#{meta.type-of($props)}] must be a map containing at least one name, value pair';
+  }
+
+  // Generate custom properties
+  @each $n, $v in $props {
+    --#{$prefix}#{$n}: #{$v};
+  }
+}
