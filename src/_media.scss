@@ -1,0 +1,83 @@
+/**
+ * Media queries
+ *  Helper mixin and configuration.
+ */
+
+/**
+ * Requires
+ */
+@use "sass:map";
+@use "sass:meta";
+@use 'abstract/config' as abstract;
+
+/**
+ * Query defaults
+ * @private
+ * @type {map}
+ */
+$-queries: (
+  mobile-mini : 'screen and (max-width: 320px)',
+  mobile-small : 'screen and (max-width: 374px)',
+  mobile-classic : 'screen and (max-width: 480px)',
+  mobile-medium : 'screen and (max-width: 560px)',
+  mobile-large : 'screen and (max-width: 640px)',
+  mobile : 'screen and (max-width: 767px)',
+  mobile-tablet-portrait : 'screen and (max-width: 991px)',
+  mobile-tablet : 'screen and (max-width: 1024px)',
+  tablet : 'screen and (min-width: 768px) and (max-width: 1024px)',
+  tablet-portrait : 'screen and (min-width: 768px) and (max-width: 991px)',
+  tablet-landscape : 'screen and (min-width: 992px) and (max-width: 1024px)',
+  tablet-desktop : 'screen and (min-width: 768px)',
+  tablet-landscape-desktop : 'screen and (min-width: 992px)',
+  desktop : 'screen and (min-width: 1025px)',
+  desktop-nano : 'screen and (min-width: 1152px)',
+  desktop-mini : 'screen and (min-width: 1200px)',
+  desktop-small : 'screen and (min-width: 1366px)',
+  desktop-medium : 'screen and (min-width: 1440px)',
+  desktop-classic : 'screen and (min-width: 1600px)',
+  desktop-large : 'screen and (min-width: 1920px)',
+);
+
+/**
+ * Update/extend media queries
+ * @public
+ * @param {map} $queries - Map of media queries
+ * @output {void} - Only sets or updates media query references
+ */
+@mixin config($queries) {
+  $-queries: abstract.config($queries, $-queries, true, true, 'media.config::') !global;
+}
+
+/**
+ * Media query wrapper
+ * @public
+ * @param {string} query - Media name reference
+ * @output Wraps given content styles in a media query
+ */
+@mixin query($query) {
+
+  // Queries must be a map
+  @if meta.type-of($-queries) != map {
+    @error 'media.query::$queries[#{meta.type-of($-queries)}] must be a map of query references';
+  }
+
+  // Query is not defined
+  @if map.has-key($-queries, $query) != true {
+    @error 'media.query::$query[#{$query}] is not defined';
+  }
+
+  // Query must be a string
+  @if meta.type-of(map.get($-queries, $query)) != string {
+    @error 'media.query::$query[#{$query}] must be a query string';
+  }
+
+  // Now we require content to be set
+  @if meta.content-exists() != true {
+    @error 'media.query::@content is required';
+  }
+
+  // Wrap content with media query
+  @media #{map.get($-queries, $query)} {
+    @content;
+  }
+}
