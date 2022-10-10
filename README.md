@@ -83,31 +83,31 @@ Complete library, the namespace defined when loading the full package with *@use
 
 Only abstract functions and helpers, none of these contain configuration.
 
- - +config($options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::') - Map with defaults with merged options.
- - +default-args($data, $optional...) - A list with arguments and defaults.
- - +has-query($name, $query-marker: '_at_', $error: 'has-query::') - Empty if no query was found.
- - +is-query($name, $query-marker: '_at_') - Query reference or null if not a query
- - +spacing($params...) - Spacing values list.
- - +str-initials($name, $separator: '-') - First char of each element separated as a joined string.
- - +str-split($string, $separator, $no-empty: true) - Separated list of strings
- - +strip-unit($value) - Unitless value
+ - +config(```$options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::'```) - Map with defaults with merged options.
+ - +default-args(```$data, $optional...```) - A list with arguments and defaults.
+ - +has-query(```$name, $query-marker: '_at_', $error: 'has-query::'```) - Empty if no query was found.
+ - +is-query(```$name, $query-marker: '_at_'```) - Query reference or null if not a query
+ - +spacing(```$params...```) - Spacing values list.
+ - +str-initials(```$name, $separator: '-'```) - First char of each element separated as a joined string.
+ - +str-split(```$string, $separator, $no-empty: true```) - Separated list of strings
+ - +strip-unit(```$value```) - Unitless value
 
 #### + util / colors  
 
 Generates colors as custom properties including variants, with corresponding helper classes for usage.
 
- - *$class*: 'ui-color'
- - *$props*: 'ui-color-'
- - *$variant-complement*: 'comp'
- - *$variant-grayscale*: 'gray'
- - *$variant-alpha*: 'op'
- - *$variant-invert*: 'inv'
- - *$variant-adjust-hue*: 'hue'
- - *$variant-darken*: 'dk'
- - *$variant-lighten*: 'lt'
- - *$variant-saturate*: 'sat'
- - *$variant-desaturate*: 'dsat'
- - config($colors, $variants, $attributes) - Sets available color references.
+ - *$class*: ```'ui-color'```
+ - *$props*: ```'ui-color-'```
+ - *$variant-complement*: ```'comp'```
+ - *$variant-grayscale*: ```'gray'```
+ - *$variant-alpha*: ```'op'```
+ - *$variant-invert*: ```'inv'```
+ - *$variant-adjust-hue*: ```'hue'```
+ - *$variant-darken*: ```'dk'```
+ - *$variant-lighten*: ```'lt'```
+ - *$variant-saturate*: ```'sat'```
+ - *$variant-desaturate*: ```'dsat'```
+ - config(```$colors, $variants, $attributes```) - Sets available color references.
    ```scss
    /* Any number of colors using a named map with corresponding css/sass compatible color values */
    $colors: (
@@ -139,11 +139,11 @@ Generates colors as custom properties including variants, with corresponding hel
 
 Supplies font styles for injection and styles with corresponding helper classes for usage.
 
- - *$class*: 'ui-font'
- - *$style-prefix*: '--'
- - *$fluid-attribute*: 'fluid'
- - *$no-max-attribute*: 'no-max'
- - config($styles) - Sets available style declarations.
+ - *$class*: ```'ui-font'```
+ - *$style-prefix*: ```'--'```
+ - *$fluid-attribute*: ```'fluid'```
+ - *$no-max-attribute*: ```'no-max'```
+ - config(```$styles```) - Sets available style declarations.
    ```scss
    $styles: (
      
@@ -218,7 +218,7 @@ Supplies font styles for injection and styles with corresponding helper classes 
      ),
    );
    ```
- - get($style) - Outputs selected font style in given context.
+ - get(```$style```) - Outputs selected font style in given context.
  - styles() - Outputs configured font styles as helper classes.
 
 #### + util / images
