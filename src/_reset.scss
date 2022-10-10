@@ -1,0 +1,78 @@
+/**
+ * Global reset
+ *  A set of basic global reset styles.
+ */
+
+/**
+ * Generate reset styles
+ * @public
+ * @output Outputs reset styles
+ */
+@mixin styles() {
+
+  // Force global box-sizing
+  *,::before,::after {
+    box-sizing: border-box;
+  }
+
+  // Clean body
+  body {
+    margin: 0;
+    padding: 0;
+
+    // Always use smooth scrolling by default
+    scroll-behavior: smooth;
+
+    // This ensures that any background is visible across the full viewport
+    min-height: 100vh;
+  }
+
+  // Remove focus rect for all elements
+  *:hover,
+  *:active,
+  *:focus {
+    outline: none;
+  }
+
+  // Default block types, remove margin and padding
+  main, header, footer, section, article, figure, figcaption, fieldset, details, summary {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  fieldset {
+    border: 0;
+  }
+
+  // Explicit input font-family elements
+  button, input, select, textarea {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Cursor highlight
+  button, select {
+    cursor: pointer;
+  }
+
+  // Cleanup links
+  a {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}
