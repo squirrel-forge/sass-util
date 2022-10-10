@@ -46,58 +46,58 @@ $no-max-attribute: 'no-max' !default;
  * @private
  * @type {map}
  */
-$-config: ();
+$-styles: ();
 
 /**
- * Update component config options
+ * Update font styles index
  * @public
- * @param {map} $font-styles - Map of font styles
- * @output {void} - Only sets style declarations
+ * @param {map} $styles - Map of font styles
+ * @output {void} - Sets available style declarations
  */
-@mixin config($font-styles) {
-  $-config: abstract.config($font-styles, $-config, true, false, 'ui-font.config::') !global;
+@mixin config($styles) {
+  $-styles: abstract.config($styles, $-styles, true, false, 'ui-font.config::') !global;
 }
 
 /**
  * Render font style in current context
  * @public
  * @param {string} $style - Style name
- * @output Outputs selected font style
+ * @output Outputs selected font style in given context
  */
 @mixin get($style) {
 
   // Style must be defined
-  @if map.has-key($-config, $style) != true {
+  @if map.has-key($-styles, $style) != true {
     @error 'The font style "#{$style}" is not defined';
   }
 
   // Style contains a fluid property
-  @if map.has-key(map.get($-config, $style), $fluid-attribute) {
-    @include mixins.font-fluid($style, $-config, null, $fluid-attribute, $no-max-attribute);
+  @if map.has-key(map.get($-styles, $style), $fluid-attribute) {
+    @include mixins.font-fluid($style, $-styles, null, $fluid-attribute, $no-max-attribute);
   }
 
   // Simple font style
   @else {
-    @include mixins.font($style, $-config);
+    @include mixins.font($style, $-styles);
   }
 }
 
 /**
- * Generate component styles
+ * Generate font styles
  * @public
- * @output Outputs configured component styles
+ * @output Outputs configured font styles as helper classes
  */
 @mixin styles() {
 
   // Must have at least one defined style
-  @if meta.type-of($-config) != map {
+  @if meta.type-of($-styles) != map {
     @error 'You must define at least one font style using the config mixin';
   }
 
   .#{$class} {
 
     // Cycle styles
-    @each $style, $data in $-config {
+    @each $style, $data in $-styles {
 
         // Style contains a media query
         $query: abstract.has-query($style);
@@ -112,8 +112,8 @@ $-config: ();
           &#{$style-prefix}#{$stripped-style} {
 
             // Style contains a fluid property
-            @if map.has-key(map.get($-config, $style), $fluid-attribute) {
-              @include mixins.font-fluid($style, $-config, null, $fluid-attribute, $no-max-attribute);
+            @if map.has-key(map.get($-styles, $style), $fluid-attribute) {
+              @include mixins.font-fluid($style, $-styles, null, $fluid-attribute, $no-max-attribute);
             }
 
             // We only have a media query
@@ -121,7 +121,7 @@ $-config: ();
 
               // Wrap style with the given query reference
               @include media.query(list.nth($query, 2)) {
-                @include mixins.font($style, $-config);
+                @include mixins.font($style, $-styles);
               }
             }
           }
@@ -132,7 +132,7 @@ $-config: ();
 
           // Define style
           &#{$style-prefix}#{$style} {
-            @include mixins.font($style, $-config);
+            @include mixins.font($style, $-styles);
           }
         }
       }
