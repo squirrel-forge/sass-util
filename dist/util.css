@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- * @squirrel-forge/build-scss@0.8.1
+ * @squirrel-forge/build-scss@0.8.3
  * Root render template
  *  Set $env: null
  *  Set $production: false
@@ -78,6 +78,18 @@
  * @param {string} $name - String to parse
  * @param {string} $query-marker - String marking the beginning of a query, default: '_at_'
  * @return {string|null} - Query reference or null if not a query
+ */
+/**
+ * Requires
+ */
+/**
+ * Shared default variables
+ */
+/**
+ * Generate spacing values with a base
+ * @param {string|number} $base - Base size including unit or variable
+ * @param {number} $spaces - 1-4 values, unitless used for multiplication
+ * @return {list} - Spacing values list
  */
 /**
  * Requires
@@ -260,13 +272,23 @@ main, header, footer, section, article, figure, figcaption, fieldset, details, s
   padding: 0;
 }
 
+fieldset {
+  border: 0;
+}
+
 button, input, select, textarea {
+  margin: 0;
+  padding: 0;
   font-family: inherit;
   font-size: inherit;
   text-align: inherit;
   color: inherit;
   background-color: transparent;
   border: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
@@ -380,17 +402,11 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 
 .no-select {
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently supported by Chrome and Opera */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 /**
@@ -404,47 +420,47 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   display: none;
 }
 @media screen and (max-width: 767px) {
-  .break-rsp br.breakm {
+  .break-rsp br.break-m {
     display: inline;
   }
 }
 @media screen and (max-width: 991px) {
-  .break-rsp br.breakmtp {
+  .break-rsp br.break-mtp {
     display: inline;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .break-rsp br.breaktp {
+  .break-rsp br.break-tp {
     display: inline;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1024px) {
-  .break-rsp br.breaktl {
+  .break-rsp br.break-tl {
     display: inline;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .break-rsp br.breakt {
+  .break-rsp br.break-t {
     display: inline;
   }
 }
 @media screen and (min-width: 768px) {
-  .break-rsp br.breaktd {
+  .break-rsp br.break-td {
     display: inline;
   }
 }
 @media screen and (min-width: 992px) {
-  .break-rsp br.breaktld {
+  .break-rsp br.break-tld {
     display: inline;
   }
 }
 @media screen and (min-width: 1025px) {
-  .break-rsp br.breakm {
+  .break-rsp br.break-d {
     display: inline;
   }
 }
-@media screen and (min-width: 1366px) {
-  .break-rsp br.breakd {
+@media screen and (min-width: 1440px) {
+  .break-rsp br.break-dm {
     display: inline;
   }
 }
@@ -930,12 +946,12 @@ ol[data-counter=lower-latin] > li::before {
   }
 }
 @media screen and (min-width: 1025px) {
-  .text--center-m {
+  .text--center-d {
     text-align: center;
   }
 }
-@media screen and (min-width: 1366px) {
-  .text--center-d {
+@media screen and (min-width: 1440px) {
+  .text--center-dm {
     text-align: center;
   }
 }
@@ -943,17 +959,11 @@ ol[data-counter=lower-latin] > li::before {
   text-align: right;
 }
 .text--no-select {
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently supported by Chrome and Opera */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 .text--wbreak {
   word-break: break-word;
@@ -1018,15 +1028,15 @@ ol[data-counter=lower-latin] > li::before {
   }
 }
 @media screen and (min-width: 1025px) {
-  .text--wbreak-m {
+  .text--wbreak-d {
     word-break: break-word;
     -webkit-hyphens: auto;
         -ms-hyphens: auto;
             hyphens: auto;
   }
 }
-@media screen and (min-width: 1366px) {
-  .text--wbreak-d {
+@media screen and (min-width: 1440px) {
+  .text--wbreak-dm {
     word-break: break-word;
     -webkit-hyphens: auto;
         -ms-hyphens: auto;
@@ -1081,6 +1091,11 @@ ol[data-counter=lower-latin] > li::before {
 @media screen and (min-width: 992px) {
   .wrap--content {
     max-width: 1000px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .wrap--content {
+    max-width: 1200px;
   }
 }
 .wrap--content-before {
