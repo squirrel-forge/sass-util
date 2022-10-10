@@ -223,11 +223,75 @@ Supplies font styles for injection and styles with corresponding helper classes 
 
 #### + util / images
 
+Supplies asset helpers and decal styles and helper classes and properties for usage.
+
+##### + util / images / assets
+
+ - *$base*: ```'../img/'```
+ - *$cache*: ```''```
+ - get(```$asset```) - Asset url.
+
+##### + util / images / decals
+
+ - *$class*: ```'ui-decals'```
+ - *$static*: ```'--static'```
+ - *$props*: ```'ui-decals-'```
+ - *$width*: ```0```
+ - *$sizing-as-props*: ```false```
+ - config(```$decals```) - Sets available decals declarations.
+   ```scss
+   $decals: (
+     example: (
+   
+       /* One of, before or after, must be set true */
+       before: true,
+       after: true,
+
+       /* Dimensions must be defined and larger than zero */
+       width: 1,
+       height: 1,
+   
+       /* Gets passed through assets.get() */
+       url: 'example.jpg'
+     ),
+   );
+   ```
+ - properties() - Outputs all custom properties in given context.
+ - styles() - Outputs configured decal styles as helper classes.
+
 #### + util / list
+
+Supplies list normalization and customizable styles with corresponding helper classes for usage.
 
 #### + util / media
 
+Supplies a media query helper mixin and configuration.
+
+ - config(```$queries```) - Only sets or updates media query references.
+   ```scss
+   $queries: (
+     custom-breakpoint: 'screen and (max-width: 10rem)',
+   );
+   ```
+ - query(```$query```) - Wraps given content styles in a media query.
+
 #### + util / mixins
+
+Only mixins and helpers that produce output, none of these contain configuration.
+
+ - +attr-isset()
+ - +attr-none()
+ - +attr-set()
+ - +attr-set-map()
+ - +bem-style()
+ - +break-pseudo()
+ - +clear-pseudo()
+ - +font()
+ - +font-fluid()
+ - +font-fluid-base()
+ - +hide-accessible()
+ - +no-select()
+ - +properties()
 
 #### + util / reset
 

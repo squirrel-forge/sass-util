@@ -68,7 +68,7 @@ $-decals: ();
  * Update component config options
  * @public
  * @param {map} $decals - Map of decal definitions
- * @output {void} - Only sets config options
+ * @output {void} - Sets available decals declarations
  */
 @mixin config($decals) {
   $-decals: abstract.config($decals, $-decals, true, false, 'ui-decals.config::') !global;
@@ -77,7 +77,7 @@ $-decals: ();
 /**
  * Generate required custom properties
  * @public
- * @output Adds components custom properties in current scope
+ * @output Outputs all custom properties in given context
  */
 @mixin properties() {
 
@@ -106,7 +106,7 @@ $-decals: ();
 /**
  * Generate base styles
  * @public
- * @output Outputs configured component styles
+ * @output Outputs configured decal styles as helper classes
  */
 @mixin styles() {
 
