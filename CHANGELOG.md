@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0
+ - Breaking changes!
+ - Complete module refactor, rebased all code for *use syntax* with configuration variables and mixins.
+ - Improved error handling and namespacing.
+ - Added *images.assets* and *images.decals* module.
+
 ## 0.8.8
  - Added *mobile.classic* default media query.
  - Added *button cursor* and *fieldset border* to reset styles.
