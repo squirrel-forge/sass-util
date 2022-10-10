@@ -4,7 +4,7 @@
  * Reliable across most browsers
  * @output Sets properties to hide the current scope visually only
  */
-@mixin mx-hide-accessible {
+@mixin hide-accessible {
   position: absolute;
   width: 1px;
   height: 1px;

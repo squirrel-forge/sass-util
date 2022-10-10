@@ -1,0 +1,105 @@
+/**
+ * Requires
+ */
+@use 'sass:meta';
+@use 'sass:list';
+@use '../abstract/has-query' as *;
+@use '../abstract/is-query' as *;
+@use '../mixins/font' as *;
+@use '../mixins/font-fluid' as *;
+@use '../mixins/attr-set-map' as *;
+@use '../media';
+
+/**
+ * Simple BEM creator
+ * @param {map} $nested - BEM map
+ * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @param {string} $error - Error message prefix
+ * @output Creates BEM style structures from a map definition
+ */
+@mixin bem-style($nested, $font-styles: null, $query-marker: '_at_', $error: 'bem-style::') {
+
+  // Must be a map
+  @if meta.type-of($nested) != map {
+    @error '#{$error}$nested[#{meta.type-of($nested)}] must be a map';
+  }
+
+  // Cycle declarations
+  @each $name, $data in $nested {
+
+    // If the value is a map we iterate down
+    @if meta.type-of($data) == map {
+
+      // Name is a media query
+      $query: is-query($name, $query-marker);
+      @if $query {
+        @include media.query($query) {
+          @include bem-style($data);
+        }
+      } @else {
+
+        // Name is combined with media query
+        $combined: has-query($name, $query-marker);
+        @if list.length($combined) > 1 {
+
+          // Set name and query
+          &#{list.nth($combined, 1)} {
+            @include media.query(list.nth($combined, 2)) {
+              @include bem-style($data);
+            }
+          }
+        } @else {
+
+          // Default nesting
+          &#{$name} {
+            @include bem-style($data);
+          }
+        }
+      }
+    } @else {
+
+      // Refer to font style
+      @if $name == 'use-font' {
+
+        // Must be a map
+        @if meta.type-of($font-styles) != map {
+          @error '#{$error}$nested[#{meta.type-of($font-styles)}] must be a map';
+        }
+
+        @include font($data, $font-styles);
+
+        // Refer to fluid font style
+      } @else if $name == 'use-fluid' {
+
+        // Must be a map
+        @if meta.type-of($font-styles) != map {
+          @error '#{$error}$nested[#{meta.type-of($font-styles)}] must be a map';
+        }
+
+        @include font-fluid($data, $font-styles);
+
+        // Refer to custom map variable with attribute references
+      } @else if $name == 'use-attr' {
+
+        // Check for valid data
+        @if meta.type-of($data) == list and list.length($data) == 2 {
+
+          // Attribute reference must be a string
+          @if meta.type-of(list.nth($data, 1)) == string {
+
+            // Any further errors are handled by the mixin
+            @include attr-set-map(list.nth($data, 1), list.nth($data, 2));
+          } @else {
+            @error '#{$error}$name[use-attr] first value must be a string';
+          }
+        } @else {
+          @error '#{$error}$name[use-attr] must be a list with 2 values';
+        }
+      } @else {
+
+        // If not, assume a regular attribute value
+        #{$name}: $data;
+      }
+    }
+  }
+}

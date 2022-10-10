@@ -2,7 +2,7 @@
  * Clear both before
  * @output Defines an ::before pseudo element inside current scope
  */
-@mixin mx-clear-before {
+@mixin clear-before {
   &::before {
     display: block;
     content: '';
@@ -14,7 +14,7 @@
  * Clear both after
  * @output Defines an ::after pseudo element inside current scope
  */
-@mixin mx-clear-after {
+@mixin clear-after {
   &::after {
     display: block;
     content: '';

@@ -6,18 +6,18 @@
 /**
  * Attributes setter
  * @param {Map} $source - Map of attributes
+ * @param {string} $error - Error message prefix
  * @output Adds the given attributes in current scope
  */
-@mixin mx-attr-set($attributes) {
+@mixin attr-set($attributes, $error: 'attr-set::') {
 
-  // Name must be a map
-  @if meta.type-of($attributes) == map {
+  // Attributes must be a map
+  @if meta.type-of($attributes) != map {
+    @error '#{$error}$attributes[#{meta.type-of($attributes)}] must be a map of attributes';
+  }
 
-    // Cycle and set attributes
-    @each $attribute, $value in $attributes {
-      #{$attribute}: $value;
-    }
-  } @else {
-    @error 'mx-attributes::$attributes[#{meta.type-of($attributes)}] must be a map of attributes';
+  // Cycle and set attributes
+  @each $attribute, $value in $attributes {
+    #{$attribute}: $value;
   }
 }

@@ -2,6 +2,8 @@
  * Requires
  */
 @use "sass:math";
+@use '../abstract/strip-unit' as *;
+@use '../media';
 
 /**
  * Fluid style basic setter
@@ -12,9 +14,10 @@
  * @param {size[unit]} $max-font-size - Max font size
  * @param {null|string} $base-query - Optional name for an @mixin mx-media(name), default: null
  * @param {boolean} $no-max - Do not define max query, default: null
+ * @param {string} $error - Error message prefix
  * @output Adds the given font media queries in current scope, with an optional base query
  */
-@mixin mx-font-fluid-base($min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false) {
+@mixin font-fluid-base($min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false, $error: 'font-fluid-base::') {
 
   // Get initial units
   $u1: math.unit($min-vw);
@@ -26,14 +29,14 @@
   @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
     & {
       @if $base-query {
-        @include mx-media($base-query) {
+        @include media.query($base-query) {
           font-size: $min-font-size;
         }
       } @else {
         font-size: $min-font-size;
       }
       @media screen and (min-width: $min-vw) {
-        font-size: calc(#{$min-font-size} + #{fn-strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{fn-strip-unit($max-vw - $min-vw)}));
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
       }
       @if $no-max == false {
         @media screen and (min-width: $max-vw) {
@@ -42,6 +45,6 @@
       }
     }
   } @else {
-    @error 'mx-font-fluid-base::$min and $max unit types must match correctly';
+    @error '#{$error}$min and $max unit types do not match';
   }
 }

@@ -6,14 +6,14 @@
 /**
  * Select current scope only if a given attribute is set
  * @param {string} $attribute - Attribute name, default: 'class'
+ * @param {string} $error - Error message prefix
  * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
  */
-@mixin mx-attr-isset($attribute: 'class') {
-  @if meta.content-exists() {
-    &[#{$attribute}]:not([#{$attribute}='']) {
-      @content;
-    }
-  } @else {
-    @error('mx-attr-isset::@content is required');
+@mixin attr-isset($attribute: 'class', $error: 'attr-isset::') {
+  @if meta.content-exists() != true {
+    @error '#{$error}@content is required';
+  }
+  &[#{$attribute}]:not([#{$attribute}='']) {
+    @content;
   }
 }

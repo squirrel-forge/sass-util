@@ -3,7 +3,7 @@
  * Works across most browsers
  * @output Inserts attributes to prevent text selection
  */
-@mixin mx-no-select {
+@mixin no-select {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */

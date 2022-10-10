@@ -1,33 +1,34 @@
 /**
  * Requires
  */
-@use "sass:meta";
-@use "sass:map";
+@use 'sass:meta';
+@use 'sass:map';
+@use 'attr-set' as *;
 
 /**
  * Attributes from map setter
  * @param {string} $name - Name of attribute group
  * @param {Map} $source - Map of attribute groups to use
+ * @param {string} $error - Error message prefix
  * @output Adds the given attributes in current scope
  */
-@mixin mx-attr-set-map($name, $source) {
+@mixin attr-set-map($name, $source, $error: 'attr-set-map::') {
 
   // Source must be a map
-  @if meta.type-of($source) == map {
-
-    // Name is defined
-    @if map.has-key($source, $name) {
-
-      // Name must be a map
-      @if meta.type-of(map.get($source, $name)) == map {
-        @include mx-attr-set(map.get($source, $name));
-      } @else {
-        @error 'mx-attributes::$name[#{$name}] must be a map of attributes';
-      }
-    } @else {
-      @error 'mx-attributes::$name[#{$name}] is not defined';
-    }
-  } @else {
-    @error 'mx-attributes::$source must be a map';
+  @if meta.type-of($source) != map {
+    @error '#{$error}$source[#{meta.type-of($source)}] must be a map';
   }
+
+  // Name  must be defined in source
+  @if map.has-key($source, $name) != true {
+    @error '#{$error}::$name[#{$name}] is not defined on $source';
+  }
+
+  // Defined name must be a map
+  @if meta.type-of(map.get($source, $name)) != map {
+    @error '#{$error}::$name[#{$name}] must be a map of attributes';
+  }
+
+  // Set available attributes
+  @include attr-set(map.get($source, $name), $error);
 }
