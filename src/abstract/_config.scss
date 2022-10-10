@@ -1,0 +1,44 @@
+/**
+ * Requires
+ */
+@use 'sass:map';
+@use 'sass:meta';
+
+/**
+ * Merge config options
+ * @public
+ * @param {map} $options - Input options map
+ * @param {map} $defaults - Default options map
+ * @param {boolean} $extend - Allow config extension
+ * @param {boolean} $strict - Throws an error with unknown option names
+ * @param {string} $error - Error message prefix
+ * @return {map} - Map with defaults with merged options
+ */
+@function config($options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::') {
+
+  // Require a map extension
+  @if meta.type-of($options) != map {
+    @error '#{$error}options[#{meta.type-of($options)}] must be a map containing at least one name, value pair';
+  }
+
+  // Require the default map
+  @if $extend == false and meta.type-of($defaults) != map {
+    @error '#{$error}defaults[#{meta.type-of($defaults)}] must be a map containing at least one name, value pair';
+  }
+
+  // Cycle options map
+  $result: $defaults;
+  @each $name, $value in $options {
+
+    // And set any values with names corresponding to the defaults
+    @if $extend or map.has-key($defaults, $name) {
+      $result: map.set($result, $name, $value);
+    }
+
+    // Throw an error in strict mode if a name is unknown and extend is false
+    @elseif $strict {
+      @error '#{$error}defaults[#{$name}] does not exist';
+    }
+  }
+  @return $result;
+}
