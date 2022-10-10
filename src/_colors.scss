@@ -1,0 +1,288 @@
+/**
+ * ui-colors
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'abstract/config' as abstract;
+@use 'abstract/default-args' as *;
+@use 'abstract/strip-unit' as *;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-color' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-color-' !default;
+
+/**
+ * Component property suffix
+ * @protected
+ * @type {string} variant suffix
+ */
+$variant-complement: 'comp' !default;
+$variant-grayscale: 'gray' !default;
+$variant-alpha: 'op' !default;
+$variant-invert: 'inv' !default;
+$variant-adjust-hue: 'hue' !default;
+$variant-darken: 'dk' !default;
+$variant-lighten: 'lt' !default;
+$variant-saturate: 'sat' !default;
+$variant-desaturate: 'dsat' !default;
+
+/**
+ * Color defaults
+ * @private
+ * @type {map}
+ */
+$-colors: ();
+
+/**
+ * Color style attributes
+ * @private
+ * @type {map}
+ */
+$-attributes: (
+  text: (color, (base-only)),
+  bg: (background-color, (base-only)),
+  bdr: (border-color, (base-only)),
+);
+
+/**
+ * Color variants
+ * @private
+ * @type {map}
+ */
+$-variants: (
+
+  // Alpha transparency
+  // @type {number} float value from 0 to 1
+  alpha: (),
+
+  // Color inversion
+  // @type {number} percent value from 0% - 100%
+  invert: (),
+
+  // Hue adjust
+  // @type {degrees} degrees value from 0deg to 360deg
+  adjust-hue: (),
+
+  // Darken color
+  // @type {number} percent value from 0% - 100%
+  darken: (),
+
+  // Lighten color
+  // @type {number} percent value from 0% - 100%
+  lighten: (),
+
+  // Saturate color
+  // @type {number} percent value from 0% - 100%
+  saturate: (),
+
+  // Desaturate color
+  // @type {number} percent value from 0% - 100%
+  desaturate: (),
+);
+
+/**
+ * Internal generated names
+ * @private
+ * @type {list}
+ */
+$-generated: ();
+
+/**
+ * Update colors and variants index
+ * @public
+ * @param {map} $colors - Map of colors
+ * @param {map} $variants - Map of variants
+ * @param {map} $attributes - Map of attributes
+ * @output {void} - Only sets config options
+ */
+@mixin config($colors, $variants, $attributes) {
+  $-colors: abstract.config($colors, $-colors, true, false, 'ui-colors.config::$colors::') !global;
+  $-variants: abstract.config($variants, $-variants, true, false, 'ui-colors.config::$variants::') !global;
+  $-attributes: abstract.config($attributes, $-attributes, true, false, 'ui-colors.config::$attributes::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+
+  // Must have at least one defined color
+  @if meta.type-of($-colors) != map {
+    @error 'You must define at least one color using the config mixin';
+  }
+
+  @each $name, $data in $-colors {
+
+    // Get color and variants
+    $data: default-args($data, ());
+    $color: list.nth($data, 1);
+    $variants: list.nth($data, 2);
+
+    // Default color
+    $cname: --#{$props}#{$name};
+    #{$cname}: #{$color};
+    $-generated: list.append($-generated, $cname) !global;
+
+    // Complement
+    @if index($variants, complement) {
+      $cname: --#{$props}#{$name}-#{$variant-complement};
+      #{$cname}: #{complement($color)};
+      $-generated: list.append($-generated, $cname) !global;
+    }
+
+    // Grayscale
+    @if index($variants, grayscale) {
+      $cname: --#{$props}#{$name}-#{$variant-grayscale};
+      #{$cname}: #{grayscale($color)};
+      $-generated: list.append($-generated, $cname) !global;
+    }
+
+    // Alpha variants
+    @if index($variants, alpha) {
+      $vals: map-get($-variants, alpha);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-alpha}-#{$val * 100};
+          #{$cname}: #{rgba($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+
+    // Inversion variants
+    @if index($variants, invert) {
+      $vals: map-get($-variants, invert);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-invert}-#{strip-unit($val)};
+          #{$cname}: #{invert($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+
+    // Hue variants
+    @if index($variants, adjust-hue) {
+      $vals: map-get($-variants, adjust-hue);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-adjust-hue}-#{strip-unit($val)};
+          #{$cname}: #{adjust-hue($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+
+    // Darken variants
+    @if index($variants, darken) {
+      $vals: map-get($-variants, darken);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-darken}-#{strip-unit($val)};
+          #{$cname}: #{darken($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+
+    // Lighten variants
+    @if index($variants, lighten) {
+      $vals: map-get($-variants, lighten);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-lighten}-#{strip-unit($val)};
+          #{$cname}: #{lighten($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+
+    // Saturate variants
+    @if index($variants, saturate) {
+      $vals: map-get($-variants, saturate);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-saturate}-#{strip-unit($val)};
+          #{$cname}: #{saturate($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+
+    // Desaturate variants
+    @if index($variants, desaturate) {
+      $vals: map-get($-variants, desaturate);
+      @if meta.type-of($vals) == list {
+        @each $val in $vals {
+          $cname: --#{$props}#{$name}-#{$variant-desaturate}-#{strip-unit($val)};
+          #{$cname}: #{desaturate($color, $val)};
+          $-generated: list.append($-generated, $cname) !global;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Must have at least one defined color
+  @if meta.type-of($-colors) != map {
+    @error 'You must define at least one color using the config mixin';
+  }
+
+  // Must have at least one defined attribute
+  @if meta.type-of($-attributes) != map {
+    @error 'You must define at least one attribute using the config mixin';
+  }
+
+  .#{$class} {
+    @each $style, $data in $-attributes {
+
+      // Set the name as sub type
+      &--#{$style} {
+
+        // Get attribute name and color/variant limits
+        $data: default-args($data, ());
+        $attr: list.nth($data, 1);
+        $limit: list.nth($data, 2);
+        @if list.index($limit, base-only) {
+          $limit: map.keys($-colors);
+        }
+
+        @each $color in $-generated {
+          $prefix: --#{$props};
+          $variant-name: string.slice($color, string.length($prefix) + 1);
+          @if list.length($limit) == 0 or list.length($limit) > 0 and list.index($limit, $variant-name) {
+            &-#{$variant-name} {
+              #{$attr}: var(#{$color});
+            }
+          }
+        }
+      }
+    }
+  }
+}
