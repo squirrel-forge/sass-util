@@ -29,7 +29,7 @@ $center: '--center' !default;
  * @protected
  * @type {string} list of query references
  */
-$center-queries: [
+$center-queries: (
   mobile,
   mobile-tablet-portrait,
   tablet-portrait,
@@ -39,7 +39,7 @@ $center-queries: [
   tablet-landscape-desktop,
   desktop,
   desktop-medium
-] !default;
+) !default;
 
 /**
  * Component class variant suffix
@@ -53,7 +53,7 @@ $right: '--right' !default;
  * @protected
  * @type {string} list of query references
  */
-$right-queries: [
+$right-queries: (
   mobile,
   mobile-tablet-portrait,
   tablet-portrait,
@@ -63,7 +63,7 @@ $right-queries: [
   tablet-landscape-desktop,
   desktop,
   desktop-medium
-] !default;
+) !default;
 
 /**
  * Component class variant suffix
@@ -77,7 +77,7 @@ $left: '--left' !default;
  * @protected
  * @type {string} list of query references
  */
-$left-queries: [
+$left-queries: (
   mobile,
   mobile-tablet-portrait,
   tablet-portrait,
@@ -87,12 +87,12 @@ $left-queries: [
   tablet-landscape-desktop,
   desktop,
   desktop-medium
-] !default;
+) !default;
 
 /**
  * Generate component styles
  * @public
- * @output Outputs configured component styles
+ * @output Outputs configured alignment helper styles
  */
 @mixin styles() {
   .#{$class} {

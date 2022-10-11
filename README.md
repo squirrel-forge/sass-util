@@ -356,6 +356,70 @@ Supplies a basic reset stylesheet, has no configuration options.
 
 #### + util / text
 
+Supplies text accessibility, alignment, break helpers and some normalization.
+
+##### + util / text / a11y
+
+ - *$class*: ```'ui-text'```
+ - *$hide-a11y*: ```'--hide-a11y'```
+ - *$no-select*: ```'--no-select'```
+ - styles() - Outputs configured accessibility helpers.
+
+##### + util / text / align
+
+ - *$class*: ```'ui-text'```
+ - *$center*: ```'--center'```
+ - *$center-queries*: ```(mobile, mobile-tablet-portrait, tablet-portrait, tablet-landscape, tablet, tablet-desktop, tablet-landscape-desktop, desktop, desktop-medium)```
+ - *$right*: ```'--right'```
+ - *$right-queries*: ```(mobile, mobile-tablet-portrait, tablet-portrait, tablet-landscape, tablet, tablet-desktop, tablet-landscape-desktop, desktop, desktop-medium)```
+ - *$left*: ```'--left'```
+ - *$left-queries*: ```(mobile, mobile-tablet-portrait, tablet-portrait, tablet-landscape, tablet, tablet-desktop, tablet-landscape-desktop, desktop, desktop-medium)```
+ - styles() - Outputs configured alignment helper styles.
+
+##### + util / text / breaks
+
+ - *$class*: ```'ui-text'```
+ - *$break*: ```'--break'```
+ - *$clear*: ```'--clear'```
+ - *$always*: ```'--break-always'```
+ - *$none*: ```'--no-wrap'```
+ - *$word*: ```'--wbreak'```
+ - *$word-queries*: ```(mobile, mobile-tablet-portrait, tablet-portrait, tablet-landscape, tablet, tablet-desktop, tablet-landscape-desktop, desktop, desktop-medium)```
+ - *$global*: ```false```
+ - *$element-class*: ```'ui-break--'```
+ - *$element-wrap-class*: ```'ui-break-wrap'```
+ - *$queries*: ```(mobile, mobile-tablet-portrait, tablet-portrait, tablet-landscape, tablet, tablet-desktop, tablet-landscape-desktop, desktop, desktop-medium)```
+ - styles() - Outputs configured break helper styles.
+
+##### + util / text / normalize
+
+ - *$props*: ```'ui-text-normalize-'```
+ - config(```$options```) - Only sets config options.
+   ```scss
+   $options: (
+   
+     /**
+      * Headline margin
+      * @type {margin} full margin value
+      */
+     headline-margin: 1rem 0,
+
+     /**
+      * Paragraph margin
+      * @type {margin} full margin value
+      */
+     paragraph-margin: 1rem 0,
+
+     /**
+      * Mobile text size adjust
+      * @type {number} percent number
+      */
+     size-adjust: 100%,
+   );
+   ```
+ - properties() - Adds components custom properties in current scope.
+ - styles() - Outputs configured component styles.
+
 #### + util / wrap
 
 ## Notes

@@ -58,7 +58,7 @@ $word: '--wbreak' !default;
  * @protected
  * @type {string} class suffix
  */
-$word-queries: [
+$word-queries: (
   mobile,
   mobile-tablet-portrait,
   tablet-portrait,
@@ -68,7 +68,7 @@ $word-queries: [
   tablet-landscape-desktop,
   desktop,
   desktop-medium
-] !default;
+) !default;
 
 /**
  * Component responsive break mode
@@ -96,7 +96,7 @@ $element-wrap-class: 'ui-break-wrap' !default;
  * @protected
  * @type {string} css class
  */
-$queries: [
+$queries: (
   mobile,
   mobile-tablet-portrait,
   tablet-portrait,
@@ -106,12 +106,12 @@ $queries: [
   tablet-landscape-desktop,
   desktop,
   desktop-medium
-] !default;
+) !default;
 
 /**
  * Generate component styles
  * @public
- * @output Outputs configured component styles
+ * @output Outputs configured break helper styles
  */
 @mixin styles() {
 
