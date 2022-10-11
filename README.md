@@ -422,6 +422,18 @@ Supplies text accessibility, alignment, break helpers and some normalization.
 
 #### + util / wrap
 
+Provides a simple wrapping helper system.
+
+ - *$class*: ```'ui-wrap'```
+ - *$no-flex*: ```'--no-flex'```
+ - config(```$options```) - Only sets config options.
+   ```scss
+   $options: (
+     /* BEM mixin style declarations */
+   );
+   ```
+ - styles() - Outputs configured component styles.
+
 ## Notes
 
 Following some notes on sass behaviours directly relevant to using the library and modules.
