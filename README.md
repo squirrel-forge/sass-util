@@ -362,11 +362,52 @@ Supplies a basic reset stylesheet, has no configuration options.
 
 Following some notes on sass behaviours directly relevant to using the library and modules.
 
+### Resetting configs
+
+With any modules that allow extending, config mixins can be reset the maps index to an empty list by passing an explicit *null* value, as following:
+
+```scss
+/* Clear all previously defined decals */
+@include util.images-decals-config(null);
+
+/* Add a new data set */
+@include util.images-decals-config((
+  example: (
+    before: true,
+    after: true,
+    width: 1,
+    height: 1,
+    url: 'example.jpg'
+  ),
+));
+```
+
 ### Use syntax
 
 When loading via the *@use* syntax versus the classic *@import* ,there are a few things to keep in mind.
 Using the *with* keyword to set any configuration variables can only be done the first time a module is loaded with *@use*, any attempt to do it differently will produce an error.
-If you wish to change configuration variables in specific situations, not that anything that module will do afterwards will use the new value even when loaded in a different context within the same compile tree.
+
+#### Changing configuration for multiple usages
+
+If you wish to change configuration variables in specific situations, note that anything that module will do afterwards will use the new value even when loaded in a different context within the same compile tree.
+
+You can set values from the given use context as following:
+
+```scss
+@use '~@squirrel-forge/sass-util' as util with (
+  $images-decals-props: 'decal-',
+);
+/* This renders the initial configration */
+:root { @include util.images-decals-properties; }
+
+/* Then we change a config value and the output changes */
+util.$images-decals-props: 'foo-';
+.context { @include util.images-decals-properties; }
+
+/* If we use this module again later or in another file loaded after the above code, */
+/* then we need to reset the value if we want the initial setting */
+util.$images-decals-props: 'decal-';
+```
 
 ### Sass maps
 
