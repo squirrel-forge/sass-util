@@ -7,50 +7,50 @@
  *  Import: ./util.scss;
  */
 /**
- * Defaults
- * logical information used for utilities, mixins and functions
- * all variables can be overridden, but must sustain their format
+ * Global reset
+ *  A set of basic global reset styles.
  */
 /**
- * @file : defaults/_index
- * Always load all variables
- * No need for conditions, collisions should be handled on the implementation side
- * Order matters
+ * Generate reset styles
+ * @public
+ * @output Outputs reset styles
  */
 /**
- * Global settings
+ * Requires
  */
 /**
- * Utility settings
+ * Merge config options
+ * @public
+ * @param {map} $options - Input options map
+ * @param {map} $defaults - Default options map
+ * @param {boolean} $extend - Allow config extension
+ * @param {boolean} $strict - Throws an error with unknown option names
+ * @param {string} $error - Error message prefix
+ * @return {map} - Map with defaults with merged options
  */
 /**
- * Media query settings
+ * Media queries
+ *  Helper mixin and configuration.
  */
 /**
- * Break settings
+ * Requires
  */
 /**
- * Color settings
+ * Query defaults
+ * @private
+ * @type {map}
  */
 /**
- * Font settings
+ * Update/extend media queries
+ * @public
+ * @param {map} $queries - Map of media queries
+ * @output {void} - Only sets or updates media query references
  */
 /**
- * List settings
- */
-/**
- * Text settings
- */
-/**
- * Wrap settings
- */
-/**
- * Mixins
- * Collection of functions and mixins
- */
-/**
- * @file : functions/_index
- * Always load all functions
+ * Media query wrapper
+ * @public
+ * @param {string} query - Media name reference
+ * @output Wraps given content styles in a media query
  */
 /**
  * Requires
@@ -65,9 +65,22 @@
  * Requires
  */
 /**
+ * Split string
+ * Thanks to dayenite and Tofandel, please refer to:
+ * https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass#42295154
+ * @param {string} $string - String to split
+ * @param {string} $separator - Separator to split by
+ * @param {boolean} $no-empty - Set false to return empty parts, default: true
+ * @return {list} - Separated list of strings
+ */
+/**
+ * Requires
+ */
+/**
  * Get name and query from string
  * @param {string} $name - String to parse
  * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @param {string} $error - Error message prefix
  * @return {list} - Empty if no query was found
  */
 /**
@@ -81,9 +94,6 @@
  */
 /**
  * Requires
- */
-/**
- * Shared default variables
  */
 /**
  * Generate spacing values with a base
@@ -104,33 +114,13 @@
  * Requires
  */
 /**
- * Split string
- * Thanks to dayenite and Tofandel, please refer to:
- * https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass#42295154
- * @param {string} $string - String to split
- * @param {string} $separator - Separator to split by
- * @param {boolean} $no-empty - Set false to return empty parts, default: true
- * @return {list} - Separated list of strings
- */
-/**
- * Requires
- */
-/**
  * Strip unit from value
  * @param {*} $value - Unit value
  * @return {*} - Unitless value
  */
 /**
- * @file : mixins/_index
- * Always load all mixins
- */
-/**
- * Requires
- */
-/**
- * Select current scope only if a given attribute is set
- * @param {string} $attribute - Attribute name, default: 'class'
- * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ * Abstracts
+ *  functions forwarding index
  */
 /**
  * Requires
@@ -139,6 +129,16 @@
  * Select current scope only if no class is set
  * @param {string} $attribute - Attribute name
  * @param {boolean} $empty - Include empty attribute
+ * @param {string} $error - Error message prefix
+ * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ */
+/**
+ * Requires
+ */
+/**
+ * Select current scope only if a given attribute is set
+ * @param {string} $attribute - Attribute name, default: 'class'
+ * @param {string} $error - Error message prefix
  * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
  */
 /**
@@ -147,6 +147,7 @@
 /**
  * Attributes setter
  * @param {Map} $source - Map of attributes
+ * @param {string} $error - Error message prefix
  * @output Adds the given attributes in current scope
  */
 /**
@@ -156,38 +157,17 @@
  * Attributes from map setter
  * @param {string} $name - Name of attribute group
  * @param {Map} $source - Map of attribute groups to use
+ * @param {string} $error - Error message prefix
  * @output Adds the given attributes in current scope
  */
 /**
  * Requires
  */
 /**
- * Simple BEM creator
- * @param {map} $nested - BEM map
- * @param {string} $query-marker - String that marks the split point, default: '_at_'
- * @output Creates BEM style structures from a map definition
- */
-/**
- * Insert a line break before content
- * @output Inserts a pseudo before with break
- */
-/**
- * Insert a line break after content
- * @output Inserts a pseudo after with break
- */
-/**
- * Clear both before
- * @output Defines an ::before pseudo element inside current scope
- */
-/**
- * Clear both after
- * @output Defines an ::after pseudo element inside current scope
- */
-/**
  * Font style setter
  * Adds the given font style attributes in current scope
  * @param {string} $style - Name of font style
- * @param {Map} $styles - Map of font styles to use
+ * @param {map} $styles - Map of font styles to use
  * @output Adds the given font attributes in current scope
  */
 /**
@@ -202,6 +182,7 @@
  * @param {size[unit]} $max-font-size - Max font size
  * @param {null|string} $base-query - Optional name for an @mixin mx-media(name), default: null
  * @param {boolean} $no-max - Do not define max query, default: null
+ * @param {string} $error - Error message prefix
  * @output Adds the given font media queries in current scope, with an optional base query
  */
 /**
@@ -211,26 +192,43 @@
  * Fluid font style setter
  * Adds the given font style attributes and fluid style in current scope
  * @param {string} $style - Name of font style
- * @param {string} $base-query - Optional name for an @mixin mx-media(name), default: null
  * @param {Map} $styles - Map of font styles to use, default: $font-styles
- * @param {string} $fluid-attribute - Name of attribute to read fluid properties from, default: 'fluid' = $util-font-fluid-attribute
- * @param {string} $no-max-attribute - Name of attribute to for no-max argument, default: 'no-max' = $util-font-no-max-attribute
+ * @param {string} $base-query - Optional name for an @mixin media.query(name), default: null
+ * @param {string} $fluid-attribute - Name of attribute to read fluid properties from, default: 'fluid'
+ * @param {string} $no-max-attribute - Name of attribute to for no-max argument, default: 'no-max'
  * @output Adds the given font attributes and media queries in current scope
- */
-/**
- * Hide an element
- * but leave it accessible to screen readers
- * Reliable across most browsers
- * @output Sets properties to hide the current scope visually only
  */
 /**
  * Requires
  */
 /**
- * Media
- * @param {string} query - Media name reference
- * @param {Map} queries - Media query map to use
- * @output Wraps given content styles in a media query
+ * Simple BEM creator
+ * @param {map} $nested - BEM map
+ * @param {string} $query-marker - String that marks the split point, default: '_at_'
+ * @param {string} $error - Error message prefix
+ * @output Creates BEM style structures from a map definition
+ */
+/**
+ * Insert a line break before content
+ * @output Inserts a pseudo before with a break
+ */
+/**
+ * Insert a line break after content
+ * @output Inserts a pseudo after with a break
+ */
+/**
+ * Clear both before
+ * @output Inserts a pseudo before with a clear both
+ */
+/**
+ * Clear both after
+ * @output Inserts a pseudo after with a clear both
+ */
+/**
+ * Hide an element
+ * but leave it accessible to screen readers
+ * Reliable across most browsers
+ * @output Inserts attributes to hide the current scope visually only
  */
 /**
  * Prevent text selection
@@ -238,251 +236,536 @@
  * @output Inserts attributes to prevent text selection
  */
 /**
- * Some global styles
- * reset, basic font and image settings, scroll styles etc.
- * Only imported if previously set to true
+ * Requires
  */
 /**
- * @file : global/_index
- * Always load all globals
+ * Generate custom properties
+ * @public
+ * @param {map} $props - Map of properties
+ * @param {string} $prefix - Property prefix
+ * @param {string} $error - Error message prefix
+ * @output Adds given custom properties in current scope
  */
 /**
- * Only use on condition, default: true
- */
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
-
-*, ::before, ::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-*:hover,
-*:active,
-*:focus {
-  outline: none;
-}
-
-main, header, footer, section, article, figure, figcaption, fieldset, details, summary {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-fieldset {
-  border: 0;
-}
-
-button, input, select, textarea {
-  margin: 0;
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-  text-align: inherit;
-  color: inherit;
-  background-color: transparent;
-  border: 0;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  outline: none;
-}
-a:active, a:focus, a:hover, a:visited {
-  text-decoration: none;
-  outline: none;
-}
-
-/**
- * Only use on condition, default: true
- */
-body {
-  scroll-behavior: smooth;
-}
-
-/**
- * Only use on condition, default: true
- */
-img {
-  -ms-interpolation-mode: bicubic;
-}
-
-/**
- * Only use on condition, default: true
- */
-html {
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-  text-rendering: optimizeSpeed;
-}
-
-/**
- * Only use on condition, default: true
- */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/**
- * Only use on condition, default: true
- */
-:root {
-  --font-headline-margin: 1rem 0;
-  --font-paragraph-margin: 1rem 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: var(--font-headline-margin);
-}
-
-p {
-  margin: var(--font-paragraph-margin);
-}
-
-h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, p:first-child {
-  margin-top: 0;
-}
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child {
-  margin-bottom: 0;
-}
-
-/**
- * Import utility classes
- * makes a set of global utility classes available using available settings
- * Only imported if previously set to true
+ * Mixins
+ *  mixins forwarding index
  */
 /**
- * @file : util/_index
- * Always load all utils
+ * ui-colors
+ *  Custom properties and styles with configuration.
  */
-/**
- * Basic helpers
- */
-.break-before::before {
-  content: "\a";
-  white-space: pre;
-}
-.break-after::after {
-  content: "\a";
-  white-space: pre;
-}
-
-.clear-before::before {
-  display: block;
-  content: "";
-  clear: both;
-}
-.clear-after::after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-.hide-a11y {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.no-select {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-
-/**
- * Break helpers
- */
-/**
- * Output the wrapped version, explicitly allow responsive breaks
- * or set them global without a wrapper class
- */
-.break-rsp br {
-  display: none;
-}
-@media screen and (max-width: 767px) {
-  .break-rsp br.break-m {
-    display: inline;
-  }
-}
-@media screen and (max-width: 991px) {
-  .break-rsp br.break-mtp {
-    display: inline;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .break-rsp br.break-tp {
-    display: inline;
-  }
-}
-@media screen and (min-width: 992px) and (max-width: 1024px) {
-  .break-rsp br.break-tl {
-    display: inline;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .break-rsp br.break-t {
-    display: inline;
-  }
-}
-@media screen and (min-width: 768px) {
-  .break-rsp br.break-td {
-    display: inline;
-  }
-}
-@media screen and (min-width: 992px) {
-  .break-rsp br.break-tld {
-    display: inline;
-  }
-}
-@media screen and (min-width: 1025px) {
-  .break-rsp br.break-d {
-    display: inline;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .break-rsp br.break-dm {
-    display: inline;
-  }
-}
-
-.break-keep br {
-  display: inline;
-}
-
-.no-break {
-  white-space: nowrap;
-}
-
 /**
  * Requires
  */
 /**
- * Color helpers
+ * Component css class
+ * @protected
+ * @type {string} css class
  */
 /**
- * Color css variables including variants
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Component property suffix
+ * @protected
+ * @type {string} variant suffix
+ */
+/**
+ * Color defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Color style attributes
+ * @private
+ * @type {map}
+ */
+/**
+ * Color variants
+ * @private
+ * @type {map}
+ */
+/**
+ * Internal generated names
+ * @private
+ * @type {list}
+ */
+/**
+ * Update colors and variants index
+ * @public
+ * @param {map} $colors - Map of colors
+ * @param {map} $variants - Map of variants
+ * @param {map} $attributes - Map of attributes
+ * @output {void} - Sets available color references
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Outputs all custom properties in given context
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+/**
+ * ui-assets
+ *  Function with configuration.
+ */
+/**
+ * Asset base path
+ * @protected
+ * @type {string} url path
+ */
+/**
+ * Asset cache breaker
+ * @protected
+ * @type {string} url suffix
+ */
+/**
+ * Get asset url
+ * @param {string} $asset - Relative asset path
+ * @param {string} $base - Optional asset base url
+ * @return {url} - Asset url
+ */
+/**
+ * ui-decals
+ *  Custom properties and styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component static css suffix
+ * @protected
+ * @type {string} css class suffix
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Decals default width
+ * @protected
+ * @type {number} width value
+ */
+/**
+ * Use sizing via width and height property
+ * @protected
+ * @type {boolean} size via custom properties
+ */
+/**
+ * @typedef {map} Decal - Defines a decal, one before or after key must be set true
+ * @key {undefined|boolean} before - Render before pseudo
+ * @key {undefined|boolean} after - Render after pseudo
+ * @key {number} width - Number unitless
+ * @key {number} height - Number unitless
+ * @key {string} url - Asset name
+ */
+/**
+ * Decals definitions
+ * @private
+ * @type {map<string, Decal>}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $decals - Map of decal definitions
+ * @output {void} - Sets available decals declarations
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Outputs all custom properties in given context
+ */
+/**
+ * Generate base styles
+ * @public
+ * @output Outputs configured decal styles as helper classes
+ */
+/**
+ * Images
+ *  Submodule forwarding index
+ */
+/**
+ * Font style generation
+ *  Custom properties and styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component style prefix
+ * @protected
+ * @type {string} css class sub style separator
+ */
+/**
+ * Component fluid style attribute name
+ * @protected
+ * @type {string} map key
+ */
+/**
+ * Component fluid style attribute name
+ * @protected
+ * @type {string} map key
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update font styles index
+ * @public
+ * @param {map} $styles - Map of font styles
+ * @output {void} - Sets available style declarations
+ */
+/**
+ * Render font style in current context
+ * @public
+ * @param {string} $style - Style name
+ * @output Outputs selected font style in given context
+ */
+/**
+ * Generate font styles
+ * @public
+ * @output Outputs configured font styles as helper classes
+ */
+/**
+ * ui-list normalize
+ *  Custom properties and styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+/**
+ * ui-list customize
+ *  Custom properties and styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component data property
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Component data property
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Default counter style
+ * @protected
+ * @type {string} counter style name
+ */
+/**
+ * Counter suffix
+ * @protected
+ * @type {string} display suffix
+ */
+/**
+ * Counter space
+ * @protected
+ * @type {string} spacing after
+ */
+/**
+ * List styles
+ * @protected
+ * @type {list} list-style
+ */
+/**
+ * List custom styles
+ * @protected
+ * @type {map<string, list>} custom style
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+/**
+ * List
+ *  Submodule forwarding index
+ */
+/**
+ * ui-text accessibility helpers
+ *  Helper class definitions.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured accessibility helpers
+ */
+/**
+ * ui-text align
+ *  Styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured alignment helper styles
+ */
+/**
+ * ui-text breaks
+ *  Styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component responsive break mode
+ * @protected
+ * @type {boolean}
+ */
+/**
+ * Component break css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component break wrap css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component break wrap css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured break helper styles
+ */
+/**
+ * Text normalize
+ *  Custom properties and styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+/**
+ * Text
+ *  Submodule forwarding index
+ */
+/**
+ * ui-wrap
+ *  Custom properties and styles with configuration.
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component no flex suffix
+ * @protected
+ * @type {string} class variant
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+/**
+ * Utilities
+ *  Modules and submodules forwarding and config
+ */
+/**
+ * Classic utilities setup
+ *  Using this stylesheet will reset all the class and property names to match version 0.8.x
+ *  Note that this does not match the version 0.8.x output, some changes are introduced by the new structure
+ */
+/**
+ * Configure colors
+ */
+/**
+ * Configure decals
+ */
+/**
+ * Define root variables
  */
 :root {
+  --text-normalize-headline-margin: 1rem 0;
+  --text-normalize-paragraph-margin: 1rem 0;
+  --text-normalize-size-adjust: 100%;
   --color-off-white: #fffbf0;
   --color-grey-2: #c2d1d9;
   --color-cerulean: #0081c8;
@@ -539,13 +822,424 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   --color-butterscotch-dsat-70: #bba682;
   --color-butterscotch-dsat-80: #b2a48b;
   --color-butterscotch-dsat-90: #a8a195;
+  --decal-example-width: 1;
+  --decal-example-height: 1;
+  --decal-example-url: url("../img/example.jpg?1");
+  --decal-example-before-width: 0;
+  --decal-example-after-width: 0;
+  --list-margin: 1rem 0;
+  --list-padding: 0 0 0;
+  --list-indent-width: 2rem;
+  --list-item-margin: 0;
+  --list-item-after-margin: 1rem 0 0;
 }
 
 /**
- * Color utilities
+ * Render reset
  */
+*, ::before, ::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+*:hover,
+*:active,
+*:focus {
+  outline: none;
+}
+
+main, header, footer, section, article, figure, figcaption, fieldset, details, summary {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  border: 0;
+}
+
+button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+}
+
+button, select {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+a:active, a:focus, a:hover, a:visited {
+  text-decoration: none;
+  outline: none;
+}
+
 /**
- * Color definitions
+ * Render text normalize and helpers
+ */
+html {
+  -webkit-text-size-adjust: var(--text-normalize-size-adjust);
+     -moz-text-size-adjust: var(--text-normalize-size-adjust);
+      -ms-text-size-adjust: var(--text-normalize-size-adjust);
+          text-size-adjust: var(--text-normalize-size-adjust);
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: var(--text-normalize-headline-margin);
+}
+
+p {
+  margin: var(--text-normalize-paragraph-margin);
+}
+
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, p:first-child {
+  margin-top: 0;
+}
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child {
+  margin-bottom: 0;
+}
+
+.text--hide-a11y {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text--no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.text--center {
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .text--center-m {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 991px) {
+  .text--center-mtp {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text--center-tp {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .text--center-tl {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .text--center-t {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text--center-td {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 992px) {
+  .text--center-tld {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .text--center-d {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text--center-dm {
+    text-align: center;
+  }
+}
+.text--right {
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  .text--right-m {
+    text-align: right;
+  }
+}
+@media screen and (max-width: 991px) {
+  .text--right-mtp {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text--right-tp {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .text--right-tl {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .text--right-t {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text--right-td {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 992px) {
+  .text--right-tld {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .text--right-d {
+    text-align: right;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text--right-dm {
+    text-align: right;
+  }
+}
+.text--left {
+  text-align: left;
+}
+@media screen and (max-width: 767px) {
+  .text--left-m {
+    text-align: left;
+  }
+}
+@media screen and (max-width: 991px) {
+  .text--left-mtp {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text--left-tp {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .text--left-tl {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .text--left-t {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text--left-td {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 992px) {
+  .text--left-tld {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .text--left-d {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text--left-dm {
+    text-align: left;
+  }
+}
+
+.break-rsp br {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .break-rsp br.break-m {
+    display: inline;
+  }
+}
+@media screen and (max-width: 991px) {
+  .break-rsp br.break-mtp {
+    display: inline;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .break-rsp br.break-tp {
+    display: inline;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .break-rsp br.break-tl {
+    display: inline;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .break-rsp br.break-t {
+    display: inline;
+  }
+}
+@media screen and (min-width: 768px) {
+  .break-rsp br.break-td {
+    display: inline;
+  }
+}
+@media screen and (min-width: 992px) {
+  .break-rsp br.break-tld {
+    display: inline;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .break-rsp br.break-d {
+    display: inline;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .break-rsp br.break-dm {
+    display: inline;
+  }
+}
+
+.text--break-before::before {
+  content: "\a";
+  white-space: pre;
+}
+.text--break-after::after {
+  content: "\a";
+  white-space: pre;
+}
+.text--clear-before::before {
+  display: block;
+  content: "";
+  clear: both;
+}
+.text--clear-after::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.text--break-keep br {
+  display: inline;
+}
+.text--no-break {
+  white-space: nowrap;
+}
+.text--wbreak {
+  word-break: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+@media screen and (max-width: 767px) {
+  .text--wbreak-m {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (max-width: 991px) {
+  .text--wbreak-mtp {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text--wbreak-tp {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .text--wbreak-tl {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .text--wbreak-t {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text--wbreak-td {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .text--wbreak-tld {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .text--wbreak-d {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text--wbreak-dm {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+
+/**
+ * Render color styles
  */
 .color--text-off-white {
   color: var(--color-off-white);
@@ -747,18 +1441,133 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 
 /**
- * Requires
+ * Render decal styles
  */
+.decals {
+  position: static;
+}
+.decals:not(.decals--static) {
+  position: relative;
+}
+.decals::before, .decals::after {
+  position: absolute;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+}
+.decals--example-before::before {
+  width: var(--decal-example-before-width);
+  background-image: var(--decal-example-url);
+  padding-bottom: calc(1 * var(--decal-example-before-width));
+}
+.decals--example-after::after {
+  width: var(--decal-example-after-width);
+  background-image: var(--decal-example-url);
+  padding-bottom: calc(1 * var(--decal-example-after-width));
+}
+
 /**
- * Font helpers
+ * Render list styles
  */
+ol[class=""], ol:not([class]), ul[class=""], ul:not([class]) {
+  margin: var(--list-margin);
+  padding: var(--list-padding) var(--list-indent-width);
+}
+ol[class=""] li, ol:not([class]) li, ul[class=""] li, ul:not([class]) li {
+  margin: var(--list-item-margin);
+}
+ol[class=""] li + li, ol:not([class]) li + li, ul[class=""] li + li, ul:not([class]) li + li {
+  margin: var(--list-item-after-margin);
+}
+
+ol[data-counter] {
+  list-style: none;
+  margin: var(--list-margin);
+  padding: var(--list-padding) var(--list-indent-width);
+  counter-reset: ui-ol-counter;
+}
+ol[data-counter] > li {
+  position: relative;
+  margin: var(--list-item-margin);
+  counter-increment: ui-ol-counter;
+}
+ol[data-counter] > li::before {
+  position: absolute;
+  margin: 0 0 0 calc(var(--list-indent-width) * -1);
+  width: var(--list-indent-width);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: right;
+  content: counter(ui-ol-counter, decimal) ". ";
+}
+ol[data-counter] > li + li {
+  margin: var(--list-item-after-margin);
+}
+ol[data-counter=decimal] > li::before {
+  content: counter(ui-ol-counter, decimal) ". ";
+}
+ol[data-counter=decimal-leading-zero] > li::before {
+  content: counter(ui-ol-counter, decimal-leading-zero) ". ";
+}
+ol[data-counter=lower-roman] > li::before {
+  content: counter(ui-ol-counter, lower-roman) ". ";
+}
+ol[data-counter=lower-alpha] > li::before {
+  content: counter(ui-ol-counter, lower-alpha) ". ";
+}
+ol[data-counter=upper-alpha] > li::before {
+  content: counter(ui-ol-counter, upper-alpha) ". ";
+}
+ol[data-counter=lower-latin] > li::before {
+  content: counter(ui-ol-counter, lower-latin) ". ";
+}
+ol[data-counter=example] > li:nth-child(1)::before {
+  content: "a1 ";
+}
+ol[data-counter=example] > li:nth-child(2)::before {
+  content: "a2 ";
+}
+ol[data-counter=example] > li:nth-child(3)::before {
+  content: "a3 ";
+}
+ol[data-counter=example] > li:nth-child(4)::before {
+  content: "a4 ";
+}
+ol[data-counter=example] > li:nth-child(5)::before {
+  content: "b1 ";
+}
+ol[data-counter=example] > li:nth-child(6)::before {
+  content: "b2 ";
+}
+ol[data-counter=example] > li:nth-child(7)::before {
+  content: "b3 ";
+}
+ol[data-counter=example] > li:nth-child(8)::before {
+  content: "b4 ";
+}
+ol[data-counter=example] > li:nth-child(9)::before {
+  content: "c1 ";
+}
+ol[data-counter=example] > li:nth-child(10)::before {
+  content: "c2 ";
+}
+ol[data-counter=example] > li:nth-child(11)::before {
+  content: "c3 ";
+}
+ol[data-counter=example] > li:nth-child(12)::before {
+  content: "c4 ";
+}
+
 /**
- * Font class definitions
+ * Render font styles
  */
 .font--default {
   font-family: Oxygen, sans-serif;
   font-size: 14px;
-  font-weight: normal;
   line-height: 1.33;
 }
 .font--headline {
@@ -825,230 +1634,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 
 /**
- * List helpers
- */
-/**
- * List defaults
- */
-:root {
-  --list-margin: 1rem 0;
-  --list-padding: 0 0 0;
-  --list-indent-width: 2rem;
-  --list-item-margin: 0;
-  --list-item-after-margin: 1rem 0 0;
-}
-
-/**
- * Normalize list margins and padding if no class is set
- */
-ol[class=""], ol:not([class]), ul[class=""], ul:not([class]) {
-  margin: var(--list-margin);
-  padding: var(--list-padding) var(--list-indent-width);
-}
-ol[class=""] li, ol:not([class]) li, ul[class=""] li, ul:not([class]) li {
-  margin: var(--list-item-margin);
-}
-ol[class=""] li + li, ol:not([class]) li + li, ul[class=""] li + li, ul:not([class]) li + li {
-  margin: var(--list-item-after-margin);
-}
-
-/**
- * Stylable counters
- */
-ol[data-counter] {
-  list-style: none;
-  margin: var(--list-margin);
-  padding: var(--list-padding) var(--list-indent-width);
-  counter-reset: ol-counter;
-}
-ol[data-counter] > li {
-  position: relative;
-  margin: var(--list-item-margin);
-  counter-increment: ol-counter;
-}
-ol[data-counter] > li::before {
-  position: absolute;
-  margin: 0 0 0 calc(var(--list-indent-width) * -1);
-  width: var(--list-indent-width);
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  color: inherit;
-  text-align: right;
-  content: counter(ol-counter, decimal) ". ";
-}
-ol[data-counter] > li + li {
-  margin: var(--list-item-after-margin);
-}
-ol[data-counter=decimal] > li::before {
-  content: counter(ol-counter, decimal) ". ";
-}
-ol[data-counter=decimal-leading-zero] > li::before {
-  content: counter(ol-counter, decimal-leading-zero) ". ";
-}
-ol[data-counter=lower-roman] > li::before {
-  content: counter(ol-counter, lower-roman) ". ";
-}
-ol[data-counter=lower-alpha] > li::before {
-  content: counter(ol-counter, lower-alpha) ". ";
-}
-ol[data-counter=lower-latin] > li::before {
-  content: counter(ol-counter, lower-latin) ". ";
-}
-
-/**
- * Text helpers
- */
-/**
- * Text helper definitions
- */
-.text-block {
-  display: block;
-  width: 100%;
-}
-.text--center {
-  text-align: center;
-}
-@media screen and (max-width: 767px) {
-  .text--center-m {
-    text-align: center;
-  }
-}
-@media screen and (max-width: 991px) {
-  .text--center-mtp {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .text--center-tp {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 992px) and (max-width: 1024px) {
-  .text--center-tl {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .text--center-t {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 768px) {
-  .text--center-td {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 992px) {
-  .text--center-tld {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 1025px) {
-  .text--center-d {
-    text-align: center;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .text--center-dm {
-    text-align: center;
-  }
-}
-.text--right {
-  text-align: right;
-}
-.text--no-select {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-.text--wbreak {
-  word-break: break-word;
-  -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
-}
-@media screen and (max-width: 767px) {
-  .text--wbreak-m {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (max-width: 991px) {
-  .text--wbreak-mtp {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .text--wbreak-tp {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 992px) and (max-width: 1024px) {
-  .text--wbreak-tl {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .text--wbreak-t {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 768px) {
-  .text--wbreak-td {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 992px) {
-  .text--wbreak-tld {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 1025px) {
-  .text--wbreak-d {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .text--wbreak-dm {
-    word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
-  }
-}
-
-/**
- * Wrap helpers
- */
-/**
- * Wrap definition
+ * Render wrap styles
  */
 .wrap {
   margin: auto;
