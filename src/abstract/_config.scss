@@ -14,7 +14,12 @@
  * @param {string} $error - Error message prefix
  * @return {map} - Map with defaults with merged options
  */
-@function config($options: null, $defaults: null, $extend: false, $strict: true, $error: 'config::') {
+@function config($options, $defaults, $extend: false, $strict: true, $error: 'config::') {
+
+  // Allow to clear any defaults by setting explicit null
+  @if $extend and meta.type-of($options) == null {
+    @return ();
+  }
 
   // Require a map extension
   @if meta.type-of($options) != map {
