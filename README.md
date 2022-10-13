@@ -148,40 +148,36 @@ Supplies font styles for injection and styles with corresponding helper classes 
      
      /**
       * Simple font declaration
-      *  Generated helper:
-      *  .ui-font--default {
-      *    font-family: Oxygen, sans-serif;
-      *    font-size: 14px;
-      *    line-height: 1.33;
-      *  }
       */
      default: (
        font-family: (Oxygen, sans-serif),
        font-size: 14px,
        line-height: 1.33,
      ),
+     /**
+      * Generated helper:
+      * .ui-font--default {
+      *   font-family: Oxygen, sans-serif;
+      *   font-size: 14px;
+      *   line-height: 1.33;
+      * }
+      */
       
      /**
       * Simple media query based declaration
-      *  Generated helper:
-      *  @media screen and (min-width: 768px) and (max-width: 1024px) {
-      *    .ui-font--default { font-size: 16px; }
-      *  }
       */
      default_at_tablet: (
        font-size: 16px,
      ),
+     /**
+      * Generated helper:
+      * @media screen and (min-width: 768px) and (max-width: 1024px) {
+      *   .ui-font--default { font-size: 16px; }
+      * }
+      */
       
      /**
       * Fluid font size declaration without a max
-      *  Generated helper:
-      *  .font--headline-fluid { font-weight: bold; }
-      *  @media screen and (max-width: 767px) {
-      *    .font--headline-fluid { font-size: 20px; }
-      *  }
-      *  @media screen and (min-width: 320px) {
-      *    .font--headline-fluid { font-size: calc(20px + 10 * ((100vw - 320px) / 447)); }
-      *  }
       */
      headline-fluid_at_mobile: (
        font-weight: bold,
@@ -193,19 +189,19 @@ Supplies font styles for injection and styles with corresponding helper classes 
        ),
        no-max: true,
      ),
+     /**
+      * Generated helper:
+      * .font--headline-fluid { font-weight: bold; }
+      * @media screen and (max-width: 767px) {
+      *   .font--headline-fluid { font-size: 20px; }
+      * }
+      * @media screen and (min-width: 320px) {
+      *   .font--headline-fluid { font-size: calc(20px + 10 * ((100vw - 320px) / 447)); }
+      * }
+      */
      
      /**
       * Fluid font size declaration with a max
-      *  Generated helper:
-      *  @media screen and (min-width: 1025px) {
-      *    .font--headline-fluid { font-size: 35px; }
-      *  }
-      *  @media screen and (min-width: 1025px) {
-      *    .font--headline-fluid { font-size: calc(35px + 15 * ((100vw - 1025px) / 341)); }
-      *  }
-      *  @media screen and (min-width: 1366px) {
-      *    .font--headline-fluid { font-size: 50px; }
-      *  }
       */
      headline-fluid_at_desktop: (
        fluid: (
@@ -215,6 +211,18 @@ Supplies font styles for injection and styles with corresponding helper classes 
          max-size : 50px,
        ),
      ),
+     /**
+      * Generated helper:
+      * @media screen and (min-width: 1025px) {
+      *   .font--headline-fluid { font-size: 30px; }
+      * }
+      * @media screen and (min-width: 1025px) {
+      *   .font--headline-fluid { font-size: calc(30px + 20 * ((100vw - 1025px) / 341)); }
+      * }
+      * @media screen and (min-width: 1366px) {
+      *   .font--headline-fluid { font-size: 50px; }
+      * }
+      */
    );
    ```
  - get(```$style```) - Outputs selected font style in given context.
