@@ -4,11 +4,11 @@
 @use "sass:meta";
 
 /**
- * Select current scope only if no class is set
+ * Select current scope only if given attribute is not set or optionally empty
  * @param {string} $attribute - Attribute name
  * @param {boolean} $empty - Include empty attribute
  * @param {string} $error - Error message prefix
- * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ * @output Wraps given content styles to apply only if the current scope element does not have the given attribute or its empty
  */
 @mixin attr-none($attribute: 'class', $empty: true, $error: 'attr-none::') {
   @if meta.content-exists() != true {

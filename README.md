@@ -330,8 +330,8 @@ Supplies a media query helper mixin and configuration.
 
 Only mixins and helpers that produce output, none of these contain configuration.
 
- - +attr-isset(```$attribute: 'class', $error: 'attr-isset::'```) - Wraps given content styles to apply only if the current scope element has no class attribute or its empty.
- - +attr-none(```$attribute: 'class', $empty: true, $error: 'attr-none::'```) - Wraps given content styles to apply only if the current scope element has no class attribute or its empty.
+ - +attr-isset(```$attribute: 'class', $empty: false, $error: 'attr-isset::'```) - Wraps given content styles to apply only if the current scope element has the given attribute.
+ - +attr-none(```$attribute: 'class', $empty: true, $error: 'attr-none::'```) - Wraps given content styles to apply only if the current scope element does not have the given attribute or its empty.
  - +attr-set(```$attributes, $error: 'attr-set::'```) - Adds the given attributes in current scope.
  - +attr-set-map(```$name, $source, $error: 'attr-set-map::'```) - Adds the given attributes in current scope.
  - +bem-style(```$nested, $font-styles: null, $query-marker: '_at_', $error: 'bem-style::'```) - Creates BEM style structures from a map definition.
@@ -460,7 +460,7 @@ With any modules that allow extending, config mixins can be reset the maps index
 
 ### Use syntax
 
-When loading via the *@use* syntax versus the classic *@import* ,there are a few things to keep in mind.
+When loading via the *@use* syntax versus the classic *@import*, there are a few things to keep in mind.
 Using the *with* keyword to set any configuration variables can only be done the first time a module is loaded with *@use*, any attempt to do it differently will produce an error.
 
 #### Changing configuration for multiple usages
