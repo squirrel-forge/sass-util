@@ -126,11 +126,11 @@
  * Requires
  */
 /**
- * Select current scope only if no class is set
+ * Select current scope only if given attribute is not set or optionally empty
  * @param {string} $attribute - Attribute name
  * @param {boolean} $empty - Include empty attribute
  * @param {string} $error - Error message prefix
- * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ * @output Wraps given content styles to apply only if the current scope element does not have the given attribute or its empty
  */
 /**
  * Requires
@@ -138,8 +138,9 @@
 /**
  * Select current scope only if a given attribute is set
  * @param {string} $attribute - Attribute name, default: 'class'
+ * @param {boolean} $empty - Allow empty attribute
  * @param {string} $error - Error message prefix
- * @output Wraps given content styles to apply only if the current scope element has no class attribute or its empty
+ * @output Wraps given content styles to apply only if the current scope element has the given attribute
  */
 /**
  * Requires
@@ -159,16 +160,6 @@
  * @param {Map} $source - Map of attribute groups to use
  * @param {string} $error - Error message prefix
  * @output Adds the given attributes in current scope
- */
-/**
- * Requires
- */
-/**
- * Font style setter
- * Adds the given font style attributes in current scope
- * @param {string} $style - Name of font style
- * @param {map} $styles - Map of font styles to use
- * @output Adds the given font attributes in current scope
  */
 /**
  * Requires
