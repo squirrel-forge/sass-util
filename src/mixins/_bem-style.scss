@@ -5,7 +5,6 @@
 @use 'sass:list';
 @use '../abstract/has-query' as *;
 @use '../abstract/is-query' as *;
-@use '../mixins/font' as *;
 @use '../mixins/font-fluid' as *;
 @use '../mixins/attr-set-map' as *;
 @use '../media';
@@ -66,7 +65,7 @@
           @error '#{$error}$nested[#{meta.type-of($font-styles)}] must be a map';
         }
 
-        @include font($data, $font-styles);
+        @include attr-set-map($data, $font-styles);
 
         // Refer to fluid font style
       } @else if $name == 'use-fluid' {

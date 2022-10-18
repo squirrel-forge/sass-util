@@ -78,7 +78,7 @@ $-styles: ();
 
   // Simple font style
   @else {
-    @include mixins.font($style, $-styles);
+    @include mixins.attr-set-map($style, $-styles);
   }
 }
 
@@ -121,7 +121,7 @@ $-styles: ();
 
               // Wrap style with the given query reference
               @include media.query(list.nth($query, 2)) {
-                @include mixins.font($style, $-styles);
+                @include mixins.attr-set-map($style, $-styles);
               }
             }
           }
@@ -132,7 +132,7 @@ $-styles: ();
 
           // Define style
           &#{$style-prefix}#{$style} {
-            @include mixins.font($style, $-styles);
+            @include mixins.attr-set-map($style, $-styles);
           }
         }
       }
