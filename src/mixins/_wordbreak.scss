@@ -1,0 +1,9 @@
+/**
+ * Allow for language base automatic word breaking
+ * Works across most browsers
+ * @output Inserts attributes to allow word breaking
+ */
+@mixin wordbreak {
+  word-break: break-word;
+  hyphens: auto;
+}

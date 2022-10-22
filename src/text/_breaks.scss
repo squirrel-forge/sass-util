@@ -9,6 +9,7 @@
 @use '../abstract/str-initials' as *;
 @use '../mixins/break-pseudo' as *;
 @use '../mixins/clear-pseudo' as *;
+@use '../mixins/wordbreak' as *;
 @use '../media';
 
 /**
@@ -179,8 +180,7 @@ $queries: (
       @each $query in $word-queries {
         @include media.query($query) {
           &-#{str-initials($query)} {
-            word-break: break-word;
-            hyphens: auto;
+            @include wordbreak;
           }
         }
       }
