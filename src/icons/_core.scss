@@ -116,7 +116,7 @@ $-config: (
 /**
  * Generate icon core styles
  * @public
- * @output Outputs configured icon styles in given context
+ * @output Outputs configured icon base styles in given context
  */
 @mixin styles() {
   .#{$class} {

@@ -53,7 +53,7 @@ $-config: (
  * Update component config options
  * @public
  * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
+ * @output {void} - Sets available image icons
  */
 @mixin config($options) {
   $-config: abstract.config($options, $-config, true, false, 'icons-images.config::') !global;
@@ -62,7 +62,7 @@ $-config: (
 /**
  * Generate required custom properties
  * @public
- * @output Adds components custom properties in current scope
+ * @output Outputs all custom properties in given context
  */
 @mixin properties() {
 

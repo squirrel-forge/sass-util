@@ -228,6 +228,59 @@ Supplies font styles for injection and styles with corresponding helper classes 
  - get(```$style```) - Outputs selected font style in given context.
  - styles() - Outputs configured font styles as helper classes.
 
+#### + util / icons
+
+Supplies icon helpers, css definitions, images and styles classes and properties for usage.
+
+##### + util / icons / core
+
+ - *$class*: ```'ui-icon'```
+ - *$class-interactive*: ```'ui-interactive'```
+ - *$class-images*: ```'--img'```
+ - *$inline*: ```'--inline'```
+ - *$flip*: ```'--flip-'```
+ - *$props*: ```'ui-icon-'```
+ - *$angles*: ```(45,90,135,180,225,270,315)```
+ - config(```$options```) - Only sets config options.
+ - properties() - Outputs all custom properties in given context.
+ - styles() - Outputs configured icon base styles in given context.
+
+##### + util / icons / styled
+
+ - *$class*: ```'ui-icon'```
+ - *$class-interactive*: ```'ui-interactive'```
+ - *$props*: ```'ui-icon-'```
+ - arrow-config(```$options```) - Only sets config options.
+ - arrow-capped-config(```$options```) - Only sets config options.
+ - arrow-double-config(```$options```) - Only sets config options.
+ - arrow-small-config(```$options```) - Only sets config options.
+ - close-config(```$options```) - Only sets config options.
+ - fullscreen-config(```$options```) - Only sets config options.
+ - important-config(```$options```) - Only sets config options.
+ - info-config(```$options```) - Only sets config options.
+ - minimize-config(```$options```) - Only sets config options.
+ - pause-config(```$options```) - Only sets config options.
+ - play-config(```$options```) - Only sets config options.
+ - replay-config(```$options```) - Only sets config options.
+ - sound-config(```$options```) - Only sets config options.
+ - sound-muted-config(```$options```) - Only sets config options.
+ - sound-none-config(```$options```) - Only sets config options.
+ - sound-on-config(```$options```) - Only sets config options.
+ - stop-config(```$options```) - Only sets config options.
+ - unknown-config(```$options```) - Only sets config options.
+ - user-config(```$options```) - Only sets config options.
+ - properties() - Outputs all custom properties in given context.
+ - styles() - Outputs configured css icon styles as helper classes.
+
+##### + util / icons / images
+
+ - *$class*: ```'ui-icon'```
+ - *$class-images*: ```'--img'```
+ - *$props*: ```'ui-icon-image-'```
+ - config(```$options```) - Sets available image icons.
+ - properties() - Outputs all custom properties in given context.
+ - styles() - Outputs configured image icon styles as helper classes.
+
 #### + util / images
 
 Supplies asset helpers and decal styles and helper classes and properties for usage.
@@ -349,12 +402,12 @@ Only mixins and helpers that produce output, none of these contain configuration
  - +clear-pseudo
    - clear-before() - Inserts a pseudo before with a clear both.
    - clear-after() - Inserts a pseudo after with a clear both.
- - +font(```$style, $styles```) - Adds the given font attributes in current scope.
  - +font-fluid(```$style, $styles: null, $base-query: null, $fluid-attribute: 'fluid', $no-max-attribute: 'no-max', $error: 'font-fluid::'```) - Adds the given font attributes and media queries in current scope.
  - +font-fluid-base(```$min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false, $error: 'font-fluid-base::'```) - Adds the given font media queries in current scope, with an optional base query.
  - +hide-accessible() - Inserts attributes to hide the current scope visually only.
  - +no-select() - Inserts attributes to prevent text selection.
  - +properties(```$props, $prefix: '', $error: 'properties::'```) - Adds given custom properties in current scope.
+ - +wordbreak() - Adds word break properties in current scope.
 
 #### + util / reset
 
