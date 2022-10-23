@@ -39,6 +39,18 @@
   $images-decals-width: 0 !default;
   $images-decals-sizing-as-props: false !default;
 
+// Icons module config
+  // Shared submodule config
+  $icons-props: 'ui-icon-' !default;
+
+  // Core submodule config
+  $icons-class: 'ui-icon' !default;
+  $icons-class-interactive: 'ui-interactive' !default;
+  $icons-class-images: '--img' !default;
+  $icons-inline: '--inline' !default;
+  $icons-flip: '--flip-' !default;
+  $icons-angles: (45,90,135,180,225,270,315) !default;
+
 // Font module config
   // Styles module config
   $font-class: 'ui-font' !default;
@@ -185,6 +197,15 @@
   $decals-props: $images-decals-props,
   $decals-width: $images-decals-width,
   $decals-sizing-as-props: $images-decals-sizing-as-props,
+);
+@forward 'icons' as icons-* with (
+  $props: $icons-props,
+  $class: $icons-class,
+  $class-interactive: $icons-class-interactive,
+  $class-images: $icons-class-images,
+  $inline: $icons-inline,
+  $flip: $icons-flip,
+  $angles: $icons-angles,
 );
 @forward 'font' as font-* with (
   $class: $font-class,

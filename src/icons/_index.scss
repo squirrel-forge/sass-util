@@ -1,0 +1,39 @@
+/**
+ * Icons
+ *  Submodule forwarding index
+ */
+
+// Shared config
+$props: 'ui-icon-' !default;
+
+// Core module config
+$class: 'ui-icon' !default;
+$class-interactive: 'ui-interactive' !default;
+$class-images: '--img' !default;
+$inline: '--inline' !default;
+$flip: '--flip-' !default;
+$angles: (45,90,135,180,225,270,315) !default;
+
+// Images module config
+$images-props: 'ui-icon-image-' !default;
+
+// Forward configurable modules
+@forward 'core' as core-* with (
+  $props: $props,
+  $class: $class,
+  $class-interactive: $class-interactive,
+  $class-images: $class-images,
+  $inline: $inline,
+  $flip: $flip,
+  $angles: $angles,
+);
+@forward 'styled' as styled-* with (
+  $props: $props,
+  $class: $class,
+  $class-interactive: $class-interactive,
+);
+@forward 'images' as images-* with (
+  $props: $images-props,
+  $class: $class,
+  $class-images: $class-images,
+);
