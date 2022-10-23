@@ -1,0 +1,147 @@
+/**
+ * Icons images
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use '../abstract/config' as abstract;
+@use '../mixins/properties' as mixins;
+@use '../images/assets' as images;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$class-images: '--img' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-image-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+/**
+ * Not interactive:
+ *  icon-name: 'default.jpg'
+ *
+ * Interactive support for hover and focus:
+ *  icon-name: ('default.jpg', 'interactive.jpg')
+ */
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, true, false, 'icons-images.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+
+  // Must have at least one defined style
+  @if meta.type-of($-config) != map {
+    @error 'You must define at least one icons image using the config mixin';
+  }
+
+  // Must compile for default and interactive image
+  $compiled: ();
+
+  // Cycle available
+  @each $name, $data in $-config {
+    $default: null;
+    $interactive: null;
+
+    // Default and interactive image
+    @if meta.type-of($data) == list {
+      @if list.length($data) > 0 {
+        $default: list.nth($data, 1);
+      }
+      @if list.length($data) > 1 {
+        $interactive: list.nth($data, 2);
+      }
+      @if meta.type-of($default) != string {
+        @error 'Invalid image "#{$name}" default type';
+      }
+      @if meta.type-of($interactive) != string {
+        @error 'Invalid image "#{$name}" interactive type';
+      }
+    }
+
+    // Only default image
+    @else if meta.type-of($data) == string {
+      $default: $data;
+    }
+
+    // Invalid type
+    @else {
+      @error 'Invalid image "#{$name}" data type: #{meta.type-of($data)}';
+    }
+
+    // Add default image
+    $compiled: map.set($compiled, '#{$name}-default', images.get($default));
+
+    // Add interactive image if available
+    @if $interactive != null {
+      $compiled: map.set($compiled, '#{$name}-interactive', images.get($interactive));
+    }
+  }
+
+  // Create actual properties
+  @include mixins.properties($compiled, $props, 'icons-images.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+
+  // Must have at least one defined style
+  @if meta.type-of($-config) != map {
+    @error 'You must define at least one icons image using the config mixin';
+  }
+
+  .#{$class}#{$class-images} {
+    @each $name, $data in $-config {
+      &[data-icon="#{$name}"] {
+
+        // Default icon
+        --#{$props}default: var(--#{$props}#{$name}-default);
+
+        // And if available the interactive icon
+        @if meta.type-of($data) == list and list.length($data) > 1 {
+          --#{$props}interactive: var(--#{$props}#{$name}-interactive);
+        }
+      }
+    }
+  }
+}
