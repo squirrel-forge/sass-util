@@ -1,7 +1,12 @@
 # Changelog
 
+## 0.9.1
+ - Added mixin *wordbreak*.
+ - Added *icons* module with *styled* css icons and *images* icon helpers.
+ - Added a bunch of default styles icons.
+
 ## 0.9.0
- - Breaking changes!
+ - *Breaking changes!*
  - Complete module refactor, rebased all code for *use syntax* with configuration variables and mixins.
  - Improved error handling and namespacing.
  - Added *images.assets* and *images.decals* module.
