@@ -1,0 +1,86 @@
+/**
+ * Icon replay
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  replay-circle-width: 0.8,
+  replay-circle-height: 0.8,
+  replay-circle-border: 0.14,
+  replay-arrow-height: 2.2,
+  replay-arrow-width: 2.8,
+  replay-arrow-offset-x: -2,
+  replay-arrow-offset-y: -0.295,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-replay.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-replay.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="replay"] {
+    &::before {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-width));
+      border-radius: 50%;
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-border)) solid var(--#{$props}color);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
+    }
+    &::after {
+      margin-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-border) * var(--#{$props}replay-arrow-offset-x));
+      margin-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-border) * var(--#{$props}replay-arrow-offset-y));
+      width: 0;
+      height: 0;
+      transform-origin: center center;
+      transform: rotate(-45deg) translate(-50%, -50%);
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-border) * var(--#{$props}replay-arrow-width) / 2) solid transparent;
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-border) * var(--#{$props}replay-arrow-width) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}replay-circle-border) * var(--#{$props}replay-arrow-height)) solid var(--#{$props}color);
+    }
+  }
+}

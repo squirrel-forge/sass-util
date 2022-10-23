@@ -1,0 +1,79 @@
+/**
+ * Icon siux
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  siux-height: 0.35,
+  siux-width: 0.7,
+  siux-border: 0.14,
+  siux-circle-height: 0.8,
+  siux-circle-width: 1,
+  siux-circle-border: 0.07,
+);
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-siux.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="siux"] {
+    &::before,
+    &::after {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-width));
+      border-radius: 50%;
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-border)) solid var(--#{$props}color);
+    }
+    &::before {
+      margin-top: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-height) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-border)) * -0.5);
+      clip-path: polygon(0 0, 100% 0, 65% 50%, 75% 50%, 100% 25%, 100% 50%, 50% 50%, 50% 100%, 0 100%);
+    }
+    &::after {
+      margin-top: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-height) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-border)) * 0.5);
+      clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 35% 50%, 25% 50%, 0 75%, 0 50%);
+    }
+    span:first-child {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-circle-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-circle-width));
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}siux-circle-border)) solid var(--#{$props}color);
+      border-radius: 50%;
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 45%, 100% 45%, 100% 55%, 0 55%, 0 65%, 100% 65%, 100% 100%, 0 100%);
+    }
+  }
+}

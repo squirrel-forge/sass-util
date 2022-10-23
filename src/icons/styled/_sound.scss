@@ -1,0 +1,81 @@
+/**
+ * Icon sound
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  sound-height: 0.65,
+  sound-width: 0.4,
+  sound-offset: 0.05,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-sound.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-sound.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon^="sound"] {
+    span:first-child {
+      &::before {
+        left: calc(50% - (var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-offset)));
+        height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-height) / 2);
+        width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-width));
+        background-color: var(--#{$props}color);
+      }
+      &::after {
+        left: calc(50% - (var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-offset)));
+        width: 0;
+        height: 0;
+        transform: translate(-50%, -50%);
+        border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-height) / 2) solid transparent;
+        border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-height) / 2) solid transparent;
+        border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-width)) solid var(--#{$props}color);
+      }
+    }
+  }
+}

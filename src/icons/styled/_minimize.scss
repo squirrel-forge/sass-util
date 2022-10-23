@@ -1,0 +1,99 @@
+/**
+ * Icon minimize
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+$class-interactive: 'ui-interactive' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  minimize-width: 0.16,
+  minimize-height: 0.6,
+  minimize-offset: 0.1,
+  minimize-interactive-offset: 0.2,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-minimize.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-minimize.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="minimize"] {
+    &::before,
+    &::after {
+      width: 0;
+      height: 0;
+      transform: translate(0, -50%);
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-height) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-height) / 2) solid transparent;
+    }
+    &::before {
+      left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-offset));
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-width)) solid var(--#{$props}color);
+    }
+    &::after {
+      left: auto;
+      right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-offset));
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-width)) solid var(--#{$props}color);
+    }
+
+    .#{$class-interactive}:hover &,
+    .#{$class-interactive}:focus & {
+      &::before {
+        left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-interactive-offset));
+      }
+      &::after {
+        right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}minimize-interactive-offset));
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+/**
+ * Icon arrow-double
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  arrow-double-height: 0.45,
+  arrow-double-width: 0.25,
+  arrow-double-offset: 0.1,
+  arrow-double-tail-height: 0.14,
+  arrow-double-tail-width: 0.5,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-arrow-double.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-arrow-double.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="arrow-double"] {
+    span:first-child {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-tail-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-tail-width));
+      background-color: var(--#{$props}color);
+    }
+    &::before,
+    &::after {
+      width: 0;
+      height: 0;
+      transform: translate(0, -50%);
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-height) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-height) / 2) solid transparent;
+    }
+    &::before {
+      left: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-offset)));
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-width)) solid var(--#{$props}color);
+    }
+    &::after {
+      left: auto;
+      right: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-offset)));
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-double-width)) solid var(--#{$props}color);
+    }
+  }
+}

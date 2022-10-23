@@ -1,0 +1,102 @@
+/**
+ * Icon unknown
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  unknown-height: 0.4,
+  unknown-width: 0.6,
+  unknown-inset: 0.15,
+  unknown-tail: 0.2,
+  unknown-offset: 0.37,
+  unknown-border: 0.12,
+  unknown-dot-height: 0.14,
+  unknown-dot-width: 0.14,
+  unknown-dot-radius: 50%,
+  unknown-dot-offset: 0.15,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-unknown.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-unknown.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="unknown"] {
+    &::before {
+      top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-inset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-width));
+      border-radius: 50%;
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-border)) solid var(--#{$props}color);
+      clip-path: polygon(50% 50%, 0 25%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 50%);
+      transform: translate(-50%, 0);
+    }
+    &::after {
+      top: auto;
+      bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-tail));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-border));
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+    span {
+      width: inherit;
+      height: inherit;
+
+      &::after {
+        top: auto;
+        bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-dot-offset));
+        height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-dot-height));
+        width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}unknown-dot-width));
+        border-radius: var(--#{$props}unknown-dot-radius);
+        background-color: var(--#{$props}color);
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+}

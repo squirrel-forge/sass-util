@@ -1,0 +1,71 @@
+/**
+ * Icon sound-on
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  sound-on-cap: 0.5,
+  sound-on-border: 0.1,
+  sound-on-offset: 0.15,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-sound-on.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-sound-on.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="sound-on"] {
+    &::before {
+      left: auto;
+      right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-offset));
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-cap) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-cap) / 2) solid transparent;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-border)) solid var(--#{$props}color);
+    }
+  }
+}

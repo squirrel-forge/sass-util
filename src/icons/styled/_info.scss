@@ -1,0 +1,84 @@
+/**
+ * Icon info
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  info-offset: 0.15,
+  info-height: 0.42,
+  info-width: 0.12,
+  info-dot-offset: 0.2,
+  info-dot-height: 0.14,
+  info-dot-width: 0.14,
+  info-dot-radius: 50%,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-info.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-info.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="info"] {
+    &::before {
+      top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-dot-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-dot-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-dot-width));
+      border-radius: var(--#{$props}info-dot-radius);
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+    &::after {
+      top: auto;
+      bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-width));
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+  }
+}

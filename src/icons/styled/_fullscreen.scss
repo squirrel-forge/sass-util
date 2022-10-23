@@ -1,0 +1,101 @@
+/**
+ * Icon fullscreen
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+$class-interactive: 'ui-interactive' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  fullscreen-height: 0.6,
+  fullscreen-width: 0.4,
+  fullscreen-offset: 0.2,
+  fullscreen-border: 0.1,
+  fullscreen-interactive-offset: 0.1,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-fullscreen.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-fullscreen.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="fullscreen"] {
+    &::before,
+    &::after {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-width) / 2);
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-border)) solid var(--#{$props}color);
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-border)) solid var(--#{$props}color);
+    }
+    &::before {
+      left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-offset));
+      transform: translate(0, -50%);
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-border)) solid var(--#{$props}color);
+    }
+    &::after {
+      left: auto;
+      right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-offset));
+      transform: translate(0, -50%);
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-border)) solid var(--#{$props}color);
+    }
+
+    .#{$class-interactive}:hover &,
+    .#{$class-interactive}:focus & {
+      &::before {
+        left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-interactive-offset));
+      }
+      &::after {
+        right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fullscreen-interactive-offset));
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+/**
+ * Icon user
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  user-height: 0.25,
+  user-width: 0.7,
+  user-radius: 0.4,
+  user-circle-height: 0.45,
+  user-circle-width: 0.45,
+  user-offset: 0.1,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-user.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-user.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="user"] {
+    &::before {
+      top: auto;
+      bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-width));
+      border-radius: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-radius)) calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-radius)) 0 0;
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+    &::after {
+      top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-circle-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}user-circle-width));
+      border-radius: 50%;
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+  }
+}

@@ -1,0 +1,71 @@
+/**
+ * Icon play
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  play-height: 0.8,
+  play-width: 0.65,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-play.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-play.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="play"] {
+    &::after {
+      width: 0;
+      height: 0;
+      transform: translate(-40%, -50%);
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}play-height) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}play-height) / 2) solid transparent;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}play-width)) solid var(--#{$props}color);
+    }
+  }
+}

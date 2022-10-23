@@ -1,0 +1,77 @@
+/**
+ * Icon sound-muted
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  sound-muted-height: 0.3,
+  sound-muted-width: 0.08,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-sound-muted.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-sound-muted.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="sound-muted"] {
+    &::before,
+    &::after {
+      top: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-height)) / 2);
+      left: calc(50% + var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-width) / 2 + var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-width));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-width));
+      background-color: var(--#{$props}color);
+    }
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}

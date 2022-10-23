@@ -1,0 +1,70 @@
+/**
+ * Icon pause
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  pause-height: 0.7,
+  pause-width: 0.6,
+  pause-border: 0.23,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-pause.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-pause.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="pause"] {
+    &::after {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}pause-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}pause-width));
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}pause-border)) solid var(--#{$props}color);
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}pause-border)) solid var(--#{$props}color);
+    }
+  }
+}

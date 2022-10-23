@@ -1,0 +1,90 @@
+/**
+ * Icon arrow-capped
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  arrow-capped-height: 0.45,
+  arrow-capped-width: 0.25,
+  arrow-capped-offset: 0.1,
+  arrow-capped-tail-height: 0.14,
+  arrow-capped-tail-width: 0.5,
+  arrow-capped-cap-height: 0.4,
+  arrow-capped-cap-width: 0.1,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-arrow-capped.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-styled-arrow-capped.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="arrow-capped"] {
+    span:first-child {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-tail-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-tail-width));
+      background-color: var(--#{$props}color);
+    }
+    &::before {
+      left: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-offset)));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-cap-width));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-cap-height));
+      background-color: var(--#{$props}color);
+      transform: translate(0, -50%);
+    }
+    &::after {
+      left: auto;
+      right: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-offset)));
+      width: 0;
+      height: 0;
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-height) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-height) / 2) solid transparent;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-capped-width)) solid var(--#{$props}color);
+      transform: translate(0, -50%);
+    }
+  }
+}
