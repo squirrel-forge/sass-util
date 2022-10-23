@@ -238,6 +238,11 @@
  * @output Adds given custom properties in current scope
  */
 /**
+ * Allow for language base automatic word breaking
+ * Works across most browsers
+ * @output Inserts attributes to allow word breaking
+ */
+/**
  * Mixins
  *  mixins forwarding index
  */
@@ -384,6 +389,894 @@
  */
 /**
  * Images
+ *  Submodule forwarding index
+ */
+/**
+ * Icons core
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Angles/rotation helper variants
+ * @protected
+ * @type {list<deg>} list of unitless degrees
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon core styles
+ * @public
+ * @output Outputs configured icon base styles in given context
+ */
+/**
+ * Icon *
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon arrow-capped
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon arrow-double
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon arrow-small
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon close
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon fullscreen
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon important
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon info
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon minimize
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon pause
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon play
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon replay
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon siux
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon sound
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon sound-muted
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon sound-none
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon sound-on
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon stop
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon unknown
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icon user
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icons styled
+ *  Submodule index
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Outputs all custom properties in given context
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icons images
+ *  Custom properties and styles with configuration
+ */
+/**
+ * Requires
+ */
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Sets available image icons
+ */
+/**
+ * Generate required custom properties
+ * @public
+ * @output Outputs all custom properties in given context
+ */
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+/**
+ * Icons
  *  Submodule forwarding index
  */
 /**
@@ -748,6 +1641,9 @@
  * Configure colors
  */
 /**
+ * Configure image icons
+ */
+/**
  * Configure decals
  */
 /**
@@ -818,6 +1714,111 @@
   --decal-example-url: url("../img/example.jpg?1");
   --decal-example-before-width: 0;
   --decal-example-after-width: 0;
+  --icon-color: currentColor;
+  --icon-background-color: transparent;
+  --icon-transition: 0.3s ease;
+  --icon-size: 1;
+  --icon-unit: 1.6rem;
+  --icon-debug-color: deepskyblue;
+  --icon-debug-background-color: deeppink;
+  --icon-arrow-height: 0.65;
+  --icon-arrow-width: 0.4;
+  --icon-arrow-offset: 0.1;
+  --icon-arrow-tail-height: 0.25;
+  --icon-arrow-tail-width: 0.4;
+  --icon-arrow-tail-offset: 0.1;
+  --icon-arrow-capped-height: 0.45;
+  --icon-arrow-capped-width: 0.25;
+  --icon-arrow-capped-offset: 0.1;
+  --icon-arrow-capped-tail-height: 0.14;
+  --icon-arrow-capped-tail-width: 0.5;
+  --icon-arrow-capped-cap-height: 0.4;
+  --icon-arrow-capped-cap-width: 0.1;
+  --icon-arrow-double-height: 0.45;
+  --icon-arrow-double-width: 0.25;
+  --icon-arrow-double-offset: 0.1;
+  --icon-arrow-double-tail-height: 0.14;
+  --icon-arrow-double-tail-width: 0.5;
+  --icon-arrow-small-height: 0.45;
+  --icon-arrow-small-width: 0.25;
+  --icon-arrow-small-offset: 0.15;
+  --icon-arrow-small-tail-height: 0.14;
+  --icon-arrow-small-tail-width: 0.5;
+  --icon-arrow-small-tail-offset: 0.15;
+  --icon-close-height: 0.9;
+  --icon-close-width: 0.2;
+  --icon-fullscreen-height: 0.6;
+  --icon-fullscreen-width: 0.4;
+  --icon-fullscreen-offset: 0.2;
+  --icon-fullscreen-border: 0.1;
+  --icon-fullscreen-interactive-offset: 0.1;
+  --icon-important-offset: 0.2;
+  --icon-important-height: 0.4;
+  --icon-important-width: 0.12;
+  --icon-important-dot-offset: 0.15;
+  --icon-important-dot-height: 0.18;
+  --icon-important-dot-width: 0.18;
+  --icon-important-dot-radius: 50%;
+  --icon-info-offset: 0.15;
+  --icon-info-height: 0.42;
+  --icon-info-width: 0.12;
+  --icon-info-dot-offset: 0.2;
+  --icon-info-dot-height: 0.14;
+  --icon-info-dot-width: 0.14;
+  --icon-info-dot-radius: 50%;
+  --icon-minimize-width: 0.16;
+  --icon-minimize-height: 0.6;
+  --icon-minimize-offset: 0.1;
+  --icon-minimize-interactive-offset: 0.2;
+  --icon-pause-height: 0.7;
+  --icon-pause-width: 0.6;
+  --icon-pause-border: 0.23;
+  --icon-play-height: 0.8;
+  --icon-play-width: 0.65;
+  --icon-replay-circle-width: 0.8;
+  --icon-replay-circle-height: 0.8;
+  --icon-replay-circle-border: 0.14;
+  --icon-replay-arrow-height: 2.2;
+  --icon-replay-arrow-width: 2.8;
+  --icon-replay-arrow-offset-x: -2;
+  --icon-replay-arrow-offset-y: -0.295;
+  --icon-siux-height: 0.35;
+  --icon-siux-width: 0.7;
+  --icon-siux-border: 0.14;
+  --icon-siux-circle-height: 0.8;
+  --icon-siux-circle-width: 1;
+  --icon-siux-circle-border: 0.07;
+  --icon-sound-height: 0.65;
+  --icon-sound-width: 0.4;
+  --icon-sound-offset: 0.05;
+  --icon-sound-muted-height: 0.3;
+  --icon-sound-muted-width: 0.08;
+  --icon-sound-none-border: 0.08;
+  --icon-sound-none-line: 0.06;
+  --icon-sound-on-cap: 0.5;
+  --icon-sound-on-border: 0.1;
+  --icon-sound-on-offset: 0.15;
+  --icon-stop-height: 0.7;
+  --icon-stop-width: 0.6;
+  --icon-unknown-height: 0.4;
+  --icon-unknown-width: 0.6;
+  --icon-unknown-inset: 0.15;
+  --icon-unknown-tail: 0.2;
+  --icon-unknown-offset: 0.37;
+  --icon-unknown-border: 0.12;
+  --icon-unknown-dot-height: 0.14;
+  --icon-unknown-dot-width: 0.14;
+  --icon-unknown-dot-radius: 50%;
+  --icon-unknown-dot-offset: 0.15;
+  --icon-user-height: 0.25;
+  --icon-user-width: 0.7;
+  --icon-user-radius: 0.4;
+  --icon-user-circle-height: 0.45;
+  --icon-user-circle-width: 0.45;
+  --icon-user-offset: 0.1;
+  --icon-image-example-default: url("../img/default.jpg?1");
+  --icon-image-extra-default: url("../img/default.jpg?1");
+  --icon-image-extra-interactive: url("../img/interactive.jpg?1");
   --list-margin: 1rem 0;
   --list-padding: 0 0 0;
   --list-indent-width: 2rem;
@@ -1456,6 +2457,511 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: var(--decal-example-after-width);
   background-image: var(--decal-example-url);
   padding-bottom: calc(1 * var(--decal-example-after-width));
+}
+
+/**
+ * Render icon styles
+ */
+.icon {
+  position: relative;
+  display: block;
+  width: calc(var(--icon-size) * var(--icon-unit));
+  height: calc(var(--icon-size) * var(--icon-unit));
+  background-color: var(--icon-background-color);
+  overflow: hidden;
+  text-indent: -999px;
+  -webkit-transition: var(--icon-transition);
+  transition: var(--icon-transition);
+}
+.ui-interactive .icon {
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+.icon--inline {
+  display: inline-block;
+}
+.icon--rotate-45 {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.icon--rotate-90 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.icon--rotate-135 {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.icon--rotate-180 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.icon--rotate-225 {
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+.icon--rotate-270 {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.icon--rotate-315 {
+  -webkit-transform: rotate(315deg);
+          transform: rotate(315deg);
+}
+.icon--flip-x {
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+.icon--flip-y {
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+.icon--flip-x.icon--flip-y {
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+.icon:not(.icon--img) span,
+.icon:not(.icon--img) span::before,
+.icon:not(.icon--img) span::after, .icon:not(.icon--img)::before, .icon:not(.icon--img)::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: "";
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+.icon--img::before, .icon--img::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  opacity: 1;
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+.icon--img::before {
+  opacity: 1;
+  background-image: var(--icon-image-default);
+}
+.icon--img::after {
+  opacity: 0;
+  background-image: var(--icon-image-interactive);
+}
+.ui-interactive:hover .icon--img::before, .ui-interactive:focus .icon--img::before {
+  opacity: 0;
+}
+.ui-interactive:hover .icon--img::after, .ui-interactive:focus .icon--img::after {
+  opacity: 1;
+}
+.debug-css .icon {
+  --icon-color: var(--icon-debug-color) !important;
+  --icon-background-color: var(--icon-debug-background-color) !important;
+}
+
+.icon[data-icon=arrow]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-tail-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-tail-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-tail-width));
+  background-color: var(--icon-color);
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.icon[data-icon=arrow]::after {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-offset));
+  width: 0;
+  height: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-height) / 2) solid transparent;
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-width)) solid var(--icon-color);
+}
+
+.icon[data-icon=arrow-capped] span:first-child {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-tail-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-tail-width));
+  background-color: var(--icon-color);
+}
+.icon[data-icon=arrow-capped]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-offset));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-cap-width));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-cap-height));
+  background-color: var(--icon-color);
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.icon[data-icon=arrow-capped]::after {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-offset));
+  width: 0;
+  height: 0;
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-height) / 2) solid transparent;
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-width)) solid var(--icon-color);
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+.icon[data-icon=arrow-double] span:first-child {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-tail-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-tail-width));
+  background-color: var(--icon-color);
+}
+.icon[data-icon=arrow-double]::before, .icon[data-icon=arrow-double]::after {
+  width: 0;
+  height: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-height) / 2) solid transparent;
+}
+.icon[data-icon=arrow-double]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-offset));
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-width)) solid var(--icon-color);
+}
+.icon[data-icon=arrow-double]::after {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-offset));
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-width)) solid var(--icon-color);
+}
+
+.icon[data-icon=arrow-small]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-tail-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-tail-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-tail-width));
+  background-color: var(--icon-color);
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.icon[data-icon=arrow-small]::after {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-offset));
+  width: 0;
+  height: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-height) / 2) solid transparent;
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-width)) solid var(--icon-color);
+}
+
+.icon[data-icon=close]::before, .icon[data-icon=close]::after {
+  top: calc((var(--icon-size) * var(--icon-unit) - var(--icon-size) * var(--icon-unit) * var(--icon-close-height)) / 2);
+  left: calc((var(--icon-size) * var(--icon-unit) - var(--icon-size) * var(--icon-unit) * var(--icon-close-width)) / 2);
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-close-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-close-width));
+  background-color: var(--icon-color);
+}
+.icon[data-icon=close]::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.icon[data-icon=close]::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.icon[data-icon=fullscreen]::before, .icon[data-icon=fullscreen]::after {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-width) / 2);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-border)) solid var(--icon-color);
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-border)) solid var(--icon-color);
+}
+.icon[data-icon=fullscreen]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-offset));
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-border)) solid var(--icon-color);
+}
+.icon[data-icon=fullscreen]::after {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-offset));
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-border)) solid var(--icon-color);
+}
+.ui-interactive:hover .icon[data-icon=fullscreen]::before, .ui-interactive:focus .icon[data-icon=fullscreen]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-interactive-offset));
+}
+.ui-interactive:hover .icon[data-icon=fullscreen]::after, .ui-interactive:focus .icon[data-icon=fullscreen]::after {
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-interactive-offset));
+}
+
+.icon[data-icon=important]::before {
+  top: auto;
+  bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-dot-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-dot-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-dot-width));
+  border-radius: var(--icon-important-dot-radius);
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=important] span {
+  top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-width));
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=important] span::before, .icon[data-icon=important] span::after {
+  top: 0;
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-width) / 2) solid transparent;
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-width) / 2) solid transparent;
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-height)) solid var(--icon-color);
+  height: 0;
+  width: 0;
+}
+.icon[data-icon=important] span::before {
+  left: 0;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=important] span::after {
+  left: auto;
+  right: 0;
+  -webkit-transform: translate(50%, 0);
+          transform: translate(50%, 0);
+}
+
+.icon[data-icon=info]::before {
+  top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-dot-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-dot-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-dot-width));
+  border-radius: var(--icon-info-dot-radius);
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=info]::after {
+  top: auto;
+  bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-width));
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.icon[data-icon=minimize]::before, .icon[data-icon=minimize]::after {
+  width: 0;
+  height: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-height) / 2) solid transparent;
+}
+.icon[data-icon=minimize]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-offset));
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-width)) solid var(--icon-color);
+}
+.icon[data-icon=minimize]::after {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-offset));
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-width)) solid var(--icon-color);
+}
+.ui-interactive:hover .icon[data-icon=minimize]::before, .ui-interactive:focus .icon[data-icon=minimize]::before {
+  left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-interactive-offset));
+}
+.ui-interactive:hover .icon[data-icon=minimize]::after, .ui-interactive:focus .icon[data-icon=minimize]::after {
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-interactive-offset));
+}
+
+.icon[data-icon=pause]::after {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-pause-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-pause-width));
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-pause-border)) solid var(--icon-color);
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-pause-border)) solid var(--icon-color);
+}
+
+.icon[data-icon=play]::after {
+  width: 0;
+  height: 0;
+  -webkit-transform: translate(-40%, -50%);
+          transform: translate(-40%, -50%);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-play-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-play-height) / 2) solid transparent;
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-play-width)) solid var(--icon-color);
+}
+
+.icon[data-icon=replay]::before {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-width));
+  border-radius: 50%;
+  border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border)) solid var(--icon-color);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
+}
+.icon[data-icon=replay]::after {
+  margin-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-offset-x));
+  margin-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-offset-y));
+  width: 0;
+  height: 0;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transform: rotate(-45deg) translate(-50%, -50%);
+          transform: rotate(-45deg) translate(-50%, -50%);
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-width) / 2) solid transparent;
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-width) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-height)) solid var(--icon-color);
+}
+
+.icon[data-icon=siux]::before, .icon[data-icon=siux]::after {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-width));
+  border-radius: 50%;
+  border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-border)) solid var(--icon-color);
+}
+.icon[data-icon=siux]::before {
+  margin-top: calc((var(--icon-size) * var(--icon-unit) * var(--icon-siux-height) - var(--icon-size) * var(--icon-unit) * var(--icon-siux-border)) * -0.5);
+  -webkit-clip-path: polygon(0 0, 100% 0, 65% 50%, 75% 50%, 100% 25%, 100% 50%, 50% 50%, 50% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 65% 50%, 75% 50%, 100% 25%, 100% 50%, 50% 50%, 50% 100%, 0 100%);
+}
+.icon[data-icon=siux]::after {
+  margin-top: calc((var(--icon-size) * var(--icon-unit) * var(--icon-siux-height) - var(--icon-size) * var(--icon-unit) * var(--icon-siux-border)) * 0.5);
+  -webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 35% 50%, 25% 50%, 0 75%, 0 50%);
+          clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 35% 50%, 25% 50%, 0 75%, 0 50%);
+}
+.icon[data-icon=siux] span:first-child {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-circle-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-circle-width));
+  border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-circle-border)) solid var(--icon-color);
+  border-radius: 50%;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 45%, 100% 45%, 100% 55%, 0 55%, 0 65%, 100% 65%, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 45%, 100% 45%, 100% 55%, 0 55%, 0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+.icon[data-icon^=sound] span:first-child::before {
+  left: calc(50% - var(--icon-size) * var(--icon-unit) * var(--icon-sound-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-height) / 2);
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-width));
+  background-color: var(--icon-color);
+}
+.icon[data-icon^=sound] span:first-child::after {
+  left: calc(50% - var(--icon-size) * var(--icon-unit) * var(--icon-sound-offset));
+  width: 0;
+  height: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-height) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-height) / 2) solid transparent;
+  border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-width)) solid var(--icon-color);
+}
+
+.icon[data-icon=sound-muted]::before, .icon[data-icon=sound-muted]::after {
+  top: calc((var(--icon-size) * var(--icon-unit) - var(--icon-size) * var(--icon-unit) * var(--icon-sound-muted-height)) / 2);
+  left: calc(50% + var(--icon-size) * var(--icon-unit) * var(--icon-sound-width) / 2 + var(--icon-size) * var(--icon-unit) * var(--icon-sound-muted-width));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-muted-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-muted-width));
+  background-color: var(--icon-color);
+}
+.icon[data-icon=sound-muted]::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.icon[data-icon=sound-muted]::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.icon[data-icon=sound-none]::before {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-none-border)) solid var(--icon-color);
+}
+.icon[data-icon=sound-none]::after {
+  height: 100%;
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-none-line));
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+  background-color: var(--icon-color);
+}
+
+.icon[data-icon=sound-on]::before {
+  left: auto;
+  right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-on-offset));
+  border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-on-cap) / 2) solid transparent;
+  border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-on-cap) / 2) solid transparent;
+  border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-on-border)) solid var(--icon-color);
+}
+
+.icon[data-icon=stop]::after {
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-stop-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-stop-width));
+  background-color: var(--icon-color);
+}
+
+.icon[data-icon=unknown]::before {
+  top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-inset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-width));
+  border-radius: 50%;
+  border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-border)) solid var(--icon-color);
+  -webkit-clip-path: polygon(50% 50%, 0 25%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 50%);
+          clip-path: polygon(50% 50%, 0 25%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 50%);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=unknown]::after {
+  top: auto;
+  bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-tail));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-border));
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=unknown] span {
+  width: inherit;
+  height: inherit;
+}
+.icon[data-icon=unknown] span::after {
+  top: auto;
+  bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-dot-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-dot-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-dot-width));
+  border-radius: var(--icon-unknown-dot-radius);
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.icon[data-icon=user]::before {
+  top: auto;
+  bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-width));
+  border-radius: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-radius)) calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-radius)) 0 0;
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.icon[data-icon=user]::after {
+  top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-offset));
+  height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-circle-height));
+  width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-circle-width));
+  border-radius: 50%;
+  background-color: var(--icon-color);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.icon--img[data-icon=example] {
+  --icon-image-default: var(--icon-image-example-default);
+}
+.icon--img[data-icon=extra] {
+  --icon-image-default: var(--icon-image-extra-default);
+  --icon-image-interactive: var(--icon-image-extra-interactive);
 }
 
 /**
