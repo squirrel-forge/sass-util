@@ -1,0 +1,108 @@
+/**
+ * Icons styled
+ *  Submodule index
+ */
+
+// Shared config
+$class: 'ui-icon' !default;
+$class-interactive: 'ui-interactive' !default;
+$props: 'ui-icon-' !default;
+
+// Use icons with config
+@use 'styled/arrow' with ($class: $class, $props: $props);
+@use 'styled/arrow-capped' with ($class: $class, $props: $props);
+@use 'styled/arrow-double' with ($class: $class, $props: $props);
+@use 'styled/arrow-small' with ($class: $class, $props: $props);
+@use 'styled/close' with ($class: $class, $props: $props);
+@use 'styled/fullscreen' with ($class: $class, $props: $props, $class-interactive: $class-interactive);
+@use 'styled/important' with ($class: $class, $props: $props);
+@use 'styled/info' with ($class: $class, $props: $props);
+@use 'styled/minimize' with ($class: $class, $props: $props, $class-interactive: $class-interactive);
+@use 'styled/pause' with ($class: $class, $props: $props);
+@use 'styled/play' with ($class: $class, $props: $props);
+@use 'styled/replay' with ($class: $class, $props: $props);
+@use 'styled/siux' with ($class: $class, $props: $props);
+@use 'styled/sound' with ($class: $class, $props: $props);
+@use 'styled/sound-muted' with ($class: $class, $props: $props);
+@use 'styled/sound-none' with ($class: $class, $props: $props);
+@use 'styled/sound-on' with ($class: $class, $props: $props);
+@use 'styled/stop' with ($class: $class, $props: $props);
+@use 'styled/unknown' with ($class: $class, $props: $props);
+@use 'styled/user' with ($class: $class, $props: $props);
+
+// Configs
+@forward 'styled/arrow' as arrow-* show config;
+@forward 'styled/arrow-capped' as arrow-capped-* show config;
+@forward 'styled/arrow-double' as arrow-double-* show config;
+@forward 'styled/arrow-small' as arrow-small-* show config;
+@forward 'styled/close' as close-* show config;
+@forward 'styled/fullscreen' as fullscreen-* show config;
+@forward 'styled/important' as important-* show config;
+@forward 'styled/info' as info-* show config;
+@forward 'styled/minimize' as minimize-* show config;
+@forward 'styled/pause' as pause-* show config;
+@forward 'styled/play' as play-* show config;
+@forward 'styled/replay' as replay-* show config;
+@forward 'styled/sound' as sound-* show config;
+@forward 'styled/sound-muted' as sound-muted-* show config;
+@forward 'styled/sound-none' as sound-none-* show config;
+@forward 'styled/sound-on' as sound-on-* show config;
+@forward 'styled/stop' as stop-* show config;
+@forward 'styled/unknown' as unknown-* show config;
+@forward 'styled/user' as user-* show config;
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Outputs all custom properties in given context
+ */
+@mixin properties() {
+  @include arrow.properties;
+  @include arrow-capped.properties;
+  @include arrow-double.properties;
+  @include arrow-small.properties;
+  @include close.properties;
+  @include fullscreen.properties;
+  @include important.properties;
+  @include info.properties;
+  @include minimize.properties;
+  @include pause.properties;
+  @include play.properties;
+  @include replay.properties;
+  @include siux.properties;
+  @include sound.properties;
+  @include sound-muted.properties;
+  @include sound-none.properties;
+  @include sound-on.properties;
+  @include stop.properties;
+  @include unknown.properties;
+  @include user.properties;
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  @include arrow.styles;
+  @include arrow-capped.styles;
+  @include arrow-double.styles;
+  @include arrow-small.styles;
+  @include close.styles;
+  @include fullscreen.styles;
+  @include important.styles;
+  @include info.styles;
+  @include minimize.styles;
+  @include pause.styles;
+  @include play.styles;
+  @include replay.styles;
+  @include siux.styles;
+  @include sound.styles;
+  @include sound-muted.styles;
+  @include sound-none.styles;
+  @include sound-on.styles;
+  @include stop.styles;
+  @include unknown.styles;
+  @include user.styles;
+}
