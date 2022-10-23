@@ -1,0 +1,221 @@
+/**
+ * Icons core
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../abstract/config' as abstract;
+@use '../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+$class-interactive: 'ui-interactive' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$class-images: '--img' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$inline: '--inline' !default;
+
+/**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$flip: '--flip-' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Angles/rotation helper variants
+ * @protected
+ * @type {list<deg>} list of unitless degrees
+ */
+$angles: (45,90,135,180,225,270,315) !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+
+  // Default icon color
+  // @type {color} color value
+  color: currentColor,
+
+  // Default icon background color
+  // @type {color} color value
+  background-color: transparent,
+
+  // Default icon transition
+  // @type {number:easing} transition value
+  transition: 0.3s ease,
+
+  // Regular icon size
+  // @†ype {number} unitless number
+  size: 1,
+
+  // Icon sizing unit
+  // @type {number:unit} single size value
+  unit: 1.6rem,
+
+  // Default icon debug color
+  // @type {color} color value
+  debug-color: deepskyblue,
+
+  // Default icon debug background color
+  // @type {color} color value
+  debug-background-color: deeppink,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-core.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, 'icons-core.properties::');
+}
+
+/**
+ * Generate icon core styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class} {
+    position: relative;
+    display: block;
+    width: calc(var(--#{$props}size) * var(--#{$props}unit));
+    height: calc(var(--#{$props}size) * var(--#{$props}unit));
+    background-color: var(--#{$props}background-color);
+    overflow: hidden;
+    text-indent: -999px;
+    transition: var(--#{$props}transition);
+
+    // Interactive parent icon
+    .#{$class-interactive} & {
+      transition: inherit;
+    }
+
+    // Inline icon
+    &#{$inline} {
+      display: inline-block;
+    }
+
+    // Rotation angles
+    @each $angle in $angles {
+      &--rotate-#{$angle} {
+        transform: rotate(#{$angle}deg);
+      }
+    }
+
+    // Flip helpers
+    &#{$flip}x {
+      transform: scale(-1, 1);
+    }
+    &#{$flip}y {
+      transform: scale(1, -1);
+    }
+    &#{$flip}x.#{$class}#{$flip}y {
+      transform: scale(-1, -1);
+    }
+
+    // Styled icon variants
+    &:not(.#{$class}#{$class-images}) {
+
+      // Base elements definition
+      span,
+      span::before,
+      span::after,
+      &::before,
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        content: '';
+        transition: inherit;
+      }
+    }
+
+    // Image based icons
+    &#{$class-images} {
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: '';
+        opacity: 1;
+        transition: inherit;
+      }
+      &::before {
+        opacity: 1;
+        background-image: var(--#{$props}image-default);
+      }
+      &::after {
+        opacity: 0;
+        background-image: var(--#{$props}image-interactive);
+      }
+
+      // Interactive parent icon
+      .#{$class-interactive}:hover &,
+      .#{$class-interactive}:focus & {
+        &::before {
+          opacity: 0;
+        }
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    // Debug mode styles
+    .debug-css & {
+      --#{$props}color: var(--#{$props}debug-color) !important;
+      --#{$props}background-color: var(--#{$props}debug-background-color) !important;
+    }
+  }
+}
