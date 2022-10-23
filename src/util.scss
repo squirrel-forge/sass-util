@@ -12,6 +12,9 @@
   $images-decals-props: 'decal-',
   $images-assets-base: '../img/',
   $images-assets-cache: '?1',
+  $icons-class: 'icon',
+  $icons-props: 'icon-',
+  $icons-images-props: 'icon-image-',
   $font-class: 'font',
   $list-normalize-class: 'list',
   $list-normalize-props: 'list-',
@@ -61,6 +64,14 @@
 ));
 
 /**
+ * Configure image icons
+ */
+@include util.icons-images-config((
+  example: 'default.jpg',
+  extra: ('default.jpg', 'interactive.jpg'),
+));
+
+/**
  * Configure decals
  */
 @include util.images-decals-config((
@@ -80,6 +91,9 @@
   @include util.text-normalize-properties;
   @include util.colors-properties;
   @include util.images-decals-properties;
+  @include util.icons-core-properties;
+  @include util.icons-styled-properties;
+  @include util.icons-images-properties;
   @include util.list-normalize-properties;
 }
 
@@ -105,6 +119,13 @@
  * Render decal styles
  */
 @include util.images-decals-styles;
+
+/**
+ * Render icon styles
+ */
+@include util.icons-core-styles;
+@include util.icons-styled-styles;
+@include util.icons-images-styles;
 
 /**
  * Render list styles
