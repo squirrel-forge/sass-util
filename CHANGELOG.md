@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.2
+ - Updated build script arguments.
+ - Fixed a flow control typo/deprecation.
+ - Fixed a division deprecation and replaced with *math.div*. 
+
 ## 0.9.1
  - Added mixin *wordbreak*.
  - Added *icons* module with *styled* css icons and *images* icon helpers.
