@@ -3,8 +3,8 @@
   "version": "0.9.1",
   "description": "sass abstracts, mixins, globals and utilities",
   "scripts": {
-    "sass:render": "build-scss src dist -m -s -i",
-    "sass:publish": "build-scss src dist -c -m",
+    "sass:render": "build-scss src dist -d",
+    "sass:publish": "build-scss src dist -p -m",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
