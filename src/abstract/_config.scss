@@ -41,7 +41,7 @@
     }
 
     // Throw an error in strict mode if a name is unknown and extend is false
-    @elseif $strict {
+    @else if $strict {
       @error '#{$error}defaults[#{$name}] does not exist';
     }
   }
