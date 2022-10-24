@@ -2,1649 +2,14 @@
 /**
  * @squirrel-forge/build-scss@0.8.3
  * Root render template
- *  Set $env: null
+ *  Set $env: development
  *  Set $production: false
  *  Import: ./util.scss;
- */
-/**
- * Global reset
- *  A set of basic global reset styles.
- */
-/**
- * Generate reset styles
- * @public
- * @output Outputs reset styles
- */
-/**
- * Requires
- */
-/**
- * Merge config options
- * @public
- * @param {map} $options - Input options map
- * @param {map} $defaults - Default options map
- * @param {boolean} $extend - Allow config extension
- * @param {boolean} $strict - Throws an error with unknown option names
- * @param {string} $error - Error message prefix
- * @return {map} - Map with defaults with merged options
- */
-/**
- * Media queries
- *  Helper mixin and configuration.
- */
-/**
- * Requires
- */
-/**
- * Query defaults
- * @private
- * @type {map}
- */
-/**
- * Update/extend media queries
- * @public
- * @param {map} $queries - Map of media queries
- * @output {void} - Only sets or updates media query references
- */
-/**
- * Media query wrapper
- * @public
- * @param {string} query - Media name reference
- * @output Wraps given content styles in a media query
- */
-/**
- * Requires
- */
-/**
- * Get missing default arguments
- * @param {*} $data - Arguments, value or list
- * @param {*} $optional - Any number of optional argument defaults
- * @return {list} - A list with arguments and defaults
- */
-/**
- * Requires
- */
-/**
- * Split string
- * Thanks to dayenite and Tofandel, please refer to:
- * https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass#42295154
- * @param {string} $string - String to split
- * @param {string} $separator - Separator to split by
- * @param {boolean} $no-empty - Set false to return empty parts, default: true
- * @return {list} - Separated list of strings
- */
-/**
- * Requires
- */
-/**
- * Get name and query from string
- * @param {string} $name - String to parse
- * @param {string} $query-marker - String that marks the split point, default: '_at_'
- * @param {string} $error - Error message prefix
- * @return {list} - Empty if no query was found
- */
-/**
- * Requires
- */
-/**
- * Checks if given string is a query reference
- * @param {string} $name - String to parse
- * @param {string} $query-marker - String marking the beginning of a query, default: '_at_'
- * @return {string|null} - Query reference or null if not a query
- */
-/**
- * Requires
- */
-/**
- * Generate spacing values with a base
- * @param {string|number} $base - Base size including unit or variable
- * @param {number} $spaces - 1-4 values, unitless used for multiplication
- * @return {list} - Spacing values list
- */
-/**
- * Requires
- */
-/**
- * Returns joined initials of a separated string
- * @param {string} $name - String to parse
- * @param {string} $separator - Separator string
- * @return {string} - First char of each element separated as a joined string
- */
-/**
- * Requires
- */
-/**
- * Strip unit from value
- * @param {*} $value - Unit value
- * @return {*} - Unitless value
- */
-/**
- * Abstracts
- *  functions forwarding index
- */
-/**
- * Requires
- */
-/**
- * Select current scope only if given attribute is not set or optionally empty
- * @param {string} $attribute - Attribute name
- * @param {boolean} $empty - Include empty attribute
- * @param {string} $error - Error message prefix
- * @output Wraps given content styles to apply only if the current scope element does not have the given attribute or its empty
- */
-/**
- * Requires
- */
-/**
- * Select current scope only if a given attribute is set
- * @param {string} $attribute - Attribute name, default: 'class'
- * @param {boolean} $empty - Allow empty attribute
- * @param {string} $error - Error message prefix
- * @output Wraps given content styles to apply only if the current scope element has the given attribute
- */
-/**
- * Requires
- */
-/**
- * Attributes setter
- * @param {Map} $source - Map of attributes
- * @param {string} $error - Error message prefix
- * @output Adds the given attributes in current scope
- */
-/**
- * Requires
- */
-/**
- * Attributes from map setter
- * @param {string} $name - Name of attribute group
- * @param {Map} $source - Map of attribute groups to use
- * @param {string} $error - Error message prefix
- * @output Adds the given attributes in current scope
- */
-/**
- * Requires
- */
-/**
- * Fluid style basic setter
- * Creates a fluid font style between a min and max
- * @param {size[unit]} $min-vw - Min query width value
- * @param {size[unit]} $max-vw - Max query width value
- * @param {size[unit]} $min-font-size - Min font size
- * @param {size[unit]} $max-font-size - Max font size
- * @param {null|string} $base-query - Optional name for an @mixin mx-media(name), default: null
- * @param {boolean} $no-max - Do not define max query, default: null
- * @param {string} $error - Error message prefix
- * @output Adds the given font media queries in current scope, with an optional base query
- */
-/**
- * Requires
- */
-/**
- * Fluid font style setter
- * Adds the given font style attributes and fluid style in current scope
- * @param {string} $style - Name of font style
- * @param {Map} $styles - Map of font styles to use, default: $font-styles
- * @param {string} $base-query - Optional name for an @mixin media.query(name), default: null
- * @param {string} $fluid-attribute - Name of attribute to read fluid properties from, default: 'fluid'
- * @param {string} $no-max-attribute - Name of attribute to for no-max argument, default: 'no-max'
- * @output Adds the given font attributes and media queries in current scope
- */
-/**
- * Requires
- */
-/**
- * Simple BEM creator
- * @param {map} $nested - BEM map
- * @param {string} $query-marker - String that marks the split point, default: '_at_'
- * @param {string} $error - Error message prefix
- * @output Creates BEM style structures from a map definition
- */
-/**
- * Insert a line break before content
- * @output Inserts a pseudo before with a break
- */
-/**
- * Insert a line break after content
- * @output Inserts a pseudo after with a break
- */
-/**
- * Clear both before
- * @output Inserts a pseudo before with a clear both
- */
-/**
- * Clear both after
- * @output Inserts a pseudo after with a clear both
- */
-/**
- * Hide an element
- * but leave it accessible to screen readers
- * Reliable across most browsers
- * @output Inserts attributes to hide the current scope visually only
- */
-/**
- * Prevent text selection
- * Works across most browsers
- * @output Inserts attributes to prevent text selection
- */
-/**
- * Requires
- */
-/**
- * Generate custom properties
- * @public
- * @param {map} $props - Map of properties
- * @param {string} $prefix - Property prefix
- * @param {string} $error - Error message prefix
- * @output Adds given custom properties in current scope
- */
-/**
- * Allow for language base automatic word breaking
- * Works across most browsers
- * @output Inserts attributes to allow word breaking
- */
-/**
- * Mixins
- *  mixins forwarding index
- */
-/**
- * ui-colors
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Component property suffix
- * @protected
- * @type {string} variant suffix
- */
-/**
- * Color defaults
- * @private
- * @type {map}
- */
-/**
- * Color style attributes
- * @private
- * @type {map}
- */
-/**
- * Color variants
- * @private
- * @type {map}
- */
-/**
- * Internal generated names
- * @private
- * @type {list}
- */
-/**
- * Update colors and variants index
- * @public
- * @param {map} $colors - Map of colors
- * @param {map} $variants - Map of variants
- * @param {map} $attributes - Map of attributes
- * @output {void} - Sets available color references
- */
-/**
- * Generate required custom properties
- * @public
- * @output Outputs all custom properties in given context
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured component styles
- */
-/**
- * ui-assets
- *  Function with configuration.
- */
-/**
- * Asset base path
- * @protected
- * @type {string} url path
- */
-/**
- * Asset cache breaker
- * @protected
- * @type {string} url suffix
- */
-/**
- * Get asset url
- * @param {string} $asset - Relative asset path
- * @param {string} $base - Optional asset base url
- * @return {url} - Asset url
- */
-/**
- * ui-decals
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component static css suffix
- * @protected
- * @type {string} css class suffix
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Decals default width
- * @protected
- * @type {number} width value
- */
-/**
- * Use sizing via width and height property
- * @protected
- * @type {boolean} size via custom properties
- */
-/**
- * @typedef {map} Decal - Defines a decal, one before or after key must be set true
- * @key {undefined|boolean} before - Render before pseudo
- * @key {undefined|boolean} after - Render after pseudo
- * @key {number} width - Number unitless
- * @key {number} height - Number unitless
- * @key {string} url - Asset name
- */
-/**
- * Decals definitions
- * @private
- * @type {map<string, Decal>}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $decals - Map of decal definitions
- * @output {void} - Sets available decals declarations
- */
-/**
- * Generate required custom properties
- * @public
- * @output Outputs all custom properties in given context
- */
-/**
- * Generate base styles
- * @public
- * @output Outputs configured decal styles as helper classes
- */
-/**
- * Images
- *  Submodule forwarding index
- */
-/**
- * Icons core
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component parent interactive css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Angles/rotation helper variants
- * @protected
- * @type {list<deg>} list of unitless degrees
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon core styles
- * @public
- * @output Outputs configured icon base styles in given context
- */
-/**
- * Icon *
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon arrow-capped
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon arrow-double
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon arrow-small
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon close
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon fullscreen
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component parent interactive css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon important
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon info
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon minimize
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component parent interactive css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon pause
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon play
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon replay
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon siux
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon sound
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon sound-muted
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon sound-none
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon sound-on
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon stop
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon unknown
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icon user
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icons styled
- *  Submodule index
- */
-/**
- * Generate required custom properties
- * @public
- * @output Outputs all custom properties in given context
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icons images
- *  Custom properties and styles with configuration
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Sets available image icons
- */
-/**
- * Generate required custom properties
- * @public
- * @output Outputs all custom properties in given context
- */
-/**
- * Generate icon styles
- * @public
- * @output Outputs configured icon styles in given context
- */
-/**
- * Icons
- *  Submodule forwarding index
- */
-/**
- * Font style generation
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component style prefix
- * @protected
- * @type {string} css class sub style separator
- */
-/**
- * Component fluid style attribute name
- * @protected
- * @type {string} map key
- */
-/**
- * Component fluid style attribute name
- * @protected
- * @type {string} map key
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update font styles index
- * @public
- * @param {map} $styles - Map of font styles
- * @output {void} - Sets available style declarations
- */
-/**
- * Render font style in current context
- * @public
- * @param {string} $style - Style name
- * @output Outputs selected font style in given context
- */
-/**
- * Generate font styles
- * @public
- * @output Outputs configured font styles as helper classes
- */
-/**
- * ui-list normalize
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured component styles
- */
-/**
- * ui-list customize
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component data property
- * @protected
- * @type {string} property name
- */
-/**
- * Component data property
- * @protected
- * @type {string} property name
- */
-/**
- * Default counter style
- * @protected
- * @type {string} counter style name
- */
-/**
- * Counter suffix
- * @protected
- * @type {string} display suffix
- */
-/**
- * Counter space
- * @protected
- * @type {string} spacing after
- */
-/**
- * List styles
- * @protected
- * @type {list} list-style
- */
-/**
- * List custom styles
- * @protected
- * @type {map<string, list>} custom style
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured component styles
- */
-/**
- * List
- *  Submodule forwarding index
- */
-/**
- * ui-text accessibility helpers
- *  Helper class definitions.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured accessibility helpers
- */
-/**
- * ui-text align
- *  Styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Default text center media queries
- * @protected
- * @type {string} list of query references
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Default text center media queries
- * @protected
- * @type {string} list of query references
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Default text center media queries
- * @protected
- * @type {string} list of query references
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured alignment helper styles
- */
-/**
- * ui-text breaks
- *  Styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component class variant suffix
- * @protected
- * @type {string} class suffix
- */
-/**
- * Component responsive break mode
- * @protected
- * @type {boolean}
- */
-/**
- * Component break css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component break wrap css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component break wrap css class
- * @protected
- * @type {string} css class
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured break helper styles
- */
-/**
- * Text normalize
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component property prefix
- * @protected
- * @type {string} property name
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate required custom properties
- * @public
- * @output Adds components custom properties in current scope
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured component styles
- */
-/**
- * Text
- *  Submodule forwarding index
- */
-/**
- * ui-wrap
- *  Custom properties and styles with configuration.
- */
-/**
- * Requires
- */
-/**
- * Component css class
- * @protected
- * @type {string} css class
- */
-/**
- * Component no flex suffix
- * @protected
- * @type {string} class variant
- */
-/**
- * Config defaults
- * @private
- * @type {map}
- */
-/**
- * Update component config options
- * @public
- * @param {map} $options - Map of config options
- * @output {void} - Only sets config options
- */
-/**
- * Generate component styles
- * @public
- * @output Outputs configured component styles
- */
-/**
- * Utilities
- *  Modules and submodules forwarding and config
  */
 /**
  * Classic utilities setup
  *  Using this stylesheet will reset all the class and property names to match version 0.8.x
  *  Note that this does not match the version 0.8.x output, some changes are introduced by the new structure
- */
-/**
- * Configure colors
- */
-/**
- * Configure image icons
- */
-/**
- * Configure decals
  */
 /**
  * Define root variables
@@ -1830,8 +195,7 @@
  * Render reset
  */
 *, ::before, ::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -1886,10 +250,7 @@ a:active, a:focus, a:hover, a:visited {
  * Render text normalize and helpers
  */
 html {
-  -webkit-text-size-adjust: var(--text-normalize-size-adjust);
-     -moz-text-size-adjust: var(--text-normalize-size-adjust);
-      -ms-text-size-adjust: var(--text-normalize-size-adjust);
-          text-size-adjust: var(--text-normalize-size-adjust);
+  text-size-adjust: var(--text-normalize-size-adjust);
   text-rendering: optimizeSpeed;
 }
 
@@ -1927,7 +288,8 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 
 .text--no-select {
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
@@ -2153,80 +515,60 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 .text--wbreak {
   word-break: break-word;
-  -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
 }
 @media screen and (max-width: 767px) {
   .text--wbreak-m {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (max-width: 991px) {
   .text--wbreak-mtp {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .text--wbreak-tp {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1024px) {
   .text--wbreak-tl {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .text--wbreak-t {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 768px) {
   .text--wbreak-td {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 992px) {
   .text--wbreak-tld {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 1025px) {
   .text--wbreak-d {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 @media screen and (min-width: 1440px) {
   .text--wbreak-dm {
     word-break: break-word;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
 }
 
@@ -2470,55 +812,43 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   background-color: var(--icon-background-color);
   overflow: hidden;
   text-indent: -999px;
-  -webkit-transition: var(--icon-transition);
   transition: var(--icon-transition);
 }
 .ui-interactive .icon {
-  -webkit-transition: inherit;
   transition: inherit;
 }
 .icon--inline {
   display: inline-block;
 }
 .icon--rotate-45 {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .icon--rotate-90 {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .icon--rotate-135 {
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
+  transform: rotate(135deg);
 }
 .icon--rotate-180 {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .icon--rotate-225 {
-  -webkit-transform: rotate(225deg);
-          transform: rotate(225deg);
+  transform: rotate(225deg);
 }
 .icon--rotate-270 {
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 .icon--rotate-315 {
-  -webkit-transform: rotate(315deg);
-          transform: rotate(315deg);
+  transform: rotate(315deg);
 }
 .icon--flip-x {
-  -webkit-transform: scale(-1, 1);
-          transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 .icon--flip-y {
-  -webkit-transform: scale(1, -1);
-          transform: scale(1, -1);
+  transform: scale(1, -1);
 }
 .icon--flip-x.icon--flip-y {
-  -webkit-transform: scale(-1, -1);
-          transform: scale(-1, -1);
+  transform: scale(-1, -1);
 }
 .icon:not(.icon--img) span,
 .icon:not(.icon--img) span::before,
@@ -2526,10 +856,8 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   content: "";
-  -webkit-transition: inherit;
   transition: inherit;
 }
 .icon--img::before, .icon--img::after {
@@ -2543,7 +871,6 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   background-size: contain;
   content: "";
   opacity: 1;
-  -webkit-transition: inherit;
   transition: inherit;
 }
 .icon--img::before {
@@ -2570,16 +897,14 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-tail-height));
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-tail-width));
   background-color: var(--icon-color);
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 .icon[data-icon=arrow]::after {
   left: auto;
   right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-offset));
   width: 0;
   height: 0;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-height) / 2) solid transparent;
   border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-width)) solid var(--icon-color);
@@ -2595,8 +920,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-cap-width));
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-cap-height));
   background-color: var(--icon-color);
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 .icon[data-icon=arrow-capped]::after {
   left: auto;
@@ -2606,8 +930,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-height) / 2) solid transparent;
   border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-capped-width)) solid var(--icon-color);
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 
 .icon[data-icon=arrow-double] span:first-child {
@@ -2618,8 +941,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 .icon[data-icon=arrow-double]::before, .icon[data-icon=arrow-double]::after {
   width: 0;
   height: 0;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-double-height) / 2) solid transparent;
 }
@@ -2638,16 +960,14 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-tail-height));
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-tail-width));
   background-color: var(--icon-color);
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 .icon[data-icon=arrow-small]::after {
   left: auto;
   right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-offset));
   width: 0;
   height: 0;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-height) / 2) solid transparent;
   border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-arrow-small-width)) solid var(--icon-color);
@@ -2661,12 +981,10 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   background-color: var(--icon-color);
 }
 .icon[data-icon=close]::before {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .icon[data-icon=close]::after {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .icon[data-icon=fullscreen]::before, .icon[data-icon=fullscreen]::after {
@@ -2677,15 +995,13 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 .icon[data-icon=fullscreen]::before {
   left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-offset));
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-border)) solid var(--icon-color);
 }
 .icon[data-icon=fullscreen]::after {
   left: auto;
   right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-offset));
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-fullscreen-border)) solid var(--icon-color);
 }
 .ui-interactive:hover .icon[data-icon=fullscreen]::before, .ui-interactive:focus .icon[data-icon=fullscreen]::before {
@@ -2702,16 +1018,14 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-dot-width));
   border-radius: var(--icon-important-dot-radius);
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=important] span {
   top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-offset));
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-height));
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-important-width));
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=important] span::before, .icon[data-icon=important] span::after {
   top: 0;
@@ -2723,14 +1037,12 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 .icon[data-icon=important] span::before {
   left: 0;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=important] span::after {
   left: auto;
   right: 0;
-  -webkit-transform: translate(50%, 0);
-          transform: translate(50%, 0);
+  transform: translate(50%, 0);
 }
 
 .icon[data-icon=info]::before {
@@ -2739,8 +1051,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-dot-width));
   border-radius: var(--icon-info-dot-radius);
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=info]::after {
   top: auto;
@@ -2748,15 +1059,13 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-height));
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-info-width));
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
 .icon[data-icon=minimize]::before, .icon[data-icon=minimize]::after {
   width: 0;
   height: 0;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-minimize-height) / 2) solid transparent;
 }
@@ -2786,8 +1095,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 .icon[data-icon=play]::after {
   width: 0;
   height: 0;
-  -webkit-transform: translate(-40%, -50%);
-          transform: translate(-40%, -50%);
+  transform: translate(-40%, -50%);
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-play-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-play-height) / 2) solid transparent;
   border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-play-width)) solid var(--icon-color);
@@ -2798,18 +1106,15 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-width));
   border-radius: 50%;
   border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border)) solid var(--icon-color);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
 }
 .icon[data-icon=replay]::after {
   margin-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-offset-x));
   margin-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-offset-y));
   width: 0;
   height: 0;
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
-  -webkit-transform: rotate(-45deg) translate(-50%, -50%);
-          transform: rotate(-45deg) translate(-50%, -50%);
+  transform-origin: center center;
+  transform: rotate(-45deg) translate(-50%, -50%);
   border-left: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-width) / 2) solid transparent;
   border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-width) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-replay-circle-border) * var(--icon-replay-arrow-height)) solid var(--icon-color);
@@ -2823,21 +1128,18 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 .icon[data-icon=siux]::before {
   margin-top: calc((var(--icon-size) * var(--icon-unit) * var(--icon-siux-height) - var(--icon-size) * var(--icon-unit) * var(--icon-siux-border)) * -0.5);
-  -webkit-clip-path: polygon(0 0, 100% 0, 65% 50%, 75% 50%, 100% 25%, 100% 50%, 50% 50%, 50% 100%, 0 100%);
-          clip-path: polygon(0 0, 100% 0, 65% 50%, 75% 50%, 100% 25%, 100% 50%, 50% 50%, 50% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 65% 50%, 75% 50%, 100% 25%, 100% 50%, 50% 50%, 50% 100%, 0 100%);
 }
 .icon[data-icon=siux]::after {
   margin-top: calc((var(--icon-size) * var(--icon-unit) * var(--icon-siux-height) - var(--icon-size) * var(--icon-unit) * var(--icon-siux-border)) * 0.5);
-  -webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 35% 50%, 25% 50%, 0 75%, 0 50%);
-          clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 35% 50%, 25% 50%, 0 75%, 0 50%);
+  clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 35% 50%, 25% 50%, 0 75%, 0 50%);
 }
 .icon[data-icon=siux] span:first-child {
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-circle-height));
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-circle-width));
   border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-siux-circle-border)) solid var(--icon-color);
   border-radius: 50%;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 45%, 100% 45%, 100% 55%, 0 55%, 0 65%, 100% 65%, 100% 100%, 0 100%);
-          clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 45%, 100% 45%, 100% 55%, 0 55%, 0 65%, 100% 65%, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%, 0 45%, 100% 45%, 100% 55%, 0 55%, 0 65%, 100% 65%, 100% 100%, 0 100%);
 }
 
 .icon[data-icon^=sound] span:first-child::before {
@@ -2850,8 +1152,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   left: calc(50% - var(--icon-size) * var(--icon-unit) * var(--icon-sound-offset));
   width: 0;
   height: 0;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border-top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-height) / 2) solid transparent;
   border-bottom: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-height) / 2) solid transparent;
   border-right: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-width)) solid var(--icon-color);
@@ -2865,12 +1166,10 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   background-color: var(--icon-color);
 }
 .icon[data-icon=sound-muted]::before {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .icon[data-icon=sound-muted]::after {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .icon[data-icon=sound-none]::before {
@@ -2882,8 +1181,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 .icon[data-icon=sound-none]::after {
   height: 100%;
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-sound-none-line));
-  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-          transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
   background-color: var(--icon-color);
 }
 
@@ -2907,10 +1205,8 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-width));
   border-radius: 50%;
   border: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-border)) solid var(--icon-color);
-  -webkit-clip-path: polygon(50% 50%, 0 25%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 50%);
-          clip-path: polygon(50% 50%, 0 25%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 50%);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  clip-path: polygon(50% 50%, 0 25%, 0 0, 100% 0, 100% 100%, 50% 100%, 50% 50%);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=unknown]::after {
   top: auto;
@@ -2918,8 +1214,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   height: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-tail));
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-border));
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=unknown] span {
   width: inherit;
@@ -2932,8 +1227,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-unknown-dot-width));
   border-radius: var(--icon-unknown-dot-radius);
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
 .icon[data-icon=user]::before {
@@ -2943,8 +1237,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-width));
   border-radius: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-radius)) calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-radius)) 0 0;
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .icon[data-icon=user]::after {
   top: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-offset));
@@ -2952,8 +1245,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   width: calc(var(--icon-size) * var(--icon-unit) * var(--icon-user-circle-width));
   border-radius: 50%;
   background-color: var(--icon-color);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
 .icon--img[data-icon=example] {
@@ -3138,18 +1430,12 @@ ol[data-counter=example] > li:nth-child(12)::before {
   width: 100%;
 }
 .wrap:not(.wrap--no-flex) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .wrap--section {
   position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 0 1rem;
 }
 @media screen and (min-width: 768px) {
