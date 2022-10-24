@@ -149,7 +149,7 @@ $-decals: ();
 
           // Size by precalculated ratio
           @else {
-            $ratio: map.get($decal, 'height') / map.get($decal, 'width');
+            $ratio: math.div(map.get($decal, 'height'), map.get($decal, 'width'));
             @if $ratio > 0 and $ratio < 1000000 {
               padding-bottom: calc(#{$ratio} * var(--#{$props}#{$name}-before-width));
             } @else {
@@ -172,7 +172,7 @@ $-decals: ();
 
           // Size by precalculated ratio
           @else {
-            $ratio: map.get($decal, 'height') / map.get($decal, 'width');
+            $ratio: math.div(map.get($decal, 'height'), map.get($decal, 'width'));
             @if $ratio > 0 and $ratio < 1000000 {
               padding-bottom: calc(#{$ratio} * var(--#{$props}#{$name}-after-width));
             } @else {
