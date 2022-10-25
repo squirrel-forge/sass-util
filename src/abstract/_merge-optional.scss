@@ -1,0 +1,33 @@
+/**
+ * Requires
+ */
+@use 'sass:map';
+@use 'sass:meta';
+
+/**
+ * Optionally merges two maps
+ * @param {map} $base - Base map to merge into
+ * @param {null|false|map} $extend - Optional extension map
+ * @return {map} - Merged or base map
+ */
+@function merge-optional($base, $extend: null, $error: 'merge-optional::') {
+
+  // Base must be a map
+  @if meta.type-of($base) != map {
+    @error '#{$error}base[#{meta.type-of($base)}] must be a map containing at least one name, value pair';
+  }
+  $compiled: $base;
+
+  // Conditional merge
+  @if $extend {
+
+    // Extend must be a map
+    @if meta.type-of($base) != map {
+      @error '#{$error}extend[#{meta.type-of($extend)}] must be null, false or a map containing at least one name, value pair';
+    }
+
+    // Merge maps
+    $compiled: map.merge($compiled, $extend);
+  }
+  @return $compiled;
+}
