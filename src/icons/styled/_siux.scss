@@ -43,7 +43,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, 'icons-styled-siux.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-siux.properties::');
 }
 
 /**

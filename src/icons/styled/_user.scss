@@ -53,7 +53,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, 'icons-styled-user.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-user.properties::');
 }
 
 /**

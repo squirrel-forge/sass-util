@@ -115,7 +115,7 @@ $-config: (
   }
 
   // Create actual properties
-  @include mixins.properties($compiled, $props, 'icons-images.properties::');
+  @include mixins.properties($compiled, $props, '_at_', 'icons-images.properties::');
 }
 
 /**
