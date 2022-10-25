@@ -13,6 +13,7 @@
   "scss": "src/_index.scss",
   "directories": {
     "dist": "dist",
+    "example": "example",
     "src": "src"
   },
   "repository": {
