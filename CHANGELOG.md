@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.3
+ - Remove local css maps.
+ - Move example *util.scss* to its own folder.
+
 ## 0.9.2
  - Updated build script arguments.
  - Fixed a flow control typo/deprecation.
