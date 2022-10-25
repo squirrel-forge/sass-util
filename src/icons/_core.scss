@@ -6,7 +6,9 @@
 /**
  * Requires
  */
-@use '../abstract/config' as abstract;
+@use 'sass:map';
+@use 'sass:meta';
+@use '../abstract';
 @use '../mixins/properties' as mixins;
 
 /**
@@ -107,10 +109,12 @@ $-config: (
 /**
  * Generate required custom properties
  * @public
+ * @param {null|map} $extend - Extend properties for output only
  * @output Adds components custom properties in current scope
  */
-@mixin properties() {
-  @include mixins.properties($-config, $props, 'icons-core.properties::');
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($render, $props, '_at_', 'icons-core.properties::');
 }
 
 /**

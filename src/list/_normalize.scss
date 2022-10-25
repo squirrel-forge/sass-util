@@ -64,10 +64,12 @@ $-config: (
 /**
  * Generate required custom properties
  * @public
+ * @param {null|map} $extend - Extend properties for output only
  * @output Adds components custom properties in current scope
  */
-@mixin properties() {
-  @include mixins.properties($-config, $props, 'list-normalize.properties::');
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($-config, $props, '_at_', 'list-normalize.properties::');
 }
 
 /**

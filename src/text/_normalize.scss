@@ -6,7 +6,7 @@
 /**
  * Requires
  */
-@use '../abstract/config' as abstract;
+@use '../abstract';
 @use '../mixins/properties' as mixins;
 
 /**
@@ -50,10 +50,12 @@ $-config: (
 /**
  * Generate required custom properties
  * @public
+ * @param {null|map} $extend - Extend properties for output only
  * @output Adds components custom properties in current scope
  */
-@mixin properties() {
-  @include mixins.properties($-config, $props, 'text-normalize.properties::');
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($-config, $props, '_at_', 'text-normalize.properties::');
 }
 
 /**
