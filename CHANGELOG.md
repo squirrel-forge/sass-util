@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.4
+ - Added *merge-optional* abstract function.
+ - Extended *properties* mixin with *media.query* support.
+ - Removed the js placeholder.
+
 ## 0.9.3
  - Remove local css maps.
  - Move example *util.scss* to its own folder.
