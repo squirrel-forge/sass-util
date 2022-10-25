@@ -86,6 +86,7 @@ Only abstract functions and helpers, none of these contain configuration.
  - +default-args(```$data, $optional...```) - A list with arguments and defaults.
  - +has-query(```$name, $query-marker: '_at_', $error: 'has-query::'```) - Empty if no query was found.
  - +is-query(```$name, $query-marker: '_at_'```) - Query reference or null if not a query
+ - +merge-optional(```$base, $extend: null, $error: 'merge-optional::'```) - Merged or base map
  - +spacing(```$params...```) - Spacing values list.
  - +str-initials(```$name, $separator: '-'```) - First char of each element separated as a joined string.
  - +str-split(```$string, $separator, $no-empty: true```) - Separated list of strings
@@ -242,7 +243,7 @@ Supplies icon helpers, css definitions, images and styles classes and properties
  - *$props*: ```'ui-icon-'```
  - *$angles*: ```(45,90,135,180,225,270,315)```
  - config(```$options```) - Only sets config options.
- - properties() - Outputs all custom properties in given context.
+ - properties(```$extend: null```) - Outputs all custom properties in given context.
  - styles() - Outputs configured icon base styles in given context.
 
 ##### + util / icons / styled
@@ -372,7 +373,7 @@ Supplies list normalization and customizable styles with corresponding helper cl
      item-after-margin: 1rem 0 0,
    );
    ```
- - properties() - Adds components custom properties in current scope
+ - properties(```$extend: null```) - Adds components custom properties in current scope
  - styles() - Outputs configured component styles
 
 #### + util / media
@@ -406,7 +407,7 @@ Only mixins and helpers that produce output, none of these contain configuration
  - +font-fluid-base(```$min-vw, $max-vw, $min-font-size, $max-font-size, $base-query: null, $no-max: false, $error: 'font-fluid-base::'```) - Adds the given font media queries in current scope, with an optional base query.
  - +hide-accessible() - Inserts attributes to hide the current scope visually only.
  - +no-select() - Inserts attributes to prevent text selection.
- - +properties(```$props, $prefix: '', $error: 'properties::'```) - Adds given custom properties in current scope.
+ - +properties(```$props, $prefix: '', $query-marker: '_at_', $error: 'properties::'```) - Adds given custom properties in current scope.
  - +wordbreak() - Adds word break properties in current scope.
 
 #### + util / reset
@@ -478,7 +479,7 @@ Supplies text accessibility, alignment, break helpers and some normalization.
      size-adjust: 100%,
    );
    ```
- - properties() - Adds components custom properties in current scope.
+ - properties(```$extend: null```) - Adds components custom properties in current scope.
  - styles() - Outputs configured component styles.
 
 #### + util / wrap
