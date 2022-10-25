@@ -3,7 +3,7 @@
  *  Using this stylesheet will reset all the class and property names to match version 0.8.x
  *  Note that this does not match the version 0.8.x output, some changes are introduced by the new structure
  */
-@use 'index' as util with (
+@use '../src/index' as util with (
   $colors-class: 'color',
   $colors-props: 'color-',
   $images-decals-class: 'decals',
