@@ -7,7 +7,6 @@
     "sass:publish": "build-scss example dist -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "index.js",
   "style": "dist/util.min.css",
   "sass": "src/_index.scss",
   "scss": "src/_index.scss",
