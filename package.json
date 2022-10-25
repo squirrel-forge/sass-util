@@ -3,8 +3,8 @@
   "version": "0.9.2",
   "description": "sass abstracts, mixins, globals and utilities",
   "scripts": {
-    "sass:render": "build-scss src dist -d",
-    "sass:publish": "build-scss src dist -p -m",
+    "sass:render": "build-scss example dist -d",
+    "sass:publish": "build-scss example dist -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
@@ -25,6 +25,7 @@
     "modules",
     "mixins",
     "ui",
+    "css",
     "abstract"
   ],
   "author": "Daniel Hartwell <me@siux.info> (http://siux.info)",
