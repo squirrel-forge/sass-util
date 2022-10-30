@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.5
+ - Added a basic button styles module, core and styled variant.
+ - Added *all()* function to *font* module to get the full fonts map.
+
 ## 0.9.4
  - Added *merge-optional* abstract function.
  - Extended *properties* mixin with *media.query* support.
