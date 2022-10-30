@@ -92,6 +92,27 @@ Only abstract functions and helpers, none of these contain configuration.
  - +str-split(```$string, $separator, $no-empty: true```) - Separated list of strings
  - +strip-unit(```$value```) - Unitless value
 
+#### + util / button
+
+Supplies button helpers, css definitions, custom styles and properties for usage.
+
+##### + util / button / core
+
+ - *$class*: ```'ui-button'```
+ - *$props*: ```'ui-button-'```
+ - config(```$options```) - Only sets config options.
+ - properties(```$extend: null```) - Outputs all custom properties in given context.
+ - styles() - Outputs configured button base styles in given context.
+
+##### + util / button / styled
+
+ - *$class*: ```'ui-button'```
+ - *$props*: ```'ui-button-'```
+ - config(```$options```) - Only sets config options.
+ - properties(```$extend: null```) - Outputs all custom properties in given context.
+ - styles() - Outputs configured styled button styles in given context.
+ - add(```$name, $values```) - Adds a button style with given attributes to current context
+
 #### + util / colors  
 
 Generates colors as custom properties including variants, with corresponding helper classes for usage.
@@ -227,6 +248,7 @@ Supplies font styles for injection and styles with corresponding helper classes 
    );
    ```
  - get(```$style```) - Outputs selected font style in given context.
+ - all() - Returns all font styles as map.
  - styles() - Outputs configured font styles as helper classes.
 
 #### + util / icons
