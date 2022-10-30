@@ -1,0 +1,18 @@
+/**
+ * Buttons
+ *  Submodule forwarding index
+ */
+
+// Shared config
+$class: 'ui-button' !default;
+$props: 'ui-button-' !default;
+
+// Forward configurable modules
+@forward 'core' as core-* with (
+  $props: $props,
+  $class: $class,
+);
+@forward 'styled' as styled-* with (
+  $props: $props,
+  $class: $class,
+);

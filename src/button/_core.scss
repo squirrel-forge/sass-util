@@ -1,0 +1,117 @@
+/**
+ * ui-button core component
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../abstract';
+@use '../mixins';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-button' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-button-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  padding: 0.2em,
+  border: 1px solid currentColor,
+  border-radius: 0.25em,
+  icon-spacing: 0.25em,
+  min-width: 8em,
+  transition: 0.3s ease,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'button-core.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($render, $props, '_at_', 'button-core.properties::');
+}
+
+/**
+ * Generate button core styles
+ * @public
+ * @output Outputs configured button base styles in given context
+ */
+@mixin styles() {
+  .#{$class} {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: var(--#{$props}padding);
+    border: var(--#{$props}border);
+    border-radius: var(--#{$props}border-radius);
+    transition: var(--#{$props}transition);
+
+    &__label {
+      display: inline-block;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+
+      .#{$class}__label:last-child:not(:first-child) {
+        margin-left: var(--#{$props}icon-spacing);
+      }
+      .#{$class}__label:first-child:not(:last-child) {
+        margin-right: var(--#{$props}icon-spacing);
+      }
+    }
+
+    &--label-hidden {
+      .#{$class}__label {
+        @include mixins.hide-accessible;
+      }
+    }
+
+    &--center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    &--min-width {
+      min-width: var(--#{$props}min-width);
+    }
+
+    &--wide {
+      width: 100%;
+    }
+  }
+}

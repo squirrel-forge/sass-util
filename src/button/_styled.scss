@@ -1,0 +1,121 @@
+/**
+ * ui-button styled component
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../abstract';
+@use '../mixins';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-button' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-button-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  styled-color: lightslategray,
+  styled-background: white,
+  styled-border: lightsteelblue,
+  disabled-color: silver,
+  disabled-background: whitesmoke,
+  disabled-border: lightgray,
+  interactive-color: slategray,
+  interactive-background: ghostwhite,
+  interactive-border: steelblue,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'button-styled.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($render, $props, '_at_', 'button-styled.properties::');
+}
+
+/**
+ * Generate button styled styles
+ * @public
+ * @output Outputs configured button styled styles in given context
+ */
+@mixin styles() {
+  .#{$class}--styled {
+    color: var(--#{$props}styled-color);
+    background-color: var(--#{$props}styled-background);
+    border-color: var(--#{$props}styled-border);
+
+    &:disabled {
+      color: var(--#{$props}disabled-color);
+      background-color: var(--#{$props}disabled-background);
+      border-color: var(--#{$props}disabled-border);
+    }
+
+    &:not(:disabled):focus,
+    &:not(:disabled):hover {
+      color: var(--#{$props}interactive-color);
+      background-color: var(--#{$props}interactive-background);
+      border-color: var(--#{$props}interactive-border);
+    }
+  }
+}
+
+/**
+ * Add button style
+ * @param {string} $name - Style name
+ * @param {map} $values - Property values map
+ * @output Adds a button style with given attributes to current context
+ */
+@mixin add($name, $values) {
+
+  // Must have styles
+  @if meta.type-of($values) != map {
+    @error 'You must define at least one value group';
+  }
+
+  .#{$class}--#{$name} {
+    @extend .#{$class}--styled;
+    @each $group, $colors in $values {
+      @if meta.type-of($colors) != map {
+        @error 'Each group must contain at least one prop value pair';
+      }
+      @each $prop, $color in $colors {
+        --#{$props}#{$group}-#{$prop}: #{$color};
+      }
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
+  }
+}
