@@ -83,6 +83,15 @@ $-styles: ();
 }
 
 /**
+ * Return all defined font styles
+ * @public
+ * @return {map} - Maps of font styles
+ */
+@function all() {
+  @return $-styles;
+}
+
+/**
  * Generate font styles
  * @public
  * @output Outputs configured font styles as helper classes
