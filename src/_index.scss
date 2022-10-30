@@ -51,6 +51,11 @@
   $icons-flip: '--flip-' !default;
   $icons-angles: (45,90,135,180,225,270,315) !default;
 
+// Button module config
+  // Share submodules config
+  $button-class: 'ui-button' !default;
+  $button-props: 'ui-button-' !default;
+
 // Font module config
   // Styles module config
   $font-class: 'ui-font' !default;
@@ -206,6 +211,10 @@
   $inline: $icons-inline,
   $flip: $icons-flip,
   $angles: $icons-angles,
+);
+@forward 'button' as button-* with (
+  $class: $button-class,
+  $props: $button-props,
 );
 @forward 'font' as font-* with (
   $class: $font-class,
