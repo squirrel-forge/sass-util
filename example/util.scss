@@ -15,6 +15,8 @@
   $icons-class: 'icon',
   $icons-props: 'icon-',
   $icons-images-props: 'icon-image-',
+  $button-class: 'button',
+  $button-props: 'button-',
   $font-class: 'font',
   $list-normalize-class: 'list',
   $list-normalize-props: 'list-',
@@ -95,6 +97,8 @@
   @include util.icons-styled-properties;
   @include util.icons-images-properties;
   @include util.list-normalize-properties;
+  @include util.button-core-properties;
+  @include util.button-styled-properties;
 }
 
 /**
@@ -132,6 +136,17 @@
  */
 @include util.list-normalize-styles;
 @include util.list-customize-styles;
+
+/**
+ * Render button styles
+ */
+@include util.button-core-styles;
+@include util.button-styled-styles;
+@include util.button-styled-add('primary', (
+  styled: (color: var(--color-cerulean), background: transparent, border: var(--color-cerulean)),
+  disabled: (color: var(--color-grey-2), background: transparent, border: var(--color-grey-2)),
+  interactive: (color: var(--color-pumpkin-orange), background: transparent, border: var(--color-pumpkin-orange)),
+));
 
 /**
  * Render font styles
