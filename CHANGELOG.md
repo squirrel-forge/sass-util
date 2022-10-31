@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.7
+ - Changed filesystem structure for better imports and autocompletion.
+
 ## 0.9.6
  - Added more icons.
  - Some *button* module tweaks and improvements.
