@@ -1,6 +1,6 @@
 {
   "name": "@squirrel-forge/sass-util",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "sass abstracts, mixins, globals and utilities",
   "scripts": {
     "sass:render": "build-scss example dist -d",
@@ -8,12 +8,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "style": "dist/util.min.css",
-  "sass": "src/_index.scss",
-  "scss": "src/_index.scss",
+  "sass": "_index.scss",
+  "scss": "_index.scss",
   "directories": {
+    "abstract": "abstract",
+    "button": "button",
     "dist": "dist",
     "example": "example",
-    "src": "src"
+    "icons": "icons",
+    "images": "images",
+    "list": "list",
+    "mixins": "mixins",
+    "text": "text"
   },
   "repository": {
     "type": "git",
