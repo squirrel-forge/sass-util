@@ -52,9 +52,13 @@
   $icons-angles: (45,90,135,180,225,270,315) !default;
 
 // Button module config
-  // Share submodules config
+  // Shared submodules config
   $button-class: 'ui-button' !default;
   $button-props: 'ui-button-' !default;
+
+  // Styled submodule config
+  $button-as-default: true !default;
+  $button-default-name: 'default' !default;
 
 // Font module config
   // Styles module config
@@ -215,6 +219,8 @@
 @forward 'button' as button-* with (
   $class: $button-class,
   $props: $button-props,
+  $as-default: $button-as-default,
+  $default-name: $button-default-name,
 );
 @forward 'font' as font-* with (
   $class: $font-class,
