@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.6
+ - Added more icons.
+ - Some *button* module tweaks and improvements.
+
 ## 0.9.5
  - Added a basic button styles module, core and styled variant.
  - Added *all()* function to *font* module to get the full fonts map.
