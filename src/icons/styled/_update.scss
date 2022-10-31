@@ -1,0 +1,101 @@
+/**
+ * Icon update
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  update-circle-width: 0.6,
+  update-circle-height: 0.6,
+  update-circle-border: 0.12,
+  update-arrow-height: 2,
+  update-arrow-width: 2.4,
+  update-arrow-offset-x: -1.6,
+  update-arrow-offset-y: -0.295,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-update.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-update.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="update"] {
+    span {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-width));
+      border-radius: 50%;
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border)) solid var(--#{$props}color);
+      clip-path: polygon(0 0, 100% 0, 50% 50%, 100% 100%, 0 100%, 50% 50%);
+    }
+    &::before {
+      margin-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-offset-x));
+      margin-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-offset-y));
+      width: 0;
+      height: 0;
+      transform-origin: center center;
+      transform: rotate(-45deg) translate(-50%, -50%);
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-width) / 2) solid transparent;
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-width) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-height)) solid var(--#{$props}color);
+    }
+    &:after {
+      top: auto;
+      right: 50%;
+      left: auto;
+      bottom: 50%;
+      margin-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-offset-x));
+      margin-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-offset-y));
+      width: 0;
+      height: 0;
+      transform-origin: center center;
+      transform: rotate(-45deg) translate(50%, 50%);
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-width) / 2) solid transparent;
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-width) / 2) solid transparent;
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}update-circle-border) * var(--#{$props}update-arrow-height)) solid var(--#{$props}color);
+    }
+  }
+}

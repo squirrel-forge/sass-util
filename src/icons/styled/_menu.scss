@@ -1,5 +1,5 @@
 /**
- * Icon close
+ * Icon menu
  *  Custom properties and styles with configuration
  */
 
@@ -29,8 +29,9 @@ $props: 'ui-icon-' !default;
  * @type {map}
  */
 $-config: (
-  close-height: 0.7,
-  close-width: 0.15,
+  menu-height: 0.09,
+  menu-width: 0.6,
+  menu-offset: -0.1,
 );
 
 /**
@@ -40,7 +41,7 @@ $-config: (
  * @output {void} - Only sets config options
  */
 @mixin config($options) {
-  $-config: abstract.config($options, $-config, false, true, 'icons-styled-close.config::') !global;
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-menu.config::') !global;
 }
 
 /**
@@ -49,7 +50,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, '_at_', 'icons-styled-close.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-menu.properties::');
 }
 
 /**
@@ -58,20 +59,26 @@ $-config: (
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
-  .#{$class}[data-icon="close"] {
-    &::before,
-    &::after {
-      top: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-height)) / 2);
-      left: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-width)) / 2);
-      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-height));
-      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-width));
+  .#{$class}[data-icon="menu"] {
+    span {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}menu-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}menu-width));
       background-color: var(--#{$props}color);
     }
-    &::before {
-      transform: rotate(45deg);
+    span::before,
+    span::after {
+      height: 100%;
+      width: 100%;
+      background-color: var(--#{$props}color);
     }
-    &::after {
-      transform: rotate(-45deg);
+    span::before {
+      top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}menu-offset));
+      transform: translate(-50%, -100%);
+    }
+    span::after {
+      top: auto;
+      bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}menu-offset));
+      transform: translate(-50%, 100%);
     }
   }
 }

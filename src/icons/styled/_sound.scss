@@ -32,6 +32,13 @@ $-config: (
   sound-height: 0.65,
   sound-width: 0.4,
   sound-offset: 0.05,
+  sound-muted-height: 0.3,
+  sound-muted-width: 0.08,
+  sound-none-border: 0.08,
+  sound-none-line: 0.06,
+  sound-on-cap: 0.5,
+  sound-on-border: 0.1,
+  sound-on-offset: 0.15,
 );
 
 /**
@@ -76,6 +83,45 @@ $-config: (
         border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-height) / 2) solid transparent;
         border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-width)) solid var(--#{$props}color);
       }
+    }
+  }
+  .#{$class}[data-icon="sound-muted"] {
+    &::before,
+    &::after {
+      top: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-height)) / 2);
+      left: calc(50% + var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-width) / 2 + var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-width));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-width));
+      background-color: var(--#{$props}color);
+    }
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+  .#{$class}[data-icon="sound-none"] {
+    &::before {
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-none-border)) solid var(--#{$props}color);
+    }
+    &::after {
+      height: 100%;
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-none-line));
+      transform: translate(-50%, -50%) rotate(-45deg);
+      background-color: var(--#{$props}color);
+    }
+  }
+  .#{$class}[data-icon="sound-on"] {
+    &::before {
+      left: auto;
+      right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-offset));
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-cap) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-cap) / 2) solid transparent;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-border)) solid var(--#{$props}color);
     }
   }
 }

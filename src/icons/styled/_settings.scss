@@ -1,0 +1,86 @@
+/**
+ * Icon settings
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  settings-size: 0.6,
+  settings-width: 0.14,
+  settings-line: 0.14,
+  settings-offset: 0.12,
+  settings-inset: polygon(0 0, 100% 0, 100% 15%, 0 15%, 0 85%, 100% 85%, 100% 100%, 0 100%),
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-settings.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-settings.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="settings"] {
+    &::before {
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * (var(--#{$props}settings-size) - var(--#{$props}settings-offset)));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * (var(--#{$props}settings-size) - var(--#{$props}settings-offset)));
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}settings-width)) solid var(--#{$props}color);
+      border-radius: 50%;
+    }
+    &:after,
+    span::before,
+    span::after {
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}settings-line));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}settings-size));
+      background-color: var(--#{$props}color);
+      clip-path: var(--#{$props}settings-inset);
+    }
+    span::before {
+      transform: translate(-50%, -50%) rotate(-60deg);
+    }
+    span::after {
+      transform: translate(-50%, -50%) rotate(60deg);
+    }
+  }
+}

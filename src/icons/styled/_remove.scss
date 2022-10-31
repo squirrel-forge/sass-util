@@ -1,5 +1,5 @@
 /**
- * Icon sound-on
+ * Icon remove
  *  Custom properties and styles with configuration
  */
 
@@ -29,9 +29,8 @@ $props: 'ui-icon-' !default;
  * @type {map}
  */
 $-config: (
-  sound-on-cap: 0.5,
-  sound-on-border: 0.1,
-  sound-on-offset: 0.15,
+  remove-height: 0.15,
+  remove-width: 0.6,
 );
 
 /**
@@ -41,7 +40,7 @@ $-config: (
  * @output {void} - Only sets config options
  */
 @mixin config($options) {
-  $-config: abstract.config($options, $-config, false, true, 'icons-styled-sound-on.config::') !global;
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-remove.config::') !global;
 }
 
 /**
@@ -50,7 +49,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, '_at_', 'icons-styled-sound-on.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-remove.properties::');
 }
 
 /**
@@ -59,13 +58,11 @@ $-config: (
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
-  .#{$class}[data-icon="sound-on"] {
+  .#{$class}[data-icon="remove"] {
     &::before {
-      left: auto;
-      right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-offset));
-      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-cap) / 2) solid transparent;
-      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-cap) / 2) solid transparent;
-      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-on-border)) solid var(--#{$props}color);
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}remove-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}remove-width));
+      background-color: var(--#{$props}color);
     }
   }
 }

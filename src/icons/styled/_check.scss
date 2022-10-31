@@ -1,5 +1,5 @@
 /**
- * Icon sound-none
+ * Icon check
  *  Custom properties and styles with configuration
  */
 
@@ -29,8 +29,9 @@ $props: 'ui-icon-' !default;
  * @type {map}
  */
 $-config: (
-  sound-none-border: 0.08,
-  sound-none-line: 0.06,
+  check-width: 0.15,
+  check-height: 0.5,
+  check-line: 0.1,
 );
 
 /**
@@ -40,7 +41,7 @@ $-config: (
  * @output {void} - Only sets config options
  */
 @mixin config($options) {
-  $-config: abstract.config($options, $-config, false, true, 'icons-styled-sound-none.config::') !global;
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-check.config::') !global;
 }
 
 /**
@@ -49,7 +50,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, '_at_', 'icons-styled-sound-none.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-check.properties::');
 }
 
 /**
@@ -58,18 +59,21 @@ $-config: (
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
-  .#{$class}[data-icon="sound-none"] {
-    &::before {
-      width: inherit;
-      height: inherit;
-      border-radius: 50%;
-      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-none-border)) solid var(--#{$props}color);
-    }
-    &::after {
-      height: 100%;
-      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-none-line));
-      transform: translate(-50%, -50%) rotate(-45deg);
+  .#{$class}[data-icon="check"] {
+    span {
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}check-line));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}check-height));
       background-color: var(--#{$props}color);
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    span::after {
+      top: auto;
+      left: 0;
+      bottom: 0;
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}check-line));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}check-width));
+      background-color: var(--#{$props}color);
+      transform: translate(-100%, 0);
     }
   }
 }

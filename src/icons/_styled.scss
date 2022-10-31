@@ -9,46 +9,68 @@ $class-interactive: 'ui-interactive' !default;
 $props: 'ui-icon-' !default;
 
 // Use icons with config
+@use 'styled/action' with ($class: $class, $props: $props);
+@use 'styled/add' with ($class: $class, $props: $props);
 @use 'styled/arrow' with ($class: $class, $props: $props);
 @use 'styled/arrow-capped' with ($class: $class, $props: $props);
 @use 'styled/arrow-double' with ($class: $class, $props: $props);
 @use 'styled/arrow-small' with ($class: $class, $props: $props);
+@use 'styled/check' with ($class: $class, $props: $props);
 @use 'styled/close' with ($class: $class, $props: $props);
+@use 'styled/close-small' with ($class: $class, $props: $props);
+@use 'styled/download' with ($class: $class, $props: $props);
 @use 'styled/fullscreen' with ($class: $class, $props: $props, $class-interactive: $class-interactive);
 @use 'styled/important' with ($class: $class, $props: $props);
 @use 'styled/info' with ($class: $class, $props: $props);
+@use 'styled/menu' with ($class: $class, $props: $props);
 @use 'styled/minimize' with ($class: $class, $props: $props, $class-interactive: $class-interactive);
 @use 'styled/pause' with ($class: $class, $props: $props);
 @use 'styled/play' with ($class: $class, $props: $props);
+@use 'styled/redo' with ($class: $class, $props: $props);
+@use 'styled/remove' with ($class: $class, $props: $props);
 @use 'styled/replay' with ($class: $class, $props: $props);
+@use 'styled/save' with ($class: $class, $props: $props);
+@use 'styled/settings' with ($class: $class, $props: $props);
 @use 'styled/siux' with ($class: $class, $props: $props);
 @use 'styled/sound' with ($class: $class, $props: $props);
-@use 'styled/sound-muted' with ($class: $class, $props: $props);
-@use 'styled/sound-none' with ($class: $class, $props: $props);
-@use 'styled/sound-on' with ($class: $class, $props: $props);
 @use 'styled/stop' with ($class: $class, $props: $props);
+@use 'styled/trash' with ($class: $class, $props: $props);
+@use 'styled/undo' with ($class: $class, $props: $props);
 @use 'styled/unknown' with ($class: $class, $props: $props);
+@use 'styled/update' with ($class: $class, $props: $props);
+@use 'styled/upload' with ($class: $class, $props: $props);
 @use 'styled/user' with ($class: $class, $props: $props);
 
 // Configs
+@forward 'styled/action' as action-* show config;
+@forward 'styled/add' as add-* show config;
 @forward 'styled/arrow' as arrow-* show config;
 @forward 'styled/arrow-capped' as arrow-capped-* show config;
 @forward 'styled/arrow-double' as arrow-double-* show config;
 @forward 'styled/arrow-small' as arrow-small-* show config;
+@forward 'styled/check' as check-* show config;
 @forward 'styled/close' as close-* show config;
+@forward 'styled/close-small' as close-small-* show config;
+@forward 'styled/download' as download-* show config;
 @forward 'styled/fullscreen' as fullscreen-* show config;
 @forward 'styled/important' as important-* show config;
 @forward 'styled/info' as info-* show config;
+@forward 'styled/menu' as menu-* show config;
 @forward 'styled/minimize' as minimize-* show config;
 @forward 'styled/pause' as pause-* show config;
 @forward 'styled/play' as play-* show config;
+@forward 'styled/redo' as redo-* show config;
+@forward 'styled/remove' as remove-* show config;
 @forward 'styled/replay' as replay-* show config;
+@forward 'styled/save' as save-* show config;
+@forward 'styled/settings' as settings-* show config;
 @forward 'styled/sound' as sound-* show config;
-@forward 'styled/sound-muted' as sound-muted-* show config;
-@forward 'styled/sound-none' as sound-none-* show config;
-@forward 'styled/sound-on' as sound-on-* show config;
 @forward 'styled/stop' as stop-* show config;
+@forward 'styled/trash' as trash-* show config;
+@forward 'styled/undo' as undo-* show config;
 @forward 'styled/unknown' as unknown-* show config;
+@forward 'styled/update' as update-* show config;
+@forward 'styled/upload' as upload-* show config;
 @forward 'styled/user' as user-* show config;
 
 /**
@@ -57,25 +79,36 @@ $props: 'ui-icon-' !default;
  * @output Outputs all custom properties in given context
  */
 @mixin properties() {
+  @include action.properties;
+  @include add.properties;
   @include arrow.properties;
   @include arrow-capped.properties;
   @include arrow-double.properties;
   @include arrow-small.properties;
+  @include check.properties;
   @include close.properties;
+  @include close-small.properties;
+  @include download.properties;
   @include fullscreen.properties;
   @include important.properties;
   @include info.properties;
+  @include menu.properties;
   @include minimize.properties;
   @include pause.properties;
   @include play.properties;
+  @include redo.properties;
+  @include remove.properties;
   @include replay.properties;
+  @include save.properties;
+  @include settings.properties;
   @include siux.properties;
   @include sound.properties;
-  @include sound-muted.properties;
-  @include sound-none.properties;
-  @include sound-on.properties;
   @include stop.properties;
+  @include trash.properties;
+  @include undo.properties;
   @include unknown.properties;
+  @include update.properties;
+  @include upload.properties;
   @include user.properties;
 }
 
@@ -85,24 +118,35 @@ $props: 'ui-icon-' !default;
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
+  @include action.styles;
+  @include add.styles;
   @include arrow.styles;
   @include arrow-capped.styles;
   @include arrow-double.styles;
   @include arrow-small.styles;
+  @include check.styles;
   @include close.styles;
+  @include close-small.styles;
+  @include download.styles;
   @include fullscreen.styles;
   @include important.styles;
   @include info.styles;
+  @include menu.styles;
   @include minimize.styles;
   @include pause.styles;
   @include play.styles;
+  @include redo.styles;
+  @include remove.styles;
   @include replay.styles;
+  @include save.styles;
+  @include settings.styles;
   @include siux.styles;
   @include sound.styles;
-  @include sound-muted.styles;
-  @include sound-none.styles;
-  @include sound-on.styles;
   @include stop.styles;
+  @include trash.styles;
+  @include undo.styles;
   @include unknown.styles;
+  @include update.styles;
+  @include upload.styles;
   @include user.styles;
 }

@@ -1,0 +1,91 @@
+/**
+ * Icon upload
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  upload-arrow-height: 0.2,
+  upload-arrow-width: 0.35,
+  upload-offset: 0.2,
+  upload-height: 0.08,
+  upload-width: 0.6,
+  upload-line-height: 0.3,
+  upload-line-width: 0.08,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-upload.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-upload.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="upload"] {
+    span:first-child {
+      top: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-offset)));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-width));
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+    &::before {
+      top: auto;
+      bottom: calc((var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-offset)));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-line-width));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-line-height));
+      background-color: var(--#{$props}color);
+      transform: translate(-50%, 0);
+    }
+    &::after {
+      width: 0;
+      height: 0;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-arrow-width) / 2) solid transparent;
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-arrow-width) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}upload-arrow-height)) solid var(--#{$props}color);
+      transform: translate(-50%, -100%);
+    }
+  }
+}

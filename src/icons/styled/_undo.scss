@@ -1,0 +1,88 @@
+/**
+ * Icon undo
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  undo-circle-width: 0.6,
+  undo-circle-height: 0.6,
+  undo-circle-border: 0.12,
+  undo-arrow-height: 2,
+  undo-arrow-width: 2.4,
+  undo-arrow-offset-x: -1.6,
+  undo-arrow-offset-y: -0.295,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-undo.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-undo.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="undo"] {
+    span {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-width));
+      border-radius: 50%;
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-border)) solid var(--#{$props}color);
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+    &::before {
+      top: auto;
+      bottom: 50%;
+      margin-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-border) * var(--#{$props}undo-arrow-offset-x));
+      margin-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-border) * var(--#{$props}undo-arrow-offset-y));
+      width: 0;
+      height: 0;
+      transform-origin: center center;
+      transform: rotate(45deg) translate(-50%, 50%);
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-border) * var(--#{$props}undo-arrow-width) / 2) solid transparent;
+      border-right: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-border) * var(--#{$props}undo-arrow-width) / 2) solid transparent;
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}undo-circle-border) * var(--#{$props}undo-arrow-height)) solid var(--#{$props}color);
+    }
+  }
+}

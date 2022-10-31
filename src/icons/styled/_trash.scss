@@ -1,0 +1,90 @@
+/**
+ * Icon trash
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  trash-height: 0.5,
+  trash-width: 0.6,
+  trash-offset: 0.1,
+  trash-size-x: 0.3,
+  trash-size-y: 0.25,
+  trash-border: 0.08,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-trash.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-trash.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon^="trash"] {
+    span {
+      margin-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-width));
+      background-color: var(--#{$props}color);
+      clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%, 0 0, 16.5% 15%, 32% 85%, 68% 85%, 83.5% 15%, 15% 15%);
+    }
+  }
+  .#{$class}[data-icon="trash-full"] {
+    &::before {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-size-y));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-size-x));
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-border)) solid var(--#{$props}color);
+      transform: translate(-70%, -100%);
+      clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    }
+    &::after {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-size-y));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-size-x));
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}trash-border)) solid var(--#{$props}color);
+      transform: translate(-30%, -120%) rotate(25deg);
+      clip-path: polygon(0 0, 100% 0, 100% 60%, 0 60%);
+    }
+  }
+}

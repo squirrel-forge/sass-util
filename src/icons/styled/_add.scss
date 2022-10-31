@@ -1,5 +1,5 @@
 /**
- * Icon close
+ * Icon add
  *  Custom properties and styles with configuration
  */
 
@@ -29,8 +29,8 @@ $props: 'ui-icon-' !default;
  * @type {map}
  */
 $-config: (
-  close-height: 0.7,
-  close-width: 0.15,
+  add-height: 0.6,
+  add-width: 0.15,
 );
 
 /**
@@ -40,7 +40,7 @@ $-config: (
  * @output {void} - Only sets config options
  */
 @mixin config($options) {
-  $-config: abstract.config($options, $-config, false, true, 'icons-styled-close.config::') !global;
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-add.config::') !global;
 }
 
 /**
@@ -49,7 +49,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, '_at_', 'icons-styled-close.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-add.properties::');
 }
 
 /**
@@ -58,20 +58,15 @@ $-config: (
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
-  .#{$class}[data-icon="close"] {
+  .#{$class}[data-icon="add"] {
     &::before,
     &::after {
-      top: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-height)) / 2);
-      left: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-width)) / 2);
-      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-height));
-      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-width));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}add-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}add-width));
       background-color: var(--#{$props}color);
     }
     &::before {
-      transform: rotate(45deg);
-    }
-    &::after {
-      transform: rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(90deg);
     }
   }
 }

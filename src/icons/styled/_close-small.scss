@@ -1,5 +1,5 @@
 /**
- * Icon sound-muted
+ * Icon close-small
  *  Custom properties and styles with configuration
  */
 
@@ -29,8 +29,8 @@ $props: 'ui-icon-' !default;
  * @type {map}
  */
 $-config: (
-  sound-muted-height: 0.3,
-  sound-muted-width: 0.08,
+  close-small-height: 0.55,
+  close-small-width: 0.1,
 );
 
 /**
@@ -40,7 +40,7 @@ $-config: (
  * @output {void} - Only sets config options
  */
 @mixin config($options) {
-  $-config: abstract.config($options, $-config, false, true, 'icons-styled-sound-muted.config::') !global;
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-close-small.config::') !global;
 }
 
 /**
@@ -49,7 +49,7 @@ $-config: (
  * @output Adds components custom properties in current scope
  */
 @mixin properties() {
-  @include mixins.properties($-config, $props, '_at_', 'icons-styled-sound-muted.properties::');
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-close-small.properties::');
 }
 
 /**
@@ -58,13 +58,13 @@ $-config: (
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
-  .#{$class}[data-icon="sound-muted"] {
+  .#{$class}[data-icon="close-small"] {
     &::before,
     &::after {
-      top: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-height)) / 2);
-      left: calc(50% + var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-width) / 2 + var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-width));
-      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-height));
-      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}sound-muted-width));
+      top: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-small-height)) / 2);
+      left: calc((var(--#{$props}size) * var(--#{$props}unit) - var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-small-width)) / 2);
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-small-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}close-small-width));
       background-color: var(--#{$props}color);
     }
     &::before {
