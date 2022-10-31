@@ -31,11 +31,15 @@ $props: 'ui-button-' !default;
  * @type {map}
  */
 $-config: (
-  padding: 0.2em,
+  margin-inline: 0.25em,
+  padding: 0.25em,
+  icon-padding: 0.25em,
   border: 1px solid currentColor,
   border-radius: 0.25em,
   icon-spacing: 0.25em,
+  label-spacing: 0.25em,
   min-width: 8em,
+  disabled-opacity: 0.6,
   transition: 0.3s ease,
 );
 
@@ -70,9 +74,11 @@ $-config: (
     cursor: pointer;
     position: relative;
     display: inline-block;
+    margin-inline: var(--#{$props}margin-inline);
     padding: var(--#{$props}padding);
     border: var(--#{$props}border);
     border-radius: var(--#{$props}border-radius);
+    opacity: 1;
     transition: var(--#{$props}transition);
 
     &__label {
@@ -81,16 +87,20 @@ $-config: (
 
     &:disabled {
       cursor: not-allowed;
+      opacity: var(--#{$props}disabled-opacity);
     }
 
     &--icon {
+      --#{$props}padding: var(--#{$props}icon-padding);
       display: flex;
       align-items: center;
 
       .#{$class}__label:last-child:not(:first-child) {
         margin-left: var(--#{$props}icon-spacing);
+        margin-right: var(--#{$props}label-spacing);
       }
       .#{$class}__label:first-child:not(:last-child) {
+        margin-left: var(--#{$props}label-spacing);
         margin-right: var(--#{$props}icon-spacing);
       }
     }

@@ -7,6 +7,10 @@
 $class: 'ui-button' !default;
 $props: 'ui-button-' !default;
 
+// Styled config
+$as-default: true !default;
+$default-name: 'default' !default;
+
 // Forward configurable modules
 @forward 'core' as core-* with (
   $props: $props,
@@ -15,4 +19,6 @@ $props: 'ui-button-' !default;
 @forward 'styled' as styled-* with (
   $props: $props,
   $class: $class,
+  $as-default: $as-default,
+  $default-name: $default-name,
 );

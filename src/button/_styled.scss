@@ -26,6 +26,20 @@ $class: 'ui-button' !default;
 $props: 'ui-button-' !default;
 
 /**
+ * Use styled button as default button
+ * @protected
+ * @type {boolean} css class state switch
+ */
+$as-default: true !default;
+
+/**
+ * Default style name when using as-default: false
+ * @protected
+ * @type {string} style class suffix
+ */
+$default-name: 'default' !default;
+
+/**
  * Config defaults
  * @private
  * @type {map}
@@ -69,7 +83,7 @@ $-config: (
  * @output Outputs configured button styled styles in given context
  */
 @mixin styles() {
-  .#{$class}--styled {
+  .#{$class}--#{$default-name} {
     color: var(--#{$props}styled-color);
     background-color: var(--#{$props}styled-background);
     border-color: var(--#{$props}styled-border);
@@ -85,6 +99,11 @@ $-config: (
       color: var(--#{$props}interactive-color);
       background-color: var(--#{$props}interactive-background);
       border-color: var(--#{$props}interactive-border);
+    }
+  }
+  @if $as-default {
+    .#{$class} {
+      @extend .#{$class}--#{$default-name};
     }
   }
 }
@@ -103,7 +122,7 @@ $-config: (
   }
 
   .#{$class}--#{$name} {
-    @extend .#{$class}--styled;
+    @extend .#{$class}--#{$default-name};
     @each $group, $colors in $values {
       @if meta.type-of($colors) != map {
         @error 'Each group must contain at least one prop value pair';
