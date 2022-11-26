@@ -141,6 +141,7 @@ $-config: (
     // Inline icon
     &#{$inline} {
       display: inline-block;
+      vertical-align: middle;
     }
 
     // Rotation angles

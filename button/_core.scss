@@ -78,6 +78,7 @@ $-config: (
     padding: var(--#{$props}padding);
     border: var(--#{$props}border);
     border-radius: var(--#{$props}border-radius);
+    vertical-align: middle;
     opacity: 1;
     transition: var(--#{$props}transition);
 
@@ -92,7 +93,7 @@ $-config: (
 
     &--icon {
       --#{$props}padding: var(--#{$props}icon-padding);
-      display: flex;
+      display: inline-flex;
       align-items: center;
 
       .#{$class}__label:last-child:not(:first-child) {
