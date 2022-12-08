@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.8
+ - Added fastforward icon.
+ - Minor button improvements.
+
 ## 0.9.7
  - Changed filesystem structure for better imports and autocompletion.
 
