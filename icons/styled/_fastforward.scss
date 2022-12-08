@@ -1,0 +1,79 @@
+/**
+ * Icon fastforward
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  fastforward-height: 0.8,
+  fastforward-width: 0.5,
+  fastforward-a: translate(-80%, -50%),
+  fastforward-b: translate(0, -50%),
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-fastforward.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-fastforward.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="fastforward"] {
+    &::before,
+    &::after {
+      width: 0;
+      height: 0;
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fastforward-height) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fastforward-height) / 2) solid transparent;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}fastforward-width)) solid var(--#{$props}color);
+    }
+    &::before {
+      transform: var(--#{$props}fastforward-a);
+    }
+    &::after {
+      transform: var(--#{$props}fastforward-b);
+    }
+  }
+}
