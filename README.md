@@ -131,10 +131,11 @@ Generates colors as custom properties including variants, with corresponding hel
  - config(```$colors, $variants, $attributes```) - Sets available color references.
    ```scss
    /* Any number of colors using a named map with corresponding css/sass compatible color values */
+   /* Note that color names/keys must be quoted to avoid logical matching issues with string comparisons */
    $colors: (
-     red: #f00,
-     green: rgb(0, 255, 0),
-     blue: blue,
+     'red': #f00,
+     'green': rgb(0, 255, 0),
+     'blue': blue,
    );
    /* Variants to generate for colors */
    $variants: (
