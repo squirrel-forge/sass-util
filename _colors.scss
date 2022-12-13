@@ -55,11 +55,7 @@ $-colors: ();
  * @private
  * @type {map}
  */
-$-attributes: (
-  text: (color, (base-only)),
-  bg: (background-color, (base-only)),
-  bdr: (border-color, (base-only)),
-);
+$-attributes: ();
 
 /**
  * Color variants
