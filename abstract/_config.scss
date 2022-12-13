@@ -17,7 +17,7 @@
 @function config($options, $defaults, $extend: false, $strict: true, $error: 'config::') {
 
   // Allow to clear any defaults by setting explicit null
-  @if $extend and meta.type-of($options) == null {
+  @if $extend and meta.type-of($options) == 'null' {
     @return ();
   }
 
