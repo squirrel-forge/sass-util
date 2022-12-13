@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.9
+ - Fixed *abstract/config* mixin empty data check.
+ - Removed colors default attributes.
+ - Color names that match a css color name must be quoted or color generation will prevent corresponding color utilities from rendering.
+
 ## 0.9.8
  - Added fastforward icon.
  - Minor button improvements.
