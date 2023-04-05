@@ -1,0 +1,73 @@
+/**
+ * Icon arrow-simple
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  arrow-simple-height: 0.5,
+  arrow-simple-width: 0.25,
+  arrow-simple-offset: -40%,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-arrow-simple.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-arrow-simple.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="arrow-simple"] {
+    &::after {
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: translate(var(--#{$props}arrow-simple-offset), -50%);
+      border-top: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-simple-height) / 2) solid transparent;
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-simple-height) / 2) solid transparent;
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}arrow-simple-width)) solid var(--#{$props}color);
+    }
+  }
+}
