@@ -7,8 +7,8 @@
  * Requires
  */
 @use 'sass:meta';
-@use 'abstract/config' as abstract;
-@use 'mixins/bem-style' as mixins;
+@use 'abstract';
+@use 'mixins';
 
 /**
  * Component css class
@@ -25,11 +25,27 @@ $class: 'ui-wrap' !default;
 $no-flex: '--no-flex' !default;
 
 /**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-wrap-' !default;
+
+/**
  * Config defaults
  * @private
  * @type {map}
  */
 $-config: ();
+
+/**
+ * Props defaults
+ * @private
+ * @type {map}
+ */
+$-props: (
+  wrap: wrap,
+);
 
 /**
  * Update component config options
@@ -39,6 +55,17 @@ $-config: ();
  */
 @mixin config($options) {
   $-config: abstract.config($options, $-config, true, false, 'ui-wrap.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-props, $extend);
+  @include mixins.properties($render, $props, '_at_', 'ui-wrap.properties::');
 }
 
 /**
@@ -60,10 +87,15 @@ $-config: ();
     // Every wrapper by default is a flex unless when using .ui-wrap--no-flex
     &:not(.#{$class}#{$no-flex}) {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: var(--#{$props}wrap);
     }
 
     // Include BEM style states
     @include mixins.bem-style($-config);
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
   }
 }
