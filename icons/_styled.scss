@@ -9,6 +9,7 @@ $class-interactive: 'ui-interactive' !default;
 $props: 'ui-icon-' !default;
 
 // Use icons with config
+@use 'styled/acorn' with ($class: $class, $props: $props);
 @use 'styled/action' with ($class: $class, $props: $props);
 @use 'styled/add' with ($class: $class, $props: $props);
 @use 'styled/arrow' with ($class: $class, $props: $props);
@@ -22,6 +23,7 @@ $props: 'ui-icon-' !default;
 @use 'styled/download' with ($class: $class, $props: $props);
 @use 'styled/fastforward' with ($class: $class, $props: $props);
 @use 'styled/fullscreen' with ($class: $class, $props: $props, $class-interactive: $class-interactive);
+@use 'styled/github' with ($class: $class, $props: $props);
 @use 'styled/important' with ($class: $class, $props: $props);
 @use 'styled/info' with ($class: $class, $props: $props);
 @use 'styled/menu' with ($class: $class, $props: $props);
@@ -35,6 +37,7 @@ $props: 'ui-icon-' !default;
 @use 'styled/settings' with ($class: $class, $props: $props);
 @use 'styled/siux' with ($class: $class, $props: $props);
 @use 'styled/sound' with ($class: $class, $props: $props);
+@use 'styled/stats' with ($class: $class, $props: $props);
 @use 'styled/stop' with ($class: $class, $props: $props);
 @use 'styled/trash' with ($class: $class, $props: $props);
 @use 'styled/undo' with ($class: $class, $props: $props);
@@ -44,6 +47,7 @@ $props: 'ui-icon-' !default;
 @use 'styled/user' with ($class: $class, $props: $props);
 
 // Configs
+@forward 'styled/acorn' as acorn-* show config;
 @forward 'styled/action' as action-* show config;
 @forward 'styled/add' as add-* show config;
 @forward 'styled/arrow' as arrow-* show config;
@@ -57,6 +61,7 @@ $props: 'ui-icon-' !default;
 @forward 'styled/download' as download-* show config;
 @forward 'styled/fastforward' as fastforward-* show config;
 @forward 'styled/fullscreen' as fullscreen-* show config;
+@forward 'styled/github' as github-* show config;
 @forward 'styled/important' as important-* show config;
 @forward 'styled/info' as info-* show config;
 @forward 'styled/menu' as menu-* show config;
@@ -69,6 +74,7 @@ $props: 'ui-icon-' !default;
 @forward 'styled/save' as save-* show config;
 @forward 'styled/settings' as settings-* show config;
 @forward 'styled/sound' as sound-* show config;
+@forward 'styled/stats' as stats-* show config;
 @forward 'styled/stop' as stop-* show config;
 @forward 'styled/trash' as trash-* show config;
 @forward 'styled/undo' as undo-* show config;
@@ -83,6 +89,7 @@ $props: 'ui-icon-' !default;
  * @output Outputs all custom properties in given context
  */
 @mixin properties() {
+  @include acorn.properties;
   @include action.properties;
   @include add.properties;
   @include arrow.properties;
@@ -96,6 +103,7 @@ $props: 'ui-icon-' !default;
   @include download.properties;
   @include fastforward.properties;
   @include fullscreen.properties;
+  @include github.properties;
   @include important.properties;
   @include info.properties;
   @include menu.properties;
@@ -109,6 +117,7 @@ $props: 'ui-icon-' !default;
   @include settings.properties;
   @include siux.properties;
   @include sound.properties;
+  @include stats.properties;
   @include stop.properties;
   @include trash.properties;
   @include undo.properties;
@@ -124,6 +133,7 @@ $props: 'ui-icon-' !default;
  * @output Outputs configured icon styles in given context
  */
 @mixin styles() {
+  @include acorn.styles;
   @include action.styles;
   @include add.styles;
   @include arrow.styles;
@@ -137,6 +147,7 @@ $props: 'ui-icon-' !default;
   @include download.styles;
   @include fastforward.styles;
   @include fullscreen.styles;
+  @include github.styles;
   @include important.styles;
   @include info.styles;
   @include menu.styles;
@@ -150,6 +161,7 @@ $props: 'ui-icon-' !default;
   @include settings.styles;
   @include siux.styles;
   @include sound.styles;
+  @include stats.styles;
   @include stop.styles;
   @include trash.styles;
   @include undo.styles;

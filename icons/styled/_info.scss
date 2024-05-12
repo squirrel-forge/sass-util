@@ -29,13 +29,16 @@ $props: 'ui-icon-' !default;
  * @type {map}
  */
 $-config: (
-  info-offset: 0.15,
-  info-height: 0.42,
+  info-offset: 0.25,
+  info-height: 0.28,
   info-width: 0.12,
-  info-dot-offset: 0.2,
+  info-dot-offset: 0.25,
   info-dot-height: 0.14,
   info-dot-width: 0.14,
   info-dot-radius: 50%,
+  info-circle-height: 0.8,
+  info-circle-width: 0.8,
+  info-circle-border: 0.06,
 );
 
 /**
@@ -79,6 +82,12 @@ $-config: (
       width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-width));
       background-color: var(--#{$props}color);
       transform: translate(-50%, 0);
+    }
+    span:first-child {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-circle-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-circle-width));
+      border: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}info-circle-border)) solid var(--#{$props}color);
+      border-radius: 50%;
     }
   }
 }

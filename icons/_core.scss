@@ -222,5 +222,10 @@ $-config: (
       --#{$props}color: var(--#{$props}debug-color) !important;
       --#{$props}background-color: var(--#{$props}debug-background-color) !important;
     }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
   }
 }

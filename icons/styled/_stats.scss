@@ -1,0 +1,103 @@
+/**
+ * Stats info
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  stats-bar-width: 0.14,
+  stats-bar-base: 0.25,
+  stats-bar1-offset: 0.25,
+  stats-bar1-height: 0.25,
+  stats-bar2-offset: 0.45,
+  stats-bar2-height: 0.5,
+  stats-bar3-offset: 0.65,
+  stats-bar3-height: 0.38,
+  stats-grid-height: 0.7,
+  stats-grid-width: 0.7,
+  stats-grid-border: 0.06,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-stats.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-stats.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="stats"] {
+    &::before {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-grid-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-grid-width));
+      border-left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-grid-border)) solid var(--#{$props}color);
+      border-bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-grid-border)) solid var(--#{$props}color);
+    }
+    span:first-child {
+      width: 100%;
+      height: 100%;
+    }
+    &::after,
+    span:first-child::before,
+    span:first-child::after {
+      top: auto;
+      bottom: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar-base));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar-width));
+      background-color: var(--#{$props}color);
+      transform: none;
+    }
+    &::after {
+      left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar1-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar1-height));
+    }
+    span:first-child::before {
+      left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar2-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar2-height));
+    }
+    span:first-child::after {
+      left: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar3-offset));
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}stats-bar3-height));
+    }
+  }
+}
