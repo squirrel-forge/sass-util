@@ -78,6 +78,7 @@ $-config: (
     margin: var(--#{$props}margin);
     margin-inline: var(--#{$props}margin-inline);
     padding: var(--#{$props}padding);
+    line-height: inherit;
     border: var(--#{$props}border);
     border-radius: var(--#{$props}border-radius);
     vertical-align: middle;
@@ -86,9 +87,12 @@ $-config: (
 
     &__label {
       display: inline-block;
+      @include mixins.no-select;
     }
 
-    &:disabled {
+    &:disabled,
+    &--disabled {
+      // TODO: test with submit disabled error option > pointer-events: none;
       cursor: not-allowed;
       opacity: var(--#{$props}disabled-opacity);
     }
@@ -125,6 +129,16 @@ $-config: (
 
     &--wide {
       width: 100%;
+    }
+
+    // Looks like a button, but isn't a button
+    &--static {
+      cursor: default;
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
     }
   }
 }

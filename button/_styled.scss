@@ -88,17 +88,23 @@ $-config: (
     background-color: var(--#{$props}styled-background);
     border-color: var(--#{$props}styled-border);
 
+    &.#{$class}--disabled,
     &:disabled {
       color: var(--#{$props}disabled-color);
       background-color: var(--#{$props}disabled-background);
       border-color: var(--#{$props}disabled-border);
     }
 
-    &:not(:disabled):focus,
-    &:not(:disabled):hover {
+    &:not(.#{$class}--static):not(.#{$class}--disabled):not(:disabled):focus,
+    &:not(.#{$class}--static):not(.#{$class}--disabled):not(:disabled):hover {
       color: var(--#{$props}interactive-color);
       background-color: var(--#{$props}interactive-background);
       border-color: var(--#{$props}interactive-border);
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
     }
   }
   @if $as-default {
