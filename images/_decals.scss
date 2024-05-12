@@ -126,6 +126,7 @@ $-decals: ();
     // Default pseudo styles
     &::before,
     &::after {
+      pointer-events: none;
       position: absolute;
       background-position: left top;
       background-repeat: no-repeat;

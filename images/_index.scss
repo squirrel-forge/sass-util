@@ -3,6 +3,11 @@
  *  Submodule forwarding index
  */
 
+// Fluid module config
+$fluid-class: 'ui-fluid' !default;
+$fluid-text-class: 'ui-text' !default;
+$fluid-props: 'ui-fluid-' !default;
+
 // Assets module config
 $assets-base: '../img/' !default;
 $assets-cache: '' !default;
@@ -15,6 +20,11 @@ $decals-width: 0 !default;
 $decals-sizing-as-props: false !default;
 
 // Forward configurable modules
+@forward 'fluid' as fluid-* with (
+  $class: $fluid-class,
+  $text-class: $fluid-text-class,
+  $props: $fluid-props,
+);
 @forward 'assets' as assets-* with (
   $base: $assets-base,
   $cache: $assets-cache,

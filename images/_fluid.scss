@@ -1,0 +1,151 @@
+/**
+ * ui-fluid images component
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../abstract';
+@use '../mixins';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-fluid' !default;
+
+/**
+ * Text block css class
+ * @protected
+ * @type {string} css class
+ */
+$text-class: 'ui-text' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-fluid-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  ratio: 1,
+  ratio-width: 100%,
+  ratio-max-width: 100%,
+  width: 100%,
+  max-width: 100%,
+  height: 100%,
+  max-height: 100%,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'images-fluid.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($render, $props, '_at_', 'images-fluid.properties::');
+}
+
+/**
+ * Generate button core styles
+ * @public
+ * @output Outputs configured button base styles in given context
+ */
+@mixin styles() {
+  // margin: var(--#{$props}margin);
+  .#{$class} {
+
+    // Wrap picture/image link
+    &-link {
+      display: block;
+    }
+
+    // Fluid picture/image
+    &-picture {
+      position: relative;
+      display: block;
+    }
+    &-picture img,
+    &-img {
+      position: relative;
+      display: block;
+      width: var(--#{$props}width);
+      max-width: var(--#{$props}max-width);
+      height: auto;
+    }
+
+    // Fluid picture/image by height
+    &-picture--height img,
+    img.#{$class}-img--height {
+      width: auto;
+      height: var(--#{$props}height);
+      max-height: var(--#{$props}max-height);
+    }
+
+    // Ratio container
+    &-ratio {
+      position: relative;
+      display: block;
+      width: var(--#{$props}ratio-width);
+      max-width: var(--#{$props}ratio-max-width);
+
+      &__ratio {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding-bottom: calc(var(--#{$props}ratio) * var(--#{$props}ratio-width));
+        overflow: hidden;
+
+        img, picture {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        & > img,
+        & > picture img {
+          object-fit: cover;
+          background-position: center center;
+        }
+      }
+    }
+
+    // Text block context/inline images
+    .#{$text-class} {
+      & > .#{$class}-link,
+      & > .#{$class}-img,
+      & > .#{$class}-picture,
+      & > .#{$class}-ratio {
+        display: inline-block;
+      }
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
+  }
+}
