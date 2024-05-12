@@ -27,6 +27,12 @@
   $colors-variant-saturate: 'sat' !default;
   $colors-variant-desaturate: 'dsat' !default;
 
+// Fluid module config
+  // Fluid submodule config
+  $images-fluid-class: 'ui-fluid' !default;
+  $images-fluid-text-class: 'ui-text' !default;
+  $images-fluid-props: 'ui-fluid-' !default;
+
 // Decals module config
   // Assets submodule config
   $images-assets-base: '../img/' !default;
@@ -175,6 +181,13 @@
   // Styles module config
   $wrap-class: 'ui-wrap' !default;
   $wrap-no-flex: '--no-flex' !default;
+  $wrap-props: 'ui-wrap-' !default;
+
+// Tooltip module config
+  // Styles module config
+  $tooltip-class: 'ui-tooltip' !default;
+  $tooltip-modifier: '' !default;
+  $tooltip-props: 'ui-tooltip-' !default;
 
 // Forward non configurables
 @forward 'reset' as reset-*;
@@ -199,6 +212,9 @@
   $variant-desaturate: $colors-variant-desaturate,
 );
 @forward 'images' as images-* with (
+  $fluid-class: $images-fluid-class,
+  $fluid-text-class: $images-fluid-text-class,
+  $fluid-props: $images-fluid-props,
   $assets-base: $images-assets-base,
   $assets-cache: $images-assets-cache,
   $decals-class: $images-decals-class,
@@ -269,4 +285,10 @@
 @forward 'wrap' as wrap-* with (
   $class: $wrap-class,
   $no-flex: $wrap-no-flex,
+  $props: $wrap-props,
+);
+@forward 'tooltip' as tooltip-* with (
+  $class: $tooltip-class,
+  $modifier: $tooltip-modifier,
+  $props: $tooltip-props,
 );
