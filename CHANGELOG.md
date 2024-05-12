@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.10.0
+ - Added *tooltip* module.
+ - Added *images-fluid* module.
+ - Allow direct extending of *button/core* styles mixin via content.
+ - Added ui-fluid component for fluid image and ratio handling.
+ - Allow custom content on styles() mixin for following modules *wrap*, *button-core*, *button-styled* and *icons-core*.
+ - Added and updated so css icons.
+ - Additional minor tweaks.
+
 ## 0.9.9
  - Fixed *abstract/config* mixin empty data check.
  - Removed colors default attributes.
