@@ -1,0 +1,239 @@
+/**
+ * ui-tooltip component
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:map';
+@use 'sass:meta';
+@use 'abstract';
+@use 'mixins';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-tooltip' !default;
+
+/**
+ * Component css class modifier
+ * @protected
+ * @type {string} css class suffix
+ */
+$modifier: '' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-tooltip-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  color-text: black,
+  color-background: gold,
+  padding: 0.25em 0.35em,
+  relative-margin: -0.25em 0,
+  border-radius: 0,
+  arrow-height: 0.4rem,
+  arrow-width: 0.6rem,
+  arrow-offset: 0.3rem,
+  transition: 0.25s ease,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'tooltip.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($render, $props, '_at_', 'tootip.properties::');
+}
+
+/**
+ * Generate tooltip styles
+ * @public
+ * @output Outputs configured tooltip styles in given context
+ */
+@mixin styles() {
+  .#{$class}#{$modifier} {
+    position: relative;
+
+    .#{$class}__tip {
+      pointer-events: none;
+      z-index: 1;
+      position: absolute;
+      margin: 0;
+      margin-inline: 0;
+      padding: var(--#{$props}padding);
+      color: var(--#{$props}color-text);
+      background-color: var(--#{$props}color-background);
+      border-radius: var(--#{$props}border-radius);
+      white-space: nowrap;
+      opacity: 0;
+      transition: var(--#{$props}transition);
+
+      &::before {
+        position: absolute;
+        width: 0;
+        height: 0;
+        content: '';
+      }
+
+      &[data-tip="relative"] {
+        position: relative;
+        margin: var(--#{$props}relative-margin);
+        padding: 0;
+        max-width: 0;
+        overflow: hidden;
+        transition: var(--#{$props}transition);
+      }
+    }
+
+    &[data-tip="tl"] {
+      .#{$class}__tip {
+        bottom: 0;
+        right: 0;
+        transform: translate(0, calc(-100% - var(--#{$props}arrow-height)));
+
+        &::before {
+          bottom: 1px;
+          right: var(--#{$props}arrow-offset);
+          transform: translate(0, 100%);
+          border-top: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
+          border-left: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-right: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+        }
+      }
+    }
+    &[data-tip="bl"] {
+      .#{$class}__tip {
+        top: 0;
+        right: 0;
+        transform: translate(0, calc(100% + var(--#{$props}arrow-height)));
+
+        &::before {
+          top: 1px;
+          right: var(--ui-tooltip-arrow-offset);
+          transform: translate(0, -100%);
+          border-left: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-right: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-bottom: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
+        }
+      }
+    }
+    &[data-tip="br"] {
+      .#{$class}__tip {
+        top: 0;
+        left: 0;
+        transform: translate(0, calc(100% + var(--#{$props}arrow-height)));
+
+        &::before {
+          top: 1px;
+          left: var(--ui-tooltip-arrow-offset);
+          transform: translate(0, -100%);
+          border-left: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-right: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-bottom: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
+        }
+      }
+    }
+    &[data-tip="l"] {
+      .#{$class}__tip {
+        top: 0;
+        left: 0;
+        transform: translate(calc(-100% - var(--#{$props}arrow-height)), 0);
+
+        &::before {
+          top: 50%;
+          right: 1px;
+          transform: translate(100%, -50%);
+          border-top: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-bottom: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-left: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
+        }
+
+        &[data-tip="relative"] {
+          top: auto;
+          right: auto;
+          transform: none;
+        }
+      }
+    }
+    &[data-tip="r"] {
+      .#{$class}__tip {
+        top: 0;
+        right: 0;
+        transform: translate(calc(100% + var(--#{$props}arrow-height)), 0);
+
+        &::before {
+          top: 50%;
+          left: 1px;
+          transform: translate(-100%, -50%);
+          border-top: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-bottom: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-right: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
+        }
+
+        &[data-tip="relative"] {
+          top: auto;
+          right: auto;
+          transform: none;
+        }
+      }
+    }
+
+    &:not(:disabled):not(.#{$class}--disabled):hover,
+    &:not(:disabled):not(.#{$class}--disabled):focus {
+      .#{$class}__tip {
+        opacity: 1;
+
+        &[data-tip="relative"] {
+          padding: var(--#{$props}padding);
+          max-width: 100%;
+          overflow: visible;
+        }
+      }
+
+      &[data-tip="l"] {
+        .#{$class}__tip {
+          &[data-tip="relative"] {
+            margin-right: var(--#{$props}arrow-height);
+          }
+        }
+      }
+      &[data-tip="r"] {
+        .#{$class}__tip {
+          &[data-tip="relative"] {
+            margin-left: var(--#{$props}arrow-height);
+          }
+        }
+      }
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
+  }
+}
