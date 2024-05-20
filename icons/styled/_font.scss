@@ -1,0 +1,98 @@
+/**
+ * Icon font
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../abstract/config' as abstract;
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component parent interactive css class
+ * @protected
+ * @type {string} css class
+ */
+$class-interactive: 'ui-interactive' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  font-family: inherit,
+  font-line: 1,
+  font-weight: bold,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'icons-styled-font.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-font.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="font"] {
+    text-indent: unset;
+
+    span {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--#{$props}color);
+      font-family: var(--#{$props}font-family);
+      font-weight: var(--#{$props}font-weight);
+      line-height: var(--#{$props}font-line);
+
+      &:not(:first-child):last-child {
+        opacity: 0;
+      }
+    }
+
+    .#{$class-interactive}:not(:disabled):hover &,
+    .#{$class-interactive}:not(:disabled):focus & {
+      &:not(:last-child):first-child {
+        opacity: 0;
+      }
+      &:not(:first-child):last-child {
+        opacity: 1;
+      }
+    }
+  }
+}
