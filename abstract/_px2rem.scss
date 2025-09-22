@@ -1,0 +1,14 @@
+/**
+ * Requires
+ */
+@use 'sass:math';
+
+/**
+ * Convert px to rem
+ * @param {number} $px - Pixel value to convert
+ * @param {number} $base - Pixel to rem ratio
+ * @return {CSSValue} - Size as rem value
+ */
+@function px2rem($px, $base: 16) {
+  @return math.div($px, $base) + rem;
+}
