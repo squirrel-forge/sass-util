@@ -3,11 +3,11 @@
   "version": "0.10.0",
   "description": "sass abstracts, mixins, globals and utilities",
   "scripts": {
-    "sass:render": "build-scss example dist -d",
-    "sass:publish": "build-scss example dist -p",
+    "sass:render": "build-scss example docs -x -s -i -u -d",
+    "sass:publish": "build-scss example docs -x -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "style": "dist/util.min.css",
+  "style": "docs/util.min.css",
   "sass": "_index.scss",
   "scss": "_index.scss",
   "directories": {
