@@ -76,7 +76,8 @@ $-config: (
  * @output Outputs configured tooltip styles in given context
  */
 @mixin styles() {
-  .#{$class}#{$modifier} {
+  .#{$class}#{$modifier},
+  [data-as="#{$class}#{$modifier}"] {
     position: relative;
 
     .#{$class}__tip {
@@ -102,6 +103,7 @@ $-config: (
 
       &[data-tip="relative"] {
         position: relative;
+        display: inline-block;
         margin: var(--#{$props}relative-margin);
         padding: 0;
         max-width: 0;
@@ -119,6 +121,22 @@ $-config: (
         &::before {
           bottom: 1px;
           right: var(--#{$props}arrow-offset);
+          transform: translate(0, 100%);
+          border-top: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
+          border-left: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+          border-right: calc(var(--#{$props}arrow-width) / 2) solid transparent;
+        }
+      }
+    }
+    &[data-tip="tr"] {
+      .#{$class}__tip {
+        bottom: 0;
+        left: 0;
+        transform: translate(0, calc(-100% - var(--#{$props}arrow-height)));
+
+        &::before {
+          bottom: 1px;
+          left: var(--#{$props}arrow-offset);
           transform: translate(0, 100%);
           border-top: var(--#{$props}arrow-height) solid var(--#{$props}color-background);
           border-left: calc(var(--#{$props}arrow-width) / 2) solid transparent;
