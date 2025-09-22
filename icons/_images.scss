@@ -143,5 +143,10 @@ $-config: (
         }
       }
     }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
   }
 }
