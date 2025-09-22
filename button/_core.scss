@@ -40,6 +40,7 @@ $-config: (
   icon-spacing: 0.25em,
   label-spacing: 0.25em,
   min-width: 8em,
+  max-width: min(24em, 100%),
   disabled-opacity: 0.6,
   transition: 0.3s ease,
 );
@@ -78,12 +79,14 @@ $-config: (
     margin: var(--#{$props}margin);
     margin-inline: var(--#{$props}margin-inline);
     padding: var(--#{$props}padding);
-    line-height: inherit;
     border: var(--#{$props}border);
     border-radius: var(--#{$props}border-radius);
     vertical-align: middle;
     opacity: 1;
     transition: var(--#{$props}transition);
+
+    // Should have a consistent line-height or sizing might get out of hand
+    // line-height: inherit;
 
     &__label {
       display: inline-block;
@@ -92,7 +95,9 @@ $-config: (
 
     &:disabled,
     &--disabled {
-      // TODO: test with submit disabled error option > pointer-events: none;
+
+      // Could require a pointer-events: none;
+      // to be set which negates the mouse cursor.
       cursor: not-allowed;
       opacity: var(--#{$props}disabled-opacity);
     }
@@ -110,6 +115,12 @@ $-config: (
         margin-left: var(--#{$props}label-spacing);
         margin-right: var(--#{$props}icon-spacing);
       }
+
+      &-only {
+        .#{$class}__label {
+          @include mixins.hide-accessible;
+        }
+      }
     }
 
     &--label-hidden {
@@ -125,6 +136,10 @@ $-config: (
 
     &--min-width {
       min-width: var(--#{$props}min-width);
+    }
+
+    &--max-width {
+      max-width: var(--#{$props}max-width);
     }
 
     &--wide {
