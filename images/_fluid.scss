@@ -45,6 +45,11 @@ $-config: (
   max-width: 100%,
   height: 100%,
   max-height: 100%,
+  picture-margin: 0,
+  image-margin: 0,
+  text-margin: 0,
+  broken-color: white,
+  broken-background-color: black,
 );
 
 /**
@@ -74,7 +79,6 @@ $-config: (
  * @output Outputs configured button base styles in given context
  */
 @mixin styles() {
-  // margin: var(--#{$props}margin);
   .#{$class} {
 
     // Wrap picture/image link
@@ -86,11 +90,13 @@ $-config: (
     &-picture {
       position: relative;
       display: block;
+      margin: var(--#{$props}picture-margin);
     }
     &-picture img,
     &-img {
       position: relative;
       display: block;
+      margin: var(--#{$props}image-margin);
       width: var(--#{$props}width);
       max-width: var(--#{$props}max-width);
       height: auto;
@@ -98,7 +104,7 @@ $-config: (
 
     // Fluid picture/image by height
     &-picture--height img,
-    img.#{$class}-img--height {
+    &-img--height {
       width: auto;
       height: var(--#{$props}height);
       max-height: var(--#{$props}max-height);
@@ -134,12 +140,44 @@ $-config: (
     }
 
     // Text block context/inline images
+    &--inline {
+      display: inline-block;
+      margin: var(--#{$props}text-margin);
+    }
+
+    // Text class contextualized inline images
     .#{$text-class} {
       & > .#{$class}-link,
       & > .#{$class}-img,
       & > .#{$class}-picture,
       & > .#{$class}-ratio {
-        display: inline-block;
+        @extend .#{$class}--inline;
+      }
+    }
+
+    // Missing/broken image styling
+    &-picture img,
+    &-img {
+      &[alt]:not([alt=""]) {
+        &::before,
+        &::after {
+          position: absolute;
+        }
+        &::before {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--#{$props}broken-background-color);
+          content: '';
+        }
+        &::after {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: var(--#{$props}broken-color);
+          content: attr(alt);
+        }
       }
     }
 
