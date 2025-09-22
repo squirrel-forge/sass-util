@@ -87,6 +87,10 @@ $-config: (
   // @type {number:unit} single size value
   unit: 1.6rem,
 
+  // Icon margin when used inline
+  // @type {number:unit} one or two values
+  margin-inline: 0.25em,
+
   // Default icon debug color
   // @type {color} color value
   debug-color: deepskyblue,
@@ -128,6 +132,8 @@ $-config: (
     display: block;
     width: calc(var(--#{$props}size) * var(--#{$props}unit));
     height: calc(var(--#{$props}size) * var(--#{$props}unit));
+    flex-shrink: 0;
+    flex-grow: 0;
     background-color: var(--#{$props}background-color);
     overflow: hidden;
     text-indent: -999px;
@@ -138,10 +144,25 @@ $-config: (
       transition: inherit;
     }
 
+    &[data-align="top"] {
+      align-self: flex-start;
+    }
+    &[data-align="bottom"] {
+      align-self: flex-end;
+    }
+
     // Inline icon
     &#{$inline} {
       display: inline-block;
       vertical-align: middle;
+      margin-inline: var(--#{$props}margin-inline);
+
+      &:first-child {
+        margin-inline-start: 0;
+      }
+      &:last-child {
+        margin-inline-end: 0;
+      }
     }
 
     // Rotation angles
