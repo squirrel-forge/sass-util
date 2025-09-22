@@ -80,6 +80,21 @@ $breaks-queries: [
   desktop-medium
 ] !default;
 
+// Navigation module config
+$nav-class: 'ui-text-nav' !default;
+$nav-props: 'ui-text-nav-' !default;
+$nav-direction-queries: (
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+) !default;
+
 // Normalize module config
 $normalize-props: 'ui-text-normalize-' !default;
 
@@ -110,6 +125,11 @@ $normalize-props: 'ui-text-normalize-' !default;
   $element-class: $breaks-element-class,
   $element-wrap-class: $breaks-element-wrap-class,
   $queries: $breaks-queries,
+);
+@forward 'nav' as nav-* with (
+  $class: $nav-class,
+  $props: $nav-props,
+  $direction-queries: $nav-direction-queries,
 );
 @forward 'normalize' as normalize-* with (
   $props: $normalize-props,

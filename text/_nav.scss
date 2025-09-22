@@ -1,0 +1,167 @@
+/**
+ * Text navigation style generation
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:meta';
+@use '../abstract';
+@use '../mixins';
+@use '../media';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-text-nav' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-text-nav-' !default;
+
+/**
+ * Default text center media queries
+ * @protected
+ * @type {string} list of query references
+ */
+$direction-queries: (
+  mobile,
+  mobile-tablet-portrait,
+  tablet-portrait,
+  tablet-landscape,
+  tablet,
+  tablet-desktop,
+  tablet-landscape-desktop,
+  desktop,
+  desktop-medium
+) !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  margin: 2rem 0,
+  max-width: 100%,
+  item-margin: 0,
+  item-padding: 0.25rem,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'text-nav.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($render, $props, '_at_', 'text-nav.properties::');
+}
+
+/**
+ * Generate text navigation styles
+ * @public
+ * @output Outputs configured spacing styles in given context
+ */
+@mixin styles() {
+  .#{$class} {
+    display: inline-block;
+    margin: var(--#{$props}margin);
+    max-width: var(--#{$props}max-width);
+
+    &--block {
+      display: block;
+      width: 100%;
+    }
+
+    ul, ol {
+      @include mixins.attr-none() {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        & > li {
+          display: block;
+          margin: var(--#{$props}item-margin);
+          padding: var(--#{$props}item-padding);
+        }
+      }
+    }
+
+    &--center {
+      ul, ol {
+        @include mixins.attr-none() {
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      // Query based
+      @each $query in $direction-queries {
+        @include media.query($query) {
+          &-#{abstract.str-initials($query)} {
+            ul, ol {
+              @include mixins.attr-none() {
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--horizontal {
+      ul, ol {
+        @include mixins.attr-none() {
+          flex-direction: row;
+        }
+      }
+    }
+
+    &--vertical {
+      ul, ol {
+        @include mixins.attr-none() {
+          flex-direction: column;
+        }
+      }
+
+      // Query based
+      @each $query in $direction-queries {
+        @include media.query($query) {
+          &-#{abstract.str-initials($query)} {
+            ul, ol {
+              @include mixins.attr-none() {
+                flex-direction: column;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
+  }
+}
