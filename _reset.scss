@@ -15,13 +15,15 @@
     box-sizing: border-box;
   }
 
+  // Always use smooth scrolling by default
+  html, body {
+    scroll-behavior: smooth;
+  }
+
   // Clean body
   body {
     margin: 0;
     padding: 0;
-
-    // Always use smooth scrolling by default
-    scroll-behavior: smooth;
 
     // This ensures that any background is visible across the full viewport
     min-height: 100vh;
