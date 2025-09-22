@@ -4,7 +4,6 @@
  */
 
 // Normalize module config
-$normalize-class: 'ui-list' !default;
 $normalize-props: 'ui-list-' !default;
 
 // Customize module config
@@ -23,10 +22,13 @@ $customize-styles: (
 ) !default;
 $customize-custom: () !default;
 
+// Spaced module config
+$spaced-class: 'ui-list' !default;
+$spaced-props: 'ui-list-' !default;
+
 // Forward configurable modules
 //  Note: normalize must be loaded before customize
 @forward 'normalize' as normalize-* with (
-  $class: $normalize-class,
   $props: $normalize-props,
 );
 @forward 'customize' as customize-* with (
@@ -37,4 +39,8 @@ $customize-custom: () !default;
   $space: $customize-space,
   $styles: $customize-styles,
   $custom: $customize-custom,
+);
+@forward 'spaced' as spaced-* with (
+  $class: $spaced-class,
+  $props: $spaced-props,
 );

@@ -10,13 +10,6 @@
 @use '../mixins';
 
 /**
- * Component css class
- * @protected
- * @type {string} css class
- */
-$class: 'ui-list' !default;
-
-/**
  * Component property prefix
  * @protected
  * @type {string} property name

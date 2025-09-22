@@ -1,0 +1,102 @@
+/**
+ * ui-list spaced
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use '../abstract';
+@use '../mixins';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-list' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-list-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+
+  // Spaced list wrapper margin
+  // @type {margin} 1-4 margin values
+  spaced-margin: 1rem 0,
+
+  // Spaced list wrapper padding
+  // @type {padding} 1-4 padding values
+  spaced-padding: 1rem 0,
+
+  // Spaced inner list wrapper margin
+  // @type {margin} 1-4 margin values
+  spaced-inner-margin: 2rem 0 1rem,
+
+  // Spaced inner list wrapper padding
+  // @type {padding} 1-4 padding values
+  spaced-inner-padding: 1rem 0,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'list-spaced.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  @include mixins.properties($-config, $props, '_at_', 'list-spaced.properties::');
+}
+
+/**
+ * Generate component styles
+ * @public
+ * @output Outputs configured component styles
+ */
+@mixin styles() {
+
+  // Spaced lists
+  .#{$class} {
+    &--spaced {
+      margin: var(--#{$props}spaced-margin);
+
+      & > li {
+        padding: var(--#{$props}spaced-padding);
+
+        & > .#{$class} {
+          &--spaced {
+            margin: var(--#{$props}spaced-inner-margin);
+
+            & > li {
+              padding: var(--#{$props}spaced-inner-padding);
+
+              &:last-child {
+                padding-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
