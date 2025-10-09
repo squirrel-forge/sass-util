@@ -1,0 +1,58 @@
+/**
+ * Icon npm
+ *  Custom properties and styles with configuration
+ */
+
+/**
+ * Requires
+ */
+@use '../../mixins/properties' as mixins;
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-icon' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-icon-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  npm-height: 0.35,
+  npm-width: 0.9,
+);
+
+/**
+ * Generate required custom properties
+ * @public
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties() {
+  @include mixins.properties($-config, $props, '_at_', 'icons-styled-npm.properties::');
+}
+
+/**
+ * Generate icon styles
+ * @public
+ * @output Outputs configured icon styles in given context
+ */
+@mixin styles() {
+  .#{$class}[data-icon="npm"] {
+    &::before {
+      height: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}npm-height));
+      width: calc(var(--#{$props}size) * var(--#{$props}unit) * var(--#{$props}npm-width));
+      background-color: var(--#{$props}color);
+      clip-path: polygon( 0% 0%,100% 0%,100% 85.714%,50% 85.714%,50% 100%,27.778% 100%,27.778% 85.81%,0% 85.714%,0% 71.429%,16.667% 71.429%,16.667% 28.571%,22.222% 28.571%,22.222% 71.429%,27.778% 71.429%,27.778% 14.286%,33.333% 14.286%,33.333% 85.714%,44.444% 85.714%,44.444% 71.429%,55.556% 71.429%,55.556% 57.143%,44.444% 57.143%,44.444% 28.571%,50% 28.571%,50% 57.143%,55.556% 57.143%,55.556% 14.286%,61.111% 14.286%,61.111% 71.429%,72.222% 71.429%,72.222% 28.571%,77.778% 28.571%,77.778% 71.429%,83.333% 71.429%,83.333% 28.571%,88.889% 28.571%,88.889% 71.429%,94.426% 71.381%,94.444% 14.286%,5.556% 14.286%,5.556% 71.429%,0% 71.429%,0% 0% );
+    }
+  }
+}
