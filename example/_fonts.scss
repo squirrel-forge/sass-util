@@ -1,0 +1,53 @@
+/**
+ * Font files are included directly, use only woff and woff2
+ * Load path is always relative to the project root: project://
+ */
+
+// Oxygen
+@font-face {
+  font-display: swap;
+  font-family: "Oxygen";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+  url(base64load("example/fonts/Oxygen/oxygen-v15-latin_latin-ext-regular.woff2", "font/woff2")) format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Oxygen";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""),
+  url(base64load("example/fonts/Oxygen/oxygen-v15-latin_latin-ext-700.woff2", "font/woff2")) format("woff2");
+}
+
+// Oxygen Mono
+@font-face {
+  font-display: swap;
+  font-family: "Oxygen Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+  url(base64load("example/fonts/Oxygen/oxygen-mono-v14-latin_latin-ext-regular.woff2", "font/woff2")) format("woff2");
+}
+
+// Squada One
+@font-face {
+  font-display: swap;
+  font-family: "Squada One";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+  url(base64load("example/fonts/Squada One/squada-one-v19-latin-regular.woff2", "font/woff2")) format("woff2");
+}
+
+/**
+ * Font properties
+ */
+@mixin properties() {
+  --ui-font-default: "Oxygen", sans-serif;
+  --ui-font-mono: "Oxygen Mono", sans-serif;
+  --ui-font-headline: "Squada One", sans-serif;
+  --ui-font-button: "Oxygen Mono", sans-serif;
+  --ui-font-input: "Oxygen Mono", sans-serif;
+}
