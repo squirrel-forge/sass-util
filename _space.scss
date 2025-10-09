@@ -1,0 +1,114 @@
+/**
+ * Space style generation
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use 'abstract';
+@use 'mixins';
+@use 'media';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-space' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-space-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  sizes: null,
+  properties: (
+    margin,
+    padding,
+  ),
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $sizes - Map of size options
+ * @param {list} $properties - List of property options
+ * @output {void} - Only sets config options
+ */
+@mixin config($config) {
+  $-config: abstract.config($config, $-config, true, false, 'ui-space.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $compiled: abstract.merge-optional(map.get($-config, 'sizes'), $extend);
+  $render: ();
+  @each $name, $sizes in $compiled {
+    $value: abstract.spacing($sizes...);
+    $render: map.set($render, $name, $value);
+  }
+  @include mixins.properties($render, $props, '_at_', 'ui-space.properties::');
+}
+
+/**
+ * Get size variable name
+ * @public
+ * @param {string} $name - Size reference
+ * @output Returns a css var declaration
+ */
+@function get($name) {
+  @return var(--#{$props}#{$name});
+}
+
+/**
+ * Generate spacing styles
+ * @public
+ * @output Outputs configured spacing styles in given context
+ */
+@mixin styles() {
+
+  // Must have at least one defined style
+  $-sizes: map.get($-config, 'sizes');
+  @if meta.type-of($-sizes) != map {
+    @error 'You must define at least one spacing size using the config mixin';
+  }
+
+  // Must have at least one property style
+  $-properties: map.get($-config, 'properties');
+  @if meta.type-of($-properties) != list {
+    @error 'You must define at least one spacing property using the config mixin';
+  }
+  @if list.length($-properties) < 1 {
+    @error 'You must define at least one spacing property using the config mixin';
+  }
+
+  // Render utility classes
+  .#{$class} {
+    @each $prop in $-properties {
+      &--#{abstract.str-initials($prop)} {
+        @each $name, $size in $-sizes {
+          &-#{$name} {
+            #{$prop}: var(--#{$props}#{$name});
+          }
+        }
+      }
+    }
+  }
+}
