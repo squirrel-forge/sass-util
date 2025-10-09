@@ -88,6 +88,15 @@ $-config: (
     // Should have a consistent line-height or sizing might get out of hand
     // line-height: inherit;
 
+    &:first-child {
+      margin-left: 0;
+      margin-inline-start: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+      margin-inline-end: 0;
+    }
+
     &__label {
       display: inline-block;
       @include mixins.no-select;
