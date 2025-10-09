@@ -1,88 +1,155 @@
-/**
- * Classic utilities setup
- *  Using this stylesheet will reset all the class and property names to match version 0.8.x
- *  Note that this does not match the version 0.8.x output, some changes are introduced by the new structure
- */
-@use '../index' as util with (
-  $colors-class: 'color',
-  $colors-props: 'color-',
-  $images-decals-class: 'decals',
-  $images-decals-static: '--static',
-  $images-decals-width: 0,
-  $images-decals-props: 'decal-',
-  $images-assets-base: '../img/',
-  $images-assets-cache: '?1',
-  $icons-class: 'icon',
-  $icons-props: 'icon-',
-  $icons-images-props: 'icon-image-',
-  $button-class: 'button',
-  $button-props: 'button-',
-  $font-class: 'font',
-  $list-normalize-class: 'list',
-  $list-normalize-props: 'list-',
-  $list-customize-custom: (
-    example : (a1,a2,a3,a4,b1,b2,b3,b4,c1,c2,c3,c4),
-  ),
-  $text-a11y-class: 'text',
-  $text-a11y-hide-a11y: '--hide-a11y',
-  $text-a11y-no-select: '--no-select',
-  $text-align-class: 'text',
-  $text-breaks-class: 'text',
-  $text-breaks-break: '--break',
-  $text-breaks-clear: '--clear',
-  $text-breaks-always: '--break-keep',
-  $text-breaks-none: '--no-break',
-  $text-breaks-word: '--wbreak',
-  $text-breaks-element-class: 'break-',
-  $text-breaks-element-wrap-class: 'break-rsp',
-  $text-normalize-props: 'text-normalize-',
-  $wrap-class: 'wrap',
-  $wrap-no-flex: '--no-flex',
-);
+@use '../index' as util;
+
+/** --- Begin document output --- **/
 
 /**
- * Configure colors
+ * Fonts must always be first in a stylesheet
+ */
+@use '_fonts';
+
+/**
+ * Configuration
  */
 @include util.colors-config((
-  off-white: #fffbf0,
-  grey-2: #c2d1d9,
-  cerulean: #0081c8,
-  pumpkin-orange: #f28503,
-  butterscotch: (#ffb93e,(grayscale,complement,alpha,invert,adjust-hue,darken,lighten,saturate,desaturate)),
-),
-(
-  alpha: (.1,.2,.3,.4,.5,.6,.7,.8,.9),
-  invert: (10%,20%,30%,40%,50%,60%,70%,80%,90%,100%),
-  adjust-hue: (30deg,60deg,90deg,120deg,150deg,180deg,210deg,240deg,270deg,300deg,330deg),
-  darken: (10%,20%,30%,40%,50%),
-  lighten: (10%,20%,30%,40%,50%),
-  saturate: (),
-  desaturate: (10%,20%,30%,40%,50%,60%,70%,80%,90%),
-),
-(
-  text: (color, (base-only)),
-  bg: background-color,
-  bdr: (border-color, (grey-2,cerulean,pumpkin-orange,butterscotch,butterscotch-comp)),
-));
+  // Base colors
+  'white': (#ffffff, (alpha)),
+  'black': (#000000, (alpha)),
+  'pink': #ff1493,
 
-/**
- * Configure image icons
- */
-@include util.icons-images-config((
-  example: 'default.jpg',
-  extra: ('default.jpg', 'interactive.jpg'),
+  // Status colors
+  'success': (#00ff00, (alpha)),
+  'notice': (#ffff00, (alpha)),
+  'error': (#ff0000, (alpha)),
+),(
+  alpha: (.1,.2,.25),
 ));
-
-/**
- * Configure decals
- */
-@include util.images-decals-config((
-  example: (
-    before: true,
-    after: true,
-    width: 1,
-    height: 1,
-    url: 'example.jpg'
+@include util.font-config((
+  'default': (
+    font-family: (var(--ui-font-default), sans-serif),
+    font-size: 16px,
+    line-height: 1.2,
+  ),
+  'mono': (
+    font-family: (var(--ui-font-mono), monospace),
+    font-size: 1rem,
+    line-height: 1.2,
+  ),
+  'headline': (
+    font-family: (var(--ui-font-headline), sans-serif),
+    font-size: #{util.abstract-px2rem(24)},
+    line-height: 1.2,
+  ),
+  'button': (
+    font-family: (var(--ui-font-mono), sans-serif),
+    font-size: #{util.abstract-px2rem(14)},
+    line-height: 1.4,
+  ),
+));
+@include util.text-normalize-config((
+  headline-margin: util.space-get('m') 0,
+  paragraph-margin: util.space-get('s') 0,
+));
+@include util.list-spaced-config((
+  spaced-margin: util.space-get('s') 0,
+  spaced-padding: util.space-get('s') 0 0,
+  spaced-inner-margin: 0 0 util.space-get('s'),
+  spaced-inner-padding: util.space-get('s') 0 0,
+));
+@include util.images-fluid-config((
+  ratio-max-width: 128px,
+  max-width: 128px,
+  max-height: 128px,
+  picture-margin: 0,
+  image-margin: 0,
+  text-margin: util.space-get('s') auto,
+  broken-color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  broken-background-color: light-dark(var(--ui-color-white), var(--ui-color-black)),
+));
+@include util.icons-core-config((
+  unit: 1.4em,
+));
+@include util.button-core-config((
+  padding: 0.25rem 0.5rem 0.15rem,
+  icon-padding: 0.25rem 0.5rem 0.15rem,
+  icon-spacing: 0.4rem,
+  border: 1px solid currentColor,
+  border-radius: 0.35rem,
+  min-width: 10rem,
+  disabled-opacity: 0.6,
+));
+@include util.button-styled-config((
+  styled-color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  styled-background: light-dark(var(--ui-color-white), var(--ui-color-black)),
+  styled-border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  disabled-color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  disabled-background: light-dark(var(--ui-color-white), var(--ui-color-black)),
+  disabled-border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  interactive-color: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+  interactive-background: light-dark(var(--ui-color-white), var(--ui-color-black)),
+  interactive-border: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+));
+@include util.tooltip-config((
+  color-text: light-dark(var(--ui-color-white), var(--ui-color-black)),
+  color-background: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  padding: 0.25em 0.35em,
+  relative-margin: -0.25em 0,
+  border-radius: 0.35rem,
+  arrow-height: 0.4rem,
+  arrow-width: 0.6rem,
+  arrow-offset: 0.3rem,
+  transition: 0.25s ease,
+));
+@include util.text-nav-config((
+  margin: 1rem 0,
+  max-width: 100%,
+  item-margin: 0,
+  item-padding: 0.25rem,
+));
+@include util.wrap-config((
+  --header: (
+    justify-content: space-between,
+    align-items: center,
+    max-width: 1440px,
+    padding: util.space-get('s'),
+  ),
+  --main: (
+    padding: 0 util.space-get('m'),
+    max-width: 1440px,
+  ),
+  --footer: (
+    justify-content: space-between,
+    align-items: center,
+    max-width: 1440px,
+    padding: util.space-get('s'),
+  ),
+  --section: (
+    padding: util.space-get('s') util.space-get('m') util.space-get('l'),
+  ),
+  --vertical: (
+    flex-direction: column,
+  ),
+));
+@include util.columns-config((
+  count: 1,
+  margin: 2rem,
+  horizontal: 0,
+  spacing: 2rem,
+  modifiers: (
+    tablet: 2,
+    desktop: 3,
+  ),
+));
+@include util.space-config((
+  sizes: (
+    'xs': 1,
+    's': 3,
+    'm': 6,
+    'l': 9,
+    'xl': 14,
+  ),
+  properties: (
+    margin-bottom,
+    margin-left,
   ),
 ));
 
@@ -90,167 +157,209 @@
  * Define root variables
  */
 :root {
+  color-scheme: light dark;
+  --ui-spacing-base: 0.2rem;
+  @include fonts.properties;
+  @include util.space-properties;
+
+  // Utility custom properties
   @include util.text-normalize-properties;
   @include util.colors-properties;
-  @include util.images-decals-properties;
+  @include util.list-normalize-properties;
+  @include util.list-spaced-properties;
+  @include util.images-fluid-properties;
   @include util.icons-core-properties;
   @include util.icons-styled-properties;
-  @include util.icons-images-properties;
-  @include util.list-normalize-properties;
   @include util.button-core-properties;
   @include util.button-styled-properties;
+  @include util.tooltip-properties;
+  @include util.text-nav-properties;
+  @include util.wrap-properties;
+  @include util.columns-properties;
+
+  // Application specific
 }
 
 /**
- * Render reset
+ * Reset,
+ * Text normalize and helpers,
+ * Color styles,
+ * Font styles,
+ * Wrap styles,
  */
 @include util.reset-styles;
-
-/**
- * Render text normalize and helpers
- */
 @include util.text-normalize-styles;
 @include util.text-a11y-styles;
-@include util.text-align-styles;
-@include util.text-breaks-styles;
-
-/**
- * Render color styles
- */
-@include util.colors-styles;
-
-/**
- * Render decal styles
- */
-@include util.images-decals-styles;
-
-/**
- * Render icon styles
- */
+@include util.list-normalize-styles;
+@include util.list-spaced-styles;
+@include util.font-styles;
+@include util.wrap-styles;
+@include util.columns-styles;
+@include util.images-fluid-styles;
 @include util.icons-core-styles;
 @include util.icons-styled-styles;
-@include util.icons-images-styles;
+@include util.button-core-styles() {
+  @extend .ui-font--button;
 
-/**
- * Render list styles
- */
-@include util.list-normalize-styles;
-@include util.list-customize-styles;
+  .#{util.$button-class}__label {
+    min-height: calc(var(--#{util.$icons-props}size) * var(--#{util.$icons-props}unit));
+  }
 
-/**
- * Render button styles
- */
-@include util.button-core-styles;
+  &--text {
+    &:not(.#{util.$button-styled-class}--static):not(.#{util.$button-styled-class}--disabled):not(:disabled):focus,
+    &:not(.#{util.$button-styled-class}--static):not(.#{util.$button-styled-class}--disabled):not(:disabled):hover {
+      .#{util.$button-class}__label {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &--icon {
+    &-only {
+      &.ui-tooltip {
+        --ui-tooltip-arrow-offset: 0.85rem;
+      }
+    }
+  }
+};
 @include util.button-styled-styles;
-@include util.button-styled-add('primary', (
-  styled: (color: var(--color-cerulean), background: transparent, border: var(--color-cerulean)),
-  disabled: (color: var(--color-grey-2), background: transparent, border: var(--color-grey-2)),
-  interactive: (color: var(--color-pumpkin-orange), background: transparent, border: var(--color-pumpkin-orange)),
+@include util.button-styled-add('text', (
+  styled: (
+    color: inherit,
+    background: transparent,
+    border: transparent,
+  ),
+  disabled: (
+    color: inherit,
+    background: transparent,
+    border: transparent,
+  ),
+  interactive: (
+    color: var(--ui-color-pink),
+    background: transparent,
+    border: transparent,
+  ),
 ));
+@include util.button-styled-add('success', (
+  styled: (
+    color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+    background: var(--ui-color-success-op-20),
+    border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  ),
+  disabled: (
+    color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+    background: var(--ui-color-success-op-25),
+    border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  ),
+  interactive: (
+    color: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+    background: var(--ui-color-success-op-10),
+    border: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+  ),
+));
+@include util.button-styled-add('notice', (
+  styled: (
+    color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+    background: var(--ui-color-notice-op-20),
+    border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  ),
+  disabled: (
+    color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+    background: var(--ui-color-notice-op-25),
+    border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  ),
+  interactive: (
+    color: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+    background: var(--ui-color-notice-op-10),
+    border: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+  ),
+));
+@include util.button-styled-add('error', (
+  styled: (
+    color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+    background: var(--ui-color-error-op-20),
+    border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  ),
+  disabled: (
+    color: light-dark(var(--ui-color-black), var(--ui-color-white)),
+    background: var(--ui-color-error-op-25),
+    border: light-dark(var(--ui-color-black), var(--ui-color-white)),
+  ),
+  interactive: (
+    color: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+    background: var(--ui-color-error-op-10),
+    border: light-dark(var(--ui-color-pink), var(--ui-color-pink)),
+  ),
+));
+@include util.tooltip-styles;
+@include util.text-nav-styles;
+@include util.space-styles;
 
 /**
- * Render font styles
+ * Application styles
  */
-@include util.font-config((
+html {
+  scroll-padding-top: 3.75rem;
+}
+body {
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-black));
+  @extend .ui-font--default;
 
-  // Base declaration
-  default: (
-    font-family: (Oxygen, sans-serif),
-    font-size: 14px,
-    line-height: 1.33,
-  ),
+  h1, h2, h3, h4, h5, h6 {
+    @extend .ui-font--headline;
 
-  // Regular default and responsive declarations
-  headline: (
-    font-size: 30px,
-    font-weight: bold,
-  ),
-  headline_at_mobile-small: (
-    font-size: 20px,
-  ),
-  headline_at_tablet: (
-    font-size: 40px,
-  ),
-  headline_at_desktop: (
-    font-size: 40px,
-  ),
-  headline_at_desktop-small: (
-    font-size: 50px,
-  ),
+    span {
+      vertical-align: middle;
+    }
+  }
+}
+.ui-text {
+  a {
+    @include util.mixins-attr-none() {
+      color: inherit;
+      text-decoration: underline;
+      transition: var(--ui-button-transition);
 
-  // Fluid font defaults and responsive declarations
-  headline-fluid_at_mobile: (
-    font-weight: bold,
-    fluid: (
-      min-vw : 320px,
-      max-vw : 767px,
-      min-size : 20px,
-      max-size : 30px,
-    ),
-    no-max: true,
-  ),
-  headline-fluid_at_tablet: (
-    fluid: (
-      min-vw : 768px,
-      max-vw : 1024px,
-      min-size : 30px,
-      max-size : 35px,
-    ),
-    no-max: true,
-  ),
-  headline-fluid_at_desktop: (
-    fluid: (
-      min-vw : 1025px,
-      max-vw : 1366px,
-      min-size : 35px,
-      max-size : 50px,
-    ),
-  ),
-));
-@include util.font-styles;
-
-/**
- * Render wrap styles
- */
-@include util.wrap-config((
-
-  // Section wrapper
-  --section: (
-    position: relative,
-    flex-direction: column,
-    padding: 0 1rem,
-    _at_tablet-desktop: (
-      max-width: calc(100% - 2rem),
-    ),
-  ),
-
-  // Content wrapper, including variants
-  --content: (
-    position: relative,
-    max-width: 380px,
-    _at_mobile-small: (
-      max-width: 300px,
-    ),
-    _at_tablet-portrait: (
-      max-width: 720px,
-    ),
-    _at_tablet-landscape-desktop: (
-      max-width: 1000px,
-    ),
-    _at_desktop-small: (
-      max-width: 1200px,
-    ),
-    -before: (
-      position: relative,
-      margin: 0 auto 2rem,
-    ),
-    -main: (
-      position: relative,
-    ),
-    -after: (
-      position: relative,
-      margin: 2rem auto 0,
-    ),
-  ),
-));
-@include util.wrap-styles;
+      &:hover,
+      &:focus {
+        color: var(--ui-color-pink);
+      }
+    }
+  }
+}
+.ui-header,
+.ui-footer {
+  --ui-text-nav-margin: 0 0 0 auto;
+}
+.ui-header {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: inherit;
+  border-bottom: #{util.abstract-px2rem(2)} solid currentColor;
+}
+.ui-footer {
+  margin: util.space-get('xl') 0 0;
+  border-top: #{util.abstract-px2rem(2)} solid currentColor;
+}
+code {
+  display: inline-block;
+  padding: util.space-get('xs') util.space-get('s');
+  background-color: light-dark(var(--ui-color-black-op-20), var(--ui-color-white-op-20));
+  border-radius: 0.35rem;
+}
+pre code {
+  display: block;
+  margin: var(--ui-text-normalize-paragraph-margin);
+  padding: util.space-get('s') util.space-get('m');
+}
+.ui-section {
+  margin: util.space-get('xl') 0 0;
+  padding: util.space-get('m') util.space-get('xs') util.space-get('s');
+  background-color: light-dark(var(--ui-color-black-op-10), var(--ui-color-white-op-10));
+  border-top: #{util.abstract-px2rem(2)} solid currentColor;
+  border-radius: 0.35rem;
+}
