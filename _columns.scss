@@ -1,0 +1,120 @@
+/**
+ * Columns style generation
+ *  Custom properties and styles with configuration.
+ */
+
+/**
+ * Requires
+ */
+@use 'sass:meta';
+@use 'sass:map';
+@use 'abstract';
+@use 'mixins';
+@use 'media';
+
+/**
+ * Component css class
+ * @protected
+ * @type {string} css class
+ */
+$class: 'ui-columns' !default;
+
+/**
+ * Component property prefix
+ * @protected
+ * @type {string} property name
+ */
+$props: 'ui-columns-' !default;
+
+/**
+ * Config defaults
+ * @private
+ * @type {map}
+ */
+$-config: (
+  count: 1,
+  margin: 2rem,
+  horizontal: 0,
+  spacing: 2rem,
+  modifiers: null,
+);
+
+/**
+ * Update component config options
+ * @public
+ * @param {map} $options - Map of config options
+ * @output {void} - Only sets config options
+ */
+@mixin config($options) {
+  $-config: abstract.config($options, $-config, false, true, 'columns.config::') !global;
+}
+
+/**
+ * Generate required custom properties
+ * @public
+ * @param {null|map} $extend - Extend properties for output only
+ * @output Adds components custom properties in current scope
+ */
+@mixin properties($extend: null) {
+  $render: abstract.merge-optional($-config, $extend);
+  $clean: map.remove($render, 'modifiers');
+  @include mixins.properties($clean, $props, '_at_', 'columns.properties::');
+}
+
+/**
+ * Generate columns styles
+ * @public
+ * @output Outputs configured spacing styles in given context
+ */
+@mixin styles() {
+  .#{$class} {
+    list-style: none;
+    margin: var(--#{$props}margin) var(--#{$props}horizontal);
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__column {
+      display: block;
+      margin: 0;
+      padding: calc(var(--#{$props}spacing) / 2);
+      width: calc(100% / var(--#{$props}count));
+      height: 100%;
+      align-self: stretch;
+    }
+
+    &--offset {
+      margin: calc(var(--#{$props}spacing) / -2);
+      width: calc(100% + var(--#{$props}spacing));
+
+      &-with-margin {
+        &:not(:first-child) {
+          margin-top: calc(var(--#{$props}spacing) / -2 + var(--#{$props}margin));
+        }
+        &:not(:last-child) {
+          margin-bottom: calc(var(--#{$props}spacing) / -2 + var(--#{$props}margin));
+        }
+      }
+    }
+
+    // Setup column modifiers
+    $-modifiers: map.get($-config, 'modifiers');
+    @if meta.type-of($-modifiers) == map {
+      @each $query, $columns in $-modifiers {
+        @include media.query($query) {
+          &--#{abstract.str-initials($query)} {
+            &-#{$columns} {
+              --#{$props}count: #{$columns};
+            }
+          }
+        }
+      }
+    }
+
+    // Allow additional styles
+    @if meta.content-exists() {
+      @content;
+    }
+  }
+}
