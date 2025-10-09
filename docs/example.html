@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+        <title>sass-util examples</title>
+        <link rel="stylesheet" href="util.min.css">
+    </head>
+    <body class="ui-page">
+        <header class="ui-header">
+            <div class="ui-wrap ui-wrap--header">
+                <div class="ui-text">
+                    <h1>
+                        <span class="ui-icon ui-icon--inline" data-icon="acorn"><span></span></span>
+                        <span>squirrel-forge/sass-util</span>
+                    </h1>
+                </div>
+                <nav class="ui-text-nav">
+                    <a class="ui-button ui-button--icon" href="#table-of-contents">
+                        <span class="ui-button__icon ui-icon" data-icon="menu"><span></span></span>
+                        <span class="ui-button__label">Table of Contents</span>
+                    </a>
+                </nav>
+            </div>
+        </header>
+        <main class="ui-main">
+            <div class="ui-wrap ui-wrap--main ui-wrap--no-flex">
+                <section class="ui-section">
+                    <div id="introduction" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text ui-space--mb-m">
+                            <h1>
+                                <span class="ui-icon ui-icon--inline" data-icon="important"><span></span></span>
+                                <span>Introduction</span>
+                            </h1>
+                        </div>
+                        <div class="ui-text ui-space--ml-xl">
+                            <p>The utilities deliver a collection of sass abstracts, mixins, globals and utilities.</p>
+                            <p>Built for the dart-sass <em>@use module syntax</em>, allowing for full and individual feature usage.</p>
+                            <p>The library can be used as a framework, effectively defining most core functionality required for layouts and components.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="table-of-contents" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h2>
+                                <span class="ui-icon ui-icon--inline" data-icon="menu"><span></span></span>
+                                <span>Table of contents</span>
+                            </h2>
+                            <ul class="ui-list ui-list--spaced">
+                                <li>
+                                    <a class="ui-button" href="#introduction">
+                                        <span class="ui-button__label">Introduction</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="ui-button" href="#table-of-contents">
+                                        <span class="ui-button__label">Table of Contents</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="ui-button" href="#installation">
+                                        <span class="ui-button__label">Installation</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="ui-button" href="#usage">
+                                        <span class="ui-button__label">How to use</span>
+                                    </a>
+                                    <ul class="ui-list ui-list--spaced">
+                                        <li>
+                                            <a class="ui-button" href="#library-import">
+                                                <span class="ui-button__label">Full library</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#module-import">
+                                                <span class="ui-button__label">Individual modules</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="ui-button" href="#examples">
+                                        <span class="ui-button__label">Examples</span>
+                                    </a>
+                                    <ul class="ui-list ui-list--spaced">
+                                        <li>
+                                            <a class="ui-button" href="#examples-buttons-and-tokens">
+                                                <span class="ui-button__label">Buttons and tokens</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#examples-nav-containers">
+                                                <span class="ui-button__label">Basic navigation containers</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#examples-columns">
+                                                <span class="ui-button__label">Simple columns</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#examples-tooltips">
+                                                <span class="ui-button__label">Tooltips</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#examples-fluid-pictures">
+                                                <span class="ui-button__label">Fluid pictures and images</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#examples-normalization">
+                                                <span class="ui-button__label">Normalizing</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="ui-button" href="#notes">
+                                        <span class="ui-button__label">Notes</span>
+                                    </a>
+                                    <ul class="ui-list ui-list--spaced">
+                                        <li>
+                                            <a class="ui-button" href="#use-syntax">
+                                                <span class="ui-button__label">@use syntax</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#reset-configs">
+                                                <span class="ui-button__label">Resetting configs</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#change-config">
+                                                <span class="ui-button__label">Changing configs</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="ui-button" href="#sass-maps">
+                                                <span class="ui-button__label">SASS maps</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="ui-button" href="#comments">
+                                        <span class="ui-button__label">Comments</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="installation" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>Installation</h3>
+                            <p>Run to install:</p>
+                            <pre><code data-code="terminal">npm i @squirrel-forge/sass-util</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="usage" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>How to use</h3>
+                            <p>Make use of your IDE's autocompletion and checkout the <a href="../example/util.scss">example implementation</a> and the <a href="util.css">generated output</a>.</p>
+                            <p>Note that the <em>@use</em> syntax works differently than the classic <em>@import</em>, check the <a href="#use-syntax">use syntax notes</a> for relevant details and or refer to the <a href="https://sass-lang.com/documentation/at-rules/use" target="_blank">official sass docs</a>.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="library-import" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>Full library import</h3>
+                            <p>Import the library with custom namespace:</p>
+                            <pre><code data-code="scss">@use '~@squirrel-forge/sass-util' as util;</code></pre>
+                            <p>Import the library with custom variable settings:</p>
+                            <pre><code data-code="scss">@use '~@squirrel-forge/sass-util' as util with (
+    $config-value: 'string',
+);</code></pre>
+                            <p>When using the full package, make use of the namespacing to select from the individual submodules.</p>
+                            <pre><code data-code="scss">@include util.media-config((
+  custom-breakpoint: 'screen and (max-width: 10rem)',
+));
+@include util.media-query('custom-breakpoint') {
+  // @content
+}</code></pre>
+                            <p>Not recommended, but possible: If you wish to use modules more than once and require configuration changes, then you need to modify the namespaces variables directly, but keep in mind that the values change permanently even for other contexts and need to be reset manually, since modules are only loaded once.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="module-import" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>Loading individual modules</h3>
+                            <p>Import a module directly:</p>
+                            <pre><code data-code="scss">@use '~@squirrel-forge/sass-util/media';</code></pre>
+                            <p>When using submodules directly, namespacing is shorter, without the parent prefixes, this way you have granular control over which modules to use.</p>
+                            <pre><code data-code="scss">@include media.config((
+  custom-breakpoint: 'screen and (max-width: 10rem)',
+));
+@include media.query('custom-breakpoint') {
+  // @content
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>Examples</h3>
+                            <p>Following, some examples, none of these claim to be complete in the display of their abilities and shortcomings.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-buttons-and-tokens" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Button and token variants</h4>
+                        </div>
+                        <nav class="ui-text-nav ui-text-nav--vertical">
+                            <ul>
+                                <li>
+                                    <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                        <span class="ui-button__icon ui-icon" data-icon="stats" data-align="top"><span></span></span>
+                                        <span class="ui-button__label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="ui-button ui-button--icon ui-button--text" href="#">
+                                        <span class="ui-button__icon ui-icon" data-icon="stats"><span></span></span>
+                                        <span class="ui-button__label">Text/Borderless</span>
+                                    </a>
+                                    <button class="ui-button ui-button--icon ui-button--text" disabled type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="stats"><span></span></span>
+                                        <span class="ui-button__label">Disabled</span>
+                                    </button>
+                                    <span class="ui-button ui-button--text ui-button--static">
+                                        <span class="ui-button__label">Static/token</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="ui-button ui-button--icon ui-button--primary ui-button--max-width ui-button--static">
+                                        <span class="ui-button__icon ui-icon" data-icon="info" data-align="top"><span></span></span>
+                                        <span class="ui-button__label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="ui-button ui-button--icon ui-button--primary" href="#">
+                                        <span class="ui-button__icon ui-icon" data-icon="info"><span></span></span>
+                                        <span class="ui-button__label">Default/primary</span>
+                                    </a>
+                                    <button class="ui-button ui-button--icon ui-button--primary" disabled type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="info"><span></span></span>
+                                        <span class="ui-button__label">Disabled</span>
+                                    </button>
+                                    <span class="ui-button ui-button--primary ui-button--static">
+                                        <span class="ui-button__label">Static/token</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="ui-button ui-button--icon ui-button--success ui-button--max-width ui-button--static">
+                                        <span class="ui-button__icon ui-icon" data-icon="check" data-align="top"><span></span></span>
+                                        <span class="ui-button__label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="ui-button ui-button--icon ui-button--success" href="#">
+                                        <span class="ui-button__icon ui-icon" data-icon="check"><span></span></span>
+                                        <span class="ui-button__label">Success</span>
+                                    </a>
+                                    <button class="ui-button ui-button--icon ui-button--success" disabled type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="check"><span></span></span>
+                                        <span class="ui-button__label">Disabled</span>
+                                    </button>
+                                    <span class="ui-button ui-button--success ui-button--static">
+                                        <span class="ui-button__label">Static/token</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="ui-button ui-button--icon ui-button--notice ui-button--max-width ui-button--static">
+                                        <span class="ui-button__icon ui-icon" data-icon="unknown" data-align="top"><span></span></span>
+                                        <span class="ui-button__label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="ui-button ui-button--icon ui-button--notice" href="#">
+                                        <span class="ui-button__icon ui-icon" data-icon="unknown"><span></span></span>
+                                        <span class="ui-button__label">Warning</span>
+                                    </a>
+                                    <button class="ui-button ui-button--icon ui-button--notice" disabled type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="unknown"><span></span></span>
+                                        <span class="ui-button__label">Disabled</span>
+                                    </button>
+                                    <span class="ui-button ui-button--notice ui-button--static">
+                                        <span class="ui-button__label">Static/token</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="ui-button ui-button--icon ui-button--error ui-button--max-width ui-button--static">
+                                        <span class="ui-button__icon ui-icon" data-icon="important" data-align="top"><span></span></span>
+                                        <span class="ui-button__label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="ui-button ui-button--icon ui-button--error" href="#">
+                                        <span class="ui-button__icon ui-icon" data-icon="important"><span></span></span>
+                                        <span class="ui-button__label">Error</span>
+                                    </a>
+                                    <button class="ui-button ui-button--icon ui-button--error" disabled type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="important"><span></span></span>
+                                        <span class="ui-button__label">Disabled</span>
+                                    </button>
+                                    <span class="ui-button ui-button--error ui-button--static">
+                                        <span class="ui-button__label">Static/token</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-nav-containers" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Basic navigation containers</h4>
+                        </div>
+                        <nav class="ui-text-nav ui-text-nav--block ui-text-nav--center-m ui-text-nav--horizontal ui-text-nav--vertical-m">
+                            <ul>
+                                <li>
+                                    <button class="ui-button" type="button">
+                                        <span class="ui-button__label">Item 1</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="ui-button" type="button">
+                                        <span class="ui-button__label">Item 2</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="ui-button" type="button">
+                                        <span class="ui-button__label">Item 3</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="ui-button" type="button">
+                                        <span class="ui-button__label">Item 4</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-columns" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Columns</h4>
+                            <p>Columns can be used with any content and simple responsive options.</p>
+                            <div class="ui-columns ui-columns--offset ui-columns--offset-with-margin ui-columns--t-2 ui-columns--d-3">
+                                <div class="ui-columns__column">
+                                    <h5>Column 1</h5>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                                <div class="ui-columns__column">
+                                    <h5>Column 2</h5>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                                <div class="ui-columns__column">
+                                    <h5>Column 3</h5>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                                <div class="ui-columns__column">
+                                    <h5>Column 4</h5>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                                <div class="ui-columns__column">
+                                    <h5>Column 5</h5>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                                <div class="ui-columns__column">
+                                    <h5>Column 6</h5>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                            </div>
+                            <p>Columns can also be applied to simple navigation containers.</p>
+                        </div>
+                        <nav class="ui-text-nav ui-text-nav--block ui-text-nav--horizontal">
+                            <ul class="ui-columns ui-columns--offset ui-columns--t-2 ui-columns--d-3">
+                                <li class="ui-columns__column">
+                                    <button class="ui-button ui-button--icon ui-tooltip" data-tip="tr" type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="action-create"><span></span></span>
+                                        <span class="ui-button__label">Create</span>
+                                        <span class="ui-tooltip__tip">Create something</span>
+                                    </button>
+                                </li>
+                                <li class="ui-columns__column">
+                                    <button class="ui-button ui-button--icon ui-tooltip" data-tip="tr" type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="action-edit"><span></span></span>
+                                        <span class="ui-button__label">Edit</span>
+                                        <span class="ui-tooltip__tip">Edit something</span>
+                                    </button>
+                                </li>
+                                <li class="ui-columns__column">
+                                    <button class="ui-button ui-button--icon ui-tooltip" data-tip="tr" type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="action-delete"><span></span></span>
+                                        <span class="ui-button__label">Delete</span>
+                                        <span class="ui-tooltip__tip">Delete something</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-tooltips" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Tooltips</h4>
+                            <p>Css based tooltips that can be combined with almost anything.</p>
+                            <p>Use them to <a href="#" data-as="ui-tooltip" data-tip="r"><span>describe</span><span class="ui-tooltip__tip" data-tip="relative">Describe your link here.</span></a> inline links in <a href="#" data-as="ui-tooltip" data-tip="tr"><span>different</span><span class="ui-tooltip__tip">Describe your link here.</span></a> ways.</p>
+                            <p>Or use them for some buttons to describe their actions.</p>
+                        </div>
+                        <nav class="ui-text-nav ui-text-nav--block ui-text-nav--horizontal">
+                            <ul>
+                                <li>
+                                    <button class="ui-button ui-button--icon ui-button--icon-only ui-tooltip" data-tip="tr" type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="action-create"><span></span></span>
+                                        <span class="ui-button__label">Create</span>
+                                        <span class="ui-tooltip__tip">Create something</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="ui-button ui-button--icon ui-button--icon-only ui-tooltip" data-tip="tr" type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="action-edit"><span></span></span>
+                                        <span class="ui-button__label">Edit</span>
+                                        <span class="ui-tooltip__tip">Edit something</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="ui-button ui-button--icon ui-button--icon-only ui-tooltip" data-tip="tr" type="button">
+                                        <span class="ui-button__icon ui-icon" data-icon="action-delete"><span></span></span>
+                                        <span class="ui-button__label">Delete</span>
+                                        <span class="ui-tooltip__tip">Delete something</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-fluid-pictures" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Fluid picture and images</h4>
+                            <img class="ui-fluid-img ui-fluid--inline" src="https://avatars.githubusercontent.com/u/42303555?s=200&v=4" alt="Example inline image" />
+                        </div>
+                        <picture class="ui-fluid-picture">
+                            <img class="ui-fluid-img" src="https://avatars.githubusercontent.com/u/42303555?s=200&v=4" alt="Example picture" />
+                        </picture>
+                        <figure class="ui-fluid-ratio">
+                            <div class="ui-fluid-ratio__ratio">
+                                <picture class="ui-fluid-picture">
+                                    <img class="ui-fluid-img" src="" alt="Example broken ratio picture" />
+                                </picture>
+                            </div>
+                        </figure>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-normalization" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Normalizing</h4>
+                            <p>Text normalize adds normalized headline and paragraph spacing.</p>
+                            <p>This provides simplified contextualized spacing rule possibilities,
+                                especially when combined with other elements such as lists or images.</p>
+                            <ul>
+                                <li><code data-code="css">var(--ui-text-normalize-headline-margin)</code></li>
+                                <li><code data-code="css">var(--ui-text-normalize-paragraph-margin)</code></li>
+                                <li><code data-code="css">var(--ui-text-normalize-size-adjust)</code></li>
+                                <li><code data-code="css">var(--ui-list-margin)</code></li>
+                                <li><code data-code="css">var(--ui-list-padding)</code></li>
+                                <li><code data-code="css">var(--ui-list-indent-width)</code></li>
+                                <li><code data-code="css">var(--ui-list-item-margin)</code></li>
+                                <li><code data-code="css">var(--ui-list-item-after-margin)</code></li>
+                            </ul>
+                            <p>Elements can be evenly spaced and the list for example is separated from the paragraphs.</p>
+                            <p>Allowing for many types to be combined and controlled via a few css vars.</p>
+                            <img class="ui-fluid-img ui-fluid--inline" src="https://avatars.githubusercontent.com/u/42303555?s=200&v=4" alt="Example image" />
+                            <p>Without influencing defaults or specifics for other contexts.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="notes" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>Notes</h3>
+                            <p>Following some notes on sass behaviours directly relevant to using the library and modules.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="use-syntax" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>@use syntax</h4>
+                            <p>When loading via the <em>@use</em> syntax versus the classic <em>@import</em>, there are a few things to keep in mind.</p>
+                            <p>Using the <em>with</em> keyword to set any configuration variables can only be done the first time a module is loaded with <em>@use</em>, any attempt to do it differently will produce an error.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="reset-configs" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Resetting configs</h4>
+                            <p>With any modules that allow extending, config mixins can be reset the maps index to an empty list by passing an explicit <em>null</em> value, as following example demonstrates:</p>
+                            <p>To clear all previously defined decals:</p>
+                            <pre><code data-code="scss">@include util.images-decals-config(null);</code></pre>
+                            <p>To add a fresh/new data set:</p>
+                            <pre><code data-code="scss">@include util.images-decals-config((
+  example: (
+    before: true,
+    after: true,
+    width: 1,
+    height: 1,
+    url: 'example.jpg'
+  ),
+));</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="change-config" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Changing configuration for multiple usages</h4>
+                            <p>If you wish to change configuration variables in specific situations, note that anything that module will do afterwards will use the new value even when loaded in a different context within the same compile tree.</p>
+                            <p>You can set values from the given use context as following:</p>
+                            <pre><code data-code="scss">@use '~@squirrel-forge/sass-util' as util with (
+  $images-decals-props: 'decal-',
+);</code></pre>
+                            <p>This renders the initial configuration:</p>
+                            <pre><code data-code="scss">:root { @include util.images-decals-properties; }</code></pre>
+                            <p>Then we change a config value and the output changes:</p>
+                            <pre><code data-code="scss">util.$images-decals-props: 'foo-';
+.context { @include util.images-decals-properties; }</code></pre>
+                            <p>If we use this module again later or in another file loaded after the above code, then we need to reset the value if we want the initial setting:</p>
+                            <pre><code data-code="scss">util.$images-decals-props: 'decal-';</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="sass-maps" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h3>Sass maps</h3>
+                            <p>Inside map declarations to use comma or space separated, list values, wrap them in braces to make them an explicit list value, for example for font-family declarations:</p>
+                            <pre><code data-code="scss">$map: (
+  key: (
+    font-family: ("Oxygen", sans-serif),
+  ),
+);</code></pre>
+                            <p>Or you can escape the value as following:</p>
+                            <pre><code data-code="scss">$map: (
+  key: (
+    font-family: #{"Oxygen", sans-serif},
+  ),
+);</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="comments" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h2>Comments</h2>
+                            <p>For further detailed documentation, please check the sass sources on <a href="https://github.com/squirrel-forge/sass-util" target="_blank"><span class="ui-icon ui-icon--inline" data-icon="github"><span></span></span><span>github</span></a>.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer class="ui-footer">
+            <div class="ui-wrap ui-wrap--footer">
+                <div class="ui-text">
+                    <h6>
+                        <span class="ui-icon ui-icon--inline" data-icon="acorn"><span></span></span>
+                        <span>squirrel-forge &copy; 2025</span>
+                    </h6>
+                </div>
+                <nav class="ui-text-nav">
+                    <a class="ui-button ui-button--icon" href="https://www.npmjs.com/package/@squirrel-forge/sass-util" target="_blank">
+                        <span class="ui-button__icon ui-icon" data-icon="npm"><span></span></span>
+                        <span class="ui-button__label">squirrel-forge/sass-util</span>
+                    </a>
+                    <a class="ui-button ui-button--icon" href="https://github.com/squirrel-forge/sass-util#readme" target="_blank">
+                        <span class="ui-button__icon ui-icon" data-icon="github"><span></span></span>
+                        <span class="ui-button__label">squirrel-forge/sass-util</span>
+                    </a>
+                </nav>
+            </div>
+        </footer>
+    </body>
+</html>
