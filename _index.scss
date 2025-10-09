@@ -66,6 +66,10 @@
   $button-as-default: true !default;
   $button-default-name: 'default' !default;
 
+// Columns module config
+  $columns-class: 'ui-columns' !default;
+  $columns-props: 'ui-columns-' !default;
+
 // Font module config
   // Styles module config
   $font-class: 'ui-font' !default;
@@ -77,7 +81,6 @@
 
 // List module config
   // Normalize module config
-  $list-normalize-class: 'ui-list' !default;
   $list-normalize-props: 'ui-list-' !default;
 
   // Customize module config
@@ -95,6 +98,10 @@
     lower-latin,
   ) !default;
   $list-customize-custom: () !default;
+
+  // Spaced module config
+  $list-spaced-class: 'ui-list' !default;
+  $list-spaced-props: 'ui-list-' !default;
 
 // Text module config
   // A11y submodule config
@@ -174,6 +181,21 @@
       desktop-medium
     ] !default;
 
+  // Navigation module config
+  $text-nav-class: 'ui-text-nav' !default;
+  $text-nav-props: 'ui-text-nav-' !default;
+  $text-nav-direction-queries: (
+          mobile,
+          mobile-tablet-portrait,
+          tablet-portrait,
+          tablet-landscape,
+          tablet,
+          tablet-desktop,
+          tablet-landscape-desktop,
+          desktop,
+          desktop-medium
+  ) !default;
+
   // Normalize module config
   $text-normalize-props: 'ui-text-normalize-' !default;
 
@@ -182,6 +204,11 @@
   $wrap-class: 'ui-wrap' !default;
   $wrap-no-flex: '--no-flex' !default;
   $wrap-props: 'ui-wrap-' !default;
+
+// Space module config
+  // Styles module config
+  $space-class: 'ui-space' !default;
+  $space-props: 'ui-space-' !default;
 
 // Tooltip module config
   // Styles module config
@@ -210,6 +237,10 @@
   $variant-lighten: $colors-variant-lighten,
   $variant-saturate: $colors-variant-saturate,
   $variant-desaturate: $colors-variant-desaturate,
+);
+@forward 'columns' as columns-* with (
+  $class: $columns-class,
+  $props: $columns-props,
 );
 @forward 'images' as images-* with (
   $fluid-class: $images-fluid-class,
@@ -245,7 +276,6 @@
   $no-max-attribute: $font-no-max-attribute,
 );
 @forward 'list' as list-* with (
-  $normalize-class: $list-normalize-class,
   $normalize-props: $list-normalize-props,
   $customize-prop: $list-customize-prop,
   $customize-counter: $list-customize-counter,
@@ -254,6 +284,8 @@
   $customize-space: $list-customize-space,
   $customize-styles: $list-customize-styles,
   $customize-custom: $list-customize-custom,
+  $spaced-class: $list-spaced-class,
+  $spaced-props: $list-spaced-props,
 );
 @forward 'text' as text-* with (
   $a11y-class: $text-a11y-class,
@@ -280,12 +312,20 @@
   $breaks-element-wrap-class: $text-breaks-element-wrap-class,
   $breaks-queries: $text-breaks-queries,
 
+  $nav-class: $text-nav-class,
+  $nav-props: $text-nav-props,
+  $nav-direction-queries: $text-nav-direction-queries,
+
   $normalize-props: $text-normalize-props,
 );
 @forward 'wrap' as wrap-* with (
   $class: $wrap-class,
   $no-flex: $wrap-no-flex,
   $props: $wrap-props,
+);
+@forward 'space' as space-* with (
+  $class: $space-class,
+  $props: $space-props,
 );
 @forward 'tooltip' as tooltip-* with (
   $class: $tooltip-class,
