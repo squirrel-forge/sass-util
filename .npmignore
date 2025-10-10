@@ -24,3 +24,5 @@ dev/
 
 ### NPM only ###
 .github
+*.zip
+*.woff2
