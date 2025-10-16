@@ -13,7 +13,7 @@ npm i @squirrel-forge/sass-util
 
 ## Usage
 
-Make use of your IDE's autocompletion or checkout the [example implementation](example/util.scss) and the [generated output](docs/util.css).  
+Make use of your IDE's autocompletion or checkout the [docs example](https://squirrel-forge.github.io/sass-util), [example scss sheet](example/util.scss) and the [generated output](docs/util.css).  
 Note that the *@use* syntax works differently than the classic *@import*, check the [use syntax notes](#use-syntax) for relevant details and or refer to the [official sass docs](https://sass-lang.com/documentation/at-rules/use).
 
 ```scss

@@ -36,8 +36,11 @@
   ),
   'headline': (
     font-family: (var(--ui-font-headline), sans-serif),
-    font-size: #{util.abstract-px2rem(24)},
+    font-size: #{util.abstract-px2rem(20)},
     line-height: 1.2,
+  ),
+  'headline_at_tablet-desktop': (
+    font-size: #{util.abstract-px2rem(24)},
   ),
   'button': (
     font-family: (var(--ui-font-mono), sans-serif),
@@ -68,7 +71,15 @@
 @include util.icons-core-config((
   unit: 1.4em,
 ));
+@include util.icons-images-config((
+  sqf: 'https://avatars.githubusercontent.com/u/42303555?s=200&v=4',
+));
+@include util.icons-styled-font-config((
+  font-size: 1.4em,
+  font-line: 0.85,
+));
 @include util.button-core-config((
+  margin: 0.25rem 0,
   padding: 0.25rem 0.5rem 0.15rem,
   icon-padding: 0.25rem 0.5rem 0.15rem,
   icon-spacing: 0.4rem,
@@ -76,6 +87,10 @@
   border-radius: 0.35rem,
   min-width: 10rem,
   disabled-opacity: 0.6,
+  label-hidden-queries: (
+    mobile,
+    mobile-classic,
+  ),
 ));
 @include util.button-styled-config((
   styled-color: light-dark(var(--ui-color-black), var(--ui-color-white)),
@@ -169,6 +184,7 @@
   @include util.list-spaced-properties;
   @include util.images-fluid-properties;
   @include util.icons-core-properties;
+  @include util.icons-images-properties;
   @include util.icons-styled-properties;
   @include util.button-core-properties;
   @include util.button-styled-properties;
@@ -197,6 +213,7 @@
 @include util.columns-styles;
 @include util.images-fluid-styles;
 @include util.icons-core-styles;
+@include util.icons-images-styles;
 @include util.icons-styled-styles;
 @include util.button-core-styles() {
   @extend .ui-font--button;
@@ -315,6 +332,8 @@ body {
   }
 }
 .ui-text {
+  max-width: 100%;
+
   a {
     @include util.mixins-attr-none() {
       color: inherit;
@@ -351,10 +370,20 @@ code {
   background-color: light-dark(var(--ui-color-black-op-20), var(--ui-color-white-op-20));
   border-radius: 0.35rem;
 }
+pre:has(code) {
+  display: block;
+  white-space: normal;
+  width: 100%;
+  max-width: 100%;
+}
 pre code {
   display: block;
   margin: var(--ui-text-normalize-paragraph-margin);
   padding: util.space-get('s') util.space-get('m');
+  width: 100%;
+  max-width: 100%;
+  white-space: pre;
+  overflow-x: scroll;
 }
 .ui-section {
   margin: util.space-get('xl') 0 0;

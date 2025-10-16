@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
         <meta content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
         <title>sass-util examples</title>
@@ -16,7 +17,7 @@
                     </h1>
                 </div>
                 <nav class="ui-text-nav">
-                    <a class="ui-button ui-button--icon" href="#table-of-contents">
+                    <a class="ui-button ui-button--icon ui-button--label-hidden-mc" href="#table-of-contents">
                         <span class="ui-button__icon ui-icon" data-icon="menu"><span></span></span>
                         <span class="ui-button__label">Table of Contents</span>
                     </a>
@@ -44,7 +45,7 @@
                 <section class="ui-section">
                     <div id="table-of-contents" class="ui-section__anchor"></div>
                     <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
-                        <div class="ui-text">
+                        <div class="ui-text ui-text">
                             <h2>
                                 <span class="ui-icon ui-icon--inline" data-icon="menu"><span></span></span>
                                 <span>Table of contents</span>
@@ -87,6 +88,11 @@
                                         <span class="ui-button__label">Examples</span>
                                     </a>
                                     <ul class="ui-list ui-list--spaced">
+                                        <li>
+                                            <a class="ui-button" href="#examples-icons">
+                                                <span class="ui-button__label">Icons</span>
+                                            </a>
+                                        </li>
                                         <li>
                                             <a class="ui-button" href="#examples-buttons-and-tokens">
                                                 <span class="ui-button__label">Buttons and tokens</span>
@@ -220,6 +226,259 @@
                         <div class="ui-text">
                             <h3>Examples</h3>
                             <p>Following, some examples, none of these claim to be complete in the display of their abilities and shortcomings.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="ui-section">
+                    <div id="examples-icons" class="ui-section__anchor"></div>
+                    <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
+                        <div class="ui-text">
+                            <h4>Icons</h4>
+                            <p>Following all available CSS styled icons.</p>
+                            <p><strong>Actions and status:</strong></p>
+                            <div class="ui-wrap">
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Action: create</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="action-create"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Action: delete</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="action-delete"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Action: edit</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="action-edit"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Action: export</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="action-export"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Action: import</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="action-import"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Close</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="close"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Close small</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="close-small"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Add</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="add"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Remove</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="remove"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Download</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="download"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Upload</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="upload"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Check</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="check"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Important</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="important"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Unknown</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="unknown"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Info</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="info"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Menu</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="menu"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Undo</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="undo"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Redo</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="redo"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Save</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="save"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Update</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="update"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Trash</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="trash"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Trash: full</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="trash-full"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Settings</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="settings"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Stats</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="stats"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">User</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="user"><span></span></span>
+                                </span>
+                            </div>
+                            <p><strong>Arrows and rotation:</strong></p>
+                            <div class="ui-wrap">
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 45</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-45" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 90</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-90" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 135</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-135" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 180</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-180" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 225</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-225" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 270</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-270" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow: rotate 315</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--rotate-315" data-icon="arrow"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow capped</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="arrow-capped"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow double</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="arrow-double"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow simple</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="arrow-simple"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Arrow small</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="arrow-small"><span></span></span>
+                                </span>
+                            </div>
+                            <p><strong>Player controls and flip axis:</strong></p>
+                            <div class="ui-wrap">
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Fullscreen</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="fullscreen"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Minimize</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="minimize"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Fastforward: flipped x</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--flip-x" data-icon="fastforward"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Stop</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="stop"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Pause</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="pause"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Play</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="play"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Fastforward</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="fastforward"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Replay</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="replay"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Replay: flipped y</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--flip-y" data-icon="replay"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Replay: flipped x + y</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--flip-x ui-icon--flip-y" data-icon="replay"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Sound</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="sound"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Sound: muted</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="sound-muted"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Sound: none</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="sound-none"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Sound: on</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="sound-on"><span></span></span>
+                                </span>
+                            </div>
+                            <p><strong>Special, custom image and font icons:</strong></p>
+                            <div class="ui-wrap">
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">siux</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="siux"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Acorn</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="acorn"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">github</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="github"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">npm</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="npm"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">Font</span>
+                                    <span class="ui-button__icon ui-icon" data-icon="font"><span>☰</span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">sqf</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--img" data-icon="sqf"><span></span></span>
+                                </span>
+                                <span class="ui-button ui-button--icon ui-button--text ui-button--max-width ui-button--static">
+                                    <span class="ui-button__label">sqf inverted</span>
+                                    <span class="ui-button__icon ui-icon ui-icon--img ui-icon--invert" data-icon="sqf"><span></span></span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -428,7 +687,7 @@
                     <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
                         <div class="ui-text">
                             <h4>Tooltips</h4>
-                            <p>Css based tooltips that can be combined with almost anything.</p>
+                            <p>CSS based tooltips that can be combined with almost anything.</p>
                             <p>Use them to <a href="#" data-as="ui-tooltip" data-tip="r"><span>describe</span><span class="ui-tooltip__tip" data-tip="relative">Describe your link here.</span></a> inline links in <a href="#" data-as="ui-tooltip" data-tip="tr"><span>different</span><span class="ui-tooltip__tip">Describe your link here.</span></a> ways.</p>
                             <p>Or use them for some buttons to describe their actions.</p>
                         </div>
@@ -588,7 +847,11 @@
                     <div class="ui-wrap ui-wrap--section ui-wrap--vertical">
                         <div class="ui-text">
                             <h2>Comments</h2>
-                            <p>For further detailed documentation, please check the sass sources on <a href="https://github.com/squirrel-forge/sass-util" target="_blank"><span class="ui-icon ui-icon--inline" data-icon="github"><span></span></span><span>github</span></a>.</p>
+                            <p>For further detailed documentation, please check the sass sources on
+                                <a href="https://github.com/squirrel-forge/sass-util" target="_blank"><span class="ui-icon ui-icon--inline" data-icon="github"><span></span></span><span>github</span></a>
+                                or directly install the module from
+                                <a href="https://www.npmjs.com/package/@squirrel-forge/sass-util" target="_blank"><span class="ui-icon ui-icon--inline" data-icon="npm"><span></span></span><span>npm</span></a>.
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -603,11 +866,11 @@
                     </h6>
                 </div>
                 <nav class="ui-text-nav">
-                    <a class="ui-button ui-button--icon" href="https://www.npmjs.com/package/@squirrel-forge/sass-util" target="_blank">
+                    <a class="ui-button ui-button--icon ui-button--label-hidden-m" href="https://www.npmjs.com/package/@squirrel-forge/sass-util" target="_blank">
                         <span class="ui-button__icon ui-icon" data-icon="npm"><span></span></span>
                         <span class="ui-button__label">squirrel-forge/sass-util</span>
                     </a>
-                    <a class="ui-button ui-button--icon" href="https://github.com/squirrel-forge/sass-util#readme" target="_blank">
+                    <a class="ui-button ui-button--icon ui-button--label-hidden-m" href="https://github.com/squirrel-forge/sass-util#readme" target="_blank">
                         <span class="ui-button__icon ui-icon" data-icon="github"><span></span></span>
                         <span class="ui-button__label">squirrel-forge/sass-util</span>
                     </a>

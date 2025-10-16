@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.1
+ - Added more features.
+ - Fixed some issues.
+
 ## 0.10.0
  - Added *tooltip* module.
  - Added *images-fluid* module.

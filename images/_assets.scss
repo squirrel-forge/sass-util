@@ -2,6 +2,7 @@
  * ui-assets
  *  Function with configuration.
  */
+@use 'sass:string';
 
 /**
  * Asset base path
@@ -20,9 +21,18 @@ $cache: '' !default;
 /**
  * Get asset url
  * @param {string} $asset - Relative asset path
- * @param {string} $base - Optional asset base url
+ * @param {string} $check4 - Match first 4 chars to return as url
+ * @param {string} $check3 - Match first 3 chars to return as url
  * @return {url} - Asset url
  */
-@function get($asset) {
-  @return url($base + $asset + $cache);
+@function get($asset, $check4: 'http', $check3: '://') {
+  @if string.slice($asset, 0, 4) == $check4 {
+    @return url($asset);
+  }
+  @else if string.slice($asset, 0, 3) == $check3 {
+    @return url($asset);
+  }
+  @else {
+    @return url($base + $asset + $cache);
+  }
 }

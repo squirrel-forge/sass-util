@@ -37,8 +37,9 @@ $props: 'ui-icon-' !default;
  */
 $-config: (
   font-family: inherit,
+  font-size: inherit,
   font-line: 1,
-  font-weight: bold,
+  font-weight: normal,
 );
 
 /**
@@ -74,9 +75,9 @@ $-config: (
       height: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
       color: var(--#{$props}color);
       font-family: var(--#{$props}font-family);
+      font-size: var(--#{$props}font-size);
       font-weight: var(--#{$props}font-weight);
       line-height: var(--#{$props}font-line);
 

@@ -47,6 +47,13 @@ $inline: '--inline' !default;
 $flip: '--flip-' !default;
 
 /**
+ * Component class variant suffix
+ * @protected
+ * @type {string} class suffix
+ */
+$invert: '--invert' !default;
+
+/**
  * Component property prefix
  * @protected
  * @type {string} property name
@@ -181,6 +188,9 @@ $-config: (
     }
     &#{$flip}x.#{$class}#{$flip}y {
       transform: scale(-1, -1);
+    }
+    &#{$invert} {
+      filter: invert(100%);
     }
 
     // Styled icon variants

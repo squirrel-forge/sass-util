@@ -10,6 +10,7 @@
 @use 'sass:meta';
 @use '../abstract';
 @use '../mixins';
+@use '../media';
 
 /**
  * Component css class
@@ -43,6 +44,7 @@ $-config: (
   max-width: min(24em, 100%),
   disabled-opacity: 0.6,
   transition: 0.3s ease,
+  label-hidden-queries: null,
 );
 
 /**
@@ -52,7 +54,7 @@ $-config: (
  * @output {void} - Only sets config options
  */
 @mixin config($options) {
-  $-config: abstract.config($options, $-config, false, true, 'button-core.config::') !global;
+  $-config: abstract.config($options, $-config, true, true, 'button-core.config::') !global;
 }
 
 /**
@@ -63,7 +65,8 @@ $-config: (
  */
 @mixin properties($extend: null) {
   $render: abstract.merge-optional($-config, $extend);
-  @include mixins.properties($render, $props, '_at_', 'button-core.properties::');
+  $clean: map.remove($render, 'label-hidden-queries');
+  @include mixins.properties($clean, $props, '_at_', 'button-core.properties::');
 }
 
 /**
@@ -135,6 +138,21 @@ $-config: (
     &--label-hidden {
       .#{$class}__label {
         @include mixins.hide-accessible;
+      }
+
+      // Query based hidden label
+      $-label-hidden-queries: map.get($-config, 'label-hidden-queries');
+      @debug($-label-hidden-queries);
+      @if meta.type-of($-label-hidden-queries) == list {
+        @each $query in $-label-hidden-queries {
+          @include media.query($query) {
+            &-#{abstract.str-initials($query)} {
+              .#{$class}__label {
+                @include mixins.hide-accessible;
+              }
+            }
+          }
+        }
       }
     }
 
